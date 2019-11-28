@@ -1,0 +1,6 @@
+@import "~normalize.css";
+@import "./styles/configs/configs.css";
+@import "./fonts.css";
+@import "./styles/core/core.css";
+@import "./styles/mixins/mixins.css";
+@import "./styles/tailwind/tailwind.css";

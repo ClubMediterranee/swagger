@@ -1,0 +1,49 @@
+{
+  "name": "@reswagger/storybook",
+  "version": "1.0.0",
+  "description": "Shared react components",
+  "main": "src/index.js",
+  "author": "CLUBMED",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start:storybook": "start-storybook -p 6006",
+    "build:storybook": "build-storybook -c .storybook -o .out"
+  },
+  "devDependencies": {
+    "@reswagger/webpack": "1.0.0",
+    "@storybook/addon-actions": "5.1.9",
+    "@storybook/addon-backgrounds": "5.1.9",
+    "@storybook/addon-centered": "5.1.9",
+    "@storybook/addon-knobs": "5.1.9",
+    "@storybook/addon-links": "5.1.9",
+    "@storybook/addon-notes": "5.1.9",
+    "@storybook/addon-storyshots": "5.1.9",
+    "@storybook/addon-storysource": "5.1.9",
+    "@storybook/addon-viewport": "5.1.9",
+    "@storybook/addons": "5.1.9",
+    "@storybook/react": "5.1.9",
+    "@svgr/webpack": "4.3.3",
+    "babel-loader": "8.0.6",
+    "cross-env": "5.2.0",
+    "react-storybook-addon-chapters": "3.1.4",
+    "react-svg": "10.0.23",
+    "storybook-addon-rtl": "0.1.2",
+    "url-loader": "2.2.0"
+  },
+  "dependencies": {
+    "@reswagger/components": "1.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

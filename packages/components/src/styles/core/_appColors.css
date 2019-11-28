@@ -1,0 +1,176 @@
+/* bg */
+.bg-booking {
+  @apply bg-emerald;
+}
+
+.bg-booking-active {
+  @apply bg-emerald-active;
+}
+
+.bg-danger {
+  @apply bg-red;
+}
+
+.bg-danger-active {
+  @apply bg-red-active;
+}
+
+.bg-info {
+  @apply bg-gray;
+}
+
+.bg-info-active {
+  @apply bg-gray-active;
+}
+
+.bg-success {
+  @apply bg-emerald;
+}
+
+.bg-success-active {
+  @apply bg-emerald-active;
+}
+
+.bg-warning {
+  @apply bg-orange;
+}
+
+.bg-warning-active {
+  @apply bg-orange-active;
+}
+
+/* border */
+.focus-within\:border-blue:focus-within {
+  @apply border-blue;
+}
+
+.border-booking {
+  @apply border-emerald;
+}
+
+.border-booking-active {
+  @apply border-emerald-active;
+}
+
+.border-danger {
+  @apply border-red;
+}
+
+.border-danger-active {
+  @apply border-red-active;
+}
+
+.border-info {
+  @apply border-gray;
+}
+
+.border-info-active {
+  @apply border-gray-active;
+}
+
+.border-success {
+  @apply border-emerald;
+}
+
+.border-success-active {
+  @apply border-emerald-active;
+}
+
+.border-warning {
+  @apply border-orange;
+}
+
+.border-warning-active {
+  @apply border-orange-active;
+}
+
+/* text */
+.focus-within\:text-blue:focus-within {
+  @apply text-blue;
+}
+
+.text-booking {
+  @apply text-emerald;
+}
+
+.text-booking-active {
+  @apply text-emerald-active;
+}
+
+.text-danger {
+  @apply text-red;
+}
+
+.text-danger-active {
+  @apply text-red-active;
+}
+
+.text-info {
+  @apply text-gray;
+}
+
+.text-info-active {
+  @apply text-gray-active;
+}
+
+.text-success {
+  @apply text-emerald;
+}
+
+.text-success-active {
+  @apply text-emerald-active;
+}
+
+.text-warning {
+  @apply text-orange;
+}
+
+.text-warning-active {
+  @apply text-orange-active;
+}
+
+/* overlays */
+.bg-overlay-black-15 {
+  background-color: color-mod(theme('colors.black') alpha(0.15));
+}
+
+.bg-overlay-black-30 {
+  background-color: color-mod(theme('colors.black') alpha(0.3));
+}
+
+.bg-overlay-black-60 {
+  background-color: color-mod(theme('colors.black') alpha(0.6));
+}
+
+.bg-overlay-emerald-40 {
+  background-color: color-mod(theme('colors.emerald') alpha(0.4));
+}
+
+.bg-overlay-white-60 {
+  background-color: color-mod(theme('colors.white') alpha(0.6));
+}
+
+.bg-overlay-white-90 {
+  background-color: color-mod(theme('colors.white') alpha(0.9));
+}
+
+.bg-overlay-gray-darker-40 {
+  background-color: color-mod(theme('colors.gray-darker') alpha(0.4));
+}
+
+.bg-overlay-deepBlue-60 {
+  background-color: color-mod(theme('colors.deepBlue') alpha(0.6));
+}
+
+.bg-overlay-kiwi-60 {
+  background-color: color-mod(theme('colors.kiwi') alpha(0.6));
+}
+
+.bg-overlay-sand-60 {
+  background-color: color-mod(theme('colors.sand') alpha(0.6));
+}
+
+.bg-overlay-waterGreen-80,
+.before\:bg-overlay-waterGreen-80::before {
+  background-color: color-mod(theme('colors.waterGreen') alpha(0.8));
+}

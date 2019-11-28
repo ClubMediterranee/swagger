@@ -1,0 +1,28 @@
+{
+  "name": "@reswagger/app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@reswagger/webpack": "1.0.0",
+    "@reswagger/plugins": "1.0.0"
+  },
+  "scripts": {
+    "start": "cross-env PORT=3004 BROWSER=none rp-scripts start",
+    "build": "rp-scripts build",
+    "test": "rp-scripts test --coverage",
+    "lint:fix": "yarn lint --fix",
+    "lint": "eslint --config .eslintrc --cache --quiet \"./src/**/*.{js,jsx}\""
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

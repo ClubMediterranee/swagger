@@ -1,0 +1,22 @@
+{
+  "name": "@reswagger/eslint-config",
+  "version": "1.0.0",
+  "description": "clubmed® eslint rules & configurations",
+  "author": "CLUBMED",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "clubmed®",
+    "eslint",
+    "eslintplugin"
+  ],
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClubMediterranee/easyarrival.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ClubMediterranee/easyarrival/issues"
+  },
+  "scripts": {},
+  "private": true
+}

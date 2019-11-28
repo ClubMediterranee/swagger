@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 51 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>Combined Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M55.005653,29.8066207 C56.292615,29.2781755 71.9607406,24.9408072 74.771988,25.0006127 C76.6849106,25.0417902 79.3575866,25.5398425 82,26.1290736 L82,33.3547528 C81.1351233,33.2322005 80.23202,33.1361196 79.2827262,33.09004 C73.4308717,32.8047384 63.4011689,37.3950545 57.6464736,36.9724945 C56.1954558,36.8666093 54.2188223,36.077373 52.5081822,35.3704918 C39.6258197,30.0429014 38.1142765,30.0556469 39.3502697,28.5879614 C40.6388245,27.0575292 43.9390538,28.4281533 52.1306945,30.5399733 C53.5785268,36.8068039 65.8476709,31.3135229 68.5856508,31.1546952 C63.7388371,29.2203309 60.1041251,32.6704211 55.9931734,31.6968663 C54.7062113,31.3939172 54.0053904,30.2183962 55.005653,29.8066207 Z M69.4450514,5.6214183 L65.7146301,5.6214183 L65.7146301,9.35183961 L63.8236331,9.35183961 L63.8236331,5.6214183 L60.0932118,5.6214183 L60.0932118,3.73042132 L63.8236331,3.73042132 L63.8236331,5.68434189e-14 L65.7146301,5.68434189e-14 L65.7146301,3.73042132 L69.4450514,3.73042132 L69.4450514,5.6214183 Z M61.6833683,14.0277594 L55.4086965,14.0277594 L55.4086965,20.2422631 L52.2713606,20.2422631 L52.2713606,14.0277594 L45.9966888,14.0277594 L45.9966888,10.8904235 L52.2713606,10.8904235 L52.2713606,4.61575172 L55.4086965,4.61575172 L55.4086965,10.8904235 L61.6232002,10.8904235 L61.6232002,14.0277594 L61.6833683,14.0277594 Z" id="path-1"></path>
+        <filter x="-16.3%" y="-13.5%" width="132.6%" height="137.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="05-Contact-details/Mobile/01-Contact-details-sun-" transform="translate(-152.000000, -2978.000000)">
+            <g id="Rassurance" transform="translate(117.000000, 2708.000000)">
+                <g id="All-inclusive" transform="translate(0.000000, 272.000000)">
+                    <g id="Combined-Shape">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

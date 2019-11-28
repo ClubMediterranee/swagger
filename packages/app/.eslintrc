@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "@reswagger",
+    "@reswagger/eslint-config/react"
+  ]
+}

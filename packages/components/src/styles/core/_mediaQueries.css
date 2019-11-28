@@ -1,0 +1,17 @@
+/* 360px */
+@custom-media --r-minXS (min-width: 22.51em);
+
+/* 640px */
+@custom-media --r-maxS (max-width: 40em);
+@custom-media --r-minS (min-width: 40.01em);
+
+/* 800px */
+@custom-media --r-maxM (max-width: 50em);
+@custom-media --r-minM (min-width: 50.01em);
+
+/* 1024 */
+@custom-media --r-maxL (max-width: 64em);
+@custom-media --r-minL (min-width: 64.01em);
+
+/* 1220 */
+@custom-media --r-minXL (min-width: 76.26em);

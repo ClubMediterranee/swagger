@@ -1,0 +1,42 @@
+.border-angled {
+    position: relative;
+    padding: .24em .3em .25em;
+}
+
+.border-angled:after {
+    position: absolute;
+    content: "";
+    right: -10%;
+    top: 0;
+    height: 100%;
+    width: 10px;
+    background-color: inherit;
+    -webkit-transform: skewX(-10deg);
+    -moz-transform: skewX(-10deg);
+    -ms-transform: skewX(-10deg);
+    transform: skewX(-10deg);
+}
+
+.border-angled:before {
+    content: "";
+    position: absolute;
+    left: -10%;
+    top: 0;
+    height: 100%;
+    width: 10px;
+    background-color: inherit;
+    -webkit-transform: skewX(10deg);
+    -moz-transform: skewX(10deg);
+    -ms-transform: skewX(10deg);
+    transform: skewX(10deg);
+}
+
+.border-angled-gray-light:before {
+    border-bottom: solid 1px theme('colors.gray-light');
+    border-left: solid 1px theme('colors.gray-light');
+}
+
+.border-angled-gray-light:after {
+    border-bottom: solid 1px theme('colors.gray-light');
+border-right: solid 1px theme('colors.gray-light');
+}

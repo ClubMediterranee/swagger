@@ -1,0 +1,20 @@
+.scroll-area {
+  @apply h-full max-w-screen overflow-hidden;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+/**
+ * Display and use native scrollbar on touch devices.
+ */
+.touchevents .scroll-area {
+  @apply overflow-x-auto;
+
+  -ms-overflow-style: none;
+}
+
+.scroll-y {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

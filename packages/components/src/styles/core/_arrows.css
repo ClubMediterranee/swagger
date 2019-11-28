@@ -1,0 +1,98 @@
+.arrow-down,
+.arrow-up {
+  @apply relative;
+}
+
+.arrow-down::after,
+.arrow-up::after,
+.arrow-bg::before {
+  @apply absolute border-arrow border-solid border-transparent h-0 left-1/2 pointer-events-none -translate-x-50 w-0;
+
+  content: "";
+}
+
+.arrow-down::after,
+.arrow-down.arrow-bg::before {
+  @apply top-full;
+
+  border-top-color: currentColor;
+}
+
+.arrow-up::after,
+.arrow-up.arrow-bg::before {
+  @apply bottom-full;
+
+  border-bottom-color: currentColor;
+}
+
+/* bg */
+.arrow-down.arrow-bg::before {
+  @apply mt-px;
+}
+
+.arrow-up.arrow-bg::before {
+  @apply mb-px;
+}
+
+.arrow-down.arrow-bg-large::before {
+  margin-top: 2px;
+}
+
+.arrow-up.arrow-bg-large::before {
+  margin-bottom: 2px;
+}
+
+/* colors */
+.arrow-blue::after,
+.arrow-bg-blue::before {
+  @apply text-blue;
+}
+
+.arrow-turquoise::after,
+.arrow-bg-turquoise::before {
+  @apply text-turquoise;
+}
+
+.arrow-white::after,
+.arrow-bg-white::before {
+  @apply text-white;
+}
+
+.arrow-gray-light::after,
+.arrow-bg-gray-light::before {
+  @apply text-gray-light;
+}
+
+/* large */
+.arrow-large::after,
+.arrow-large::before {
+  @apply border-arrow-large;
+}
+
+/* navigation */
+.navigation-arrow::before,
+.navigation-arrow::after {
+  @apply absolute opacity-0;
+
+  bottom: -1px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid theme('colors.white');
+  border-left: 8px solid transparent;
+  content: '';
+  transform: translateX(-50%);
+  transition: all ease-in 0.1s;
+}
+
+.navigation-arrow::before {
+  @apply bottom-0;
+
+  border-bottom-color: theme('colors.gray-light');
+}
+
+.navigation-arrow.navigation-arrow-active::before,
+.navigation-arrow.navigation-arrow-active::after {
+  @apply opacity-100;
+}

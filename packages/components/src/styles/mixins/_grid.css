@@ -1,0 +1,63 @@
+/* Grid Cells */
+@define-mixin grid-cells-at-breakpoint $breakpoint: XXS {
+  @for $i from 1 to var(--Grid-columns) {
+    .$(breakpoint)-GridCell--$(i) {
+      flex: 0 0 calc(100% * $i / var(--Grid-columns));
+      max-width: calc(100% * $i / var(--Grid-columns));
+    }
+  }
+
+  @for $i from 0 to var(--Grid-columns-offsets) {
+    .$(breakpoint)-GridCell--offset-$(i) {
+      margin-left: calc(100% * $i / var(--Grid-columns));
+    }
+
+    .rtl .$(breakpoint)-GridCell--offset-$(i) {
+      margin-right: calc(100% * $i / var(--Grid-columns));
+      margin-left: 0;
+    }
+  }
+}
+
+@define-mixin gridcells {
+  @mixin grid-cells-at-breakpoint;
+
+  @each $breakpoint in var(--Breakpoints) {
+    @media (--r-min$(breakpoint)) {
+      @mixin grid-cells-at-breakpoint $breakpoint;
+    }
+  }
+}
+
+/* Grid row */
+@define-mixin grid-rows-at-breakpoint $breakpoint: XXS {
+  .$(breakpoint)-GridRow--fit > .GridCell {
+    flex: 1;
+  }
+
+  .$(breakpoint)-GridRow--1of1 > .GridCell,
+  .$(breakpoint)-GridRow--full > .GridCell {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .$(breakpoint)-GridRow--1of2 > .GridCell {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .$(breakpoint)-GridRow--1of3 > .GridCell {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+}
+
+@define-mixin gridrows {
+  @mixin grid-rows-at-breakpoint;
+
+  @each $breakpoint in var(--Breakpoints) {
+    @media (--r-min$(breakpoint)) {
+      @mixin grid-rows-at-breakpoint $breakpoint;
+    }
+  }
+}

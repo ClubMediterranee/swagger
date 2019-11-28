@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 51 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M54.986866,26.0762759 L54.3530809,27 L47,12.775028 L52.4928042,10.1704291 L55.2274696,15.4610208 C58.425737,11.5616938 63.5312282,6.01745653 70.5674165,0.403182838 L71.0740534,0 L75,4.51451206 L74.4835825,4.92715928 C63.5644823,13.6400729 55.0709795,25.9551318 54.986866,26.0762759 Z M55.005653,34.8066207 C56.292615,34.2781755 71.9607406,29.9408072 74.771988,30.0006127 C76.6849106,30.0417902 79.3575866,30.5398425 82,31.1290736 L82,38.3547528 C81.1351233,38.2322005 80.23202,38.1361196 79.2827262,38.09004 C73.4308717,37.8047384 63.4011689,42.3950545 57.6464736,41.9724945 C56.1954558,41.8666093 54.2188223,41.077373 52.5081822,40.3704918 C39.6258197,35.0429014 38.1142765,35.0556469 39.3502697,33.5879614 C40.6388245,32.0575292 43.9390538,33.4281533 52.1306945,35.5399733 C53.5785268,41.8068039 65.8476709,36.3135229 68.5856508,36.1546952 C63.7388371,34.2203309 60.1041251,37.6704211 55.9931734,36.6968663 C54.7062113,36.3939172 54.0053904,35.2183962 55.005653,34.8066207 Z" id="allInclusiveWithShadow"></path>
+        <filter x="-16.3%" y="-11.9%" width="132.6%" height="133.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="05-Contact-details/Mobile/01-Contact-details-sun-" transform="translate(-152.000000, -2973.000000)">
+            <g id="Rassurance" transform="translate(117.000000, 2708.000000)">
+                <g id="All-inclusive" transform="translate(0.000000, 267.000000)">
+                    <g id="Combined-Shape">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#allInclusiveWithShadow"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#allInclusiveWithShadow"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,27 @@
+{
+  "name": "@reswagger/utils",
+  "version": "1.0.0",
+  "private": false,
+  "main": "src/index.js",
+  "dependencies": {
+    "@reswagger/webpack": "1.0.0"
+  },
+  "scripts": {
+    "build": "rp-scripts build",
+    "test": "rp-scripts test --coverage",
+    "lint:fix": "yarn lint --fix",
+    "lint": "eslint --config .eslintrc --cache --quiet \"./src/**/*.{js,jsx}\""
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

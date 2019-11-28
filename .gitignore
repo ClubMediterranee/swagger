@@ -1,0 +1,17 @@
+.idea/
+.nyc_output/
+coverage/
+node_modules/
+public/vendor/
+keys/
+*.iml
+*.xml
+*.log
+.eslintcache
+dist/
+.DS_Store
+.out
+build/
+
+e2e/videos/
+e2e/screenshots/
