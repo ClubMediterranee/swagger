@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "dependencies": {
     "@reswagger/webpack": "1.0.0",
+    "@reswagger/components": "1.0.0",
     "@reswagger/utils": "1.0.0"
   },
   "scripts": {
