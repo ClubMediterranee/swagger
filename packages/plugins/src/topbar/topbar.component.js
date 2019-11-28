@@ -24,7 +24,7 @@ export default function Topbar (props) {
 
   return (
     <Header>
-      <Link className="cursor-pointer flex flex-no-shrink items-center px-5 text-blue font-happiness">
+      <Link className="cursor-pointer flex flex-no-shrink items-center pr-5 text-blue font-happiness">
         <div className="flex items-center">
           <div className="overflow-hidden flex items-center relative" style={{ height: '40px', top: '-2px' }}>
             <Icon svg={CLUBMED} width="7rem"/>
@@ -35,17 +35,15 @@ export default function Topbar (props) {
           </div>
         </div>
       </Link>
-      <div
-        className="flex items-stretch"
-        style={{ flex: '1 1 auto' }}>
-
+      <div className="flex items-stretch" style={{ flex: '1 1 auto' }}>
         {hasServers ? (<ServersContainer/>) : null}
         {hasSchemes ? (<SchemesContainer/>) : null}
-
       </div>
-      <div className="flex flex-no-shrink relative">
+      <div className="flex items-stretch" style={{ width: '40%' }}>
         {ToggleContainer ? <ToggleContainer/> : null}
         {SearchContainer ? <SearchContainer/> : null}
+      </div>
+      <div className="flex flex-no-shrink relative">
         {hasSecurityDefinitions ? <AuthorizeBtnContainer/> : null}
       </div>
     </Header>

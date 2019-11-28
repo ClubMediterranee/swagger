@@ -2,8 +2,10 @@ import reducers from './operations.reducers'
 import * as actions from './operations.actions'
 import * as selectors from './operations.selectors'
 import SearchContainer from './search.container'
-import ToggleContainer from './toggle.container'
 import Operations from './operations.component'
+import OperationSummary from './operation-summary.component'
+import ToggleContainer from './toggle.container'
+import { operationsFilter } from './operations.filter'
 
 export const OperationsPlugin = () => {
   return {
@@ -19,14 +21,15 @@ export const OperationsPlugin = () => {
       ToggleContainer
     },
     wrapComponents: {
-      operations: () => {
+      operations () {
         return Operations
+      },
+      OperationSummary () {
+        return OperationSummary
       }
     },
     fn: {
-      operationsFilter (operations, keyword) {
-        return operations.filter(item => item.get('path').indexOf(keyword.toLowerCase()) > -1)
-      },
+      operationsFilter,
       tagsFilter (taggedOps, tagKeyword) {
         const hasHidden = String(window.location.search).includes('tags=hidden')
 

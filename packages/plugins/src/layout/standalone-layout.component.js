@@ -107,21 +107,22 @@ const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
       <div className="relative bg-white" ref={bodyRef}>
         <div className="flex swagger-ui pt-5 contain-layout">
           <SvgAssets/>
-          <VersionPragmaFilter isSwagger2={isSwagger2} isOAS3={isOAS3} alsoShow={<Errors/>}>
-            <Errors/>
+          <div className={'w-full'}>
+            <VersionPragmaFilter isSwagger2={isSwagger2} isOAS3={isOAS3} alsoShow={<Errors/>}>
+              <Errors/>
 
-            <Row>
-              <Col mobile={12} desktop={12}>
-                <Operations/>
-              </Col>
-            </Row>
-            <Row>
-              <Col mobile={12} desktop={12}>
-                <Models/>
-              </Col>
-            </Row>
-
-          </VersionPragmaFilter>
+              <Row>
+                <Col mobile={12} desktop={12}>
+                  <Operations/>
+                </Col>
+              </Row>
+              <Row>
+                <Col mobile={12} desktop={12}>
+                  <Models/>
+                </Col>
+              </Row>
+            </VersionPragmaFilter>
+          </div>
         </div>
         <Row>
           <Col>

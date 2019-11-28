@@ -110,8 +110,22 @@ export class InputText extends Component<Props, State> {
 
   onKeyDown = (e: SyntheticKeyboardEvent<>) => {
     const { onKeyDown = noop } = this.props
+    const { value } = e.target
     e.persist()
-    onKeyDown(e)
+    onKeyDown(e, value)
+  }
+
+  onKeyPress = (e: SyntheticKeyboardEvent<>) => {
+    const { onKeyPressEnter = noop, onKeyPress = noop } = this.props
+    const { value } = e.target
+    e.persist()
+
+    onKeyPress(e, value)
+
+    const code = e.keyCode || e.which
+    if (code === 13) {
+      onKeyPressEnter(e, value)
+    }
   }
 
   onClear = (e: SyntheticEvent<>) => {
@@ -163,7 +177,8 @@ export class InputText extends Component<Props, State> {
       theme,
       smallLabel,
       typeToggler = {},
-      validationState
+      validationState,
+      style
     } = this.props
 
     const { type, value } = this.state
@@ -193,6 +208,7 @@ export class InputText extends Component<Props, State> {
         theme={theme}
         smallLabel={smallLabel}
         validationState={validationState}
+        style={style}
       >
         <input
           autoComplete={autoComplete}
@@ -208,6 +224,7 @@ export class InputText extends Component<Props, State> {
           onClick={onClick}
           onFocus={onFocus}
           onKeyDown={this.onKeyDown}
+          onKeyPress={this.onKeyPress}
           onKeyUp={onKeyUp}
           {...(pattern ? { pattern } : null)}
           {...(placeholder ? { placeholder: getFormattedLabel(placeholder, isRequired) } : null)}
