@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 import { Header, Icon } from '@reswagger/components'
 import { ReactComponent as CLUBMED } from '@reswagger/components/src/statics/svg/clubmed.svg'
 
-// import "./topbar.less"
-// import Logo from './logo_small.svg'
-
 export default function Topbar (props) {
   let { getComponent, specSelectors, getConfigs } = props
   const info = specSelectors.info()
@@ -14,6 +11,7 @@ export default function Topbar (props) {
   const ServersContainer = getComponent('ServersContainer', true)
   const SchemesContainer = getComponent('SchemesContainer', true)
   const SearchContainer = getComponent('SearchContainer', true)
+  const ToggleContainer = getComponent('ToggleContainer', true)
   const { appName } = getConfigs()
 
   const version = info.get('version')
@@ -46,6 +44,7 @@ export default function Topbar (props) {
 
       </div>
       <div className="flex flex-no-shrink relative">
+        {ToggleContainer ? <ToggleContainer/> : null}
         {SearchContainer ? <SearchContainer/> : null}
         {hasSecurityDefinitions ? <AuthorizeBtnContainer/> : null}
       </div>

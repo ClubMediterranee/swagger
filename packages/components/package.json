@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@reswagger/webpack": "1.0.0"
+    "@reswagger/webpack": "1.0.0",
+    "shortid": "^2.2.15"
   },
   "scripts": {
     "start": "cross-env PORT=3004 BROWSER=none rp-scripts start",
