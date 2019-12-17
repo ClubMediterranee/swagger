@@ -61,6 +61,7 @@ export default class Operations extends React.Component {
     })
 
     let operationsKeyword = operationsSelectors.currentFilter()
+    let displayDeprecatedOperations = operationsSelectors.currentDeprecatedFilter()
 
     return (
       <div>
@@ -91,7 +92,12 @@ export default class Operations extends React.Component {
                   operations.map(op => {
                     const path = op.get('path')
                     const method = op.get('method')
+                    const deprecated = !!op.get('operation').get('deprecated')
                     const specPath = Im.List(['paths', path, method])
+
+                    if (!displayDeprecatedOperations && deprecated) {
+                      return null
+                    }
 
                     // FIXME: (someday) this logic should probably be in a selector,
                     // but doing so would require further opening up
