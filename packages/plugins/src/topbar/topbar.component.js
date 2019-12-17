@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Header, Icon } from '@reswagger/components'
+import { Header, Icon, Switch } from '@reswagger/components'
 import { ReactComponent as CLUBMED } from '@reswagger/components/src/statics/svg/clubmed.svg'
 
 // import "./topbar.less"
@@ -46,6 +46,7 @@ export default function Topbar (props) {
 
       </div>
       <div className="flex flex-no-shrink relative">
+        <Switch isSwitch />
         {SearchContainer ? <SearchContainer/> : null}
         {hasSecurityDefinitions ? <AuthorizeBtnContainer/> : null}
       </div>
