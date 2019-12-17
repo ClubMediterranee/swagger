@@ -7,8 +7,7 @@ export default function ToggleContainer ({ operationsActions }) {
   }
 
   return <Switch
-    label='display deprecated ?'
-    isSwitch
+    label='deprecated'
     onChange={onChange}
   />
 }
