@@ -47,7 +47,6 @@ const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
   useLayoutEffect(() => {
     if (sidebarRef.current) {
       if (topbarRef.current) {
-        console.log('topbarRef.current.offsetHeight', topbarRef.current)
         sidebarRef.current.style.top = `${topbarRef.current.offsetHeight}px`
       }
       if (bodyRef.current) {

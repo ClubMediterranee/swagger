@@ -132,7 +132,9 @@ const colors = {
   white: 'hsla(0, 100%, 100%, 1)', // #ffffff
 
   /* Gray colors */
+  'gray-xlighter': 'rgb(250, 250, 250)',
   'gray-lighter': '#f7f7f7',
+  'gray-xlight': 'rgb(225, 225, 225)',
   'gray-light': '#d4d1d1',
   'gray-medium': '#a8a0a0',
   'gray-dark': '#998e8e',

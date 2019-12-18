@@ -2,3 +2,54 @@
     font-family: Trident, Gentium Basic, Gentium Basic wf, Times New Roman, Times, serif;
     font-size: 0.75rem
 }
+
+.swagger-ui .sidebar-operation-method {
+    width: 32px;
+    display: inline-block;
+    height: 13px;
+    line-height: 13px;
+    background-color: rgb(51, 51, 51);
+    font-size: 7px;
+    font-family: Verdana;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-right: 6px;
+    border-radius: 3px;
+    background-repeat: no-repeat;
+    background-position: 6px 4px;
+}
+
+.swagger-ui .bg-operation-post {
+    background-color: #49cc90
+}
+
+.swagger-ui .bg-operation-get {
+    background-color: #61affe
+}
+
+.swagger-ui .bg-operation-put {
+    background-color: #fca130
+}
+
+.swagger-ui .bg-operation-delete {
+    background-color: #f93e3e
+}
+
+.swagger-ui .bg-operation-head {
+    background-color: #9012fe
+}
+
+.swagger-ui .bg-operation-patch {
+    background-color: #50e3c2
+}
+
+.swagger-ui .bg-operation-disabled {
+    background-color: #ebebeb
+}
+
+.swagger-ui .bg-operation-options {
+    color: #0d5aa7
+}
