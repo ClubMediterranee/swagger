@@ -1,6 +1,40 @@
 .swagger-ui.swagger-ui {
-    font-family: Trident, Gentium Basic, Gentium Basic wf, Times New Roman, Times, serif;
-    font-size: 0.75rem
+    font-size: 13px;
+}
+
+.swagger-ui.swagger-ui .parameter__name {
+    font-size: 14px;
+}
+
+.swagger-ui.swagger-ui .markdown code, .swagger-ui.swagger-ui .renderedMarkdown code {
+    font-size: 13px;
+}
+
+.swagger-ui.swagger-ui .opblock {
+    box-shadow: none;
+}
+
+.swagger-ui.swagger-ui .bg-blue {
+    background-color: hsla(203, 100%, 27%, 1);
+}
+
+.swagger-ui.swagger-ui .scope-def {
+    border-left: 2px solid #DEDEDE;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.swagger-ui.swagger-ui .scope-def p {
+    color: #7d8293 !important;
+}
+
+.swagger-ui.swagger-ui .scope-def p:last-child {
+    margin-bottom: 0;
+}
+
+.swagger-ui .dialog-ux label {
+    font-size: 14px;
 }
 
 .swagger-ui .sidebar-operation-method {
@@ -52,4 +86,35 @@
 
 .swagger-ui .bg-operation-options {
     color: #0d5aa7
+}
+
+/* operation */
+.swagger-ui.swagger-ui .opblock .opblock-summary-operation-id,
+.swagger-ui.swagger-ui .opblock .opblock-summary-path,
+.swagger-ui.swagger-ui .opblock .opblock-summary-path__deprecated {
+    padding-left: 0 !important;
+    font-family: Trident, Trebuchet MS, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.swagger-ui.swagger-ui .opblock .opblock-summary-method {
+    display: block;
+    font-size: 10px;
+    padding: 4px 8px;
+    min-width: 60px;
+}
+
+.swagger-ui.swagger-ui .opblock .opblock-summary-description {
+    color: #504747;
+    font-size: 0.75rem
+}
+
+.swagger-ui.swagger-ui .opblock-tag {
+    font-family: HappinessV, Arial, sans-serif;
+    text-transform: uppercase;
+    border-bottom: 0;
+    padding-left: 0;
+    font-size: 20px;
+    color: hsla(203, 100%, 27%, 1);
+    font-weight: normal;
 }

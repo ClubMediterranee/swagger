@@ -16,7 +16,7 @@ export default class AuthorizeBtn extends React.Component {
     const AuthorizationPopup = getComponent('authorizationPopup', true)
 
     return (
-      <div className="auth-wrapper ml-1">
+      <div className="auth-wrapper ml-1" style={{ height: '40px' }}>
         <button className={isAuthorized ? 'btn authorize locked' : 'btn authorize unlocked'} onClick={onClick}>
           <svg width="20" height="20">
             <use href={isAuthorized ? '#locked' : '#unlocked'} xlinkHref={isAuthorized ? '#locked' : '#unlocked'}/>

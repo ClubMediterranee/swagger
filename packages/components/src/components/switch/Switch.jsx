@@ -130,6 +130,7 @@ export class Switch extends Component<Props, State> {
         {...dataSetProps(this.props)}
         className={classnames(className, thRoot)}
         data-selector="Switch-control"
+        style={{ 'margin': 0 }}
       >
         {isSwitch ? (
           <span className={thSwitch} style={thSwitchStyle}>

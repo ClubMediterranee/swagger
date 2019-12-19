@@ -48,7 +48,8 @@ export function FormControl (props: Props) {
     label,
     notes,
     onClear,
-    theme = 'default'
+    theme = 'default',
+    style
   } = props
 
   if (!Children.count(children)) return null
@@ -67,7 +68,7 @@ export function FormControl (props: Props) {
   } = themes[theme](props)
 
   return (
-    <div className={className} dir={dir}>
+    <div className={className} dir={dir} style={style}>
       {!!label && (
         <label className={thLabel} htmlFor={id}>
           {isString(label) ? getFormattedLabel(label, isRequired) : label}

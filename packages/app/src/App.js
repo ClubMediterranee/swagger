@@ -4,7 +4,8 @@ import {
   OperationsPlugin,
   SidebarPlugin,
   StandaloneLayoutPlugin,
-  TopbarPlugin
+  TopbarPlugin,
+  OAuth2Plugin
 } from '@reswagger/plugins'
 import 'swagger-ui/dist/swagger-ui.css'
 import SwaggerUI from './swaggerui/swaggerui.component'
@@ -25,9 +26,11 @@ function App () {
       AuthorizeBtnPlugin,
       StandaloneLayoutPlugin,
       OperationsPlugin,
+      OAuth2Plugin,
       NativeSwaggerUI.plugins.DownloadUrl
     ],
-    layout: 'StandaloneLayout'
+    layout: 'StandaloneLayout',
+    deepLinking: true
   }
 
   return (
