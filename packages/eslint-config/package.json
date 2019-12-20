@@ -12,10 +12,10 @@
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ClubMediterranee/easyarrival.git"
+    "url": "git+https://github.com/ClubMediterranee/swagger-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/ClubMediterranee/easyarrival/issues"
+    "url": "https://github.com/ClubMediterranee/swagger-ui/issues"
   },
   "scripts": {},
   "private": true

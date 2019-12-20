@@ -5,7 +5,7 @@ export function Tabs ({ style, items, className }) {
   const classes = 'flex flex-no-shrink items-center justify-center font-bold no-underline px-6 py-3 text-base text-center whitespace-no-wrap hover:bg-blue hover:text-white transition-colors decorator-separator-left--unHover'
 
   return <div className={`tabs ${className}`} style={style}>
-    <nav className="list-reset text-gray-light">
+    <nav className="list-reset text-gray-light font-sans">
       <div className="decorator-border-bottom-after">
         <div className="flex h-full mx-auto overflow-hidden">
           {

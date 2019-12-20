@@ -4,12 +4,11 @@
 @import "./styles/core/core.css";
 @import "./styles/mixins/mixins.css";
 @import "./styles/tailwind/tailwind.css";
-@import "./styles/swagger/swagger.css";
 
-.contain-layout {
-    contain: layout;
-}
+/*.contain-layout {*/
+/*    contain: layout;*/
+/*}*/
 
-.contain-strict {
-    contain: strict;
-}
+/*.contain-strict {*/
+/*    contain: strict;*/
+/*}*/
