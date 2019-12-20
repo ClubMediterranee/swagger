@@ -37,22 +37,27 @@ function SidebarOperation ({ id, operation, tag, onClick }) {
   const classes = classNames('sidebar-operation-method', deprecated ? 'bg-operation-disabled' : 'bg-operation-' + method.toLowerCase())
 
   return <li
-    className={classNames('flex content-center px-5 py-3 font-sans hover:bg-gray-xlight cursor-pointer')}
+    className={classNames('flex items-start px-5 py-2 font-sans hover:bg-gray-xlight cursor-pointer')}
     onClick={() => onClick('operations', tag, id)}>
     <div>
       <div className={classes}>{formatMethod(method)}</div>
-      {version ? <div className={'text-sm text-gray-medium text-right pr-2'}>{version}</div> : null}
+      {version && summary ? <div className={'text-sm text-gray-medium text-right pr-2'}>{version}</div> : null}
     </div>
     <div
-      className={classNames('w-full self-center text-sm text-gray-darker whitespace-normal', deprecated ? 'line-through' : '')}
-      title={path} dangerouslySetInnerHTML={{ __html: summary || path }}>
+      className={classNames('w-full text-sm text-gray-darker whitespace-normal', deprecated ? 'line-through' : '')}
+      title={path}
+      style={{ 'marginTop': '2px' }}
+      dangerouslySetInnerHTML={{ __html: summary || path }}>
     </div>
   </li>
 }
 
-function SidebarOperationTag ({ tag }) {
+function SidebarOperationTag ({ tag, onClick }) {
   return <div
-    className="flex flex-row items-center px-5 pt-3 pb-1 uppercase font-happiness text-blue">{tag.replace(/_/gi, ' ')}</div>
+    onClick={() => onClick('operations-tag', tag)}
+    className="flex flex-row items-center px-5 pt-3 pb-1 uppercase font-happiness text-xs text-gray cursor-pointer">
+    {tag.replace(/_/gi, ' ')}
+  </div>
 }
 
 class Sidebar extends React.Component<{}> {
@@ -63,13 +68,20 @@ class Sidebar extends React.Component<{}> {
   }
 
   whenClick = (type, tag, id) => {
-    const ref = this.ref
-    const { fn, layoutActions } = this.props
-    const isShownKey = [type, tag, id]
+    const { layoutActions } = this.props
+    const isShownKey = [type, tag, id].filter(Boolean)
 
     const hash = isShownKey.join('-')
+    this.scrollTo(`#${hash}`)
+
+    layoutActions.show(isShownKey, true)
+  }
+
+  scrollTo = (selector) => {
+    const ref = this.ref
+    const { fn } = this.props
     const container = fn.getScrollParent(ref.current.parentNode)
-    const el = container.querySelector(`#${hash}`)
+    const el = container.querySelector(selector)
 
     if (el) {
       container.scrollTo({
@@ -78,20 +90,10 @@ class Sidebar extends React.Component<{}> {
         behavior: 'smooth'
       })
     }
+  }
 
-    // if (type === 'operations') {
-    // we're going to show an operation, so we need to expand the tag as well
-    // const tagIsShownKey = layoutSelectors.isShownKeyFromUrlHashArray([tag])
-
-    // If an `_` is present, trigger the legacy escaping behavior to be safe
-    // TODO: remove this in v4.0, it is deprecated
-    // if (tag.indexOf('_') > -1) {
-    // console.warn('Warning: escaping deep link whitespace with `_` will be unsupported in v4.0, use `%20` instead.')
-    // layoutActions.show(tagIsShownKey.map(val => val.replace(/_/g, ' ')), true)
-    // }
-    // }
-
-    layoutActions.show(isShownKey, true)
+  scrollToModels = () => {
+    this.scrollTo('.models')
   }
 
   render () {
@@ -103,41 +105,66 @@ class Sidebar extends React.Component<{}> {
 
     return <div
       ref={this.ref}
-      className="absolute flex flex-column contain overflow-hidden pt-5 top-0 left-0 bottom-0 right-0 contain-strict bg-gray-xlighter overflow-y-scroll">
-      <ul className={'reset-list'}>
-        {
-          taggedOps
-            .map((tagObj, tag) => {
-              let operations = operationsFilter(tagObj.get('operations'))
+      className="absolute flex flex-col contain overflow-hidden pt-2 top-0 left-0 bottom-0 right-0 contain-strict bg-gray-xlighter">
+      <div>
+        <ul className={'reset-list'}>
+          <li>
+            <div
+              onClick={() => this.scrollTo('.models-container')}
+              className="px-5 pt-3 pb-2 uppercase font-happiness text-blue hover:bg-gray-xlight cursor-pointer">
+              Introduction
+            </div>
+            <div
+              onClick={() => this.scrollTo('.models-container')}
+              className="px-5 pt-3 pb-2 uppercase font-happiness text-blue hover:bg-gray-xlight cursor-pointer">
+              Models
+            </div>
 
-              if (operations.size === 0) {
-                return null
-              }
+            <div
+              onClick={() => this.scrollTo('.operations-container')}
+              className="px-5 uppercase font-happiness text-blue hover:bg-gray-xlight cursor-pointer">
+              <div className="pt-3 pb-2">Routes</div>
+              <div className="border-b border-gray-light"/>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div className="overflow-y-scroll">
+        <ul className={'reset-list'}>
+          {
+            taggedOps
+              .map((tagObj, tag) => {
+                let operations = operationsFilter(tagObj.get('operations'))
 
-              return <li key={tag}>
-                <SidebarOperationTag tag={tag}/>
+                if (operations.size === 0) {
+                  return null
+                }
 
-                <ul className={'reset-list'}>
-                  {
-                    operations.map(op => {
-                      const operationId = getOperationId(op)
+                return <li key={tag}>
+                  <SidebarOperationTag tag={tag} onClick={this.whenClick}/>
 
-                      return <SidebarOperation
-                        {...this.props}
-                        key={operationId}
-                        id={operationId}
-                        operation={op}
-                        tag={tag}
-                        onClick={this.whenClick}/>
-                    }).toArray()
-                  }
-                </ul>
+                  <ul className={'reset-list'}>
+                    {
+                      operations.map(op => {
+                        const operationId = getOperationId(op)
 
-              </li>
-            })
-            .toArray()
-        }
-      </ul>
+                        return <SidebarOperation
+                          {...this.props}
+                          key={operationId}
+                          id={operationId}
+                          operation={op}
+                          tag={tag}
+                          onClick={this.whenClick}/>
+                      }).toArray()
+                    }
+                  </ul>
+
+                </li>
+              })
+              .toArray()
+          }
+        </ul>
+      </div>
     </div>
   }
 }
