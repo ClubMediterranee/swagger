@@ -173,11 +173,15 @@ export default class HighlightCode extends Component {
               </Fade>
             </Button>
           </CopyToClipboard>
-          <Button onClick={this.toggleFullscreen}>
-            {
-              fullscreen ? <CloseSvg/> : <FullscreenSvg/>
-            }
-          </Button>
+          {
+            value.split('\n') > 15
+              ? <Button onClick={this.toggleFullscreen}>
+                {
+                  fullscreen ? <CloseSvg/> : <FullscreenSvg/>
+                }
+              </Button>
+              : null
+          }
           {
             downloadable ? <Button onClick={this.downloadText}>
               <DownloadSvg/>

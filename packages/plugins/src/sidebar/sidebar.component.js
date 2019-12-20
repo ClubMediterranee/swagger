@@ -86,8 +86,8 @@ class Sidebar extends React.Component<{}> {
     if (el) {
       container.scrollTo({
         top: el.offsetTop - 15,
-        left: el.offsetLeft,
-        behavior: 'smooth'
+        left: el.offsetLeft // ,
+        // behavior: 'smooth'
       })
     }
   }
@@ -110,7 +110,7 @@ class Sidebar extends React.Component<{}> {
         <ul className={'reset-list'}>
           <li>
             <div
-              onClick={() => this.scrollTo('.models-container')}
+              onClick={() => this.scrollTo('.information-container')}
               className="px-5 pt-3 pb-2 uppercase font-happiness text-blue hover:bg-gray-xlight cursor-pointer">
               Introduction
             </div>
