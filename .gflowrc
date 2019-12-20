@@ -6,7 +6,7 @@
   "ignores": [],
   "syncAfterFinish": false,
   "postFinish": "",
-  "skipTest": false,
+  "skipTest": true,
   "charReplacement": "-",
   "branchTypes": {
     "feat": "feat",
