@@ -56,6 +56,7 @@ export default class OperationSummary extends PureComponent {
           (!security || !security.count()) ? null
             : <AuthorizeOperationBtn
               isAuthorized={isAuthorized}
+              className={'self-center'}
               onClick={() => {
                 const applicableDefinitions = authSelectors.definitionsForRequirements(security)
                 authActions.showDefinitions(applicableDefinitions)

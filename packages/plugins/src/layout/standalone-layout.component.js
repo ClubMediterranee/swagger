@@ -57,6 +57,7 @@ const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
 
   const Topbar = getComponent('Topbar', true)
   const Sidebar = getComponent('Sidebar', true)
+  const InfoContainer = getComponent('InfoContainer', true)
   const Container = getComponent('Container')
   const SvgAssets = getComponent('SvgAssets')
   const VersionPragmaFilter = getComponent('VersionPragmaFilter')
@@ -110,13 +111,17 @@ const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
           <div className={'w-full'}>
             <VersionPragmaFilter isSwagger2={isSwagger2} isOAS3={isOAS3} alsoShow={<Errors/>}>
               <Errors/>
-
-              <Row>
+              <Row className="information-container">
+                <Col mobile={12}>
+                  <InfoContainer/>
+                </Col>
+              </Row>
+              <Row className="operations-container">
                 <Col mobile={12} desktop={12}>
                   <Operations/>
                 </Col>
               </Row>
-              <Row>
+              <Row className="models-container">
                 <Col mobile={12} desktop={12}>
                   <Models/>
                 </Col>

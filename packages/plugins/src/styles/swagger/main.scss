@@ -105,6 +105,14 @@
   }
 
   /* operation */
+  .opblock .opblock-summary {
+    align-items: start;
+
+    .authorization__btn {
+      align-self: center;
+    }
+  }
+
   .opblock .opblock-summary-operation-id,
   .opblock .opblock-summary-path,
   .opblock .opblock-summary-path__deprecated {
@@ -170,5 +178,20 @@
     font-family: monospace;
     font-weight: 600;
     color: $white;
+  }
+
+  .sidebar__op {
+    &-info {
+      display: none
+    }
+
+    &-info {
+      display: block;
+      right: -100%;
+    }
+  }
+
+  input[type=email].reset-input, input[type=file].reset-input, input[type=password].reset-input, input[type=search].reset-input, input[type=text].reset-input, textarea.reset-input, .reset-input {
+    font-family: 'Trident', 'Trebuchet MS', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
   }
 }
