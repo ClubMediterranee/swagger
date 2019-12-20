@@ -13,7 +13,7 @@ storiesOf('Components/Header', module)
       <MemoryRouter>
         <div>
           <Header
-            title={text('title', 'Easy Arrival')}
+            title={text('title', 'Clubmed')}
             iconSize={text('iconSize', '1.3rem')}
             height={text('height', '60px')}
             border={boolean('border', true)}>

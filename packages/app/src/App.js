@@ -5,9 +5,9 @@ import {
   SidebarPlugin,
   StandaloneLayoutPlugin,
   TopbarPlugin,
-  OAuth2Plugin
+  OAuth2Plugin,
+  HighlightPlugin
 } from '@reswagger/plugins'
-import 'swagger-ui/dist/swagger-ui.css'
 import SwaggerUI from './swaggerui/swaggerui.component'
 import NativeSwaggerUI from 'swagger-ui'
 
@@ -27,6 +27,7 @@ function App () {
       StandaloneLayoutPlugin,
       OperationsPlugin,
       OAuth2Plugin,
+      HighlightPlugin,
       NativeSwaggerUI.plugins.DownloadUrl
     ],
     layout: 'StandaloneLayout',

@@ -11,12 +11,12 @@ export function Fade ({ show, children }) {
   }
 
   return (
-    shouldRender && (
-      <div
+    shouldRender
+      ? <div
         className={show ? ' w-full fadeIn' : ' w-full fadeOut'}
         onAnimationEnd={onAnimationEnd}>
         {children}
       </div>
-    )
+      : null
   )
 }
