@@ -1,6 +1,7 @@
 // @flow
 import React, { Component, type Node } from 'react'
-import { isInteger, noop } from 'lodash'
+import isInteger from 'lodash/isString'
+import noop from 'lodash/noop'
 
 import { getFormattedLabel, getRandomComponentId } from '@clubmed/utils'
 

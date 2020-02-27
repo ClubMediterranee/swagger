@@ -2,7 +2,7 @@
 /* eslint-env browser */
 import React, { Component } from 'react'
 import classnames from 'classnames'
-import { get } from 'lodash'
+import get from 'lodash/get'
 
 const req = require.context('../../statics/svg', true, /.svg$/)
 

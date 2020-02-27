@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "rp-scripts build",
+    "start": "rp-scripts start",
     "test": "rp-scripts test --coverage",
     "lint:fix": "yarn lint --fix",
     "lint": "eslint --config .eslintrc --cache --quiet \"./src/**/*.{js,jsx}\""
@@ -25,5 +26,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "/dist"
 }

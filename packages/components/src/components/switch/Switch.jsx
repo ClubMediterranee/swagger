@@ -2,7 +2,8 @@
 import React, { Component, type Node } from 'react'
 import classnames from 'classnames'
 import shortId from 'shortid'
-import { isString, noop } from 'lodash'
+import isString from 'lodash/isString'
+import noop from 'lodash/noop'
 
 import { dataSetProps } from '../../utils/string/string.util'
 import { COLORS } from '../../utils/color/colors'

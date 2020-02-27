@@ -59,11 +59,12 @@
     ]
   },
   "scripts": {
-    "build": "lerna run build --stream",
+    "build": "lerna run build --stream --scope @clubmed/plugins",
     "start:app": "lerna run start --stream --no-prefix --scope @clubmed/app",
     "start:storybook": "cross-env NODE_ENV=development lerna run start:storybook --stream --parallel",
     "test": "cross-env CI=true lerna run test --concurrency 2 -- --passWithNoTests",
-    "lint:fix": "lerna run lint:fix --parallel"
+    "lint:fix": "lerna run lint:fix --parallel",
+    "start:prod": "serve -s build"
   },
   "author": "Lenzotti Romain",
   "license": "ISC",

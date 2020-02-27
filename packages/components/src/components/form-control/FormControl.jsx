@@ -1,7 +1,6 @@
 // @flow
 import React, { Children, type Node } from 'react'
-import { isString } from 'lodash'
-
+import isString from 'lodash/isString'
 import { getFormattedLabel } from '@clubmed/utils'
 
 import { Icon } from '../icon/Icon.jsx'

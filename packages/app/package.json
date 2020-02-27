@@ -6,6 +6,9 @@
     "@clubmed/webpack": "1.0.0",
     "@clubmed/plugins": "1.0.0"
   },
+  "devDependencies": {
+    "serve": "11.3.0"
+  },
   "scripts": {
     "start": "cross-env PORT=3004 BROWSER=none rp-scripts start",
     "build": "rp-scripts build",
