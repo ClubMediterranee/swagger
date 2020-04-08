@@ -1,16 +1,22 @@
 {
-  "name": "@clubmed/features-and-fixes",
+  "name": "@clubmed/features-and-fix",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@clubmed/webpack": "1.0.0",
-    "@clubmed/plugins": "1.0.0"
+    "axios": "^0.19.2",
+    "moment": "2.24.0",
+    "vue": "2.6.11",
+    "vue-toastr": "2.1.2"
   },
   "devDependencies": {
-    "serve": "11.3.0"
   },
   "scripts": {
-    "start": "serve public"
+    "start": "cross-env PORT=3006 BROWSER=none rp-scripts start",
+    "build": "rp-scripts build",
+    "test": "rp-scripts test --coverage",
+    "lint:fix": "yarn lint --fix",
+    "lint": "eslint --config .eslintrc --cache --quiet \"./src/**/*.{js,jsx}\""
   },
   "browserslist": {
     "production": [

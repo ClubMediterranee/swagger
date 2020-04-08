@@ -1,0 +1,62 @@
+git:
+  depth: false
+
+language: node_js
+
+node_js:
+  - 12.13.1
+
+cache:
+  yarn: true
+  directories:
+    - "$HOME/google-cloud-sdk/"
+    - "$HOME/.cache/Cypress"
+    - "node_modules"
+    - "packages/admin/node_modules"
+    - "packages/admin/.eslintcache"
+    - "packages/app/node_modules"
+    - "packages/app/.eslintcache"
+    - "packages/components/node_modules"
+    - "packages/components/.eslintcache"
+    - "packages/logger/node_modules"
+    - "packages/logger/.eslintcache"
+    - "packages/mock/node_modules"
+    - "packages/mock/.eslintcache"
+    - "packages/server/node_modules"
+    - "packages/server/.eslintcache"
+
+services:
+  - docker
+
+env:
+  - CXX=g++-4.8 TZ=GMT
+
+before_install:
+  - npm install -g yarn@1.21.0
+
+install:
+  - yarn install --frozen-lockfile
+
+jobs:
+  include:
+    #######################################################################
+    # STAGE: RELEASE
+    #######################################################################
+    - stage: deploy
+      if: branch = production
+      name: 'Release new version'
+      script: yarn build && bash ./scripts/travis/run-create-release.sh
+stages:
+  - test
+  - deploy
+
+branches:
+  except:
+    - master
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
