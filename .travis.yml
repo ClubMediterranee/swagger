@@ -31,7 +31,7 @@ jobs:
     - stage: deploy
       if: branch = production
       name: 'Release new version'
-      script: yarn build && bash ./scripts/travis/run-create-release.sh
+      script: bash ./scripts/travis/run-create-release.sh
 stages:
   - test
   - deploy

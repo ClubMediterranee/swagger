@@ -10,8 +10,10 @@ create_release() {
     upgrade_version
 
     yarn generate:changelog
-    git add .
+    yarn build
+
     git add ./dist/** -f
+    git add .
     git reset -- .npmrc
 
     display_release_info
