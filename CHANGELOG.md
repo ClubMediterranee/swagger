@@ -1,3 +1,12 @@
+## [1.1.3](https://github.com/ClubMediterranee/swagger/compare/v1.1.2...v1.1.3) (2020-04-08)
+
+
+### Bug Fixes
+
+* Update travis.job ([0e766a1](https://github.com/ClubMediterranee/swagger/commit/0e766a11632a65c2b302f18d307a55eea11fb621))
+
+
+
 ## [1.1.2](https://github.com/ClubMediterranee/swagger/compare/v1.1.1...v1.1.2) (2020-04-08)
 
 

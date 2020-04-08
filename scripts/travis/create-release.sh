@@ -16,6 +16,8 @@ create_release() {
     git add .
     git reset -- .npmrc
 
+    git status
+
     display_release_info
 
     git commit -m "${RELEASE_MESSAGE} - ${CI_SKIP}"
