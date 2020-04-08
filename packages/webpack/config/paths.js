@@ -3,6 +3,7 @@
 const path = require('path')
 const fs = require('fs')
 const url = require('url')
+const OUTPUT_PATH = process.env.OUTPUT_PATH
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
@@ -69,7 +70,7 @@ const resolveModule = (resolveFn, filePath) => {
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
-  appBuild: resolveApp('build').replace('packages', 'dist').replace('build', ''),
+  appBuild: resolveApp('build').replace('packages', 'build/' + (OUTPUT_PATH ? OUTPUT_PATH : 'latest')).replace('build', ''),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),

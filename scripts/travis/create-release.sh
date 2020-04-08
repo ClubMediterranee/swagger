@@ -10,9 +10,10 @@ create_release() {
     upgrade_version
 
     yarn generate:changelog
+
+    BUILD_OUTPUT=RELEASE_TAG yarn build
     yarn build
 
-    git add ./dist/** -f
     git add .
     git reset -- .npmrc
 
@@ -25,4 +26,12 @@ create_release() {
     git tag ${RELEASE_TAG} -a -m "Version ${RELEASE_TAG}"
     git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} ${RELEASE_TAG}
     git push -f https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} production:refs/heads/master
+
+    cd build
+    touch .nojekyll
+    git init
+    git add -A
+    git commit -m "Deploy assets v${RELEASE_VERSION}"
+    git push -f https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} master:gh-pages
+    cd ..
 }
