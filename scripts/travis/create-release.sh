@@ -14,14 +14,7 @@ create_release() {
     BUILD_OUTPUT=${RELEASE_TAG} yarn build
     yarn build
 
-    ls dist
-
-    git status
-
-    git add ./dist -f -A
-
-    git status
-
+    git add ./dist/** -f -A
     git add .
     git reset -- .npmrc
 
