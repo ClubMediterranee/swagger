@@ -11,7 +11,7 @@ create_release() {
 
     yarn generate:changelog
 
-    BUILD_OUTPUT=${RELEASE_TAG} yarn build
+    BUILD_OUTPUT=${RELEASE_VERSION} yarn build
     yarn build
 
     git add ./dist/** -f -A
