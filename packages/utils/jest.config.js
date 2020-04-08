@@ -1,5 +1,5 @@
 module.exports = {
-  ...require('@reswagger/webpack/jest.config')(),
+  ...require('@clubmed/webpack/jest.config')(),
   "collectCoverageFrom": [
     "!src/App.js",
     "!src/i18n.js",

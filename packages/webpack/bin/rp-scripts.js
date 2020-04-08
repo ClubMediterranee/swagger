@@ -28,7 +28,7 @@ if (['build', 'start', 'test'].includes(script)) {
   const result = spawn.sync(
     'node',
     nodeArgs
-      .concat(require.resolve('@reswagger/webpack/scripts/' + script))
+      .concat(require.resolve('@clubmed/webpack/scripts/' + script))
       .concat(args.slice(scriptIndex + 1)),
     { stdio: 'inherit' }
   )

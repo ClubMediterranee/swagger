@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tabs } from '@reswagger/components'
+import { Tabs } from '@clubmed/components'
 import { getOAuthName } from './getOAuthName'
 
 export function AuthorizationPopupOverride (Original, system) {

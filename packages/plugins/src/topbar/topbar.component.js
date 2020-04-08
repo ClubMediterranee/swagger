@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Header, Icon } from '@reswagger/components'
-import { ReactComponent as CLUBMED } from '@reswagger/components/src/statics/svg/clubmed.svg'
+import { Header, Icon } from '@clubmed/components'
+import { ReactComponent as CLUBMED } from '@clubmed/components/src/statics/svg/clubmed.svg'
 
 export default function Topbar (props) {
   let { getComponent, specSelectors, getConfigs } = props

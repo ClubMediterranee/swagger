@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ClubMed API - Features and Fix validation</title>
+  <link rel="shortcut icon" href="https://www.clubmed.fr/favicon.ico"/>
+  <link rel="stylesheet" href="/css/features-and-fix.css">
+</head>
+<body class="swagger-section">
+<div id="app"></div>
+<script id="features-data" type="application/json">
+  [
+    {
+      "label": "feat_3854_caller_recognition",
+      "url": "https://api0.integ.clubmed.com/doc",
+      "date": "2020-04-07 08:30:20.701509"
+    },
+    {
+      "label": "0.2189.0",
+      "url": "https://api1.integ.clubmed.com/doc",
+      "date": "2020-04-07 08:24:32.491114"
+    },
+    {
+      "label": "notif_partners",
+      "url": "https://api3.integ.clubmed.com/doc",
+      "date": "2020-03-31 09:43:16.982087"
+    }
+  ]
+</script>
+<script>
+  window.appConfig = {
+    jenkinsUrl: 'https://moytux-pra/jenkins',
+    stagingUrl: 'https://api.staging.clubmed.com',
+    pageUrl: 'https://api.integ.clubmed.com/apiFeaturesMap.html',
+    jobs: {
+      build: 'API test feature',
+      clean: 'API-clean-feature-instance'
+    }
+  }
+</script>
+<script src="/js/vendors/axios.min.js" type="application/javascript"></script>
+<script src="/js/vendors/vue.min.js" type="application/javascript"></script>
+<script src="/js/vendors/moment.min.js" type="application/javascript"></script>
+<script src="/js/vendors/vue-toastr.min.js" type="application/javascript"></script>
+<script src="/js/jenkins-api.js" type="application/javascript"></script>
+<script src="/js/app.js" type="application/javascript"></script>
+</body>
+</html>

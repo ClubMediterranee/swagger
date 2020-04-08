@@ -1,6 +1,6 @@
 import classnames from 'classnames/dedupe'
 
-import { getCursorClass } from '@reswagger/utils'
+import { getCursorClass } from '@clubmed/utils'
 
 const DEFAULT_SIZES = {
   small: 30,

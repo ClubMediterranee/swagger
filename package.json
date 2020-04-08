@@ -1,5 +1,5 @@
 {
-  "name": "@reswagger/root",
+  "name": "@clubmed/root",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -60,7 +60,7 @@
   },
   "scripts": {
     "build": "lerna run build --stream",
-    "start:app": "lerna run start --stream --no-prefix --scope @reswagger/app",
+    "start:app": "lerna run start --stream --no-prefix --scope @clubmed/app",
     "start:storybook": "cross-env NODE_ENV=development lerna run start:storybook --stream --parallel",
     "test": "cross-env CI=true lerna run test --concurrency 2 -- --passWithNoTests",
     "lint:fix": "lerna run lint:fix --parallel"

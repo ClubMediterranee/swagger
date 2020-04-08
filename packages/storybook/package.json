@@ -1,5 +1,5 @@
 {
-  "name": "@reswagger/storybook",
+  "name": "@clubmed/storybook",
   "version": "1.0.0",
   "description": "Shared react components",
   "main": "src/index.js",
@@ -11,7 +11,7 @@
     "build:storybook": "build-storybook -c .storybook -o .out"
   },
   "devDependencies": {
-    "@reswagger/webpack": "1.0.0",
+    "@clubmed/webpack": "1.0.0",
     "@storybook/addon-actions": "5.1.9",
     "@storybook/addon-backgrounds": "5.1.9",
     "@storybook/addon-centered": "5.1.9",
@@ -32,7 +32,7 @@
     "url-loader": "2.2.0"
   },
   "dependencies": {
-    "@reswagger/components": "1.0.0"
+    "@clubmed/components": "1.0.0"
   },
   "browserslist": {
     "production": [

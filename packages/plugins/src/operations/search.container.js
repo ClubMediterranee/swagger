@@ -1,6 +1,6 @@
 import React from 'react'
-import { ReactComponent as SEARCH } from '@reswagger/components/src/statics/svg/searchGlass.svg'
-import { InputText } from '@reswagger/components'
+import { ReactComponent as SEARCH } from '@clubmed/components/src/statics/svg/searchGlass.svg'
+import { InputText } from '@clubmed/components'
 
 export default function SearchContainer ({ specSelectors, operationsSelectors, operationsActions }) {
   const onKeyPressEnter = (event, value) => {
