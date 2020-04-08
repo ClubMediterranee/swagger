@@ -11,7 +11,7 @@ create_release() {
 
     yarn generate:changelog
     git add .
-    git add ./dist -f
+    git add ./dist/** -f
     git reset -- .npmrc
 
     display_release_info
