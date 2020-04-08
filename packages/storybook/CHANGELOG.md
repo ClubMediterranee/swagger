@@ -1,4 +1,13 @@
+## [1.1.10](https://github.com/ClubMediterranee/swagger/compare/v1.1.9...v1.1.10) (2020-04-08)
+
+
+
 ## [1.1.9](https://github.com/ClubMediterranee/swagger/compare/v1.1.8...v1.1.9) (2020-04-08)
+
+
+### Bug Fixes
+
+* Move pages to dist - [ci skip] ([f594f31](https://github.com/ClubMediterranee/swagger/commit/f594f312f33ad8f6ae55b0bf7520d62742873095))
 
 
 
