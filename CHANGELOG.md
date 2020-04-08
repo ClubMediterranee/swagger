@@ -1,9 +1,19 @@
+## [1.1.6](https://github.com/ClubMediterranee/swagger/compare/v1.1.5...v1.1.6) (2020-04-08)
+
+
+### Bug Fixes
+
+* Update paths again ([7ae5403](https://github.com/ClubMediterranee/swagger/commit/7ae5403d57f01efc8c41cff655b11eb30dfb87a5))
+
+
+
 ## [1.1.5](https://github.com/ClubMediterranee/swagger/compare/v1.1.4...v1.1.5) (2020-04-08)
 
 
 ### Bug Fixes
 
 * Update paths again ([40f9c5e](https://github.com/ClubMediterranee/swagger/commit/40f9c5e87ccb4f152a733cbdd36a1dd142737706))
+* Update paths again - [ci skip] ([d931aab](https://github.com/ClubMediterranee/swagger/commit/d931aabbe61043e949d8ce850f1ca3df1df130ca))
 
 
 

@@ -1,3 +1,16 @@
+## [1.1.6](https://github.com/ClubMediterranee/swagger-ui/compare/v1.1.5...v1.1.6) (2020-04-08)
+
+
+
+## [1.1.5](https://github.com/ClubMediterranee/swagger-ui/compare/v1.1.4...v1.1.5) (2020-04-08)
+
+
+### Bug Fixes
+
+* Update paths again - [ci skip] ([d931aab](https://github.com/ClubMediterranee/swagger-ui/commit/d931aabbe61043e949d8ce850f1ca3df1df130ca))
+
+
+
 ## [1.1.4](https://github.com/ClubMediterranee/swagger-ui/compare/v1.1.3...v1.1.4) (2020-04-08)
 
 
