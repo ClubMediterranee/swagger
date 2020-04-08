@@ -1,10 +1,10 @@
 {
-  "name": "@reswagger/utils",
+  "name": "@clubmed/utils",
   "version": "1.0.0",
   "private": false,
   "main": "src/index.js",
   "dependencies": {
-    "@reswagger/webpack": "1.0.0"
+    "@clubmed/webpack": "1.0.0"
   },
   "scripts": {
     "build": "rp-scripts build",

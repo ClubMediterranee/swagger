@@ -2,7 +2,7 @@
 import React, { Children, type Node } from 'react'
 import { isString } from 'lodash'
 
-import { getFormattedLabel } from '@reswagger/utils'
+import { getFormattedLabel } from '@clubmed/utils'
 
 import { Icon } from '../icon/Icon.jsx'
 import { Spinner } from '../spinner/Spinner.jsx'

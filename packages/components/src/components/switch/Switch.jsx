@@ -6,7 +6,7 @@ import { isString, noop } from 'lodash'
 
 import { dataSetProps } from '../../utils/string/string.util'
 import { COLORS } from '../../utils/color/colors'
-import { getFormattedLabel } from '@reswagger/utils'
+import { getFormattedLabel } from '@clubmed/utils'
 import { Icon } from '../icon/Icon.jsx'
 import { Spinner } from '../spinner/Spinner.jsx'
 

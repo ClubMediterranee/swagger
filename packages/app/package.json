@@ -1,10 +1,10 @@
 {
-  "name": "@reswagger/app",
+  "name": "@clubmed/app",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@reswagger/webpack": "1.0.0",
-    "@reswagger/plugins": "1.0.0"
+    "@clubmed/webpack": "1.0.0",
+    "@clubmed/plugins": "1.0.0"
   },
   "scripts": {
     "start": "cross-env PORT=3004 BROWSER=none rp-scripts start",

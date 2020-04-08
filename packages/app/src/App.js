@@ -7,7 +7,7 @@ import {
   TopbarPlugin,
   OAuth2Plugin,
   HighlightPlugin
-} from '@reswagger/plugins'
+} from '@clubmed/plugins'
 import SwaggerUI from './swaggerui/swaggerui.component'
 import NativeSwaggerUI from 'swagger-ui'
 

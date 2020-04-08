@@ -1,0 +1,98 @@
+.navbar {
+    position: fixed;
+    background-color: #fff;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 2px 0 -1px #d4d1d1;
+
+}
+
+.navbar__container.container {
+    display: flex;
+    padding-right: 15px;
+    padding-left: 15px;
+    min-height: 52px;
+}
+
+.navbar__logo {
+    cursor: pointer;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #00558a;
+}
+
+.navbar__logo:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navbar__logo span {
+    font-size: 18px;
+    color: #504747;
+    display: block;
+    padding-left: 20px;
+}
+
+.navbar__logo .Icon--clubmed {
+    font-size: 28px;
+    line-height: normal;
+}
+
+.navbar__center {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex: 1;
+}
+
+.navbar__right {
+    display: flex;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.navbar__right > div {
+    display: flex;
+    align-items: center;
+}
+
+.navbar__right .navbar__search {
+    min-width: 300px;
+}
+
+.navbar__right .button-authorize {
+    margin-left: 10px;
+}
+
+.navbar__right .navbar__search .navbar__search__input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-transition: border .3s, -webkit-box-shadow .3s;
+    transition: border .3s, -webkit-box-shadow .3s;
+    transition: box-shadow .3s, border .3s;
+    transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+}
+
+.navbar__right .navbar__search .navbar__search__input:focus {
+    border-bottom: 1px solid #2b719d;
+    -webkit-box-shadow: 0 1px 0 0 #2b719d;
+    box-shadow: 0 1px 0 0 #2b719d;
+}
+

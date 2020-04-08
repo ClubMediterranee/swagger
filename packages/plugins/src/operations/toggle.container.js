@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch } from '@reswagger/components'
+import { Switch } from '@clubmed/components'
 
 export default function ToggleContainer ({ operationsActions }) {
   const onChange = (name, value) => {

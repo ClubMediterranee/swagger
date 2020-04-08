@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { Fade, Spinner } from '@reswagger/components'
-import { ReactComponent as CLUBMED } from '@reswagger/components/src/statics/svg/trident1.svg'
+import { Fade, Spinner } from '@clubmed/components'
+import { ReactComponent as CLUBMED } from '@clubmed/components/src/statics/svg/trident1.svg'
 
 const Loader = ({ isActive }) => {
   return <div className="opacity-85 z-10 relative">

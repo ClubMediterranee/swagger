@@ -2,7 +2,7 @@
 import React, { Component, type Node } from 'react'
 import { isInteger, noop } from 'lodash'
 
-import { getFormattedLabel, getRandomComponentId } from '@reswagger/utils'
+import { getFormattedLabel, getRandomComponentId } from '@clubmed/utils'
 
 import { Icon, type IconName } from '../icon/Icon.jsx'
 import { FormControl } from '../form-control/FormControl.jsx'

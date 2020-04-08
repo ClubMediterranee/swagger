@@ -4,7 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import highlight from 'highlight.js'
 import saveAs from 'js-file-download'
 import 'highlight.js/styles/agate.css'
-import { Fade } from '@reswagger/components'
+import { Fade } from '@clubmed/components'
 
 function CopySvg () {
   return <svg
