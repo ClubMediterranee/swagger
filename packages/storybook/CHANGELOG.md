@@ -1,4 +1,13 @@
+## [1.1.4](https://github.com/ClubMediterranee/swagger/compare/v1.1.3...v1.1.4) (2020-04-08)
+
+
+
 ## [1.1.3](https://github.com/ClubMediterranee/swagger/compare/v1.1.2...v1.1.3) (2020-04-08)
+
+
+### Bug Fixes
+
+* Update travis.job - [ci skip] ([d9764c7](https://github.com/ClubMediterranee/swagger/commit/d9764c76f33c6888f48e4ee0108550171131bca5))
 
 
 
