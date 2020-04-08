@@ -59,12 +59,13 @@
     ]
   },
   "scripts": {
-    "build": "lerna run build --stream --scope @clubmed/plugins",
+    "build": "lerna run build --stream --scope @clubmed/features-and-fix",
     "start:app": "lerna run start --stream --no-prefix --scope @clubmed/app",
     "start:storybook": "cross-env NODE_ENV=development lerna run start:storybook --stream --parallel",
     "test": "cross-env CI=true lerna run test --concurrency 2 -- --passWithNoTests",
     "lint:fix": "lerna run lint:fix --parallel",
-    "start:prod": "serve -s build"
+    "start:prod": "serve",
+    "generate:changelog": "conventional-changelog --preset angular --release-count 0 --outfile ./CHANGELOG.md && lerna exec --concurrency 1 --stream -- 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md'\n"
   },
   "author": "Lenzotti Romain",
   "license": "ISC",
