@@ -14,6 +14,7 @@ create_release() {
     BUILD_OUTPUT=RELEASE_TAG yarn build
     yarn build
 
+    git add ./dist/** -f -A
     git add .
     git reset -- .npmrc
 
@@ -27,7 +28,7 @@ create_release() {
     git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} ${RELEASE_TAG}
     git push -f https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} production:refs/heads/master
 
-    cd build
+    cd dist
     touch .nojekyll
     git init
     git add -A
