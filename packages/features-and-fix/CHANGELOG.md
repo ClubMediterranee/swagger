@@ -1,4 +1,13 @@
+## [1.1.8](https://github.com/ClubMediterranee/swagger/compare/v1.1.7...v1.1.8) (2020-04-08)
+
+
+
 ## [1.1.7](https://github.com/ClubMediterranee/swagger/compare/v1.1.6...v1.1.7) (2020-04-08)
+
+
+### Bug Fixes
+
+* Resolve problem with path - [ci skip] ([90f0905](https://github.com/ClubMediterranee/swagger/commit/90f09052701fd2e8d75d56773b915093a0348b03))
 
 
 

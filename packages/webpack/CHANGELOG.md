@@ -1,9 +1,19 @@
+## [1.1.8](https://github.com/ClubMediterranee/swagger/compare/v1.1.7...v1.1.8) (2020-04-08)
+
+
+### Bug Fixes
+
+* Generate versioning files ([a1fdb0a](https://github.com/ClubMediterranee/swagger/commit/a1fdb0a523d34be0838ed57ecfeffb7fa9369412))
+
+
+
 ## [1.1.7](https://github.com/ClubMediterranee/swagger/compare/v1.1.6...v1.1.7) (2020-04-08)
 
 
 ### Bug Fixes
 
 * Resolve problem with path ([d1e402e](https://github.com/ClubMediterranee/swagger/commit/d1e402eaf9749cfe5d26447bdc60c7d516f9b2c4))
+* Resolve problem with path - [ci skip] ([90f0905](https://github.com/ClubMediterranee/swagger/commit/90f09052701fd2e8d75d56773b915093a0348b03))
 
 
 
