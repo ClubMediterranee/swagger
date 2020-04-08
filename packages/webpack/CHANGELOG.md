@@ -1,9 +1,14 @@
+## [1.1.9](https://github.com/ClubMediterranee/swagger/compare/v1.1.8...v1.1.9) (2020-04-08)
+
+
+
 ## [1.1.8](https://github.com/ClubMediterranee/swagger/compare/v1.1.7...v1.1.8) (2020-04-08)
 
 
 ### Bug Fixes
 
 * Generate versioning files ([a1fdb0a](https://github.com/ClubMediterranee/swagger/commit/a1fdb0a523d34be0838ed57ecfeffb7fa9369412))
+* Generate versioning files - [ci skip] ([59ea179](https://github.com/ClubMediterranee/swagger/commit/59ea1793d8a9bab16e7fdbf1762bbb90cf213480))
 
 
 
