@@ -1,15 +1,13 @@
 {
   "name": "@clubmed/features-and-fix",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
-    "@clubmed/webpack": "1.0.0",
+    "@clubmed/webpack": "1.1.0",
     "axios": "^0.19.2",
     "moment": "2.24.0",
     "vue": "2.6.11",
     "vue-toastr": "2.1.2"
-  },
-  "devDependencies": {
   },
   "scripts": {
     "start": "cross-env PORT=3006 BROWSER=none rp-scripts start",
