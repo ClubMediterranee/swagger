@@ -11,16 +11,16 @@ create_release() {
 
     yarn generate:changelog
 
+    display_release_info
+
     yarn build
-    cp -R dist/latest dist/${RELEASE_TAG}
+    cp -R dist/latest dist/${VERSION}
 
     git add ./dist/** -f -A
     git add .
     git reset -- .npmrc
 
     git status
-
-    display_release_info
 
     git commit -m "${RELEASE_MESSAGE} - ${CI_SKIP}"
     git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} ${TRAVIS_BRANCH}
