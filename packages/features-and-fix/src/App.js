@@ -56,7 +56,8 @@ export default {
     }
   },
   async mounted () {
-    console.log('[DEV] start app...')
+    // eslint-disable-next-line no-undef
+    console.log('[DEV] start app... version: ', process.env.REACT_APP_VERSION)
 
     this.$toastr.defaultPosition = 'toast-bottom-right'
     createJenkinsClient()
