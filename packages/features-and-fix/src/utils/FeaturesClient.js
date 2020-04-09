@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { getSettings } from './settings'
 import { getInnerFeatures } from './getInnerFeatures'
+import { createElementFromFragment } from './createElementFromFragment'
+
+const versions = new Map()
 
 function isOutdated (base, version) {
   const [major1, minor1, patch1] = base.split('-')[0].split('.')
@@ -15,9 +18,23 @@ function isOutdated (base, version) {
   return +patch1 > +patch2
 }
 
-export async function getVersion (url) {
+export async function getVersion (url, date) {
+  if (versions.has(url)) {
+    const item = versions.get(url)
+
+    if (item.date === date) {
+      return versions.get(url).version
+    }
+  }
+
+  console.log('[DEV] Fetch version for API:', url)
   const { api_key } = getSettings()
   const { data } = await axios.get(`${url}/v0/version?api_key=${api_key}`)
+
+  versions.set(url, {
+    date,
+    version: data['@clubmed/digital-api']
+  })
 
   return data['@clubmed/digital-api']
 }
@@ -29,13 +46,7 @@ export async function getStagingVersion () {
 export async function fetchFeatures () {
   const { data } = await axios(window.location + '?timestamp=' + Date.now())
 
-  const fragment = document.createDocumentFragment()
-  const div = document.createElement('div')
-  div.innerHTML = data.split('<body class="swagger-section">')[1].split('</body>')[0]
-
-  fragment.appendChild(div)
-
-  return getInnerFeatures(fragment)
+  return getInnerFeatures(createElementFromFragment(data))
 }
 
 export async function getFeatures () {
@@ -44,11 +55,12 @@ export async function getFeatures () {
     getStagingVersion()
   ])
 
-  const promises = features.map(async ({ url, ...props }) => {
+  const promises = features.map(async ({ url, date, ...props }) => {
     try {
-      const version = await getVersion(url.replace('/doc', ''))
+      const version = await getVersion(url.replace('/doc', ''), date)
       return {
         ...props,
+        date,
         url,
         version,
         outdated: isOutdated(stagingVersion, version)
