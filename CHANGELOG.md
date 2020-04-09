@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/ClubMediterranee/swagger/compare/v1.1.11...v1.2.0) (2020-04-09)
+
+
+### Features
+
+* Add env version ([26aa097](https://github.com/ClubMediterranee/swagger/commit/26aa097dfdaf6be8a8bf5ac6e3929cda94534226))
+
+
+
 ## [1.1.11](https://github.com/ClubMediterranee/swagger/compare/v1.1.10...v1.1.11) (2020-04-09)
 
 
