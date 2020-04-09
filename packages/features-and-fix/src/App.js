@@ -56,20 +56,21 @@ export default {
     }
   },
   async mounted () {
+    console.log('[DEV] start app...')
+
     this.$toastr.defaultPosition = 'toast-bottom-right'
     createJenkinsClient()
-
-    try {
-      await this.refresh()
-      this.isAuth = true
-    } catch (er) {
-      this.isAuth = false
-      this.$toastr.w('Authentication failed')
-    }
+    this.refresh()
+      .then(() => {
+        this.isAuth = true
+      })
+      .catch(() => {
+        this.isAuth = false
+      })
 
     setInterval(() => {
+      console.log('[DEV] Trigger refresh?', !this.inProgress)
       if (!this.inProgress) {
-        console.log('[DEV] Fetch')
         this.refresh()
       }
     }, 30000)
@@ -216,7 +217,7 @@ export default {
 
       if (['SUCCESS', 'UNSTABLE', 'ERROR', 'ERRORED'].includes(build.status)) {
         this.inProgress = false
-        await this.getFeatures()
+        await this.getFeatures(true)
 
         // force refresh for date
         this.features = this.features.map((feature) => {
