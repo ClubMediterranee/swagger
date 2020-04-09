@@ -1,3 +1,12 @@
+## [1.1.11](https://github.com/ClubMediterranee/swagger/compare/v1.1.10...v1.1.11) (2020-04-09)
+
+
+### Bug Fixes
+
+* **features-and-fix:** Limit calls to /version ([f09e0db](https://github.com/ClubMediterranee/swagger/commit/f09e0dbde4dc9d5ebeb3949fecec44f43a400a81))
+
+
+
 ## [1.1.10](https://github.com/ClubMediterranee/swagger/compare/v1.1.9...v1.1.10) (2020-04-08)
 
 
@@ -5,6 +14,7 @@
 
 * Copy dir to version ([62acfc1](https://github.com/ClubMediterranee/swagger/commit/62acfc1bb6a15beace6711e42069a45e4213bb09))
 * Fix version ([65988a0](https://github.com/ClubMediterranee/swagger/commit/65988a018511c90d7a84c833492fafb60805795c))
+* Fix version - [ci skip] ([b73022c](https://github.com/ClubMediterranee/swagger/commit/b73022cc03c5aeca14510d9015fc3888ae515742))
 
 
 
