@@ -1,4 +1,13 @@
+## [1.2.4](https://github.com/ClubMediterranee/swagger/compare/v1.2.3...v1.2.4) (2020-04-20)
+
+
+
 ## [1.2.3](https://github.com/ClubMediterranee/swagger/compare/v1.2.2...v1.2.3) (2020-04-20)
+
+
+### Bug Fixes
+
+* Create release and swagger.html scripts links - [ci skip] ([2cc4270](https://github.com/ClubMediterranee/swagger/commit/2cc4270990b34546eaa74bcc6c564343464cf701))
 
 
 

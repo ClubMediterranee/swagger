@@ -1,0 +1,19 @@
+<svg viewBox="0 0 728 1043" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M55.8455976,844.739312 C41.7455976,844.739312 27.6455976,839.339312 16.9455976,828.639312 C-4.55440243,807.139312 -4.55440243,772.239312 16.9455976,750.739312 L345.045598,422.539312 L16.8455976,94.4393121 C-4.65440243,72.9393121 -4.65440243,38.0393121 16.8455976,16.5393121 C38.3455976,-4.96068787 73.2455976,-4.96068787 94.7455976,16.5393121 L500.745598,422.539312 L94.7455976,828.539312 C83.9455976,839.339312 69.8455976,844.739312 55.8455976,844.739312 Z" id="path-1"></path>
+        <filter x="-30.0%" y="-17.8%" width="160.0%" height="135.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="75" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="50" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke-width="1" fill-rule="evenodd">
+        <g id="bolderArrowForth" transform="translate(99.000000, 99.000000)" fill-rule="nonzero">
+            <g id="Shape">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>
