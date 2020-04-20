@@ -1,3 +1,16 @@
+## [1.2.3](https://github.com/ClubMediterranee/swagger/compare/v1.2.2...v1.2.3) (2020-04-20)
+
+
+
+## [1.2.2](https://github.com/ClubMediterranee/swagger/compare/v1.2.1...v1.2.2) (2020-04-20)
+
+
+### Bug Fixes
+
+* Update architecture - [ci skip] ([e21f435](https://github.com/ClubMediterranee/swagger/commit/e21f4350e37f35612fe01d0652a766cf53f66347))
+
+
+
 ## [1.2.1](https://github.com/ClubMediterranee/swagger/compare/v1.2.0...v1.2.1) (2020-04-20)
 
 
