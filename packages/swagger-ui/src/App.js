@@ -23,6 +23,7 @@ function getConfig () {
       'OperationsPlugin',
       'OAuth2Plugin',
       'HighlightPlugin',
+      'FooterPlugin',
       'DownloadUrl'
     ]
   }

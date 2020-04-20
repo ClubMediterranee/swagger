@@ -9,7 +9,7 @@ async function createSwaggerUI (config) {
 
   config.plugins = config.plugins.map((plugin) => PLUGINS[plugin]).filter(Boolean)
   config.presets = config.presets.map((preset) => PRESETS[preset]).filter(Boolean)
-
+  console.log('config.plugins', config.plugins)
   const ui = new NativeSwaggerUI(config)
   // console.log(ui.getComponent('App', 'root'))
   const Cmp = ui.getComponent('App', 'root')

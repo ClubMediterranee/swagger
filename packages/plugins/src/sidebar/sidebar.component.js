@@ -97,11 +97,14 @@ class Sidebar extends React.Component<{}> {
   }
 
   render () {
+    const { getComponent } = this.props
     let { taggedOps, operationsFilter } = getOperationsMixins(this.props)
 
     if (taggedOps.size < 1) {
       return null
     }
+
+    const Footer = getComponent('Footer', true)
 
     return <div
       ref={this.ref}
@@ -114,12 +117,6 @@ class Sidebar extends React.Component<{}> {
               className="px-5 pt-3 pb-2 uppercase font-happiness text-blue hover:bg-gray-xlight cursor-pointer">
               Introduction
             </div>
-            <div
-              onClick={() => this.scrollTo('.models-container')}
-              className="px-5 pt-3 pb-2 uppercase font-happiness text-blue hover:bg-gray-xlight cursor-pointer">
-              Models
-            </div>
-
             <div
               onClick={() => this.scrollTo('.operations-container')}
               className="px-5 uppercase font-happiness text-blue hover:bg-gray-xlight cursor-pointer">
@@ -163,6 +160,25 @@ class Sidebar extends React.Component<{}> {
               })
               .toArray()
           }
+        </ul>
+      </div>
+      <div>
+        <ul className={'reset-list pb-2'}>
+          <li>
+            <div
+              onClick={() => this.scrollTo('.models-container')}
+              className="px-5 uppercase font-happiness text-blue hover:bg-gray-xlight cursor-pointer">
+              <div className="border-b border-gray-light"/>
+              <div className="pt-3 pb-2">Models</div>
+            </div>
+            {
+              Footer ? <div
+                onClick={() => this.scrollTo('.footer-container')}
+                className="px-5 uppercase font-happiness text-blue hover:bg-gray-xlight cursor-pointer">
+                <div className="pt-3 pb-2">About</div>
+              </div> : null
+            }
+          </li>
         </ul>
       </div>
     </div>

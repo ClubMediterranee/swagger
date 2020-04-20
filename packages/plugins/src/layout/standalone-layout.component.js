@@ -57,6 +57,7 @@ const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
 
   const Topbar = getComponent('Topbar', true)
   const Sidebar = getComponent('Sidebar', true)
+  const Footer = getComponent('Footer', true)
   const InfoContainer = getComponent('InfoContainer', true)
   const Container = getComponent('Container')
   const SvgAssets = getComponent('SvgAssets')
@@ -97,7 +98,7 @@ const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
   }
 
   return (
-    <Container className="swagger-ui font-serif relative">
+    <Container className="swagger-ui relative">
       {Topbar ? <div ref={topbarRef}><Topbar/></div> : null}
       {Sidebar
         ? <div ref={sidebarRef} className="fixed left-0 bottom-0" style={{ width: '260px' }}>
@@ -111,9 +112,12 @@ const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
           <div className={'w-full'}>
             <VersionPragmaFilter isSwagger2={isSwagger2} isOAS3={isOAS3} alsoShow={<Errors/>}>
               <Errors/>
-              <Row className="information-container">
+              <Row className="information-container relative">
                 <Col mobile={12}>
                   <InfoContainer/>
+                  <div className={'absolute top-0 right-0'} style={{ transform: 'scale(0.6)' }}>
+                    <OnlineValidatorBadge/>
+                  </div>
                 </Col>
               </Row>
               <Row className="operations-container">
@@ -126,14 +130,17 @@ const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
                   <Models/>
                 </Col>
               </Row>
+
             </VersionPragmaFilter>
           </div>
         </div>
-        <Row>
-          <Col>
-            <OnlineValidatorBadge/>
-          </Col>
-        </Row>
+        {
+          Footer
+            ? <div className={'footer-container'}>
+              <Footer/>
+            </div>
+            : null
+        }
       </div>
     </Container>
   )

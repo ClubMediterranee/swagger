@@ -198,8 +198,7 @@ body[dir='rtl'] .decorator-trident-bg-white::before {
 
 .decoration-strikethrough::after,
 .decoration-strikethrough::before {
-  @apply bg-blue;
-
+  background-color: currentColor;
   display: block;
   flex: 1 1 auto;
   height: 2px;
