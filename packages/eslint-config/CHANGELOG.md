@@ -1,4 +1,13 @@
-## [1.1.10](https://github.com/ClubMediterranee/swagger-ui/compare/v1.2.0...v1.1.10) (2020-04-20)
+## [1.1.10](https://github.com/ClubMediterranee/swagger-ui/compare/v1.2.1...v1.1.10) (2020-04-20)
+
+
+
+## [1.2.1](https://github.com/ClubMediterranee/swagger-ui/compare/v1.2.0...v1.2.1) (2020-04-20)
+
+
+### Bug Fixes
+
+* Add Swagger app build - [ci skip] ([1706fc3](https://github.com/ClubMediterranee/swagger-ui/commit/1706fc391372c88b6c3c218b7e6a13c09fb4445e))
 
 
 
