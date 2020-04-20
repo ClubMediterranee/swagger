@@ -22,7 +22,7 @@ create_release() {
     cp -R dist/latest "dist/${VERSION}"
 
     PATH_VERSION="latest"
-    BASE_URL="/swagger"
+    BASE_URL="https://clubmediterranee.github.io/swagger"
 
     yarn build
 
