@@ -14,15 +14,13 @@ create_release() {
     display_release_info
 
     # Build versionned app
-    export PATH_VERSION=${VERSION}
-    export BASE_URL="https://clubmediterranee.github.io/swagger"
+    export BASE_URL="https://clubmediterranee.github.io/swagger/${VERSION}"
 
     # Build latest app
     yarn build
     cp -R dist/latest "dist/${VERSION}"
 
-    PATH_VERSION="latest"
-    BASE_URL="https://clubmediterranee.github.io/swagger"
+    BASE_URL="https://clubmediterranee.github.io/swagger/latest"
 
     yarn build
 
