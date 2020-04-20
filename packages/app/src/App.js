@@ -1,42 +1,39 @@
 import React from 'react'
-import {
-  AuthorizeBtnPlugin,
-  OperationsPlugin,
-  SidebarPlugin,
-  StandaloneLayoutPlugin,
-  TopbarPlugin,
-  OAuth2Plugin,
-  HighlightPlugin
-} from '@clubmed/plugins'
-import SwaggerUI from './swaggerui/swaggerui.component'
-import NativeSwaggerUI from 'swagger-ui'
+import SwaggerUI from './components/SwaggerUI'
 
-function App () {
-  const config = {
+function getConfig () {
+  const config = window.SwaggerUIConfiguration || {}
+
+  return {
     brandName: 'ClubMed',
     appName: 'API',
     url: 'https://api.clubmed.com/doc/swagger.json',
-    filter: true,
-    presets: [
-      NativeSwaggerUI.presets.apis
-    ],
-    plugins: [
-      SidebarPlugin,
-      TopbarPlugin,
-      AuthorizeBtnPlugin,
-      StandaloneLayoutPlugin,
-      OperationsPlugin,
-      OAuth2Plugin,
-      HighlightPlugin,
-      NativeSwaggerUI.plugins.DownloadUrl
-    ],
     layout: 'StandaloneLayout',
-    deepLinking: true
+    deepLinking: true,
+    filter: true,
+    ...(config || {}),
+    presets: config.presets || [
+      'apis'
+    ],
+    plugins: config.plugins || [
+      'SidebarPlugin',
+      'TopbarPlugin',
+      'AuthorizeBtnPlugin',
+      'StandaloneLayoutPlugin',
+      'OperationsPlugin',
+      'OAuth2Plugin',
+      'HighlightPlugin',
+      'DownloadUrl'
+    ]
   }
+}
+
+function App () {
+  const config = React.useMemo(() => getConfig(), [])
 
   return (
     <div className="App">
-      <SwaggerUI {...config}/>
+      <SwaggerUI config={config}/>
     </div>
   )
 }

@@ -29,34 +29,6 @@
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    SwaggerUIBundle({
-      dom_id: '#root',
-      brandName: 'ClubMed',
-      appName: 'API',
-      url: 'https://api.clubmed.com/doc/swagger.json',
-      filter: true,
-      presets: [
-        SwaggerUIBundle.presets.apis
-      ],
-      plugins: [
-        ReSwagger.SidebarPlugin,
-        ReSwagger.TopbarPlugin,
-        ReSwagger.AuthorizeBtnPlugin,
-        ReSwagger.StandaloneLayoutPlugin,
-        ReSwagger.OperationsPlugin,
-        ReSwagger.OAuth2Plugin,
-        ReSwagger.HighlightPlugin,
-        SwaggerUIBundle.plugins.DownloadUrl
-      ],
-      layout: 'StandaloneLayout',
-      deepLinking: true
-    })
-  })
-</script>
 <!--
   This HTML file is a template.
   If you open it directly in the browser, you will see an empty page.

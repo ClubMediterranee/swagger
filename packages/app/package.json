@@ -2,6 +2,7 @@
   "name": "@clubmed/app",
   "version": "1.1.10",
   "private": true,
+  "homepage": "/dist/latest/app",
   "dependencies": {
     "@clubmed/plugins": "1.1.10",
     "@clubmed/webpack": "1.1.10"

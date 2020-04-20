@@ -11,40 +11,35 @@
   />
   <link rel="apple-touch-icon" href="logo192.png"/>
   <title>Swagger</title>
-  <link href="/dist/latest/plugins/packages/app/build/main.bundle.css" rel="stylesheet"/>
+  <link href="/dist/latest/app/main.bundle.css" rel="stylesheet"/>
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
 
+<script>
+  window.SwaggerUIConfiguration = {
+    brandName: 'ClubMed',
+    appName: 'Example',
+    url: 'https://api.clubmed.com/doc/swagger.json',
+    filter: true,
+    plugins: [
+      'SidebarPlugin',
+      'TopbarPlugin',
+      'AuthorizeBtnPlugin',
+      'StandaloneLayoutPlugin',
+      'OperationsPlugin',
+      'OAuth2Plugin',
+      'HighlightPlugin',
+      'DownloadUrl'
+    ],
+    layout: 'StandaloneLayout',
+    deepLinking: true
+  }
+</script>
+
 <div id="root"></div>
 
-<script src="/dist/latest/plugins/packages/app/build/main.bundle.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    ClubmedSwaggerUI.SwaggerUI({
-      dom_id: '#root',
-      brandName: 'ClubMed',
-      appName: 'API',
-      url: 'https://api.clubmed.com/doc/swagger.json',
-      filter: true,
-      presets: [
-        ClubmedSwaggerUI.SwaggerUI.presets.apis
-      ],
-      plugins: [
-        ClubmedSwaggerUI.SidebarPlugin,
-        ClubmedSwaggerUI.TopbarPlugin,
-        ClubmedSwaggerUI.AuthorizeBtnPlugin,
-        ClubmedSwaggerUI.StandaloneLayoutPlugin,
-        ClubmedSwaggerUI.OperationsPlugin,
-        ClubmedSwaggerUI.OAuth2Plugin,
-        ClubmedSwaggerUI.HighlightPlugin,
-        ClubmedSwaggerUI.SwaggerUI.plugins.DownloadUrl
-      ],
-      layout: 'StandaloneLayout',
-      deepLinking: true
-    })
-  })
-</script>
+<script src="/dist/latest/app/main.bundle.js" type="application/javascript"></script>
 <!--
   This HTML file is a template.
   If you open it directly in the browser, you will see an empty page.
