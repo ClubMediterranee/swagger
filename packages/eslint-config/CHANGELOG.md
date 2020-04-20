@@ -1,4 +1,13 @@
-## [1.1.10](https://github.com/ClubMediterranee/swagger-ui/compare/v1.1.11...v1.1.10) (2020-04-09)
+## [1.1.10](https://github.com/ClubMediterranee/swagger-ui/compare/v1.2.0...v1.1.10) (2020-04-20)
+
+
+
+# [1.2.0](https://github.com/ClubMediterranee/swagger-ui/compare/v1.1.11...v1.2.0) (2020-04-09)
+
+
+### Features
+
+* Add env version - [ci skip] ([1720afc](https://github.com/ClubMediterranee/swagger-ui/commit/1720afcd8dd35923ac0fbd668004bf0cf2785448))
 
 
 

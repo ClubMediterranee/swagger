@@ -1,9 +1,19 @@
+## [1.2.1](https://github.com/ClubMediterranee/swagger/compare/v1.2.0...v1.2.1) (2020-04-20)
+
+
+### Bug Fixes
+
+* Add Swagger app build ([6803bd5](https://github.com/ClubMediterranee/swagger/commit/6803bd5525ad0d180051f38eb11d2b1286efc6ff))
+
+
+
 # [1.2.0](https://github.com/ClubMediterranee/swagger/compare/v1.1.11...v1.2.0) (2020-04-09)
 
 
 ### Features
 
 * Add env version ([26aa097](https://github.com/ClubMediterranee/swagger/commit/26aa097dfdaf6be8a8bf5ac6e3929cda94534226))
+* Add env version - [ci skip] ([1720afc](https://github.com/ClubMediterranee/swagger/commit/1720afcd8dd35923ac0fbd668004bf0cf2785448))
 
 
 
