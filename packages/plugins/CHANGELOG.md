@@ -1,9 +1,14 @@
+## [1.3.1](https://github.com/ClubMediterranee/swagger/compare/v1.3.0...v1.3.1) (2020-04-21)
+
+
+
 # [1.3.0](https://github.com/ClubMediterranee/swagger/compare/v1.2.4...v1.3.0) (2020-04-21)
 
 
 ### Features
 
 * Add footer component ([3159e99](https://github.com/ClubMediterranee/swagger/commit/3159e99eee5b0a111438950ec95f484af67e9007))
+* Add footer component - [ci skip] ([20f48fb](https://github.com/ClubMediterranee/swagger/commit/20f48fb73324e1f74c8083b93888b68c18d71bf9))
 
 
 
