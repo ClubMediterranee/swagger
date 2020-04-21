@@ -10,8 +10,9 @@ import { FooterSocialNetworks } from './FooterSocialNetworks'
 import { GetInTouch } from './GetInTouch'
 import { FooterContacts } from './FooterContacts'
 
-export function Footer () {
-  const contact = 'mailto:lvisdigiapi@clubmed.com'
+export function Footer (props) {
+  const { contact } = props.getConfigs()
+
   const socials = [
     {
       label: 'Facebook',

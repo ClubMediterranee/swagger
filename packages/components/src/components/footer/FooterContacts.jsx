@@ -11,7 +11,7 @@ export function FooterContacts ({ href }) {
           href={href}
           rel="noopener noreferrer"
           target=""
-          title="Your Club Med Advisor Toll Free Number">
+          title="Your Club Med API email contact">
           <span
             className="flex-no-shrink rtl:mr-1 inline-block overflow-hidden text-inherit icon-phoneBubble icon-monochrome"
             style={{ 'width': '2.5rem', 'height': '2.5rem', 'transition': 'all 0.25s ease-out 0s' }}>
