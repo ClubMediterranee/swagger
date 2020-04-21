@@ -11,6 +11,7 @@ function getConfig () {
     layout: 'StandaloneLayout',
     deepLinking: true,
     filter: true,
+    defaultModelsExpandDepth: false,
     ...(config || {}),
     presets: config.presets || [
       'apis'
