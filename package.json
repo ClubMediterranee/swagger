@@ -62,7 +62,7 @@
     "build": "yarn build:features && yarn build:swagger",
     "build:swagger": "cross-env PUBLIC_URL=${BASE_URL}/swagger-ui lerna run build --stream --scope @clubmed/swagger-ui",
     "build:features": "lerna run build --stream --scope @clubmed/features-and-fix",
-    "start:app": "lerna run start --stream --no-prefix --scope @clubmed/swagger-ui",
+    "start:swagger": "lerna run start --stream --no-prefix --scope @clubmed/swagger-ui",
     "start:storybook": "cross-env NODE_ENV=development lerna run start:storybook --stream --parallel",
     "test": "cross-env CI=true lerna run test --concurrency 2 -- --passWithNoTests",
     "lint:fix": "lerna run lint:fix --parallel",

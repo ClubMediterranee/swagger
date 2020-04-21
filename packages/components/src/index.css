@@ -5,14 +5,6 @@
 @import "./styles/mixins/mixins.css";
 @import "./styles/tailwind/tailwind.css";
 
-/*.contain-layout {*/
-/*    contain: layout;*/
-/*}*/
-
-/*.contain-strict {*/
-/*    contain: strict;*/
-/*}*/
-
 body {
     @apply font-tahoma;
 }
@@ -28,4 +20,11 @@ body {
     clip: rect(1px,1px,1px,1px)!important;
     -webkit-clip-path: inset(50%)!important;
     clip-path: inset(50%)!important;
+}
+
+.json-schema-form-item {
+    display: flex;
+}
+.json-schema-form-item .btn {
+    margin: 5px;
 }

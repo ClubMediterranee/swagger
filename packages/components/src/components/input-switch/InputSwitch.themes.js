@@ -1,19 +1,21 @@
 import classnames from 'classnames'
-import { getCursorClass } from '../..'
+
+import { getCursorClass } from '../../utils/form/form.util'
 
 const DEFAULT_SIZES = {
-  small: 19,
-  medium: 23,
-  large: 23
+  small: 16,
+  medium: 18,
+  large: 18
 }
 
 export const themes = {
   default: props => {
-    const { color, isChecked, isDisabled, isReadOnly, size, validationState } = props
+    const { color, borderColor, isChecked, isDisabled, isReadOnly, size, validationState } = props
+
     return {
       thRoot:
         classnames(
-          'flex p-2 items-center bg',
+          'no-layout flex p-2 items-center bg',
           getCursorClass({ hasPointer: true, ...props })
         ),
       thLabel: classnames(
@@ -26,7 +28,7 @@ export const themes = {
         }
       ),
       thChecked: classnames(
-        'leading-none bg-white border-1 border-gray-medium flex-no-shrink p-px rounded-small',
+        `leading-none bg-white border-1 border-${borderColor} p-px block rounded-small`,
         getCursorClass({ hasPointer: true, ...props }),
         {
           'text-blue': isChecked,
@@ -66,9 +68,10 @@ export const themes = {
     return {
       thRoot:
         classnames(
-          'flex p-2 mt-2 border-1 rounded-small border-gray-light hover:bg-lightBlue ',
+          'no-layout flex p-2 mt-2 border-1 rounded-small border-gray-light hover:bg-lightBlue ',
           getCursorClass({ hasPointer: true, ...props }),
           {
+            'bg-white': !isChecked,
             'bg-blue text-white hover:text-blue': isChecked
           }
         ),
@@ -82,7 +85,7 @@ export const themes = {
         }
       ),
       thChecked: classnames(
-        'leading-none border-1 border-gray-medium flex-no-shrink p-px rounded-small',
+        'leading-none border-1 border-gray-medium block p-px rounded-small',
         getCursorClass({ hasPointer: true, ...props }),
         {
           'text-blue bg-white': isChecked,

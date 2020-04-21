@@ -158,7 +158,7 @@ export function OAuth2Override (Original, system) {
                 id={id}
                 type="text"
                 required={flow === PASSWORD}
-                initialValue={clientId}
+                value={clientId}
                 data-name="clientId"
                 className={'w-full'}
                 onChange={this.onInputChange}/>
@@ -182,7 +182,7 @@ export function OAuth2Override (Original, system) {
             : <div>
               <InitializedInput
                 id={id}
-                initialValue={this.state.clientSecret}
+                value={this.state.clientSecret}
                 type="text"
                 data-name="clientSecret"
                 className={'w-full'}
@@ -203,7 +203,7 @@ export function OAuth2Override (Original, system) {
             scopes.map((description, name) => {
               const appName = getOAuthName(this.state.name)
               return (
-                <div className="checkbox flex-grow mr-1">
+                <div key={name} className="checkbox flex-grow mr-1">
                   <Input
                     value={name}
                     checked={this.state.scopes.includes(name)}

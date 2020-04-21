@@ -1,4 +1,4 @@
-select {
+select:not(.no-layout) {
   font-size: 14px;
   font-weight: bold;
 
@@ -32,7 +32,7 @@ select {
   }
 }
 
-label {
+label:not(.no-layout) {
   font-size: 12px;
   font-weight: bold;
 

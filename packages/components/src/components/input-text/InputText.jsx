@@ -3,7 +3,7 @@ import React, { Component, type Node } from 'react'
 import isInteger from 'lodash/isString'
 import noop from 'lodash/noop'
 
-import { getFormattedLabel, getRandomComponentId } from '@clubmed/utils'
+import { getFormattedLabel, getRandomComponentId } from '../..'
 
 import { Icon, type IconName } from '../icon/Icon.jsx'
 import { FormControl } from '../form-control/FormControl.jsx'

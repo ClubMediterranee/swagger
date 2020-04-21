@@ -6,6 +6,9 @@ import Operations from './operations.component'
 import OperationSummary from './operation-summary.component'
 import ToggleContainer from './toggle.container'
 import { operationsFilter } from './operations.filter'
+import { wrapOperationsContainer } from './operations.container'
+import { wrapParamBody } from './param-body.component'
+import { wrapJsonSchemaArray } from './jsonschema.array.component'
 
 export const OperationsPlugin = () => {
   return {
@@ -18,7 +21,8 @@ export const OperationsPlugin = () => {
     },
     components: {
       SearchContainer,
-      ToggleContainer
+      ToggleContainer,
+      TryItOutButton: () => null
     },
     wrapComponents: {
       operations () {
@@ -26,7 +30,10 @@ export const OperationsPlugin = () => {
       },
       OperationSummary () {
         return OperationSummary
-      }
+      },
+      OperationContainer: wrapOperationsContainer,
+      ParamBody: wrapParamBody,
+      JsonSchema_array: wrapJsonSchemaArray
     },
     fn: {
       operationsFilter,

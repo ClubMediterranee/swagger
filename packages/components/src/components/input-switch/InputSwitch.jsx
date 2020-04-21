@@ -1,23 +1,22 @@
 // @flow
 import React, { Component, type Node } from 'react'
 import classnames from 'classnames'
-import shortId from 'shortid'
-import isString from 'lodash/isString'
-import noop from 'lodash/noop'
+import { isString, noop } from 'lodash'
 
 import { dataSetProps } from '../../utils/string/string.util'
 import { COLORS } from '../../utils/color/colors'
+import { getFormattedLabel, getRandomComponentId } from '../..'
 import { Icon } from '../icon/Icon.jsx'
 import { Spinner } from '../spinner/Spinner.jsx'
 
-import { themes } from './Switch.themes'
+import { themes } from './InputSwitch.themes'
 
 import { ReactComponent as CHECK } from '../../statics/svg/check.svg'
-import { getFormattedLabel } from '../..'
 
 type Props = {
   className?: string,
   color?: Colors,
+  borderColor?: Colors,
   iconChecked?: Component,
   iconUnChecked?: Component,
   id?: string,
@@ -42,9 +41,10 @@ type State = {
   isChecked: boolean,
 };
 
-export class Switch extends Component<Props, State> {
+export class InputSwitch extends Component<Props, State> {
   static defaultProps = {
     color: COLORS.BLUE,
+    borderColor: COLORS.GRAY_MEDIUM,
     iconChecked: CHECK,
     iconUnChecked: null,
     isDisabled: false,
@@ -98,7 +98,7 @@ export class Switch extends Component<Props, State> {
   render () {
     const {
       className,
-      id = `InputSwitch_${shortId.generate()}`,
+      id = getRandomComponentId(),
       isDisabled,
       isLoading,
       isReadOnly,
@@ -130,18 +130,21 @@ export class Switch extends Component<Props, State> {
       <label
         {...dataSetProps(this.props)}
         className={classnames(className, thRoot)}
-        data-selector="Switch-control"
-        style={{ 'margin': 0 }}
+        data-selector="InputSwitch-control"
       >
+
         {isSwitch ? (
           <span className={thSwitch} style={thSwitchStyle}>
             <span className={thSwitchToggler} style={thSwitchTogglerStyle}/>
           </span>
         ) : (
-          <span className={thChecked} style={thCheckedStyle}>
-            <Icon svg={this.getIcon()} width="100%"/>
+          <span style={thCheckedStyle}>
+            <span className={thChecked} style={thCheckedStyle}>
+              <Icon svg={this.getIcon()} width="100%"/>
+            </span>
           </span>
         )}
+
         <input
           checked={isChecked}
           className="hidden"

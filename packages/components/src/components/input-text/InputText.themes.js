@@ -1,6 +1,5 @@
 import classnames from 'classnames'
-
-import { getCursorClass } from '@clubmed/utils'
+import { getCursorClass } from '../..'
 
 export const themes = {
   default: props => ({
