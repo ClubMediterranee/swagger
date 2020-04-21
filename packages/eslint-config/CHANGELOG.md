@@ -1,4 +1,13 @@
-## [1.2.4](https://github.com/ClubMediterranee/swagger-ui/compare/v1.3.1...v1.2.4) (2020-04-21)
+## [1.3.3](https://github.com/ClubMediterranee/swagger-ui/compare/v1.3.2...v1.3.3) (2020-04-21)
+
+
+
+## [1.3.2](https://github.com/ClubMediterranee/swagger-ui/compare/v1.3.1...v1.3.2) (2020-04-21)
+
+
+### Bug Fixes
+
+* Models are not expanded by default - [ci skip] ([194bd7d](https://github.com/ClubMediterranee/swagger-ui/commit/194bd7d0d78b333975ac93f4d1c46a387acd85be))
 
 
 
