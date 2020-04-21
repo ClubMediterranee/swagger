@@ -20,13 +20,11 @@ upgrade_version() {
   if [[ ${VERSION} == ${CURRENT_VERSION} ]]; then
     echo "Force version"
     VERSION=`semver ${CURRENT_VERSION} -i patch`
-
-    lerna version ${VERSION} --force-publish --conventional-commits --exact --yes --no-git-tag-version --no-push
-
-    VERSION=$(node -p -e "require('./lerna.json').version")
   fi
 
-   echo "New version: ${VERSION}"
+  lerna version ${VERSION} --force-publish --conventional-commits --exact --yes --no-git-tag-version --no-push
+
+  echo "New version: ${VERSION}"
 
   yarn version --no-git-tag-version --new-version ${VERSION}
 }
