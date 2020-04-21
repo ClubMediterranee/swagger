@@ -1,9 +1,19 @@
+## [1.3.2](https://github.com/ClubMediterranee/swagger/compare/v1.3.1...v1.3.2) (2020-04-21)
+
+
+### Bug Fixes
+
+* Models are not expanded by default ([756c8e6](https://github.com/ClubMediterranee/swagger/commit/756c8e617a5422c0f24cb8447d92537834e15546))
+
+
+
 ## [1.3.1](https://github.com/ClubMediterranee/swagger/compare/v1.3.0...v1.3.1) (2020-04-21)
 
 
 ### Bug Fixes
 
 * Footer contact ([9745039](https://github.com/ClubMediterranee/swagger/commit/974503984f4ba12b87a3e8a7be31406f0d965f7d))
+* Footer contact - [ci skip] ([d5a4af3](https://github.com/ClubMediterranee/swagger/commit/d5a4af3adf521b8cca5b7286cebc96039c1d6500))
 
 
 

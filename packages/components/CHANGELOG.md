@@ -4,6 +4,7 @@
 ### Bug Fixes
 
 * Footer contact ([9745039](https://github.com/ClubMediterranee/swagger/commit/974503984f4ba12b87a3e8a7be31406f0d965f7d))
+* Footer contact - [ci skip] ([d5a4af3](https://github.com/ClubMediterranee/swagger/commit/d5a4af3adf521b8cca5b7286cebc96039c1d6500))
 
 
 
