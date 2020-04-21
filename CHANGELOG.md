@@ -1,3 +1,12 @@
+## [1.3.4](https://github.com/ClubMediterranee/swagger/compare/v1.3.3...v1.3.4) (2020-04-21)
+
+
+### Bug Fixes
+
+* Upgrade version ([a8cc470](https://github.com/ClubMediterranee/swagger/commit/a8cc470a30eca1461cbc762d3c4ae54a1ee5d1f8))
+
+
+
 ## [1.3.3](https://github.com/ClubMediterranee/swagger/compare/v1.3.2...v1.3.3) (2020-04-21)
 
 
