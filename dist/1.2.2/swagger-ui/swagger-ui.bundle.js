@@ -1,1 +1,0 @@
-(this["webpackJsonp@clubmed/swagger-ui"]=this["webpackJsonp@clubmed/swagger-ui"]||[]).push([[4],{922:function(s,u){},924:function(s,u){}}]);

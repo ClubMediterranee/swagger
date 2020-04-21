@@ -1,1 +1,0 @@
-(this["webpackJsonp@clubmed/app"]=this["webpackJsonp@clubmed/app"]||[]).push([[4],{922:function(p,c){},924:function(p,c){}}]);
