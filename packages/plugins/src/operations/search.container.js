@@ -1,8 +1,10 @@
 import React from 'react'
 import { ReactComponent as SEARCH } from '@clubmed/components/src/statics/svg/searchGlass.svg'
-import { InputText } from '@clubmed/components'
+import { callLast, InputText } from '@clubmed/components'
 
 export default function SearchContainer ({ specSelectors, operationsSelectors, operationsActions }) {
+  const setFilter = callLast((value) => operationsActions.updateFilter(value), 500)
+
   const onKeyPressEnter = (event, value) => {
     operationsActions.updateFilter(value)
   }
@@ -10,7 +12,13 @@ export default function SearchContainer ({ specSelectors, operationsSelectors, o
   const onChange = (name, value) => {
     if (String(value).length === 0) {
       operationsActions.updateFilter(value)
+    } else {
+      setFilter(value)
     }
+  }
+
+  const onClear = () => {
+    operationsActions.updateFilter()
   }
 
   const isLoading = specSelectors.loadingStatus() === 'loading'
@@ -26,5 +34,5 @@ export default function SearchContainer ({ specSelectors, operationsSelectors, o
     name="search"
     onKeyPressEnter={onKeyPressEnter}
     onChange={onChange}
-    onClear={onChange}/>
+    onClear={onClear}/>
 }
