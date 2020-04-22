@@ -1,4 +1,18 @@
+# [1.4.0](https://github.com/ClubMediterranee/swagger/compare/v1.3.4...v1.4.0) (2020-04-22)
+
+
+### Features
+
+* Change some SwaggerUI behavior ([f6238be](https://github.com/ClubMediterranee/swagger/commit/f6238bef23f73326cb6666b044ff5cf34c8589a2))
+
+
+
 ## [1.3.4](https://github.com/ClubMediterranee/swagger/compare/v1.3.3...v1.3.4) (2020-04-21)
+
+
+### Bug Fixes
+
+* Upgrade version - [ci skip] ([b2a8a8f](https://github.com/ClubMediterranee/swagger/commit/b2a8a8f87ce6c8e3078c72c0e806c60be59be3f4))
 
 
 
