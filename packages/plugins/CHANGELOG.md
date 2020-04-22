@@ -1,3 +1,7 @@
+## [1.4.2](https://github.com/ClubMediterranee/swagger/compare/v1.4.1...v1.4.2) (2020-04-22)
+
+
+
 ## [1.4.1](https://github.com/ClubMediterranee/swagger/compare/v1.4.0...v1.4.1) (2020-04-22)
 
 
@@ -5,6 +9,7 @@
 
 * Change toggle size ([1f52572](https://github.com/ClubMediterranee/swagger/commit/1f52572494a1addaefa392b30a48c5eecf2f4600))
 * Search container. Add callLast to debounce the calls ([a91d949](https://github.com/ClubMediterranee/swagger/commit/a91d9496fef6062f3cef31bffe269e930a6ed74d))
+* Search container. Add callLast to debounce the calls - [ci skip] ([d846cc8](https://github.com/ClubMediterranee/swagger/commit/d846cc8d618ac38da1f21328dfbb144356180c68))
 
 
 

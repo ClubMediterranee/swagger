@@ -1,4 +1,13 @@
+## [1.4.2](https://github.com/ClubMediterranee/swagger-ui/compare/v1.4.1...v1.4.2) (2020-04-22)
+
+
+
 ## [1.4.1](https://github.com/ClubMediterranee/swagger-ui/compare/v1.4.0...v1.4.1) (2020-04-22)
+
+
+### Bug Fixes
+
+* Search container. Add callLast to debounce the calls - [ci skip] ([d846cc8](https://github.com/ClubMediterranee/swagger-ui/commit/d846cc8d618ac38da1f21328dfbb144356180c68))
 
 
 

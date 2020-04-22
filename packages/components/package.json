@@ -1,10 +1,10 @@
 {
   "name": "@clubmed/components",
   "main": "src/index.js",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "private": true,
   "dependencies": {
-    "@clubmed/webpack": "1.4.1",
+    "@clubmed/webpack": "1.4.2",
     "shortid": "^2.2.15"
   },
   "scripts": {
