@@ -1,5 +1,5 @@
 import './index.css'
-
+// Components
 export * from './components/animation/fade/Fade'
 export * from './components/button/Button'
 export * from './components/header/Header'
@@ -11,8 +11,5 @@ export * from './components/input-switch/InputSwitch'
 export * from './components/switch/Switch'
 export * from './components/tabs/Tabs'
 export * from './components/footer/Footer'
-export * from './utils/url/parseSearch'
-export * from './utils/url/serializeSearch'
-export * from './utils/form/form.util'
-export * from './utils/id/getRandomComponentId'
-export * from './utils/timer/callLast'
+
+export * from './utils/index'

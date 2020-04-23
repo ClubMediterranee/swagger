@@ -26,7 +26,9 @@ export function AuthorizationPopupOverride (Original, system) {
               authActions={authActions}
               specSelectors={specSelectors}/>
           }
-        }).toArray()
+        })
+        .toArray()
+        .sort((a, b) => a.label > b.label ? 1 : -1)
 
       return (
         <div className="dialog-ux">

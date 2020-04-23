@@ -1,6 +1,38 @@
 import React from 'react'
+import uniqBy from 'lodash/uniqBy'
+import moment from 'moment'
 import { getOAuthTitle } from './getOAuthTitle'
 import { getOAuthName } from './getOAuthName'
+import { InputDatalist } from '@clubmed/components/src/components/input-datalist/InputDatalist'
+
+const STORE_KEY = 'clientIds'
+
+function getClientIds (state) {
+  try {
+    return JSON.parse(localStorage.getItem(STORE_KEY))
+  } catch (er) {
+    return {}
+  }
+}
+
+function setClientIds (state) {
+  localStorage.setItem(STORE_KEY, JSON.stringify(state))
+}
+
+function getClientId (appName) {
+  const clients = getClientIds() || {}
+  return clients[appName] || []
+}
+
+function pushClientId (appName, clientId) {
+  const clients = getClientIds() || {}
+  clients[appName] = uniqBy([...getClientId(appName), {
+    id: clientId,
+    lastUpdate: new Date()
+  }], 'id')
+
+  setClientIds(clients)
+}
 
 export function OAuth2Override (Original, system) {
   return class extends Original {
@@ -12,6 +44,15 @@ export function OAuth2Override (Original, system) {
       const scopes = schema.get('allowedScopes') || schema.get('scopes')
 
       this.state.scopes = Object.keys(scopes.toJSON()).filter(o => !['api_admin', 'room_assignments'].includes(o))
+    }
+
+    saveClientId = () => {
+      const appName = getOAuthName(this.state.name)
+      const clientId = this.state.clientId
+
+      if (appName && clientId) {
+        pushClientId(appName, clientId)
+      }
     }
 
     render () {
@@ -85,7 +126,10 @@ export function OAuth2Override (Original, system) {
             {isValid &&
             (isAuthorized
               ? <Button className="btn modal-btn auth authorize" onClick={this.logout}>Logout</Button>
-              : <Button className="btn modal-btn auth authorize" onClick={this.authorize}>Authorize</Button>)
+              : <Button className="btn modal-btn auth authorize" onClick={() => {
+                this.saveClientId()
+                this.authorize()
+              }}>Authorize</Button>)
             }
             <Button className="btn modal-btn auth btn-done" onClick={this.close}>Close</Button>
           </div>
@@ -143,25 +187,32 @@ export function OAuth2Override (Original, system) {
     renderClientId ({ isAuthorized, flow, PASSWORD }) {
       const { getComponent } = this.props
       const Row = getComponent('Row')
-      const InitializedInput = getComponent('InitializedInput')
 
       const { clientId } = this.state
       const appName = getOAuthName(this.state.name)
       const id = `client_id-${appName}`
 
+      const list = getClientId(appName)
+        .sort((a, b) => {
+          return moment(a.lastUpdate).isBefore(b.lastUpdate) ? 1 : -1
+        })
+        .map(({ id, lastUpdate }) => ({
+          label: id + '<div><small>Last use: ' + moment(lastUpdate).fromNow() + '</small></div>',
+          value: id
+        }))
+
       return <Row className={'mb-2'}>
-        <label htmlFor="client_id">client_id:</label>
         {
           isAuthorized ? <code> ****** </code>
             : <div>
-              <InitializedInput
+              <InputDatalist
+                label={'Client_id'}
+                dataList={list}
                 id={id}
-                type="text"
-                required={flow === PASSWORD}
                 value={clientId}
-                data-name="clientId"
+                isRequired={flow === PASSWORD}
                 className={'w-full'}
-                onChange={this.onInputChange}/>
+                onChange={(name, value) => this.onInputChange({ target: { dataset: { name: 'clientId' }, value } })}/>
             </div>
         }
       </Row>
