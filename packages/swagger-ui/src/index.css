@@ -38,3 +38,20 @@ body .swagger-ui .markdown pre code,
 body .swagger-ui .renderedMarkdown pre code {
     color: #fff;
 }
+
+body .swagger-ui .model span.model {
+    display: block;
+    padding-left: 15px;
+}
+
+body .swagger-ui .model span.model .model-title {
+    font-size: 12px;
+}
+
+body .swagger-ui .model-title {
+    font-size: 14px;
+}
+
+body .swagger-ui span > span.model .brace-close {
+    padding: 0;
+}
