@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/ClubMediterranee/swagger/compare/v1.4.6...v1.5.0) (2020-04-23)
+
+
+### Features
+
+* **swagger:** Use InputDatalist to save client_id and display client_ids next time ([0aef8f3](https://github.com/ClubMediterranee/swagger/commit/0aef8f3cb85d1fc55139ade8be47ef94a4050efa))
+
+
+
 ## [1.4.6](https://github.com/ClubMediterranee/swagger/compare/v1.4.5...v1.4.6) (2020-04-23)
 
 

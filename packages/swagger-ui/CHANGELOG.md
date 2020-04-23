@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/ClubMediterranee/swagger/compare/v1.4.6...v1.5.0) (2020-04-23)
+
+
+### Bug Fixes
+
+* **swagger:** Update swagger styling ([69ff19a](https://github.com/ClubMediterranee/swagger/commit/69ff19aff312a16d89440be267f15e5a5c074549))
+
+
+
 ## [1.4.6](https://github.com/ClubMediterranee/swagger/compare/v1.4.5...v1.4.6) (2020-04-23)
 
 
