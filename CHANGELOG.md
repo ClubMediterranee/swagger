@@ -1,9 +1,19 @@
+## [1.4.5](https://github.com/ClubMediterranee/swagger/compare/v1.4.4...v1.4.5) (2020-04-23)
+
+
+### Bug Fixes
+
+* Update create-release script ([4b14b81](https://github.com/ClubMediterranee/swagger/commit/4b14b81ee63f2f4d86ab1dfdc26b8215e2be3ebe))
+
+
+
 ## [1.4.4](https://github.com/ClubMediterranee/swagger/compare/v1.4.3...v1.4.4) (2020-04-23)
 
 
 ### Bug Fixes
 
 * build ([fd256c7](https://github.com/ClubMediterranee/swagger/commit/fd256c7fbc21059886994fe5424a7737840a3b0b))
+* build - [ci skip] ([ef0e302](https://github.com/ClubMediterranee/swagger/commit/ef0e302e6d415c29ddec3cbdbb33cf481438f8a7))
 
 
 
