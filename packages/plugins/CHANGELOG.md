@@ -1,4 +1,18 @@
+## [1.4.6](https://github.com/ClubMediterranee/swagger/compare/v1.4.5...v1.4.6) (2020-04-23)
+
+
+### Bug Fixes
+
+* Add items in swagger documentation ([82b234b](https://github.com/ClubMediterranee/swagger/commit/82b234b40d1ff8daa543d3bb483d20722f182e63))
+
+
+
 ## [1.4.5](https://github.com/ClubMediterranee/swagger/compare/v1.4.4...v1.4.5) (2020-04-23)
+
+
+### Bug Fixes
+
+* Update create-release script - [ci skip] ([bf17345](https://github.com/ClubMediterranee/swagger/commit/bf17345b1aa3aaa736c3a11d1401bffa1ae8fe5c))
 
 
 
