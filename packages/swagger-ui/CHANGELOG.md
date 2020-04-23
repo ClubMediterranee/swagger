@@ -1,9 +1,14 @@
+## [1.4.3](https://github.com/ClubMediterranee/swagger/compare/v1.4.2...v1.4.3) (2020-04-23)
+
+
+
 ## [1.4.2](https://github.com/ClubMediterranee/swagger/compare/v1.4.1...v1.4.2) (2020-04-22)
 
 
 ### Bug Fixes
 
 * styling on code and pre code ([0245756](https://github.com/ClubMediterranee/swagger/commit/0245756b900d2c3016839664a93ce6784cd08d64))
+* styling on code and pre code - [ci skip] ([d7fd7a1](https://github.com/ClubMediterranee/swagger/commit/d7fd7a1e7518380f22002fea48037493f28416e4))
 
 
 
