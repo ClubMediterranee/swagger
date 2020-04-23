@@ -35,7 +35,7 @@ create_release() {
     echo "Apply release tag"
     echo "---------------------------------"
 
-    git commit -m "${RELEASE_MESSAGE} - ${CI_SKIP}"
+    git commit -m "Release ${VERSION} - ${RELEASE_MESSAGE} - ${CI_SKIP}"
     git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} ${TRAVIS_BRANCH}
     git tag ${RELEASE_TAG} -a -m "Version ${RELEASE_TAG}"
     git push https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} ${RELEASE_TAG}
@@ -50,7 +50,7 @@ create_release() {
     touch .nojekyll
     git init
     git add -A
-    git commit -m "Deploy assets v${RELEASE_VERSION}"
+    git commit -m "Github page release v${RELEASE_VERSION}"
     git push -f https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} master:gh-pages
     cd ..
 }
