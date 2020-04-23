@@ -14,14 +14,9 @@ create_release() {
     display_release_info
 
     # Build versionned app
-    export BASE_URL="https://clubmediterranee.github.io/swagger/${VERSION}"
+    rm -rf cp -R dist/latest
 
-    rm -rf cp -R dist/latest
-    # Build latest app
-    yarn build
-    cp -R dist/latest "dist/${VERSION}"
-    rm -rf cp -R dist/latest
-    BASE_URL="https://clubmediterranee.github.io/swagger/latest"
+    export BASE_URL="https://clubmediterranee.github.io/swagger/latest"
 
     yarn build
 

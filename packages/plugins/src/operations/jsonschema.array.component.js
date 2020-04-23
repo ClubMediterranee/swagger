@@ -31,118 +31,118 @@ const JsonSchemaDefaultProps = {
   required: false,
   errors: List()
 }
-
-export class JsonSchema_array extends PureComponent {
-  static propTypes = JsonSchemaPropShape
-  static defaultProps = JsonSchemaDefaultProps
-
-  constructor (props, context) {
-    super(props, context)
-    this.state = { value: valueOrEmptyList(props.value) }
-  }
-
-  componentWillReceiveProps (props) {
-    if (props.value !== this.state.value) {
-      this.setState({ value: props.value })
-    }
-  }
-
-  onChange = () => this.props.onChange(this.state.value)
-
-  onItemChange = (itemVal, i) => {
-    this.setState(state => ({
-      value: state.value.set(i, itemVal)
-    }), this.onChange)
-  }
-
-  removeItem = (i) => {
-    this.setState(state => ({
-      value: state.value.remove(i)
-    }), this.onChange)
-  }
-
-  addItem = () => {
-    this.setState(state => {
-      state.value = valueOrEmptyList(state.value)
-      return {
-        value: state.value.push('')
-      }
-    }, this.onChange)
-  }
-
-  onEnumChange = (value) => {
-    this.setState(() => ({
-      value: value
-    }), this.onChange)
-  }
-
-  render () {
-    let { getComponent, required, schema, errors, fn, disabled } = this.props
-
-    errors = errors.toJS ? errors.toJS() : []
-
-    let itemSchema = fn.inferSchema(schema.items)
-
-    const JsonSchemaForm = getComponent('JsonSchemaForm')
-    const Button = getComponent('Button')
-
-    let enumValue = itemSchema['enum']
-    let value = this.state.value
-
-    if (enumValue) {
-      const Select = getComponent('Select')
-      return (<Select
-        className={errors.length ? 'invalid' : ''}
-        title={errors.length ? errors : ''}
-        multiple={true}
-        value={value}
-        disabled={disabled}
-        allowedValues={enumValue}
-        allowEmptyValue={!required}
-        onChange={this.onEnumChange}/>)
-    }
-
-    return (
-      <div className="json-schema-array">
-        {!value || !value.count || value.count() < 1 ? null
-          : value.map((item, i) => {
-            let schema = Object.assign({}, itemSchema)
-            if (errors.length) {
-              let err = errors.filter((err) => err.index === i)
-              if (err.length) errors = [err[0].error + i]
-            }
-            return (
-              <div key={i} className="json-schema-form-item">
-                <JsonSchemaForm
-                  fn={fn}
-                  getComponent={getComponent}
-                  value={item}
-                  onChange={(val) => this.onItemChange(val, i)}
-                  schema={schema}
-                  disabled={disabled}
-                />
-                {!disabled ? (
-                  <Button
-                    className="btn btn-sm json-schema-form-item-remove"
-                    onClick={() => this.removeItem(i)}
-                  > - </Button>
-                ) : null}
-              </div>
-            )
-          }).toArray()
-        }
-        {!disabled ? (
-          <Button
-            className={`btn btn-sm json-schema-form-item-add ${errors.length ? 'invalid' : null}`}
-            onClick={this.addItem}
-          >
-            Add item
-          </Button>
-        ) : null}
-      </div>
-    )
-  }
-}
+//
+// export class JsonSchema_array extends PureComponent {
+//   static propTypes = JsonSchemaPropShape
+//   static defaultProps = JsonSchemaDefaultProps
+//
+//   constructor (props, context) {
+//     super(props, context)
+//     this.state = { value: valueOrEmptyList(props.value) }
+//   }
+//
+//   componentWillReceiveProps (props) {
+//     if (props.value !== this.state.value) {
+//       this.setState({ value: props.value })
+//     }
+//   }
+//
+//   onChange = () => this.props.onChange(this.state.value)
+//
+//   onItemChange = (itemVal, i) => {
+//     this.setState(state => ({
+//       value: state.value.set(i, itemVal)
+//     }), this.onChange)
+//   }
+//
+//   removeItem = (i) => {
+//     this.setState(state => ({
+//       value: state.value.remove(i)
+//     }), this.onChange)
+//   }
+//
+//   addItem = () => {
+//     this.setState(state => {
+//       state.value = valueOrEmptyList(state.value)
+//       return {
+//         value: state.value.push('')
+//       }
+//     }, this.onChange)
+//   }
+//
+//   onEnumChange = (value) => {
+//     this.setState(() => ({
+//       value: value
+//     }), this.onChange)
+//   }
+//
+//   render () {
+//     let { getComponent, required, schema, errors, fn, disabled } = this.props
+//
+//     errors = errors.toJS ? errors.toJS() : []
+//
+//     let itemSchema = fn.inferSchema(schema.items)
+//
+//     const JsonSchemaForm = getComponent('JsonSchemaForm')
+//     const Button = getComponent('Button')
+//
+//     let enumValue = itemSchema['enum']
+//     let value = this.state.value
+//
+//     if (enumValue) {
+//       const Select = getComponent('Select')
+//       return (<Select
+//         className={errors.length ? 'invalid' : ''}
+//         title={errors.length ? errors : ''}
+//         multiple={true}
+//         value={value}
+//         disabled={disabled}
+//         allowedValues={enumValue}
+//         allowEmptyValue={!required}
+//         onChange={this.onEnumChange}/>)
+//     }
+//
+//     return (
+//       <div className="json-schema-array">
+//         {!value || !value.count || value.count() < 1 ? null
+//           : value.map((item, i) => {
+//             let schema = Object.assign({}, itemSchema)
+//             if (errors.length) {
+//               let err = errors.filter((err) => err.index === i)
+//               if (err.length) errors = [err[0].error + i]
+//             }
+//             return (
+//               <div key={i} className="json-schema-form-item">
+//                 <JsonSchemaForm
+//                   fn={fn}
+//                   getComponent={getComponent}
+//                   value={item}
+//                   onChange={(val) => this.onItemChange(val, i)}
+//                   schema={schema}
+//                   disabled={disabled}
+//                 />
+//                 {!disabled ? (
+//                   <Button
+//                     className="btn btn-sm json-schema-form-item-remove"
+//                     onClick={() => this.removeItem(i)}
+//                   > - </Button>
+//                 ) : null}
+//               </div>
+//             )
+//           }).toArray()
+//         }
+//         {!disabled ? (
+//           <Button
+//             className={`btn btn-sm json-schema-form-item-add ${errors.length ? 'invalid' : null}`}
+//             onClick={this.addItem}
+//           >
+//             Add item
+//           </Button>
+//         ) : null}
+//       </div>
+//     )
+//   }
+// }
 
 export function wrapJsonSchemaArray (BaseJsonSchemaArray) {
   return class JsonSchemaArray extends BaseJsonSchemaArray {
@@ -155,7 +155,9 @@ export function wrapJsonSchemaArray (BaseJsonSchemaArray) {
     }
 
     addItem = () => {
-      this.onChange(valueOrEmptyList(this.state.value).value.push(''))
+      let value = valueOrEmptyList(this.state.value)
+      value = value.push('')
+      this.onChange(value)
     }
 
     onChange = (value) => {
