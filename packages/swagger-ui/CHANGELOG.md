@@ -1,3 +1,12 @@
+## [1.5.1](https://github.com/ClubMediterranee/swagger/compare/v1.5.0...v1.5.1) (2020-05-19)
+
+
+### Bug Fixes
+
+* **swagger-ui:** Fix problem with input parameters ([2342eaf](https://github.com/ClubMediterranee/swagger/commit/2342eaf1714e81a830c72e5adb5d3706dbe28cd3))
+
+
+
 # [1.5.0](https://github.com/ClubMediterranee/swagger/compare/v1.4.6...v1.5.0) (2020-04-23)
 
 
