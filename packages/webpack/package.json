@@ -13,7 +13,7 @@
     "scripts"
   ],
   "bin": {
-    "rp-scripts": "./bin/rp-scripts.js"
+    "cm-scripts": "./bin/cm-scripts.js"
   },
   "scripts": {
     "build:tailwind": "tailwind build styles/tailwind.css -o dist/tailwind.css"

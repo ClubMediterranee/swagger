@@ -11,9 +11,9 @@
     "serve": "11.3.0"
   },
   "scripts": {
-    "start": "cross-env PORT=3004 BROWSER=none rp-scripts start",
-    "build": "rp-scripts build",
-    "test": "rp-scripts test --coverage",
+    "start": "cross-env PORT=3004 BROWSER=none cm-scripts start",
+    "build": "cm-scripts build",
+    "test": "cm-scripts test --coverage",
     "lint:fix": "yarn lint --fix",
     "lint": "eslint --config .eslintrc --cache --quiet \"./src/**/*.{js,jsx}\""
   },
