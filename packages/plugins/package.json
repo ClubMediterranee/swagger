@@ -8,9 +8,9 @@
     "@clubmed/webpack": "1.5.0"
   },
   "scripts": {
-    "build": "rp-scripts build",
-    "start": "rp-scripts start",
-    "test": "rp-scripts test --coverage",
+    "build": "cm-scripts build",
+    "start": "cm-scripts start",
+    "test": "cm-scripts test --coverage",
     "lint:fix": "yarn lint --fix",
     "lint": "eslint --config .eslintrc --cache --quiet \"./src/**/*.{js,jsx}\""
   },

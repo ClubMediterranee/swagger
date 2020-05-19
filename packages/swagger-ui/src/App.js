@@ -2,16 +2,16 @@ import React from 'react'
 import SwaggerUI from './components/SwaggerUI'
 
 function getConfig () {
-  const config = window.SwaggerUIConfiguration || {}
+  let config = window.SwaggerUIConfiguration || {}
 
-  return {
+  config = {
     brandName: 'ClubMed',
     appName: 'API',
     url: 'https://api.clubmed.com/doc/swagger.json',
-    layout: 'StandaloneLayout',
     deepLinking: true,
     filter: true,
     defaultModelsExpandDepth: false,
+    docExpansion: 'list',
     ...(config || {}),
     presets: config.presets || [
       'apis'
@@ -28,14 +28,15 @@ function getConfig () {
       'DownloadUrl'
     ]
   }
+
+  return config
 }
 
 function App () {
-  const config = React.useMemo(() => getConfig(), [])
-
+  const config = getConfig()
   return (
     <div className="App">
-      <SwaggerUI config={config}/>
+      <SwaggerUI {...config}/>
     </div>
   )
 }

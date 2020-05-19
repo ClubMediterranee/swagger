@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import highlight from 'highlight.js/lib/highlight.js'
+import highlight from 'highlight.js'
 import saveAs from 'js-file-download'
 import 'highlight.js/styles/agate.css'
 import { Fade } from '@clubmed/components'
