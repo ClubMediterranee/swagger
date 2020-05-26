@@ -3,7 +3,7 @@ import uniqBy from 'lodash/uniqBy'
 import moment from 'moment'
 import { getOAuthTitle } from './getOAuthTitle'
 import { getOAuthName } from './getOAuthName'
-import { InputDatalist } from '@clubmed/components/src/components/input-datalist/InputDatalist'
+import { InputDatalist } from '@clubmed/components'
 
 const STORE_KEY = 'clientIds'
 
