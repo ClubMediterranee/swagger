@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/ClubMediterranee/swagger/compare/v1.5.1...v1.6.0) (2020-05-26)
+
+
+### Features
+
+* **swagger:** Add oauth2-redirect.html file ([e4bd3ed](https://github.com/ClubMediterranee/swagger/commit/e4bd3ed498e0fe955a7756da08e93fa6a441b8b7))
+
+
+
 ## [1.5.1](https://github.com/ClubMediterranee/swagger/compare/v1.5.0...v1.5.1) (2020-05-19)
 
 
