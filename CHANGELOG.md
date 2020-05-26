@@ -1,3 +1,12 @@
+## [1.6.3](https://github.com/ClubMediterranee/swagger/compare/v1.6.2...v1.6.3) (2020-05-26)
+
+
+### Bug Fixes
+
+* **swagger:** Change response_type=token by response_type=id_token ([46dece9](https://github.com/ClubMediterranee/swagger/commit/46dece94fbe43d8f1dea10d3ffb279b006fc06b7))
+
+
+
 ## [1.6.2](https://github.com/ClubMediterranee/swagger/compare/v1.6.1...v1.6.2) (2020-05-26)
 
 
