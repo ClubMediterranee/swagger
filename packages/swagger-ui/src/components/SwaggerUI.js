@@ -20,7 +20,7 @@ export default class SwaggerUI extends React.Component {
     config.presets = (config.presets || []).map((preset) => PRESETS[preset]).filter(Boolean)
 
     const ui = CoreSwaggerUI({
-      oauth2RedirectUrl: 'https://clubmediterranee.github.io/swagger/oauth2-redirect.html', // `${window.location.origin}/doc/oauth2-redirect.html`,
+      oauth2RedirectUrl: `${window.location.origin}/doc/oauth2-redirect.html`,
       ...config,
       docExpansion: config.docExpansion || 'list',
       requestInterceptor: this.requestInterceptor,
