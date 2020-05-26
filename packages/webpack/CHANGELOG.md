@@ -1,3 +1,7 @@
+## [1.6.1](https://github.com/ClubMediterranee/swagger/compare/v1.6.0...v1.6.1) (2020-05-26)
+
+
+
 # [1.6.0](https://github.com/ClubMediterranee/swagger/compare/v1.5.1...v1.6.0) (2020-05-26)
 
 
