@@ -8,6 +8,7 @@ function getConfig () {
     brandName: 'ClubMed',
     appName: 'API',
     url: 'https://api.clubmed.com/doc/swagger.json',
+    oauth2RedirectUrl: `${window.location.origin}/doc/o2c.html`,
     deepLinking: true,
     filter: true,
     defaultModelsExpandDepth: false,
