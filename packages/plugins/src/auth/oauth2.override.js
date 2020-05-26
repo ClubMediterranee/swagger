@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import uniqBy from 'lodash/uniqBy'
 import moment from 'moment'
 import { getOAuthTitle } from './getOAuthTitle'
@@ -6,6 +6,16 @@ import { getOAuthName } from './getOAuthName'
 import { InputDatalist } from '@clubmed/components'
 
 const STORE_KEY = 'clientIds'
+
+window.$open = window.open
+
+window.open = function open (url) {
+  if (url.indexOf('clubmed.com')) {
+    url = url.replace('response_type=token', 'response_type=id_token')
+  }
+
+  return window.$open(url)
+}
 
 function getClientIds (state) {
   try {
@@ -32,6 +42,27 @@ function pushClientId (appName, clientId) {
   }], 'id')
 
   setClientIds(clients)
+}
+
+export function SelectClientId ({ options, onChange, ...props }) {
+  const [value, setValue] = useState(props.value)
+
+  useEffect(() => {
+    setValue(props.value)
+  }, [props.value])
+
+  return <InputDatalist
+    {...props}
+    value={value}
+    dataList={options}
+    onChange={(name, value) => {
+      setValue(value)
+      onChange(props.name, value)
+    }}
+    onSelect={(item) => {
+      setValue(item.value)
+      onChange(props.name, value)
+    }}/>
 }
 
 export function OAuth2Override (Original, system) {
@@ -205,14 +236,16 @@ export function OAuth2Override (Original, system) {
         {
           isAuthorized ? <code> ****** </code>
             : <div>
-              <InputDatalist
+              <SelectClientId
                 label={'Client_id'}
-                dataList={list}
+                options={list}
                 id={id}
                 value={clientId}
                 isRequired={flow === PASSWORD}
                 className={'w-full'}
-                onChange={(name, value) => this.onInputChange({ target: { dataset: { name: 'clientId' }, value } })}/>
+                onChange={(name, value) => {
+                  this.onInputChange({ target: { dataset: { name: 'clientId' }, value } })
+                }}/>
             </div>
         }
       </Row>
