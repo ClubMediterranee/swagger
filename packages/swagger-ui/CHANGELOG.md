@@ -1,3 +1,12 @@
+## [1.6.2](https://github.com/ClubMediterranee/swagger/compare/v1.6.1...v1.6.2) (2020-05-26)
+
+
+### Bug Fixes
+
+* Update configuration ([5460152](https://github.com/ClubMediterranee/swagger/commit/5460152b6223f5cc968f9254f25193f7b6274edd))
+
+
+
 ## [1.6.1](https://github.com/ClubMediterranee/swagger/compare/v1.6.0...v1.6.1) (2020-05-26)
 
 
