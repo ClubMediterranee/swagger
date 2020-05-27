@@ -26,7 +26,6 @@ export default class SwaggerUI extends React.Component {
       responseInterceptor: this.responseInterceptor,
       onComplete: this.onComplete
     })
-    console.log(ui)
     this.system = ui
     this.SwaggerUIComponent = ui.getComponent('App', 'root')
 

@@ -7,7 +7,7 @@ function getConfig () {
   config = {
     brandName: 'ClubMed',
     appName: 'API',
-    url: 'https://api.clubmed.com/doc/swagger.json',
+    url: 'https://api.integ.clubmed.com/doc/swagger.json',
     oauth2RedirectUrl: `${window.location.origin}/doc/o2c.html`,
     deepLinking: true,
     filter: true,
@@ -20,7 +20,6 @@ function getConfig () {
     plugins: config.plugins || [
       'SidebarPlugin',
       'TopbarPlugin',
-      'AuthorizeBtnPlugin',
       'StandaloneLayoutPlugin',
       'OperationsPlugin',
       'OAuth2Plugin',

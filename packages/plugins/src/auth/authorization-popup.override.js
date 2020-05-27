@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tabs } from '@clubmed/components'
-import { getOAuthName } from './getOAuthName'
+import { getOauthName } from './utils/get-oauth-name'
 
 export function AuthorizationPopupOverride (Original, system) {
   return class extends Original {
@@ -14,7 +14,7 @@ export function AuthorizationPopupOverride (Original, system) {
           const name = Object.keys(definition.toJSON())[0]
 
           return {
-            label: getOAuthName(name),
+            label: getOauthName(name),
             title: name,
             children: <Auths
               key={key}
