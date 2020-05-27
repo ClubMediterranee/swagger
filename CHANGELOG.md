@@ -1,3 +1,12 @@
+# [1.7.0](https://github.com/ClubMediterranee/swagger/compare/v1.6.3...v1.7.0) (2020-05-27)
+
+
+### Features
+
+* Update popup authorization ([1ed70a5](https://github.com/ClubMediterranee/swagger/commit/1ed70a530b03265b3504afabc71486e4a936a131))
+
+
+
 ## [1.6.3](https://github.com/ClubMediterranee/swagger/compare/v1.6.2...v1.6.3) (2020-05-26)
 
 

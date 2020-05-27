@@ -1,3 +1,7 @@
+# [1.7.0](https://github.com/ClubMediterranee/swagger-ui/compare/v1.6.3...v1.7.0) (2020-05-27)
+
+
+
 ## [1.6.3](https://github.com/ClubMediterranee/swagger-ui/compare/v1.6.2...v1.6.3) (2020-05-26)
 
 
