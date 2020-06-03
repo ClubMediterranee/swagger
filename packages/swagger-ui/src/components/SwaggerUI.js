@@ -93,5 +93,5 @@ SwaggerUI.propTypes = {
     PropTypes.oneOf(['get', 'put', 'post', 'delete', 'options', 'head', 'patch', 'trace'])
   ),
   defaultModelExpandDepth: PropTypes.number,
-  plugins: PropTypes.arrayOf(PropTypes.object)
+  plugins: PropTypes.arrayOf(PropTypes.string)
 }

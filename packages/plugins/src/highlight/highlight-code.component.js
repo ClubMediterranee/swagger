@@ -5,12 +5,12 @@ import highlight from 'highlight.js'
 import saveAs from 'js-file-download'
 import 'highlight.js/styles/agate.css'
 import { Fade } from '@clubmed/components'
-import Button from './button.compoonent'
+import Button from './button.component'
 
 // separately require languages
 highlight.registerLanguage('json', require('highlight.js/lib/languages/json'))
-highlight.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'))
-highlight.registerLanguage('html', require('highlight.js/lib/languages/javascript'))
+// highlight.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'))
+// highlight.registerLanguage('html', require('highlight.js/lib/languages/javascript'))
 
 function CopySvg () {
   return <svg
@@ -87,15 +87,14 @@ function CloseSvg () {
 }
 
 export default class HighlightCode extends Component {
-  state = {
-    fullscreen: false
-  }
-
   static propTypes = {
     value: PropTypes.string.isRequired,
     className: PropTypes.string,
     downloadable: PropTypes.bool,
     fileName: PropTypes.string
+  }
+  state = {
+    fullscreen: false
   }
 
   constructor (props) {
@@ -103,12 +102,15 @@ export default class HighlightCode extends Component {
     this.el = React.createRef()
   }
 
-  componentDidMount () {
-    highlight.highlightBlock(this.el.current)
+  shouldHighlight () {
+    const { value } = this.props
+    return (value.startsWith('[') && value.endsWith(']')) || (value.startsWith('{') && value.endsWith('}'))
   }
 
-  componentDidUpdate () {
-    highlight.highlightBlock(this.el.current)
+  componentDidMount () {
+    if (this.shouldHighlight()) {
+      highlight.highlightBlock(this.el.current)
+    }
   }
 
   downloadText = () => {
@@ -133,25 +135,6 @@ export default class HighlightCode extends Component {
     })
   }
 
-  preventYScrollingBeyondElement = (e) => {
-    const target = e.target
-
-    let deltaY = e.nativeEvent.deltaY
-    let contentHeight = target.scrollHeight
-    let visibleHeight = target.offsetHeight
-    let scrollTop = target.scrollTop
-
-    const scrollOffset = visibleHeight + scrollTop
-
-    const isElementScrollable = contentHeight > visibleHeight
-    const isScrollingPastTop = scrollTop === 0 && deltaY < 0
-    const isScrollingPastBottom = scrollOffset >= contentHeight && deltaY > 0
-
-    if (isElementScrollable && (isScrollingPastTop || isScrollingPastBottom)) {
-      e.preventDefault()
-    }
-  }
-
   render () {
     let { value, className, downloadable } = this.props
     const { fullscreen, copied } = this.state
@@ -159,8 +142,7 @@ export default class HighlightCode extends Component {
 
     return (
       <div
-        className={fullscreen ? 'fullscreen fixed top-0 bottom-0 left-0 right-0' : 'relative'}
-        onWheel={this.preventYScrollingBeyondElement}>
+        className={fullscreen ? 'fullscreen fixed top-0 bottom-0 left-0 right-0' : 'relative'}>
         <div
           className="absolute right-0 top-0 p-2 flex flex-nowrap justify-between text-white z-2">
           <CopyToClipboard text={value} onCopy={this.whenCopy}>
@@ -172,7 +154,7 @@ export default class HighlightCode extends Component {
             </Button>
           </CopyToClipboard>
           {
-            value.split('\n') > 15
+            value.split('\n').length > 15
               ? <Button onClick={this.toggleFullscreen}>
                 {
                   fullscreen ? <CloseSvg/> : <FullscreenSvg/>
@@ -190,8 +172,7 @@ export default class HighlightCode extends Component {
         <div>
           <pre
             ref={this.el}
-            onWheel={this.preventYScrollingBeyondElement}
-            className={className}>
+            className={`${className} ${!this.shouldHighlight() ? 'microlight' : ''}`}>
             {value}
           </pre>
         </div>

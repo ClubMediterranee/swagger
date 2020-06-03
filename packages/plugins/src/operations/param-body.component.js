@@ -3,6 +3,17 @@ import { List } from 'immutable'
 
 export function wrapParamBody (BaseParamBody) {
   return class ParamBody extends BaseParamBody {
+    componentWillReceiveProps (nextProps) {
+      super.componentWillReceiveProps(nextProps)
+      let { param } = nextProps
+
+      if (param.get('value') && !this.state.example) {
+        this.setState({
+          example: param.get('value')
+        })
+      }
+    }
+
     render () {
       let {
         onChangeConsumes,
@@ -21,7 +32,7 @@ export function wrapParamBody (BaseParamBody) {
       let consumesValue = specSelectors.contentTypeValues(pathMethod).get('requestContentType')
       let consumes = this.props.consumes && this.props.consumes.size ? this.props.consumes : ParamBody.defaultProp.consumes
 
-      let { value } = this.state
+      let { value, example } = this.state
 
       return (
         <div className="body-param" data-param-name={param.get('name')} data-param-in={param.get('in')}>
@@ -32,9 +43,9 @@ export function wrapParamBody (BaseParamBody) {
                 onChange={this.handleOnChange}/>
             </div>
             <div className={'w-1/2 pl-4 pt-1'}>
-              <HighlightCode
+              {this.state.example ? <HighlightCode
                 className="body-param__example"
-                value={value}/>
+                value={example}/> : null}
             </div>
           </div>
           <div className="body-param-options">

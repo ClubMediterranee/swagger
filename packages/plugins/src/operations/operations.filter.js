@@ -6,10 +6,17 @@ const lucene = luceneFilter(luceneQueryParser)
 const mapFilters = new Map()
 
 function getLucene (keyword) {
-  if (keyword.startsWith('/') && keyword.endsWith('/')) {
-    keyword = 'path: ' + keyword
+  try {
+    if (keyword.startsWith('/') && keyword.endsWith('/')) {
+      keyword = `path: "${keyword}"`
+    } else if (!keyword.includes('"')) {
+      keyword = `"${keyword}"`
+    }
+
+    return lucene(keyword)
+  } catch (er) {
+    return lucene(`path: ${keyword}`)
   }
-  return lucene(keyword)
 }
 
 function getModels (item, set = new Set()) {
@@ -53,11 +60,12 @@ export function operationsFilter (operations, keyword) {
     }
 
     const filter = mapFilters.get(keyword)
-
-    return operations.filter((item, key) => {
+    console.log('====', keyword)
+    return operations.filter((item) => {
       return filter(mapItem(item))
     })
   } catch (er) {
+    console.log(er)
     return fromJS([])
   }
 }
