@@ -1,3 +1,12 @@
+## [1.7.1](https://github.com/ClubMediterranee/swagger/compare/v1.7.0...v1.7.1) (2020-06-03)
+
+
+### Bug Fixes
+
+* Auth, Highlight performance issue and fullscreen mode ([dba3f0d](https://github.com/ClubMediterranee/swagger/commit/dba3f0d77f5adf29f21c100585d0f3ea68855fc3))
+
+
+
 # [1.7.0](https://github.com/ClubMediterranee/swagger/compare/v1.6.3...v1.7.0) (2020-05-27)
 
 
