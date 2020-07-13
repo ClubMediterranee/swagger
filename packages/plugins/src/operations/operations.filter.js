@@ -60,7 +60,6 @@ export function operationsFilter (operations, keyword) {
     }
 
     const filter = mapFilters.get(keyword)
-    console.log('====', keyword)
     return operations.filter((item) => {
       return filter(mapItem(item))
     })
