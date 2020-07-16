@@ -35,7 +35,7 @@ jobs:
         - GITHUB_PAGES_PATH=./dist
       script:
         - cd dist && rm -rf .git && cd ..
-        - yarn add -W -D https://${GH_TOKEN}@github.com/ClubMediterranee/cmflow#v0.60.7 --frozen-lockfile
+        - yarn add -W -D https://${GH_TOKEN}@github.com/ClubMediterranee/cmflow#v0.60.8 --frozen-lockfile
         - git checkout -- package.json
         - yarn release
 stages:
