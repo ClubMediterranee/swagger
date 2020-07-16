@@ -1,0 +1,46 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0.1
+
+commands:
+  yarn-install:
+    description: "Yarn install with cache optimization"
+    steps:
+      - node/install:
+          install-yarn: true
+          node-version: 12.13.1
+      - run: node --version
+      - run: npm --version
+      - run: yarn --version
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+  cmflow-install:
+    description: "Install CmFLow for the job"
+    steps:
+      - run:
+          name: Install cmflow
+          command: yarn add -W -D https://${GH_TOKEN}@github.com/ClubMediterranee/cmflow#v0.59.1 --frozen-lockfile
+      - run:
+          name: Reset package.json
+          command: git checkout -- package.json
+jobs:
+  deploy:
+    machine: true
+    steps:
+      - checkout
+      - yarn-install
+      - run: yarn test
+workflows:
+  build:
+    jobs:
+      - deploy
