@@ -2,6 +2,7 @@ const { getSemanticConfig } = require('@clubmed/cmflow')
 
 process.env.PRODUCTION_BRANCH = 'master'
 process.env.DEVELOP_BRANCH = 'master'
+process.env.DEPLOY_ON_DOCKER = false
 
 module.exports = {
   ...getSemanticConfig(),

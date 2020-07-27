@@ -19,13 +19,15 @@ commands:
     steps:
       - run:
           name: Install cmflow
-          command: yarn add -W -D https://${GH_TOKEN}@github.com/ClubMediterranee/cmflow#v0.60.8 --frozen-lockfile
+          command: yarn add -W -D https://${GH_TOKEN}@github.com/ClubMediterranee/cmflow#v0.60.14 --frozen-lockfile
       - run:
           name: Reset package.json
           command: git checkout -- package.json
 jobs:
   deploy:
     machine: true
+    environment:
+      GITHUB_PAGES_PATH: "./dist"
     steps:
       - checkout
       - yarn-install
