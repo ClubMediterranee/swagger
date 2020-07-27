@@ -27,6 +27,7 @@ jobs:
   deploy:
     machine: true
     environment:
+      BASE_URL: "https://clubmediterranee.github.io/swagger/latest"
       GITHUB_PAGES_PATH: "./dist"
     steps:
       - checkout
