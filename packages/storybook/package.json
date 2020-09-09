@@ -1,6 +1,6 @@
 {
   "name": "@clubmed/storybook",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "description": "Shared react components",
   "main": "src/index.js",
   "author": "CLUBMED",
@@ -32,7 +32,7 @@
     "url-loader": "2.2.0"
   },
   "dependencies": {
-    "@clubmed/components": "1.8.1"
+    "@clubmed/components": "1.9.0"
   },
   "browserslist": {
     "production": [
