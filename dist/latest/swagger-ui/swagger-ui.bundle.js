@@ -1,1 +1,1 @@
-(this["webpackJsonp@clubmed/swagger-ui"]=this["webpackJsonp@clubmed/swagger-ui"]||[]).push([[5],{680:function(s,u){},682:function(s,u){}}]);
+(this["webpackJsonp@clubmed/swagger-ui"]=this["webpackJsonp@clubmed/swagger-ui"]||[]).push([[5],{682:function(s,u){},684:function(s,u){}}]);
