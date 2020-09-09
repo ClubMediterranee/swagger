@@ -5,6 +5,7 @@ import classnames from 'classnames'
 import shortId from 'shortid'
 import { get, isFunction, noop, pick } from 'lodash'
 import striptags from 'striptags'
+import { callLast } from '../../utils'
 import { ARROW_DOWN, ARROW_UP, ENTER } from '../../utils/keys-codes/keyCodes'
 
 import { InputText } from '../input-text/InputText.jsx'
@@ -85,6 +86,8 @@ export class InputDatalist extends PureComponent<Props, State> {
       isActive: false,
       selected: props.value || ''
     }
+
+    this.debounceChange = callLast(props.onChange || noop, props.debounceTimeout || 0)
   }
 
   componentDidMount () {
@@ -179,9 +182,7 @@ export class InputDatalist extends PureComponent<Props, State> {
         isActive: true,
         selected: value
       },
-      () => {
-        if (this.props.onChange) this.props.onChange(name, value)
-      }
+      () => this.debounceChange(name, value)
     )
   }
 
@@ -238,6 +239,7 @@ export class InputDatalist extends PureComponent<Props, State> {
       <div className={classnames(className, thRoot)} ref={this.dataListElementRef}>
         <InputText
           {...pick(this.props, [
+            'debounceTimeout',
             'autoFocus',
             'hasClear',
             'iconLeft',

@@ -1,34 +1,11 @@
 import React, { Suspense } from 'react'
-import { fromJS } from 'immutable'
-import { getOauthName } from './utils/get-oauth-name'
 import { getOauthDefaultScopes } from './utils/get-oauth-default-scopes'
+import { getOauthName } from './utils/get-oauth-name'
 import './utils/patch-open-url'
-import { getAccessToken } from './utils/get-access-token'
 
 const OauthPanel = React.lazy(() => import(/* webpackChunkName: "oauth2" */'./oauth-panel.component'))
 
-export function OAuth2Override (Original, system) {
-  const selector = system.specSelectors.parameterWithMetaByIdentity
-
-  system.specSelectors.parameterWithMetaByIdentity = (state, ...args) => {
-    const param = selector(state, ...args)
-
-    if (param.get('in') === 'header' && param.get('name') === 'authorization') {
-      const { authSelectors } = system
-
-      const accessToken = getAccessToken(authSelectors)
-
-      if (accessToken) {
-        return fromJS({
-          ...param.toJS(),
-          value: `Bearer ${accessToken}`
-        })
-      }
-    }
-
-    return param
-  }
-
+export function OAuth2Override (Original) {
   return class extends Original {
     constructor (props) {
       super(props)

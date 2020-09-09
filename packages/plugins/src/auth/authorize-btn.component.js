@@ -1,5 +1,6 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
+import { AuthorizeSvg } from './authorize-icon.component'
 import { logoutFromOIDC } from './utils/logout-from-oidc'
 
 export default class AuthorizeBtn extends React.Component {
@@ -30,9 +31,7 @@ export default class AuthorizeBtn extends React.Component {
     return (
       <div className="auth-wrapper ml-2" style={{ height: '40px' }}>
         <button className={isAuthorized ? 'btn authorize locked' : 'btn authorize unlocked'} onClick={onClick}>
-          <svg width="20" height="20">
-            <use href={isAuthorized ? '#locked' : '#unlocked'} xlinkHref={isAuthorized ? '#locked' : '#unlocked'}/>
-          </svg>
+          <AuthorizeSvg isAuthorized={isAuthorized}/>
         </button>
         {isAuthorized
           ? <button className={'btn'} onClick={this.logout}>

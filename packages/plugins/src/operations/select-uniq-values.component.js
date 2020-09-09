@@ -1,7 +1,7 @@
+import { InputDatalist } from '@clubmed/components'
 import classnames from 'classnames'
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
-import { InputDatalist } from '@clubmed/components'
 import { getKey, pushUniqValue } from '../common/localeStorage'
 
 function ItemLayout (props) {
@@ -19,7 +19,8 @@ function ItemLayout (props) {
         <div>
           {label}
           <div>
-            <small className="text-xs">Last use: ${moment(lastUpdate).fromNow()}</small>
+            <small className="text-xs">Last use:
+              {moment(lastUpdate).fromNow()}</small>
           </div>
         </div>
       </div>
@@ -51,6 +52,9 @@ export function SelectUniqValues ({ onChange, isInvalid, ...props }) {
     itemLayout={ItemLayout}
     validationState={isInvalid ? 'IS_INVALID' : 'NOT_VALIDATED'}
     onBlur={() => {
+      if (props.name === 'api_key' && value && !value.endsWith('.clubmed.com')) {
+        return
+      }
       value && pushUniqValue(props.name, value)
     }}
     onChange={(name, value) => {

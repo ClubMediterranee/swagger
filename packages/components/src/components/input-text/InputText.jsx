@@ -1,20 +1,22 @@
 // @flow
-import React, { Component, type Node } from 'react'
 import isInteger from 'lodash/isString'
 import noop from 'lodash/noop'
+import React, { Component, type Node } from 'react'
 
 import { getFormattedLabel, getRandomComponentId } from '../..'
-
-import { Icon, type IconName } from '../icon/Icon.jsx'
-import { FormControl } from '../form-control/FormControl.jsx'
 import { ReactComponent as CLOSED_EYE_PASSWORD } from '../../statics/svg/closedEyePassword.svg'
 import { ReactComponent as EYE_PASSWORD } from '../../statics/svg/eyePassword.svg'
+import { callLast } from '../../utils'
+import { FormControl } from '../form-control/FormControl.jsx'
+
+import { Icon, type IconName } from '../icon/Icon.jsx'
 
 import { themes } from './InputText.themes'
 
 type InputTypes = 'email' | 'password' | 'search' | 'tel' | 'text' | 'url';
 
 type Props = {
+  debounceTimeout?: number,
   autoComplete?: AutoComplete,
   autoFocus?: boolean,
   className?: string,
@@ -81,6 +83,8 @@ export class InputText extends Component<Props, State> {
       type: props.type || 'text',
       value: props.value || ''
     }
+
+    this.debounceChange = callLast(props.onChange || noop, props.debounceTimeout || 0)
   }
 
   componentWillReceiveProps ({ value, type }: Props) {
@@ -92,7 +96,7 @@ export class InputText extends Component<Props, State> {
   }
 
   onChange = (e: SyntheticEvent<>) => {
-    const { isLoading, isReadOnly, name = '', onChange = noop } = this.props
+    const { isLoading, isReadOnly, name = '' } = this.props
 
     if (!isReadOnly && !isLoading) {
       e.persist()
@@ -104,7 +108,7 @@ export class InputText extends Component<Props, State> {
         {
           value
         },
-        () => onChange(name, value)
+        () => this.debounceChange(name, value)
       )
     }
   }
