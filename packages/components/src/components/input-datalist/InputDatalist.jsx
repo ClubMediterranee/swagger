@@ -1,11 +1,11 @@
 // @flow
+import classnames from 'classnames'
+import { get, isFunction, noop, pick } from 'lodash'
 /* eslint-env browser */
 import React, { createRef, type Node, PureComponent } from 'react'
-import classnames from 'classnames'
-import shortId from 'shortid'
-import { get, isFunction, noop, pick } from 'lodash'
 import striptags from 'striptags'
 import { callLast } from '../../utils'
+import { getRandomComponentId } from '../../utils/id/getRandomComponentId'
 import { ARROW_DOWN, ARROW_UP, ENTER } from '../../utils/keys-codes/keyCodes'
 
 import { InputText } from '../input-text/InputText.jsx'
@@ -71,10 +71,11 @@ type State = {
 
 export class InputDatalist extends PureComponent<Props, State> {
   static defaultProps = {
-    dataList: [],
+    options: [],
     size: 'medium',
     theme: 'default'
   }
+
   dataListElementRef: * = null
 
   constructor (props: Props) {
@@ -141,16 +142,16 @@ export class InputDatalist extends PureComponent<Props, State> {
   }
 
   onKeyDown = (e: SyntheticKeyboardEvent<>) => {
-    const { dataList = [], onKeyDown, onValidate } = this.props
+    const { options = [], onKeyDown, onValidate } = this.props
 
     const { index } = this.state
 
-    if (e.keyCode === ARROW_DOWN && index < dataList.length - 1) {
+    if (e.keyCode === ARROW_DOWN && index < options.length - 1) {
       this.goToIndex(1)
     } else if (e.keyCode === ARROW_UP && index > 0) {
       this.goToIndex(-1)
     } else if (e.keyCode === ENTER) {
-      const item = dataList[index]
+      const item = options[index]
       this.setState({ isActive: false })
       if (item) {
         this.onSelect(item)
@@ -221,8 +222,8 @@ export class InputDatalist extends PureComponent<Props, State> {
   render () {
     const {
       className,
-      dataList,
-      id = `InputDatalist_${shortId.generate()}`,
+      options,
+      id = getRandomComponentId(),
       isAnimated,
       isDisabled,
       isLoading,
@@ -236,7 +237,7 @@ export class InputDatalist extends PureComponent<Props, State> {
     const { isActive, selected } = this.state
 
     return (
-      <div className={classnames(className, thRoot)} ref={this.dataListElementRef}>
+      <div className={classnames(className, thRoot)} ref={this.dataListElementRef} style={this.props.style}>
         <InputText
           {...pick(this.props, [
             'debounceTimeout',
@@ -244,6 +245,7 @@ export class InputDatalist extends PureComponent<Props, State> {
             'hasClear',
             'iconLeft',
             'iconRight',
+            'iconRightWidth',
             'isDisabled',
             'isFilled',
             'isLoading',
@@ -277,7 +279,7 @@ export class InputDatalist extends PureComponent<Props, State> {
         !isReadOnly &&
         !isDisabled &&
         !isLoading &&
-        !!dataList.length && (
+        !!options.length && (
           <div className={classnames(thDatalist, { fadeIn: isAnimated })} style={{ minWidth: '140px' }}>
             <ul
               style={{ maxHeight: '200px' }}
@@ -285,7 +287,7 @@ export class InputDatalist extends PureComponent<Props, State> {
               data-testid="InputDatalistList"
               role="listbox"
             >
-              {dataList.map((item, index) => {
+              {options.map((item, index) => {
                 if (!item.label) return null
 
                 const { index: indexFromState } = this.state

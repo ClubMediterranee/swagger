@@ -1,17 +1,33 @@
 import { InputText } from '@clubmed/components'
 import { ReactComponent as GM45 } from '@clubmed/components/src/statics/svg/45.svg'
+import { ReactComponent as DATE } from '@clubmed/components/src/statics/svg/date.svg'
+import { ReactComponent as DETAILS } from '@clubmed/components/src/statics/svg/details.svg'
+import { ReactComponent as NOTEBOOK } from '@clubmed/components/src/statics/svg/document.svg'
+import { ReactComponent as DURATION } from '@clubmed/components/src/statics/svg/duration.svg'
 import { ReactComponent as KEYS } from '@clubmed/components/src/statics/svg/keys.svg'
 import { ReactComponent as PADLOCK } from '@clubmed/components/src/statics/svg/padlock.svg'
 import { ReactComponent as PADUNLOCK } from '@clubmed/components/src/statics/svg/padunlock.svg'
+import { ReactComponent as TRANSPORT } from '@clubmed/components/src/statics/svg/transport.svg'
+import { ReactComponent as TRIDENT } from '@clubmed/components/src/statics/svg/trident1.svg'
+import { ReactComponent as USERS } from '@clubmed/components/src/statics/svg/users.svg'
 import React, { Component } from 'react'
 import { decodeToken } from '../auth/utils/decode-token'
+import { SelectLocales } from './select-locales.component'
 import { SelectUniqValues } from './select-uniq-values.component'
 
 const iconFields = {
   'api_key': KEYS,
   'customer_id': GM45,
   'authorization.ok': PADLOCK,
-  'authorization.ko': PADUNLOCK
+  'authorization.ko': PADUNLOCK,
+  'first_date': DATE,
+  'last_date': DATE,
+  'duration': DURATION,
+  'number_of_adults': USERS,
+  'product_id': TRIDENT,
+  'departure_option_id': TRANSPORT,
+  'proposal_id': DETAILS,
+  'booking_id': NOTEBOOK
 }
 
 function TokenInfo ({ value }) {
@@ -45,7 +61,28 @@ export function wrapJsonSchemaString (base, system) {
 
       errors = errors.toJS ? errors.toJS() : []
 
+      const isDisabled = disabled || (schema['in'] === 'formData' && !('FormData' in window))
+
+      const options = {
+        style: { 'width': '100%', maxWidth: '340px' },
+        isDisabled,
+        value,
+        type: schema.format === 'password' ? 'password' : 'text',
+        iconLeft: iconFields[name],
+        placeholder: description,
+        validationState: errors.length ? 'IS_INVALID' : 'NOT_VALIDATED',
+        name,
+        minLength: 0,
+        debounceTimeout: 350,
+        title: errors.length ? errors : '',
+        onChange: createTargetFn(this.onChange.bind(this))
+      }
+
       if (enumValue) {
+        if (name === 'accept-language') {
+          return <SelectLocales {...options} options={enumValue} isRequired={required} />
+        }
+
         const Select = getComponent('Select')
         return (<Select
           className={errors.length ? 'invalid' : ''}
@@ -57,7 +94,6 @@ export function wrapJsonSchemaString (base, system) {
           onChange={this.onEnumChange}/>)
       }
 
-      const isDisabled = disabled || (schema['in'] === 'formData' && !('FormData' in window))
       const Input = getComponent('Input')
       if (schema['type'] === 'file') {
         return (<Input
@@ -70,45 +106,18 @@ export function wrapJsonSchemaString (base, system) {
 
       if (fieldsPersistence.includes(name)) {
         return <SelectUniqValues
-          type={'text'}
-          iconLeft={iconFields[name]}
-          isInvalid={!!errors.length}
-          title={errors.length ? errors : ''}
-          value={value}
-          name={name}
-          minLength={0}
-          debounceTimeout={350}
-          placeholder={description}
-          onChange={createTargetFn(this.onChange.bind(this))}
-          disabled={isDisabled}/>
+          {...options}
+          isInvalid={!!errors.length}/>
       }
 
       if (name === 'authorization') {
         return <InputText
-          style={{ 'width': '100%', maxWidth: '340px' }}
-          isDisabled={isDisabled}
-          value={value}
+          {...options}
           iconLeft={iconFields[`${name}.${decodeToken(value) ? 'ok' : 'ko'}`]}
-          placeholder={description}
-          name={name}
-          debounceTimeout={350}
-          notes={<TokenInfo value={value}/>}
-          onChange={createTargetFn(this.onChange.bind(this))}/>
+          notes={<TokenInfo value={value}/>}/>
       }
 
-      return <InputText
-        style={{ 'width': '100%', maxWidth: '340px' }}
-        isDisabled={isDisabled}
-        value={value}
-        type={schema.format === 'password' ? 'password' : 'text'}
-        iconLeft={iconFields[name]}
-        placeholder={description}
-        validationState={errors.length ? 'IS_INVALID' : 'NOT_VALIDATED'}
-        name={name}
-        minLength={0}
-        debounceTimeout={350}
-        title={errors.length ? errors : ''}
-        onChange={createTargetFn(this.onChange.bind(this))}/>
+      return <InputText {...options}/>
     }
   }
 }

@@ -25,7 +25,7 @@ export function SelectClientId ({ onChange, appName, ...props }) {
   return <InputDatalist
     {...props}
     value={value}
-    dataList={options}
+    options={options}
     onChange={(name, value) => {
       setValue(value)
       onChange(props.name, value)

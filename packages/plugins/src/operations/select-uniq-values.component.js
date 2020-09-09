@@ -48,7 +48,7 @@ export function SelectUniqValues ({ onChange, isInvalid, ...props }) {
   return <div style={{ 'maxWidth': '340px' }}><InputDatalist
     {...props}
     value={value}
-    dataList={options}
+    options={options}
     itemLayout={ItemLayout}
     validationState={isInvalid ? 'IS_INVALID' : 'NOT_VALIDATED'}
     onBlur={() => {

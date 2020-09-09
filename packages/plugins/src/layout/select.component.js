@@ -4,7 +4,7 @@ import { InputSelect } from '@clubmed/components'
 export function Select (props) {
   let { allowedValues, multiple, allowEmptyValue, value, disabled, className, onChange } = props
 
-  if (value.toJS) {
+  if (value && value.toJS) {
     value = value.toJS()
   }
   //
