@@ -13,6 +13,9 @@ function getConfig () {
     filter: true,
     defaultModelsExpandDepth: false,
     docExpansion: 'list',
+    fieldsPersistence: [
+      'api_key'
+    ],
     ...(config || {}),
     presets: config.presets || [
       'apis'

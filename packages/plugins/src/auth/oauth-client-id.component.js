@@ -1,14 +1,14 @@
-import React, { useEffect, useMemo, useState } from 'react'
 import { InputDatalist, withIf } from '@clubmed/components'
 import moment from 'moment'
+import React, { useEffect, useMemo, useState } from 'react'
+import { getKey } from '../common/localeStorage'
 import { OauthAccessToken } from './oauth-access-token.component'
-import { getClientId } from './utils/locale-storage-clientids'
 
 export function SelectClientId ({ onChange, appName, ...props }) {
   const [value, setValue] = useState(props.value)
 
   const options = useMemo(() => {
-    return getClientId(appName)
+    return getKey(appName, [])
       .sort((a, b) => {
         return moment(a.lastUpdate).isBefore(b.lastUpdate) ? 1 : -1
       })

@@ -1,10 +1,10 @@
 import React from 'react'
+import { pushUniqValue } from '../common/localeStorage'
 import { IfOAuthPassword } from './oauth-password.component'
 import { IfOAuthClientId } from './oauth-client-id.component'
 import { IfOAuthClientSecret } from './oauth-client-secret.component'
 import { IfOAuthScopes } from './oauth-scopes.component'
 import { getOauthTitle } from './utils/get-oauth-title'
-import { pushClientId } from './utils/locale-storage-clientids'
 import { getAccessToken } from './utils/get-access-token'
 import { logoutFromOIDC } from './utils/logout-from-oidc'
 import { getCurrentAuth } from './utils/get-current-auth'
@@ -157,7 +157,7 @@ export default function OauthPanel (props) {
         }}>Logout</Button>
         : <Button className="btn modal-btn auth authorize" onClick={() => {
           if (appName && clientId) {
-            pushClientId(appName, clientId)
+            pushUniqValue(appName, clientId)
           }
           onAuthorize()
         }}>Authorize</Button>)
