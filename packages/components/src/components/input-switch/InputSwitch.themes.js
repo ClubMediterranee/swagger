@@ -41,7 +41,7 @@ export const themes = {
       },
       thLoading: 'rtl:ml-2 flex items-center leading-none',
       thSwitch: classnames(
-        'border-2 flex items-center transition-all',
+        'flex transition-all',
         getCursorClass({ hasPointer: true, ...props }),
         {
           'bg-gray-light border-gray-light': isDisabled,
@@ -50,16 +50,15 @@ export const themes = {
         }
       ),
       thSwitchStyle: {
-        width: 60,
-        height: 30,
-        borderRadius: 30
+        width: 40,
+        height: 22,
+        padding: 2,
+        borderRadius: 20
       },
-      thSwitchToggler: classnames('bg-white block rounded-half transition-all', {
-        'rtl:translate-x-100': isChecked
-      }),
+      thSwitchToggler: classnames('absolute bg-white block rounded-half transition-all top-0 bottom-0', {}),
       thSwitchTogglerStyle: {
-        width: 28,
-        height: 28
+        width: 18,
+        left: !isChecked ? '0%' : 'calc(100% - 18px)'
       }
     }
   },

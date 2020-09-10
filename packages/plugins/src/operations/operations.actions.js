@@ -1,5 +1,5 @@
 export const UPDATE_FILTER = 'operations_update_filter'
-export const UPDATE_DEPRECATE_FILTER = 'operations_deprecated_filter'
+export const UPDATE_TAGS_FILTER = 'operations_tags_filter'
 
 export function updateFilter (filter) {
   return {
@@ -8,9 +8,9 @@ export function updateFilter (filter) {
   }
 }
 
-export function updateDeprecatedFilter (filter) {
+export function updateTagsFilter (filter) {
   return {
-    type: UPDATE_DEPRECATE_FILTER,
+    type: UPDATE_TAGS_FILTER,
     payload: filter
   }
 }

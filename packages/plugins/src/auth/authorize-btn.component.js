@@ -23,13 +23,13 @@ export default class AuthorizeBtn extends React.Component {
   }
 
   render () {
-    let { isAuthorized, showPopup, onClick, getComponent } = this.props
+    let { isAuthorized, showPopup, onClick, getComponent, className = '' } = this.props
 
     // must be moved out of button component
     const AuthorizationPopup = getComponent('authorizationPopup', true)
 
     return (
-      <div className="auth-wrapper ml-2" style={{ height: '40px' }}>
+      <div className={`auth-wrapper ml-2 ${className}`} style={{ height: '40px' }}>
         <button className={isAuthorized ? 'btn authorize locked' : 'btn authorize unlocked'} onClick={onClick}>
           <AuthorizeSvg isAuthorized={isAuthorized}/>
         </button>

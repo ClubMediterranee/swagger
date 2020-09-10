@@ -16,6 +16,10 @@ function getConfig () {
     fieldsPersistence: [
       'api_key'
     ],
+    tagsSwitches: [
+      { label: 'Deprecated', value: 'deprecated' },
+      { label: 'Admin', value: 'hidden' }
+    ],
     ...(config || {}),
     presets: config.presets || [
       'apis'

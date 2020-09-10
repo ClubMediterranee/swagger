@@ -1,17 +1,17 @@
 // @flow
-import React, { Component, type Node } from 'react'
 import classnames from 'classnames'
 import { isString, noop } from 'lodash'
+import React, { Component, type Node } from 'react'
+import { getFormattedLabel, getRandomComponentId } from '../..'
+
+import { ReactComponent as CHECK } from '../../statics/svg/check.svg'
+import { COLORS } from '../../utils/color/colors'
 
 import { dataSetProps } from '../../utils/string/string.util'
-import { COLORS } from '../../utils/color/colors'
-import { getFormattedLabel, getRandomComponentId } from '../..'
 import { Icon } from '../icon/Icon.jsx'
 import { Spinner } from '../spinner/Spinner.jsx'
 
 import { themes } from './InputSwitch.themes'
-
-import { ReactComponent as CHECK } from '../../statics/svg/check.svg'
 
 type Props = {
   className?: string,
@@ -134,9 +134,11 @@ export class InputSwitch extends Component<Props, State> {
       >
 
         {isSwitch ? (
-          <span className={thSwitch} style={thSwitchStyle}>
-            <span className={thSwitchToggler} style={thSwitchTogglerStyle}/>
-          </span>
+          <div className={thSwitch} style={thSwitchStyle}>
+            <div className={'flex items-center w-full h-full relative'}>
+              <div className={thSwitchToggler} style={thSwitchTogglerStyle}/>
+            </div>
+          </div>
         ) : (
           <span style={thCheckedStyle}>
             <span className={thChecked} style={thCheckedStyle}>

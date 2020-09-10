@@ -13,5 +13,6 @@ export * from './components/directives/IfDirective'
 export * from './components/switch/Switch'
 export * from './components/tabs/Tabs'
 export * from './components/footer/Footer'
+export * from './components/dropdown/Dropdown'
 
 export * from './utils/index'

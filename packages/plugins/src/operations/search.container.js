@@ -1,9 +1,9 @@
 import React from 'react'
 import { ReactComponent as SEARCH } from '@clubmed/components/src/statics/svg/searchGlass.svg'
-import { callLast, InputText } from '@clubmed/components'
+import { InputText } from '@clubmed/components'
 
 export default function SearchContainer ({ specSelectors, operationsSelectors, operationsActions }) {
-  const setFilter = callLast((value) => operationsActions.updateFilter(value), 500)
+  const setFilter = (value) => operationsActions.updateFilter(value)
 
   const onKeyPressEnter = (event, value) => {
     operationsActions.updateFilter(value)
@@ -33,6 +33,7 @@ export default function SearchContainer ({ specSelectors, operationsSelectors, o
     placeholder="Search... (e.g. path: /products AND method: POST)"
     name="search"
     onKeyPressEnter={onKeyPressEnter}
+    debounceTimeout={500}
     onChange={onChange}
     onClear={onClear}/>
 }

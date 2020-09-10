@@ -18,7 +18,7 @@ const Header = ({ children, sticky = true }) => {
         'absolute': !sticky,
         'fixed': sticky
       })}>
-        <div className="relative flex items-center p-4">
+        <div className="relative flex items-center px-4">
           <div className='flex flex-row w-full'>
             <div className='flex flex-col sm:flex-row sm:items-center flex-auto'>
               {children}

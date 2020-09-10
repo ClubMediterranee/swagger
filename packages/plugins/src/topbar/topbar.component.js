@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { Header, Icon } from '@clubmed/components'
 import { ReactComponent as CLUBMED } from '@clubmed/components/src/statics/svg/clubmed.svg'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 export default function Topbar (props) {
   let { getComponent, specSelectors, getConfigs } = props
@@ -11,7 +11,8 @@ export default function Topbar (props) {
   const ServersContainer = getComponent('ServersContainer', true)
   const SchemesContainer = getComponent('SchemesContainer', true)
   const SearchContainer = getComponent('SearchContainer', true)
-  const ToggleContainer = getComponent('ToggleContainer', true)
+  const TagsContainer = getComponent('TagsContainer', true)
+
   const { appName } = getConfigs()
 
   const version = info.get('version')
@@ -25,7 +26,7 @@ export default function Topbar (props) {
   return (
     <Header>
       <Link className="cursor-pointer flex flex-no-shrink items-center pr-5 text-blue font-happiness">
-        <div className="flex items-center">
+        <div className="flex items-center py-2">
           <div className="overflow-hidden flex items-center relative" style={{ height: '40px', top: '-2px' }}>
             <Icon svg={CLUBMED} width="7rem"/>
           </div>
@@ -35,16 +36,16 @@ export default function Topbar (props) {
           </div>
         </div>
       </Link>
-      <div className="flex items-stretch" style={{ flex: '1 1 auto' }}>
+      <div className="flex items-center h-full" style={{ flex: '1 1 auto' }}>
         {hasServers ? (<ServersContainer/>) : null}
         {hasSchemes ? (<SchemesContainer/>) : null}
       </div>
-      <div className="flex items-stretch" style={{ width: '40%' }}>
-        {ToggleContainer ? <ToggleContainer/> : null}
+      <div className="flex items-center h-full" style={{ width: '40%' }}>
+        {TagsContainer ? <TagsContainer /> : null}
         {SearchContainer ? <SearchContainer/> : null}
       </div>
       <div className="flex flex-no-shrink relative">
-        {hasSecurityDefinitions ? <AuthorizeBtnContainer/> : null}
+        {hasSecurityDefinitions ? <AuthorizeBtnContainer /> : null}
       </div>
     </Header>
   )

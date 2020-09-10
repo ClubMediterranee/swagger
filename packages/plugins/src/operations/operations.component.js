@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import Im from 'immutable'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { getOperationsMixins } from '../common/getOperationsMixins'
 
 export default class Operations extends React.Component {

@@ -4,7 +4,7 @@ import * as selectors from './operations.selectors'
 import SearchContainer from './search.container'
 import Operations from './operations.component'
 import OperationSummary from './operation-summary.component'
-import ToggleContainer from './toggle.container'
+import TagsContainer from './tags.container'
 import { operationsFilter } from './operations.filter'
 import { wrapOperationsContainer } from './operations.container'
 import { wrapParamBody } from './param-body.component'
@@ -23,7 +23,7 @@ export const OperationsPlugin = () => {
     },
     components: {
       SearchContainer,
-      ToggleContainer,
+      TagsContainer,
       TryItOutButton: () => null
     },
     wrapComponents: {
@@ -40,12 +40,7 @@ export const OperationsPlugin = () => {
       JsonSchemaForm: wrapJsonSchemaForm
     },
     fn: {
-      operationsFilter,
-      tagsFilter (taggedOps, tagKeyword) {
-        const hasHidden = String(window.location.search).includes('tags=hidden')
-
-        return taggedOps.filter((tagObj, tag) => hasHidden ? tag === 'hidden' : tag !== 'hidden')
-      }
+      operationsFilter
     }
   }
 }

@@ -1,14 +1,28 @@
-import luceneQueryParser from 'lucene-query-parser'
-import luceneFilter from 'lucene-filter'
 import { fromJS } from 'immutable'
+import luceneFilter from 'lucene-filter'
+import luceneQueryParser from 'lucene-query-parser'
 
 const lucene = luceneFilter(luceneQueryParser)
 const mapFilters = new Map()
+
+function fixQuery (query) {
+  return query.split(' AND ').map((item) => {
+    return item
+      .split(' OR ')
+      .map((item) => {
+        const [key, value] = item.split(':')
+        return `${key}: "${value.trim()}"`
+      })
+      .join(' OR ')
+  }).join(' AND ')
+}
 
 function getLucene (keyword) {
   try {
     if (keyword.startsWith('/') && keyword.endsWith('/')) {
       keyword = `path: "${keyword}"`
+    } else if (keyword.includes(':') && !keyword.includes('"')) {
+      keyword = fixQuery(keyword)
     } else if (!keyword.includes('"')) {
       keyword = `"${keyword}"`
     }
@@ -49,7 +63,7 @@ function mapItem (item) {
     ...item,
     ...operation,
     model: Array.from(getModels(operation)).join(','),
-    tags
+    tags: tags.join(' ')
   }
 }
 
