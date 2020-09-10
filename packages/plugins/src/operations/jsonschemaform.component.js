@@ -1,10 +1,11 @@
+import { getRandomComponentId } from '@clubmed/components'
 import React from 'react'
 
 export function wrapJsonSchemaForm (BaseJsonSchemaForm) {
   return class JsonSchemaForm extends BaseJsonSchemaForm {
     render () {
       let { schema, errors, value, description, onChange, getComponent, fn, disabled } = this.props
-      const name = description.split(' - ')[0].trim()
+      const name = (description || getRandomComponentId()).split(' - ')[0].trim()
 
       if (schema.toJS) {
         schema = schema.toJS()

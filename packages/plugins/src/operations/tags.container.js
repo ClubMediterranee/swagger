@@ -42,6 +42,10 @@ export default function TagsContainer ({ operationsActions, operationsSelectors,
   const options = getConfigs().tagsSwitches || []
   const value = operationsSelectors.currentTagsFilter()
 
+  if (options.length === 0) {
+    return ''
+  }
+
   return <Dropdown title={DropdownTitle} className={'flex h-full'} minWidth={'250px'}>
     {() => {
       return <div>

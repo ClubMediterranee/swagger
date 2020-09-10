@@ -76,7 +76,6 @@ export function getOperationsMixins (props) {
 
       if (operationsKeyword) {
         if (operationsKeyword !== true) {
-          console.log('====>', operationsKeyword)
           operations = fn.operationsFilter(operations, operationsKeyword)
         }
       }

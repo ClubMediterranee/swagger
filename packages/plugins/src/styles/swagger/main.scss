@@ -196,4 +196,8 @@
   input[type=email].reset-input, input[type=file].reset-input, input[type=password].reset-input, input[type=search].reset-input, input[type=text].reset-input, textarea.reset-input, .reset-input {
     font-family: 'Trident', 'Trebuchet MS', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
   }
+
+  .json-schema-form-item {
+    margin-bottom: 10px;
+  }
 }
