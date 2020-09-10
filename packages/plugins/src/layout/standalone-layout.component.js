@@ -1,7 +1,7 @@
-import React, { useLayoutEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
 import { Fade, Spinner } from '@clubmed/components'
 import { ReactComponent as CLUBMED } from '@clubmed/components/src/statics/svg/trident1.svg'
+import PropTypes from 'prop-types'
+import React, { useCallback, useLayoutEffect, useRef } from 'react'
 
 const Loader = ({ isActive }) => {
   return <div className="opacity-85 z-10 relative">
@@ -39,21 +39,35 @@ function FailConfig ({ errSelectors }) {
   </div>
 }
 
+function useResize ({ sidebarRef, topbarRef, bodyRef }) {
+  const resize = useCallback(() => {
+    if (sidebarRef) {
+      if (topbarRef) {
+        sidebarRef.style.top = `${topbarRef.offsetHeight}px`
+      }
+      if (bodyRef) {
+        bodyRef.style.marginLeft = `${sidebarRef.offsetWidth}px`
+      }
+    }
+  }, [bodyRef, sidebarRef, topbarRef])
+
+  useLayoutEffect(() => {
+    resize()
+
+    window.addEventListener('resize', resize)
+
+    return () => {
+      window.removeEventListener('resize', resize)
+    }
+  }, [resize])
+}
+
 const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
   const topbarRef = useRef(null)
   const bodyRef = useRef(null)
   const sidebarRef = useRef(null)
 
-  useLayoutEffect(() => {
-    if (sidebarRef.current) {
-      if (topbarRef.current) {
-        sidebarRef.current.style.top = `${topbarRef.current.offsetHeight}px`
-      }
-      if (bodyRef.current) {
-        bodyRef.current.style.marginLeft = `${sidebarRef.current.offsetWidth}px`
-      }
-    }
-  })
+  useResize({ sidebarRef: sidebarRef.current, topbarRef: topbarRef.current, bodyRef: bodyRef.current })
 
   const Topbar = getComponent('Topbar', true)
   const Sidebar = getComponent('Sidebar', true)
@@ -101,7 +115,7 @@ const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
     <Container className="swagger-ui relative">
       {Topbar ? <div ref={topbarRef}><Topbar/></div> : null}
       {Sidebar
-        ? <div ref={sidebarRef} className="fixed left-0 bottom-0" style={{ width: '260px' }}>
+        ? <div ref={sidebarRef} className="fixed left-0 bottom-0 sm:hidden lg:block" style={{ width: '260px' }}>
           <Sidebar/>
         </div>
         : null}

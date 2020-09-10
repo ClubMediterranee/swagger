@@ -13,7 +13,7 @@ export default function Topbar (props) {
   const SearchContainer = getComponent('SearchContainer', true)
   const TagsContainer = getComponent('TagsContainer', true)
 
-  const { appName } = getConfigs()
+  const { appName, legacyUrl } = getConfigs()
 
   const version = info.get('version')
   const servers = specSelectors.servers()
@@ -41,11 +41,14 @@ export default function Topbar (props) {
         {hasSchemes ? (<SchemesContainer/>) : null}
       </div>
       <div className="flex items-center h-full" style={{ width: '40%' }}>
-        {TagsContainer ? <TagsContainer /> : null}
+        {legacyUrl &&
+        <a href={'/old'} className={'whitespace-no-wrap pointer hover:text-blue-active h-full flex items-center'}>Legacy
+          doc</a>}
+        {TagsContainer ? <TagsContainer/> : null}
         {SearchContainer ? <SearchContainer/> : null}
       </div>
       <div className="flex flex-no-shrink relative">
-        {hasSecurityDefinitions ? <AuthorizeBtnContainer /> : null}
+        {hasSecurityDefinitions ? <AuthorizeBtnContainer/> : null}
       </div>
     </Header>
   )

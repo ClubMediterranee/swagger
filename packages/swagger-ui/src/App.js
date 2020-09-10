@@ -17,8 +17,7 @@ function getConfig () {
       'api_key'
     ],
     tagsSwitches: [
-      { label: 'Deprecated', value: 'deprecated' },
-      { label: 'Admin', value: 'hidden' }
+      { label: 'Deprecated', value: 'deprecated' }
     ],
     ...(config || {}),
     presets: config.presets || [
@@ -34,6 +33,11 @@ function getConfig () {
       'FooterPlugin',
       'DownloadUrl'
     ]
+  }
+
+  // TODO remove this code when API has correctly configured his swagger
+  if (config.appName === 'API' && !config.tagsSwitches.find(o => o.label === 'Admin')) {
+    config.tagsSwitches.push({ label: 'Admin', value: 'hidden' })
   }
 
   return config
