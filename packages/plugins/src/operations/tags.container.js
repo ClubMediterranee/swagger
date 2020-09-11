@@ -48,7 +48,7 @@ export default function TagsContainer ({ operationsActions, operationsSelectors,
 
   return <Dropdown title={DropdownTitle} className={'flex h-full'} minWidth={'250px'}>
     {() => {
-      return <div>
+      return <div className={'overflow-hidden'}>
         <h4 className={'font-brand font-normal mt-0 mb-2 text-blue text-md'}>Display routes</h4>
         <div className={'-mx-2'}>
           <TagsOptions
