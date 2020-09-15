@@ -42,7 +42,7 @@ export default function Topbar (props) {
       </div>
       <div className="flex items-center h-full" style={{ width: '40%' }}>
         {legacyUrl &&
-        <a href={'/old'} className={'whitespace-no-wrap pointer hover:text-blue-active h-full flex items-center'}>Legacy
+        <a href={legacyUrl} className={'whitespace-no-wrap pointer hover:text-blue-active h-full flex items-center'}>Legacy
           doc</a>}
         {TagsContainer ? <TagsContainer/> : null}
         {SearchContainer ? <SearchContainer/> : null}
