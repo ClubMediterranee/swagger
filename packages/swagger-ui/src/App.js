@@ -17,7 +17,8 @@ function getConfig () {
       'api_key'
     ],
     tagsSwitches: [
-      { label: 'Deprecated', value: 'deprecated' }
+      { label: 'Deprecated', value: 'deprecated' },
+      { label: 'Admin', value: 'admin' }
     ],
     ...(config || {}),
     presets: config.presets || [

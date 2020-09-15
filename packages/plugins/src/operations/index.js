@@ -1,24 +1,35 @@
-import reducers from './operations.reducers'
-import * as actions from './operations.actions'
-import * as selectors from './operations.selectors'
-import SearchContainer from './search.container'
-import Operations from './operations.component'
-import OperationSummary from './operation-summary.component'
-import TagsContainer from './tags.container'
-import { operationsFilter } from './operations.filter'
-import { wrapOperationsContainer } from './operations.container'
-import { wrapParamBody } from './param-body.component'
 import { wrapJsonSchemaArray } from './jsonschema.array.component'
 import { wrapJsonSchemaString } from './jsonschema.string.component'
 import { wrapJsonSchemaForm } from './jsonschemaform.component'
+import OperationSummary from './operation-summary.component'
+import * as actions from './operations.actions'
+import Operations from './operations.component'
+import { wrapOperationsContainer } from './operations.container'
+import { operationsFilter } from './operations.filter'
+import reducers from './operations.reducers'
+import { wrapParamBody } from './param-body.component'
+import SearchContainer from './search.container'
+import TagsContainer from './tags.container'
 
-export const OperationsPlugin = () => {
+function getTagsState (system) {
+  return (system.getConfigs().tagsSwitches || []).reduce((obj, item) => {
+    return {
+      ...obj,
+      [item.value]: false
+    }
+  }, {})
+}
+
+export const OperationsPlugin = (system) => {
   return {
     statePlugins: {
       operations: {
         reducers,
         actions,
-        selectors
+        selectors: {
+          currentFilter: state => state.get('filter'),
+          currentTagsFilter: state => state.get('tagsFilter') || getTagsState(system)
+        }
       }
     },
     components: {
