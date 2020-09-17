@@ -20,7 +20,7 @@ export default {
               :isAuth="isAuth"
               @build="(feature) => onClickBuild('build', feature)"
               @clean="(feature) => onClickBuild('clean', feature)"/>
-            <div>
+            <div style="margin-bottom: 10px;">
               <a v-if="!isAuth" class="cm-button secondary-button" :href="cleanFeaturesUrl" target="blank">Clean
                 features</a>
               <button

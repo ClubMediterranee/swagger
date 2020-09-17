@@ -4,12 +4,12 @@ export function createElementFromFragment (data) {
   const result = BODY_PATTERN.exec(data)
 
   if (result && result[1]) {
-    const fragment = document.createDocumentFragment()
     const div = document.createElement('div')
+
     div.innerHTML = result[1]
+      .replace(/src="(.*)"/gi, '')
+      .replace(/href="(.*)"/gi, '')
 
-    fragment.appendChild(div)
-
-    return fragment
+    return div
   }
 }
