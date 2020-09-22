@@ -20,6 +20,13 @@ function getConfig () {
       { label: 'Deprecated', value: 'deprecated' },
       { label: 'Admin', value: 'admin' }
     ],
+    requestInterceptor (request) {
+      if (!request.url.endsWith('swagger.json')) {
+        request.url += `&timestamp=${Date.now()}`
+      }
+
+      return request
+    },
     ...(config || {}),
     presets: config.presets || [
       'apis'
