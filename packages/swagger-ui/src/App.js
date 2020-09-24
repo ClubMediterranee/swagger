@@ -7,6 +7,7 @@ function getConfig () {
   config = {
     brandName: 'ClubMed',
     appName: 'API',
+    disableBrowserCache: false,
     url: 'https://api.integ.clubmed.com/doc/swagger.json',
     oauth2RedirectUrl: `${window.location.origin}/doc/o2c.html`,
     deepLinking: true,
@@ -20,13 +21,6 @@ function getConfig () {
       { label: 'Deprecated', value: 'deprecated' },
       { label: 'Admin', value: 'admin' }
     ],
-    requestInterceptor (request) {
-      if (!request.url.endsWith('swagger.json')) {
-        request.url += `&timestamp=${Date.now()}`
-      }
-
-      return request
-    },
     ...(config || {}),
     presets: config.presets || [
       'apis'
@@ -43,9 +37,14 @@ function getConfig () {
     ]
   }
 
-  // TODO remove this code when API has correctly configured his swagger
-  if (config.appName === 'API' && !config.tagsSwitches.find(o => o.label === 'Admin')) {
-    config.tagsSwitches.push({ label: 'Admin', value: 'hidden' })
+  if (config.appName.toLowerCase() === 'api' || config.disableBrowserCache) {
+    config.requestInterceptor = (request) => {
+      if (!request.url.endsWith('swagger.json')) {
+        request.url += `&timestamp=${Date.now()}`
+      }
+
+      return request
+    }
   }
 
   return config
