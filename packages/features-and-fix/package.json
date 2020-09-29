@@ -1,6 +1,6 @@
 {
   "name": "@clubmed/features-and-fix",
-  "version": "1.10.8",
+  "version": "1.10.9",
   "private": true,
   "dependencies": {
     "@clubmed/webpack": "1.7.1",
