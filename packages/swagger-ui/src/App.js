@@ -40,7 +40,7 @@ function getConfig () {
   if (config.appName.toLowerCase() === 'api' || config.disableBrowserCache) {
     config.requestInterceptor = (request) => {
       if (!request.url.endsWith('swagger.json')) {
-        request.url += `&timestamp=${Date.now()}`
+        request.url += (request.url.includes('?') ? '&' : '?') + `timestamp=${Date.now()}`
       }
 
       return request
