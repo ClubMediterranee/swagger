@@ -27,39 +27,33 @@ export function wrapJsonSchemaArray (BaseJsonSchemaArray) {
       this.props.onChange(value)
     }
 
+    renderEnum () {
+      let { getComponent, required, schema, errors, disabled } = this.props
+      const value = this.state.value // expect Im List
+      const enumItems = schema.getIn(['enum'])
+
+      const Select = getComponent('Select')
+
+      return (<Select
+        className={errors.length ? 'invalid' : ''}
+        title={errors.length ? errors : ''}
+        multiple={true}
+        value={value}
+        disabled={disabled}
+        allowedValues={enumItems.toJSON()}
+        allowEmptyValue={!required}
+        onChange={(value) => this.onChange(value)}/>)
+    }
+
     render () {
-      let { getComponent, required, schema, errors, fn, disabled } = this.props
+      let { schema } = this.props
 
-      if (schema.enum && schema.items) {
-        schema = {
-          ...schema,
-          items: {
-            ...schema.items,
-            enum: schema.enum
-          }
-        }
-        schema.items.enum = schema.enum
+      const enumItems = schema.getIn(['enum'])
+
+      if (enumItems) {
+        return this.renderEnum()
       }
 
-      errors = errors.toJS ? errors.toJS() : []
-
-      let itemSchema = fn.inferSchema(schema.items)
-
-      let enumValue = itemSchema['enum']
-      let value = this.state.value
-
-      if (enumValue) {
-        const Select = getComponent('Select')
-        return (<Select
-          className={errors.length ? 'invalid' : ''}
-          title={errors.length ? errors : ''}
-          multiple={true}
-          value={value}
-          disabled={disabled}
-          allowedValues={enumValue}
-          allowEmptyValue={!required}
-          onChange={(value) => this.onChange(value)}/>)
-      }
       return super.render()
     }
   }

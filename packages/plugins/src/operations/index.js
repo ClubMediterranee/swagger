@@ -1,6 +1,6 @@
 import { wrapJsonSchemaArray } from './jsonschema.array.component'
-import { wrapJsonSchemaString } from './jsonschema.string.component'
 import { wrapJsonSchemaForm } from './jsonschemaform.component'
+import { wrapJsonSchemaString } from './jsonschema.string.component'
 import OperationSummary from './operation-summary.component'
 import * as actions from './operations.actions'
 import Operations from './operations.component'
@@ -46,9 +46,9 @@ export const OperationsPlugin = (system) => {
       },
       OperationContainer: wrapOperationsContainer,
       ParamBody: wrapParamBody,
+      JsonSchemaForm: wrapJsonSchemaForm,
       JsonSchema_array: wrapJsonSchemaArray,
-      JsonSchema_string: wrapJsonSchemaString,
-      JsonSchemaForm: wrapJsonSchemaForm
+      JsonSchema_string: wrapJsonSchemaString
     },
     fn: {
       operationsFilter
