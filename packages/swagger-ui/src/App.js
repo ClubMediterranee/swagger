@@ -21,6 +21,10 @@ function getConfig () {
       { label: 'Deprecated', value: 'deprecated' },
       { label: 'Admin', value: 'admin' }
     ],
+    syntaxHighlight: {
+      activate: true,
+      theme: 'agate'
+    },
     ...(config || {}),
     presets: config.presets || [
       'apis'
@@ -32,8 +36,7 @@ function getConfig () {
       'OperationsPlugin',
       'OAuth2Plugin',
       'HighlightPlugin',
-      'FooterPlugin',
-      'DownloadUrl'
+      'FooterPlugin'
     ]
   }
 
