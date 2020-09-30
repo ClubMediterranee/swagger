@@ -15055,7 +15055,7 @@ react-svg@10.0.23:
     "@tanem/svg-injector" "^8.0.34"
     prop-types "^15.7.2"
 
-react-syntax-highlighter@13.5.0, react-syntax-highlighter@=13.5.0:
+react-syntax-highlighter@=13.5.0:
   version "13.5.0"
   resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-13.5.0.tgz#c0f3fd826a52b2a6ce5786d4ce60c3e0665b65c0"
   integrity sha512-2nKo8spFxe9shcjbdUiqxkrf/IMDqKUZLx7JVIxEJ17P+fYFGL4CRsZZC66UPeQ2o/f29eKu31CrkKGCK1RHuA==

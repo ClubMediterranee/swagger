@@ -11,7 +11,7 @@
     "serve": "11.3.0"
   },
   "scripts": {
-    "start": "cross-env PORT=8081 BROWSER=none cm-scripts start",
+    "start": "cross-env PORT=8082 BROWSER=none cm-scripts start",
     "build": "cm-scripts build",
     "test": "cm-scripts test --coverage",
     "lint:fix": "yarn lint --fix",

@@ -602,9 +602,9 @@ module.exports = function (webpackEnv) {
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
     performance: {
-      hints: 'warning',
-      maxEntrypointSize: 1024000,
-      maxAssetSize: 1024000
+      hints: false,
+      maxEntrypointSize: 2024000,
+      maxAssetSize: 2024000
     }
   }
 

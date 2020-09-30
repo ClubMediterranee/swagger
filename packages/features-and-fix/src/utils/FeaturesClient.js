@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { getSettings } from './settings'
-import { getInnerFeatures } from './getInnerFeatures'
 import { createElementFromFragment } from './createElementFromFragment'
+import { getInnerFeatures } from './getInnerFeatures'
+import { getSettings } from './settings'
 
 const versions = new Map()
 
@@ -29,14 +29,18 @@ export async function getVersion (url, date) {
 
   console.log('[DEV] Fetch version for API:', url)
   const { api_key } = getSettings()
-  const { data } = await axios.get(`${url}/v0/version?api_key=${api_key}`)
 
-  versions.set(url, {
-    date,
-    version: data['@clubmed/digital-api']
-  })
+  if (api_key) {
+    const { data } = await axios.get(`${url}/v0/version?api_key=${api_key}`)
 
-  return data['@clubmed/digital-api']
+    versions.set(url, {
+      date,
+      version: data['@clubmed/digital-api']
+    })
+
+    return data['@clubmed/digital-api']
+  }
+  return null
 }
 
 export async function getStagingVersion () {
@@ -58,6 +62,11 @@ export async function getFeatures () {
   const promises = features.map(async ({ url, date, ...props }) => {
     try {
       const version = await getVersion(url.replace('/doc', ''), date)
+
+      if (!version) {
+        return null
+      }
+
       return {
         ...props,
         date,
