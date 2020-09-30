@@ -21,6 +21,10 @@ function getConfig () {
       { label: 'Deprecated', value: 'deprecated' },
       { label: 'Admin', value: 'admin' }
     ],
+    syntaxHighlight: {
+      activate: true,
+      theme: 'agate'
+    },
     ...(config || {}),
     presets: config.presets || [
       'apis'
@@ -32,15 +36,14 @@ function getConfig () {
       'OperationsPlugin',
       'OAuth2Plugin',
       'HighlightPlugin',
-      'FooterPlugin',
-      'DownloadUrl'
+      'FooterPlugin'
     ]
   }
 
   if (config.appName.toLowerCase() === 'api' || config.disableBrowserCache) {
     config.requestInterceptor = (request) => {
       if (!request.url.endsWith('swagger.json')) {
-        request.url += (request.url.includes('?') ? '&' : '?') + `timestamp=${Date.now()}`
+        request.url += `${request.url.includes('?') ? '&' : '?'}timestamp=${Date.now()}`
       }
 
       return request
