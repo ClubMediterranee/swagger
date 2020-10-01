@@ -21,6 +21,7 @@
     "react-app-polyfill": "1.0.1",
     "react-copy-to-clipboard": "5.0.2",
     "react-dom": "16.13.1",
+    "react-json-editor-ajrm": "2.5.10",
     "request": "2.88.0",
     "request-promise-native": "1.0.7",
     "swagger-ui-react": "3.34.0"
