@@ -29,7 +29,7 @@ function useCopy () {
   }
 }
 
-export default function CodeActions ({ value, downloadable, fullscreen, onClick }) {
+export default function CodeActions ({ value, downloadable, fullscreen, onClick, onDownload }) {
   const { copied, copy } = useCopy()
 
   return <div
@@ -52,7 +52,7 @@ export default function CodeActions ({ value, downloadable, fullscreen, onClick 
         : null
     }
     {
-      downloadable ? <Button onClick={this.downloadText}>
+      downloadable ? <Button onClick={onDownload}>
         <DownloadSvg/>
       </Button> : null
     }

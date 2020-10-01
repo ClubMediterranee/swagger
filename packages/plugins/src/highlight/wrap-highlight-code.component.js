@@ -47,7 +47,8 @@ export function wrapHighlightCode (BaseHighlightCode) {
             value={value}
             downloadable={downloadable}
             fullscreen={fullscreen}
-            onClick={this.toggleFullscreen.bind(this)}/>
+            onDownload={this.downloadText}
+            onClick={this.toggleFullscreen}/>
         </Suspense>
 
         {this.renderBlock()}
