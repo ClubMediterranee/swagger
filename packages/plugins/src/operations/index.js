@@ -1,6 +1,7 @@
+import React, { Suspense } from 'react'
 import { wrapJsonSchemaArray } from './jsonschema.array.component'
-import { wrapJsonSchemaForm } from './jsonschemaform.component'
 import { wrapJsonSchemaString } from './jsonschema.string.component'
+import { wrapJsonSchemaForm } from './jsonschemaform.component'
 import OperationSummary from './operation-summary.component'
 import * as actions from './operations.actions'
 import Operations from './operations.component'
@@ -10,6 +11,8 @@ import reducers from './operations.reducers'
 import { wrapParamBody } from './param-body.component'
 import SearchContainer from './search.container'
 import TagsContainer from './tags.container'
+
+const JsonEditorComponent = React.lazy(() => import(/* webpackChunkName: "json-editor" */'./json-editor.component'))
 
 function getTagsState (system) {
   return (system.getConfigs().tagsSwitches || []).reduce((obj, item) => {
@@ -35,7 +38,11 @@ export const OperationsPlugin = (system) => {
     components: {
       SearchContainer,
       TagsContainer,
-      TryItOutButton: () => null
+      TryItOutButton: () => null,
+      TextArea: (props) =>
+        <Suspense fallback={<div className={'text-sm color-blue'}>Loading...</div>}>
+          <JsonEditorComponent {...props}/>
+        </Suspense>
     },
     wrapComponents: {
       operations () {
