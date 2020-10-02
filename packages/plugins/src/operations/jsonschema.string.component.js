@@ -50,13 +50,14 @@ export function wrapJsonSchemaString (base, system) {
   const { fieldsPersistence } = system.getConfigs()
   return class JsonSchema_string extends Component {
     onChange = (e) => {
-      const value = this.props.schema['type'] === 'file' ? e.target.files[0] : e.target.value
+      const value = this.props.schema.get('type') === 'file' ? e.target.files[0] : e.target.value
       this.props.onChange(value, this.props.keyName)
     }
     onEnumChange = (val) => this.props.onChange(val)
 
     render () {
       let { getComponent, name, value, schema, errors, required, description, disabled } = this.props
+      schema = schema && schema.toJS()
       let enumValue = schema['enum']
 
       errors = errors.toJS ? errors.toJS() : []
@@ -80,7 +81,7 @@ export function wrapJsonSchemaString (base, system) {
 
       if (enumValue) {
         if (name === 'accept-language') {
-          return <SelectLocales {...options} options={enumValue} isRequired={required} />
+          return <SelectLocales {...options} options={enumValue} isRequired={required}/>
         }
 
         const Select = getComponent('Select')
