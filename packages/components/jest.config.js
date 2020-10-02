@@ -1,6 +1,6 @@
 // eslint-disable-next-line node/exports-style
 module.exports = {
-  ...require('@clubmed/webpack/jest.config')(),
+  ...require('@clubmed/webpack/jest.config')('components'),
   'collectCoverageFrom': [
     '!src/App.js',
     '!src/i18n.js',
