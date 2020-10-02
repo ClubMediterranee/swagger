@@ -1,16 +1,19 @@
 // @flow
-import classnames from 'classnames'
-import { get, isFunction, noop, pick } from 'lodash'
 /* eslint-env browser */
 import React, { createRef, type Node, PureComponent } from 'react'
+import classnames from 'classnames'
+import get from 'lodash/get'
+import isFunction from 'lodash/isFunction'
+import noop from 'lodash/noop'
+import pick from 'lodash/pick'
 import striptags from 'striptags'
 import { callLast } from '../../utils'
-import { getRandomComponentId } from '../../utils/id/getRandomComponentId'
 import { ARROW_DOWN, ARROW_UP, ENTER } from '../../utils/keys-codes/keyCodes'
 
 import { InputText } from '../input-text/InputText.jsx'
 import { DefaultLayout } from './InputDatalist.layouts.jsx'
 import { themes } from './InputDatalist.themes'
+import { getRandomComponentId } from '../../utils/id/getRandomComponentId'
 
 type DataListItem = {
   id?: string,

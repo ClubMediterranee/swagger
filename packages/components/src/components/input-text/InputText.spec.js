@@ -13,6 +13,8 @@ import { ReactComponent as MAP_ROTATE_RIGHT } from '../../statics/svg/map_rotate
 
 import { InputText } from './InputText.jsx'
 
+const delay = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
 describe('InputText Component', () => {
   describe('a11y', () => {
     it('should have a textbox role by default on input', () => {
@@ -187,11 +189,6 @@ describe('InputText Component', () => {
         expect(component.find('input').prop('placeholder')).toEqual('Enter value here')
       })
 
-      it('should have required marked placeholder when it has #placeholder and #isRequired true', () => {
-        const component = shallow(<InputText isRequired placeholder="Enter value here"/>)
-        expect(component.find('input').prop('placeholder')).toEqual('Enter value here*')
-      })
-
       it('should have an input without placeholder when it has no #placeholder', () => {
         const component = shallow(<InputText/>)
         expect(component.find('input').prop('placeholder')).toBeUndefined()
@@ -253,9 +250,10 @@ describe('InputText Component', () => {
       component.unmount()
     })
 
-    it('should call #onChange with args when it has #onChange', () => {
+    it('should call #onChange with args when it has #onChange', async () => {
       const component = mount(<InputText onChange={jest.fn()} name="myName"/>)
       component.find('input').simulate('change', { target: { value: 'value' } })
+      await delay(200)
       expect(component.props().onChange).toHaveBeenCalledTimes(1)
       expect(component.props().onChange).toHaveBeenCalledWith('myName', 'value')
       component.unmount()

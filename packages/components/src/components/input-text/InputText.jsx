@@ -1,5 +1,5 @@
 // @flow
-import isInteger from 'lodash/isString'
+import isInteger from 'lodash/isInteger'
 import noop from 'lodash/noop'
 import React, { Component, type Node } from 'react'
 
@@ -24,6 +24,7 @@ type Props = {
   hasTypeToggler?: boolean,
   iconLeft?: IconName,
   iconRight?: IconName,
+  iconRightWidth?: string,
   id?: string,
   isActive?: boolean,
   isDisabled?: boolean,
@@ -33,6 +34,7 @@ type Props = {
   isReadOnly?: boolean,
   isRequired?: boolean,
   label?: string | Node,
+  prefixChildren?: string | Node,
   maxLength?: number,
   minLength?: number,
   name?: string,
@@ -159,6 +161,7 @@ export class InputText extends Component<Props, State> {
       hasTypeToggler,
       iconLeft,
       iconRight,
+      iconRightWidth,
       id = getRandomComponentId(),
       isActive,
       isDisabled,
@@ -183,6 +186,8 @@ export class InputText extends Component<Props, State> {
       smallLabel,
       typeToggler = {},
       validationState,
+      beforeChildren,
+      prefixChildren,
       style
     } = this.props
 
@@ -199,6 +204,7 @@ export class InputText extends Component<Props, State> {
         hasClear={hasClearEnabled}
         iconLeft={iconLeft}
         iconRight={iconRight}
+        iconRightWidth={iconRightWidth}
         id={id}
         isActive={isActive}
         isDisabled={isDisabled}
@@ -213,8 +219,10 @@ export class InputText extends Component<Props, State> {
         theme={theme}
         smallLabel={smallLabel}
         validationState={validationState}
+        beforeChildren={beforeChildren}
         style={style}
       >
+        {prefixChildren && prefixChildren}
         <input
           autoComplete={autoComplete}
           autoFocus={autoFocus}
@@ -237,7 +245,7 @@ export class InputText extends Component<Props, State> {
           required={isRequired}
           role={type === 'search' ? 'search' : 'textbox'}
           type={type}
-          value={value}
+          value={value || ''}
         />
         {hasTypeToggler && (
           <button

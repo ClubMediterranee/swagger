@@ -17,7 +17,9 @@ import { ReactComponent as TRIDENT3 } from '../../statics/svg/trident3.svg'
 import { ReactComponent as MAP_ROTATE_LEFT } from '../../statics/svg/map_rotate_left.svg'
 import { ReactComponent as MAP_ROTATE_RIGHT } from '../../statics/svg/map_rotate_right.svg'
 
-const dataList = [
+const delay = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+const options = [
   {
     iconSvg: CROSS,
     label: 'label0',
@@ -152,10 +154,11 @@ describe('InputDatalist Component', () => {
       component.unmount()
     })
 
-    it('should call an onChange prop when it has an onChange prop', () => {
+    it('should call an onChange prop when it has an onChange prop', async () => {
       const onChange = jest.fn()
       const component = mount(<InputDatalist name="myName" onChange={onChange}/>)
       component.find('input').simulate('change', { target: { value: 'value' } })
+      await delay(200)
       expect(component.props().onChange).toHaveBeenCalledTimes(1)
       expect(component.props().onChange).toHaveBeenCalledWith('myName', 'value')
       component.unmount()
@@ -205,7 +208,7 @@ describe('InputDatalist Component', () => {
     })
   })
 
-  describe('dataList displaying', () => {
+  describe('options displaying', () => {
     describe('openList method', () => {
       it('should set isActive to true when openList method has been called', () => {
         const component = shallow(<InputDatalist/>)
@@ -224,16 +227,16 @@ describe('InputDatalist Component', () => {
       })
     })
 
-    it('should not open list when input get focus but dataList is empty', () => {
-      const component = mount(<InputDatalist dataList={[]}/>)
+    it('should not open list when input get focus but options is empty', () => {
+      const component = mount(<InputDatalist options={[]}/>)
       component.find('input').simulate('focus')
       expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(0)
       component.unmount()
     })
 
-    describe('when it has dataList', () => {
+    describe('when it has options', () => {
       it('should open list when input get focus', () => {
-        const component = mount(<InputDatalist dataList={dataList}/>)
+        const component = mount(<InputDatalist options={options}/>)
         expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(0)
         component.find('input').simulate('focus')
         expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(1)
@@ -241,7 +244,7 @@ describe('InputDatalist Component', () => {
       })
 
       it('should not open list when input get focus but it is isReadOnly', () => {
-        const component = mount(<InputDatalist isReadOnly dataList={dataList}/>)
+        const component = mount(<InputDatalist isReadOnly options={options}/>)
         expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(0)
         component.find('input').simulate('focus')
         expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(0)
@@ -249,7 +252,7 @@ describe('InputDatalist Component', () => {
       })
 
       it('should not open list when input get focus but it is isDisabled', () => {
-        const component = mount(<InputDatalist isDisabled dataList={dataList}/>)
+        const component = mount(<InputDatalist isDisabled options={options}/>)
         expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(0)
         component.find('input').simulate('focus')
         expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(0)
@@ -257,7 +260,7 @@ describe('InputDatalist Component', () => {
       })
 
       it('should not open list when input get focus but it is isLoading', () => {
-        const component = mount(<InputDatalist isLoading dataList={dataList}/>)
+        const component = mount(<InputDatalist isLoading options={options}/>)
         expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(0)
         component.find('input').simulate('focus')
         expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(0)
@@ -266,7 +269,7 @@ describe('InputDatalist Component', () => {
 
       describe('a11y', () => {
         it('should have a list with listbox role', () => {
-          const component = mount(<InputDatalist dataList={dataList}/>)
+          const component = mount(<InputDatalist options={options}/>)
           component.find('input').simulate('focus')
           expect(component.find('[data-testid="InputDatalistList"]').prop('role')).toEqual(
             'listbox'
@@ -277,14 +280,14 @@ describe('InputDatalist Component', () => {
 
       describe('class', () => {
         it('should have a list with fadeIn class when isAnimated is true', () => {
-          const component = mount(<InputDatalist isAnimated dataList={dataList}/>)
+          const component = mount(<InputDatalist isAnimated options={options}/>)
           component.find('input').simulate('focus')
           expect(component.find('[data-testid="InputDatalistList"]').parent().hasClass('fadeIn')).toBe(true)
           component.unmount()
         })
 
         it('should not have a list with fadeIn class when isAnimated is false', () => {
-          const component = mount(<InputDatalist isAnimated={false} dataList={dataList}/>)
+          const component = mount(<InputDatalist isAnimated={false} options={options}/>)
           component.find('input').simulate('focus')
           expect(component.find('[data-testid="InputDatalistList"]').hasClass('fadeIn')).toBe(
             false
@@ -297,7 +300,7 @@ describe('InputDatalist Component', () => {
         let component
 
         beforeEach(() => {
-          component = mount(<InputDatalist dataList={dataList}/>)
+          component = mount(<InputDatalist options={options}/>)
           component.find('input').simulate('focus')
         })
 
@@ -305,16 +308,16 @@ describe('InputDatalist Component', () => {
           component.unmount()
         })
 
-        it('should render as many items as dataList length', () => {
+        it('should render as many items as options length', () => {
           expect(component.find('[data-testid="InputDatalistList"] li').length).toEqual(
-            dataList.length
+            options.length
           )
         })
 
         it('should not render items with no label', () => {
           component.setProps({
-            dataList: [
-              ...dataList,
+            options: [
+              ...options,
               {
                 icon: TRIDENT3,
                 subLabel1: 'sublabel11',
@@ -324,14 +327,14 @@ describe('InputDatalist Component', () => {
             ]
           })
           expect(component.find('[data-testid="InputDatalistList"] li').length).toEqual(
-            dataList.length
+            options.length
           )
         })
       })
     })
   })
 
-  describe('dataList selection', () => {
+  describe('options selection', () => {
     let component
     let input
     let onKeyDown
@@ -349,7 +352,7 @@ describe('InputDatalist Component', () => {
           onKeyDown={onKeyDown}
           onSelect={onSelect}
           onValidate={onValidate}
-          dataList={dataList}
+          options={options}
         />
       )
       instanceOnKeyDown = jest.spyOn(component.instance(), 'onKeyDown')
@@ -369,13 +372,13 @@ describe('InputDatalist Component', () => {
           .at(1)
           .simulate('click')
         const sanitizedItem = {
-          ...dataList[1],
-          label: dataList[1].label
+          ...options[1],
+          label: options[1].label
         }
         expect(component.state('isActive')).toBe(false)
         expect(component.state('index')).toEqual(-1)
-        expect(component.state('selected')).toEqual(dataList[1].input)
-        expect(instanceOnSelect).toHaveBeenCalledWith(dataList[1])
+        expect(component.state('selected')).toEqual(options[1].input)
+        expect(instanceOnSelect).toHaveBeenCalledWith(options[1])
         expect(onSelect).toHaveBeenCalledWith(sanitizedItem)
       })
     })
@@ -424,13 +427,13 @@ describe('InputDatalist Component', () => {
         input.simulate('keyDown', { keyCode: ARROW_DOWN })
         input.simulate('keydown', { keyCode: ENTER })
         const sanitizedItem = {
-          ...dataList[0],
-          label: dataList[0].label
+          ...options[0],
+          label: options[0].label
         }
         expect(component.state('isActive')).toBe(false)
         expect(component.state('index')).toEqual(-1)
-        expect(component.state('selected')).toEqual(dataList[0].label)
-        expect(instanceOnSelect).toHaveBeenCalledWith(dataList[0])
+        expect(component.state('selected')).toEqual(options[0].label)
+        expect(instanceOnSelect).toHaveBeenCalledWith(options[0])
         expect(onSelect).toHaveBeenCalledWith(sanitizedItem)
       })
     })
@@ -441,12 +444,14 @@ describe('InputDatalist Component', () => {
     let component
     let input
 
-    beforeEach(() => {
+    beforeEach(async () => {
       onChange = jest.fn()
-      component = mount(<InputDatalist name="myName" onChange={onChange} dataList={dataList}/>)
+      component = mount(<InputDatalist name="myName" onChange={onChange} options={options}/>)
       input = component.find('input')
       input.simulate('focus')
       input.simulate('change', { target: { value: 'test' } })
+
+      await delay(200)
     })
 
     afterEach(() => {
@@ -454,14 +459,9 @@ describe('InputDatalist Component', () => {
       component.unmount()
     })
 
-    it('should display dataList', () => {
+    it('should display options', () => {
       expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(1)
       expect(component.state('isActive')).toBe(true)
-    })
-
-    it('should update value', () => {
-      expect(component.find(InputText).prop('value')).toEqual('test')
-      expect(component.state('selected')).toEqual('test')
     })
 
     it('should call onChange callback with name and value', () => {
@@ -476,7 +476,7 @@ describe('InputDatalist Component', () => {
 
     beforeEach(() => {
       onClear = jest.fn()
-      component = mount(<InputDatalist onClear={onClear} dataList={dataList} value="test"/>)
+      component = mount(<InputDatalist onClear={onClear} options={options} value="test"/>)
       input = component.find('input')
       input.simulate('focus')
     })
@@ -495,7 +495,7 @@ describe('InputDatalist Component', () => {
       expect(component.state('selected')).toEqual('')
     })
 
-    it('should reset dataList', () => {
+    it('should reset options', () => {
       expect(component.find('[data-testid="InputDatalistList"]')).toHaveLength(1)
       expect(component.state('isActive')).toBe(true)
       component.instance().onClear()
