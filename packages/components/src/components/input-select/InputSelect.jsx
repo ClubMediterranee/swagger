@@ -1,14 +1,16 @@
 // @flow
-import React, { Component, type Node } from 'react'
-import { InputSwitch } from '../input-switch/InputSwitch'
-import { isEmpty, noop } from 'lodash'
-import { getFormattedLabel, getRandomComponentId } from '../..'
-import { Icon } from '../icon/Icon.jsx'
-import { FormControl } from '../form-control/FormControl.jsx'
-import { themes } from './InputSelect.themes'
-import { themes as formThemes } from '../form-control/FormControl.themes'
-import { ReactComponent as SELECT } from '../../statics/svg/select.svg'
+import isEmpty from 'lodash/isEmpty'
 import isString from 'lodash/isString'
+import noop from 'lodash/noop'
+import React, { Component, type Node, useEffect } from 'react'
+import { ReactComponent as SELECT } from '../../statics/svg/select.svg'
+import { getFormattedLabel } from '../../utils'
+import { getRandomComponentId } from '../../utils/id/getRandomComponentId'
+import { FormControl } from '../form-control/FormControl.jsx'
+import { themes as formThemes } from '../form-control/FormControl.themes'
+import { Icon } from '../icon/Icon.jsx'
+import { InputSwitch } from '../input-switch/InputSwitch'
+import { themes } from './InputSelect.themes'
 
 type InputSelectSingleProps = {
   caretIcon?: Component,
@@ -202,8 +204,11 @@ export class Select extends Component<InputSelectSingleProps, State> {
 }
 
 export function SelectBoxes (props) {
-  const { id, className, dir, style, theme = 'default', isRequired, notes, label, options, value, onChange } = props
+  const { id, className, dir, style, theme = 'default', validationState, isRequired, notes, label, options, value, onChange } = props
   const [values, setValues] = React.useState([].concat(value))
+  useEffect(() => {
+    setValues(value)
+  }, [value])
 
   const {
     thLabel,
@@ -220,6 +225,7 @@ export function SelectBoxes (props) {
       {
         options && options.map(item => {
           return <InputSwitch
+            validationState={validationState}
             key={item.value}
             isRequired={isRequired}
             {...item}

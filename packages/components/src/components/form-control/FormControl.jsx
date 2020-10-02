@@ -1,7 +1,8 @@
 // @flow
 import React, { Children, type Node } from 'react'
 import isString from 'lodash/isString'
-import { getFormattedLabel } from '../..'
+
+import { getFormattedLabel } from '../../utils/form/form.util'
 
 import { Icon } from '../icon/Icon.jsx'
 import { Spinner } from '../spinner/Spinner.jsx'
@@ -15,6 +16,7 @@ type Props = {
   hasClear?: boolean,
   iconLeft?: Component,
   iconRight?: Component,
+  iconRightWidth?: string;
   endAdornment?: Node,
   id?: string,
   isActive?: boolean,
@@ -28,16 +30,19 @@ type Props = {
   size?: SizeProps | 'none',
   theme?: string,
   validationState?: string,
+  beforeChildren?: Node
 };
 
 export function FormControl (props: Props) {
   const {
     children,
+    beforeChildren,
     className,
     dir,
     hasClear,
     iconLeft,
     iconRight,
+    iconRightWidth,
     endAdornment,
     id,
     isDisabled,
@@ -73,42 +78,46 @@ export function FormControl (props: Props) {
           {isString(label) ? getFormattedLabel(label, isRequired) : label}
         </label>
       )}
-      <div className={thField} style={thFieldStyle}>
-        {!!iconLeft && (
-          <div className={thIcon}>
-            <Icon svg={iconLeft}/>
-          </div>
-        )}
-        <div className={thInput}>
-          {children}
-          {isLoading &&
-          !isDisabled &&
-          !isReadOnly && (
-            <div className={thLoader}>
-              <Spinner color={thSpinnerColor} size="small"/>
+      <div className={'flex'}>
+        {beforeChildren && beforeChildren}
+        <div className={`${thField} flex-1`} style={thFieldStyle}>
+          {!!iconLeft && (
+            <div className={thIcon}>
+              <Icon svg={iconLeft}/>
             </div>
           )}
-          {endAdornment && endAdornment}
-          {hasClear &&
-          !isDisabled &&
-          !isLoading &&
-          !isReadOnly && (
-            <button
-              className={thClearButton}
-              data-testid="FormControlClear"
-              onClick={onClear}
-              type="button"
-            >
-              <Icon svg={CROSS} width={thClearIconSize}/>
-            </button>
+          <div className={thInput}>
+            {children}
+            {isLoading &&
+            !isDisabled &&
+            !isReadOnly && (
+              <div className={thLoader}>
+                <Spinner color={thSpinnerColor} size="small"/>
+              </div>
+            )}
+            {endAdornment && endAdornment}
+            {hasClear &&
+            !isDisabled &&
+            !isLoading &&
+            !isReadOnly && (
+              <button
+                className={thClearButton}
+                data-testid="FormControlClear"
+                onClick={onClear}
+                type="button"
+              >
+                <Icon svg={CROSS} width={thClearIconSize}/>
+              </button>
+            )}
+          </div>
+          {!!iconRight && (
+            <div className={thIcon}>
+              <Icon svg={iconRight} width={iconRightWidth}/>
+            </div>
           )}
         </div>
-        {!!iconRight && (
-          <div className={thIcon}>
-            <Icon svg={iconRight}/>
-          </div>
-        )}
       </div>
+
       {!!notes && (
         <div className={thNotes} data-testid="FormControlNotes">
           {notes}

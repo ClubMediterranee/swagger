@@ -8,7 +8,7 @@ commands:
     steps:
       - node/install:
           install-yarn: true
-          node-version: 12.13.1
+          node-version: 12.16.1
       - node/install-packages:
           pkg-manager: yarn
       - run: node --version
@@ -24,6 +24,21 @@ commands:
           name: Reset package.json
           command: git checkout -- package.json
 jobs:
+  test:
+    machine: true
+    steps:
+      - checkout
+      - yarn-install
+      - run:
+          name: Lint
+          command: yarn lint:ci
+      - run:
+          name: Unit test
+          command: yarn test:ci
+      - store_test_results:
+          path: reports
+      - store_artifacts:
+          path: ./reports
   deploy:
     machine: true
     environment:
@@ -38,7 +53,10 @@ jobs:
 workflows:
   build:
     jobs:
+      - test
       - deploy:
+          requires:
+            - test
           filters:
             branches:
               only: /^master$/

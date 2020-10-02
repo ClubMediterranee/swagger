@@ -1,6 +1,7 @@
 // @flow
 import classnames from 'classnames'
-import { isString, noop } from 'lodash'
+import isString from 'lodash/isString'
+import noop from 'lodash/noop'
 import React, { Component, type Node } from 'react'
 import { getFormattedLabel, getRandomComponentId } from '../..'
 
