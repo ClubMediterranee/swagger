@@ -51,7 +51,7 @@ export default {
       jobsInfos: {},
       inProgress: false,
       features: getInnerFeatures(),
-      cleanFeaturesUrl: `${window.appConfig.jenkinsUrl}/views/API/job/${window.appConfig.jobs.clean}/build?delay=0sec`,
+      cleanFeaturesUrl: `${window.appConfig.jenkinsUrl}/view/API/job/${window.appConfig.jobs.clean}/build?delay=0sec`,
       isAuth: false
     }
   },
