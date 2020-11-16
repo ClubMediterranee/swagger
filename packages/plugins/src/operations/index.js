@@ -7,10 +7,13 @@ import * as actions from './operations.actions'
 import Operations from './operations.component'
 import { wrapOperationsContainer } from './operations.container'
 import { operationsFilter } from './operations.filter'
-import reducers from './operations.reducers'
+import reducers, { LOCALE_STORAGE_BOOKMARK_KEY } from './operations.reducers'
 import { wrapParamBody } from './param-body.component'
 import SearchContainer from './search.container'
 import TagsContainer from './tags.container'
+import { Set } from 'immutable'
+import { getKey } from '../common/localeStorage'
+import wrapOperationTag from './operationTag.component'
 
 const JsonEditorComponent = React.lazy(() => import(/* webpackChunkName: "json-editor" */'./json-editor.component'))
 
@@ -23,6 +26,10 @@ function getTagsState (system) {
   }, {})
 }
 
+function getBookmarksState (state) {
+  return state.get('bookmarks') || Set(getKey(LOCALE_STORAGE_BOOKMARK_KEY))
+}
+
 export const OperationsPlugin = (system) => {
   return {
     statePlugins: {
@@ -31,7 +38,9 @@ export const OperationsPlugin = (system) => {
         actions,
         selectors: {
           currentFilter: state => state.get('filter'),
-          currentTagsFilter: state => state.get('tagsFilter') || getTagsState(system)
+          currentTagsFilter: state => state.get('tagsFilter') || getTagsState(system),
+          isBookmarked: (state, path, method) => getBookmarksState(state)
+            .includes(`${path}-${method}`)
         }
       }
     },
@@ -48,6 +57,7 @@ export const OperationsPlugin = (system) => {
       operations () {
         return Operations
       },
+      OperationTag: wrapOperationTag,
       OperationSummary () {
         return OperationSummary
       },

@@ -1,3 +1,5 @@
+import { List } from 'immutable'
+
 const SWAGGER2_OPERATION_METHODS = [
   'get',
   'put',
@@ -39,13 +41,19 @@ export function getOperationsMixins (props) {
 
   const operationsKeyword = operationsSelectors.currentFilter()
   const { deprecated: displayDeprecated, ...tags } = operationsSelectors.currentTagsFilter()
-
   return {
-    taggedOps: taggedOps.sortBy((v, k) => {
-      return k.toUpperCase()
-    }),
+    taggedOps: taggedOps.sortBy((v, k) => k.toUpperCase()),
+    bookmarkedOps: taggedOps
+      .reduce(
+        (flatOps, opsTag) => flatOps.concat(opsTag.get('operations')),
+        List()
+      )
+      .filter(op =>
+        operationsSelectors
+          .isBookmarked(op.get('path'), op.get('method'))
+      ),
     operationsFilter (operations) {
-      operations = operations
+      const newOperations = operations
         .filter((op) => {
           const method = op.get('method')
 
@@ -74,13 +82,11 @@ export function getOperationsMixins (props) {
           return !tag
         })
 
-      if (operationsKeyword) {
-        if (operationsKeyword !== true) {
-          operations = fn.operationsFilter(operations, operationsKeyword)
-        }
+      if (operationsKeyword && operationsKeyword !== true) {
+        return fn.operationsFilter(newOperations, operationsKeyword)
       }
 
-      return operations
+      return newOperations
     }
   }
 }
