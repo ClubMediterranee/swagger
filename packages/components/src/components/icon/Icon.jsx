@@ -135,7 +135,7 @@ export class Icon extends Component<IconProps, State> {
     return (
       <span className={classNames} style={style} title={alt} ref={this.nodeRef} {...props}>
         <span className="relative w-full block" style={placeholderStyle}>
-          <Renderer className="absolute fill-current h-full top-0 left-0 right-0 bottom-0 w-full" {...svgProps}/>
+          <Renderer className="absolute h-full top-0 left-0 right-0 bottom-0 w-full" {...svgProps}/>
         </span>
       </span>
     )
