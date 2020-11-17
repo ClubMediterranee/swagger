@@ -45,6 +45,7 @@ export default class Operations extends React.Component {
                   tagObj={tagObj}
                   tag={tag}
                   operations={operations}
+                  hideBookmarks
                 />
               )
             }).toArray()

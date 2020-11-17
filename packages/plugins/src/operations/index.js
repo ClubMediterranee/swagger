@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { wrapJsonSchemaArray } from './jsonschema.array.component'
 import { wrapJsonSchemaString } from './jsonschema.string.component'
 import { wrapJsonSchemaForm } from './jsonschemaform.component'
-import OperationSummary from './operation-summary.component'
+import { wrapOperationSummary } from './operation-summary.component'
 import * as actions from './operations.actions'
 import Operations from './operations.component'
 import { wrapOperationsContainer } from './operations.container'
@@ -58,9 +58,7 @@ export const OperationsPlugin = (system) => {
         return Operations
       },
       OperationTag: wrapOperationTag,
-      OperationSummary () {
-        return OperationSummary
-      },
+      OperationSummary: wrapOperationSummary,
       OperationContainer: wrapOperationsContainer,
       ParamBody: wrapParamBody,
       JsonSchemaForm: wrapJsonSchemaForm,

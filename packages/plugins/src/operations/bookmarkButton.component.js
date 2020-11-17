@@ -12,7 +12,7 @@ const BookmarkButton = ({ isActive, onClick, className, ...props }) => {
 
   return <Icon
     svg={HEART}
-    width="1.5rem"
+    width="1.25rem"
     onMouseEnter={() => setIsHover(true)}
     onMouseLeave={() => setIsHover(false)}
     color={(isHover || isActive) ? ACTIVE_COLOR : DEFAULT_COLOR}
