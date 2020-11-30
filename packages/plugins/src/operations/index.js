@@ -14,6 +14,9 @@ import TagsContainer from './tags.container'
 import { Set } from 'immutable'
 import { getKey } from '../common/localeStorage'
 import wrapOperationTag from './operationTag.component'
+import { updateAllFields } from '../common/updateAllFields'
+
+const UPDATE_APIKEY_FIELDS = 'update_apikey_fields'
 
 const JsonEditorComponent = React.lazy(() => import(/* webpackChunkName: "json-editor" */'./json-editor.component'))
 
@@ -41,6 +44,21 @@ export const OperationsPlugin = (system) => {
           currentTagsFilter: state => state.get('tagsFilter') || getTagsState(system),
           isBookmarked: (state, path, method) => getBookmarksState(state)
             .includes(`${path}-${method}`)
+        }
+      },
+      spec: {
+        actions: {
+          updateApiKeyFields: (payload) => {
+            return {
+              type: UPDATE_APIKEY_FIELDS,
+              payload
+            }
+          }
+        },
+        reducers: {
+          [UPDATE_APIKEY_FIELDS]: (state, action) => {
+            return updateAllFields(state, 'query', 'api_key', action.payload)
+          }
         }
       }
     },

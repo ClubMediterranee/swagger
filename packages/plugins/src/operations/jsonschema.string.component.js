@@ -48,10 +48,15 @@ function createTargetFn (onChange) {
 
 export function wrapJsonSchemaString (base, system) {
   const { fieldsPersistence } = system.getConfigs()
+  const { updateApiKeyFields } = system.specActions
+
   return class JsonSchema_string extends Component {
     onChange = (e) => {
       const value = this.props.schema.get('type') === 'file' ? e.target.files[0] : e.target.value
       this.props.onChange(value, this.props.keyName)
+      if (this.props.name === 'api_key' && value && value.endsWith('.clubmed.com')) {
+        updateApiKeyFields(value)
+      }
     }
     onEnumChange = (val) => this.props.onChange(val)
 
