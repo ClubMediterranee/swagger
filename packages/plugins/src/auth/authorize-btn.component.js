@@ -29,7 +29,7 @@ export default class AuthorizeBtn extends React.Component {
     const AuthorizationPopup = getComponent('authorizationPopup', true)
 
     return (
-      <div className={`auth-wrapper ml-2 ${className}`} style={{ height: '40px' }}>
+      <div className={`auth-wrapper ml-2 ${className}`}>
         <button className={isAuthorized ? 'btn authorize locked' : 'btn authorize unlocked'} onClick={onClick}>
           <AuthorizeSvg isAuthorized={isAuthorized}/>
         </button>

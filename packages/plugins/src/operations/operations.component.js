@@ -1,4 +1,3 @@
-import Im from 'immutable'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { getOperationsMixins } from '../common/getOperationsMixins'
@@ -18,19 +17,19 @@ export default class Operations extends React.Component {
   }
 
   render () {
-    let {
-      getComponent,
-      layoutSelectors,
-      layoutActions,
-      getConfigs
-    } = this.props
+    const { getComponent } = this.props
 
-    const OperationContainer = getComponent('OperationContainer', true)
     const OperationTag = getComponent('OperationTag')
-    let { taggedOps, operationsFilter } = getOperationsMixins(this.props)
+    const { taggedOps, operationsFilter, bookmarkedOps } = getOperationsMixins(this.props)
+
+    const bookmarkedOperations = operationsFilter(bookmarkedOps)
 
     return (
       <div>
+        <OperationTag
+          tag="bookmarks"
+          operations={bookmarkedOperations}
+        />
         {
           taggedOps
             .map((tagObj, tag) => {
@@ -45,27 +44,9 @@ export default class Operations extends React.Component {
                   key={`operation-${tag}`}
                   tagObj={tagObj}
                   tag={tag}
-                  layoutSelectors={layoutSelectors}
-                  layoutActions={layoutActions}
-                  getConfigs={getConfigs}
-                  getComponent={getComponent}>
-                  {
-                    operations.map(op => {
-                      const path = op.get('path')
-                      const method = op.get('method')
-                      const specPath = Im.List(['paths', path, method])
-
-                      return <OperationContainer
-                        key={`${path}-${method}`}
-                        specPath={specPath}
-                        op={op}
-                        path={path}
-                        method={method}
-                        tag={tag}
-                      />
-                    }).toArray()
-                  }
-                </OperationTag>
+                  operations={operations}
+                  hideBookmarks
+                />
               )
             }).toArray()
         }

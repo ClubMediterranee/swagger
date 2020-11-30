@@ -1,21 +1,24 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import toString from 'lodash/toString'
+import BookmarkButton from './bookmarkButton.component'
 
-export default class OperationSummary extends PureComponent {
-  render () {
-    let {
-      toggleShown,
-      getComponent,
-      authActions,
-      authSelectors,
-      operationProps,
-      specPath
-    } = this.props
-
-    let {
+export const wrapOperationSummary = (OpeSummary, {
+  getComponent,
+  authActions,
+  authSelectors,
+  operationsActions,
+  operationsSelectors
+}) => {
+  const OperationSummary = ({
+    toggleShown,
+    operationProps,
+    specPath
+  }) => {
+    const {
       summary,
       isAuthorized,
       method,
+      path,
       op,
       showSummary,
       operationId,
@@ -23,17 +26,16 @@ export default class OperationSummary extends PureComponent {
       displayOperationId
     } = operationProps.toJS()
 
-    let {
+    const {
       summary: resolvedSummary
     } = op
 
-    let security = operationProps.get('security')
+    const security = operationProps.get('security')
 
     const AuthorizeOperationBtn = getComponent('authorizeOperationBtn')
     const OperationSummaryMethod = getComponent('OperationSummaryMethod')
     const OperationSummaryPath = getComponent('OperationSummaryPath')
     const JumpToPath = getComponent('JumpToPath', true)
-
     return (
       <div className={`opblock-summary opblock-summary-${method}`} onClick={toggleShown}>
         <div>
@@ -51,20 +53,27 @@ export default class OperationSummary extends PureComponent {
 
         {displayOperationId && (originalOperationId || operationId)
           ? <span className="opblock-summary-operation-id">{originalOperationId || operationId}</span> : null}
-
-        {
-          (!security || !security.count()) ? null
-            : <AuthorizeOperationBtn
-              isAuthorized={isAuthorized}
-              className={'self-center'}
-              onClick={() => {
-                const applicableDefinitions = authSelectors.definitionsForRequirements(security)
-                authActions.showDefinitions(applicableDefinitions)
-              }}
-            />
-        }
+        <div className="flex self-center">
+          {
+            (!security || !security.count()) ? null
+              : <AuthorizeOperationBtn
+                isAuthorized={isAuthorized}
+                onClick={() => {
+                  const applicableDefinitions = authSelectors.definitionsForRequirements(security)
+                  authActions.showDefinitions(applicableDefinitions)
+                }}
+              />
+          }
+          <BookmarkButton
+            onClick={() => operationsActions.toggleBookmark(`${path}-${method}`)}
+            isActive={operationsSelectors.isBookmarked(path, method)}
+            className="mr-1"
+          />
+        </div>
         <JumpToPath path={specPath}/>{/* TODO: use wrapComponents here, swagger-ui doesn't care about jumpToPath */}
       </div>
     )
   }
+
+  return OperationSummary
 }
