@@ -14,6 +14,7 @@ import React, { Component } from 'react'
 import { decodeToken } from '../auth/utils/decode-token'
 import { SelectLocales } from './select-locales.component'
 import { SelectUniqValues } from './select-uniq-values.component'
+import { setLastUpdate } from '../common/localeStorage'
 
 const iconFields = {
   'api_key': KEYS,
@@ -55,6 +56,9 @@ export function wrapJsonSchemaString (base, system) {
       const value = this.props.schema.get('type') === 'file' ? e.target.files[0] : e.target.value
       this.props.onChange(value, this.props.keyName)
       if (this.props.name === 'api_key' && value && value.endsWith('.clubmed.com')) {
+        // Update last use data
+        setLastUpdate(this.props.name, value)
+        // Put selected api_key in matching field for all routes
         updateApiKeyFields(value)
       }
     }
