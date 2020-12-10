@@ -37,3 +37,15 @@ export function pushUniqValue (key, value) {
 
   setKey(key, items)
 }
+
+export function setLastUpdate (key, value) {
+  let items = getKey(key) || []
+  items = items.map((item) => {
+    if (item.id === value) {
+      item.lastUpdate = new Date()
+    }
+    return item
+  })
+
+  setKey(key, items)
+}
