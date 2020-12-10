@@ -1,9 +1,9 @@
 {
   "name": "@clubmed/features-and-fix",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "private": true,
   "dependencies": {
-    "@clubmed/webpack": "1.13.0",
+    "@clubmed/webpack": "1.13.1",
     "axios": "^0.19.2",
     "moment": "2.24.0",
     "vue": "2.6.11",
