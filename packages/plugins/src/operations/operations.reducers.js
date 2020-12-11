@@ -17,6 +17,12 @@ export default {
 
     setKey(LOCALE_STORAGE_BOOKMARK_KEY, newBookmarkState.toArray())
 
-    return state.set('bookmarks', newBookmarkState)
+    const newState = state.set('bookmarks', newBookmarkState)
+    return state.equals(newState)
+      ? state
+      : newState
+  },
+  'spec_update_json': (state) => {
+    return state.set('bookmarks', Set(getKey(LOCALE_STORAGE_BOOKMARK_KEY)))
   }
 }
