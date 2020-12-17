@@ -5,8 +5,8 @@ import { getOauthName } from './utils/get-oauth-name'
 export function AuthorizationPopupOverride (Original, system) {
   return class extends Original {
     render () {
-      let { authSelectors, authActions, getComponent, errSelectors, specSelectors, fn: { AST = {} } } = this.props
-      let definitions = authSelectors.shownDefinitions()
+      const { authSelectors, authActions, getComponent, errSelectors, specSelectors, fn: { AST = {} } } = this.props
+      const definitions = authSelectors.shownDefinitions()
       const Auths = getComponent('auths')
 
       const auths = definitions.valueSeq()

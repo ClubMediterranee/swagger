@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "@clubmed",
+    "@clubmed/eslint-config/react"
+  ]
+}

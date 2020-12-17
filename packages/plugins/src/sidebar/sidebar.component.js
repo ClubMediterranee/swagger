@@ -17,14 +17,14 @@ function getOperationId (op) {
 
 function formatMethod (method) {
   return ({
-    'get': 'get',
-    'put': 'put',
-    'post': 'post',
-    'delete': 'del',
-    'options': 'opt',
-    'head': 'head',
-    'patch': 'patch',
-    'trace': 'trace'
+    get: 'get',
+    put: 'put',
+    post: 'post',
+    delete: 'del',
+    options: 'opt',
+    head: 'head',
+    patch: 'patch',
+    trace: 'trace'
   }[method]) || method
 }
 
@@ -46,7 +46,7 @@ function SidebarOperation ({ id, operation, tag, onClick }) {
     <div
       className={classNames('w-full text-sm text-gray-darker whitespace-normal', deprecated ? 'line-through' : '')}
       title={path}
-      style={{ 'marginTop': '2px' }}
+      style={{ marginTop: '2px' }}
       dangerouslySetInnerHTML={{ __html: summary || path }}>
     </div>
   </li>
@@ -98,7 +98,7 @@ class Sidebar extends React.Component<{}> {
 
   render () {
     const { getComponent } = this.props
-    let { taggedOps, operationsFilter } = getOperationsMixins(this.props)
+    const { taggedOps, operationsFilter } = getOperationsMixins(this.props)
 
     if (taggedOps.size < 1) {
       return null
@@ -131,7 +131,7 @@ class Sidebar extends React.Component<{}> {
           {
             taggedOps
               .map((tagObj, tag) => {
-                let operations = operationsFilter(tagObj.get('operations'))
+                const operations = operationsFilter(tagObj.get('operations'))
 
                 if (operations.size === 0) {
                   return null

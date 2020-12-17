@@ -29,6 +29,9 @@ module.exports = (name) => {
     ],
     modulePaths: [],
     moduleNameMapper: {
+      'react/jsx-dev-runtime': require.resolve('react/jsx-dev-runtime'),
+      'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+      '^react$': require.resolve('react'),
       '^react-native$': 'react-native-web',
       '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy'
     },

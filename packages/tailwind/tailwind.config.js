@@ -53,7 +53,7 @@ const colors = {
   'ardoise-active': 'hsla(215, 35%, 43%, 1)',
 
   blue: 'hsla(203, 100%, 27%, 1)', // #005589
-  'blue-active': 'hsla(190, 81%, 42%, 1)',
+  'blue-active': '#0480a9',
 
   lightBlue: 'hsla(203, 100%, 27%, 0.1)',
   'lightBlue-active': 'hsla(203, 100%, 27%, 0.1)',
@@ -152,22 +152,30 @@ const globalSpacing = {
   5: '1.25rem', // 20px
   6: '1.5rem', // 24px
   7: '1.75rem', // 24px
+  7.5: '1.875rem', // 30px
   8: '2rem', // 32px
   9: '2.25rem', // 36px
   10: '2.5rem', // 40px
   11: '2.75rem', // 44px
   12: '3rem', // 48px
+  13: '3.25rem',
+  14: '3.50rem',
+  15: '3.75rem', // 60px
   16: '4rem', // 64px
+  20: '5rem', // 80px
   22: '5.5rem', // 88px
   24: '6rem', // 96px
+  25: '6.25rem', // 100px
   26: '6.5rem', // 104px
   28: '8rem', // 128px
   30: '8.5rem', // 136px
   32: '9rem', // 144px
-  48: '12rem',
-  56: '14rem',
-  60: '15rem',
-  68: '17rem'
+  48: '12rem', // 192px
+  52: '13rem', // 208px
+  56: '14rem', // 224px
+  60: '15rem', // 240px
+  64: '16rem',
+  68: '17rem' // 272px
 }
 
 // NOTE: We use module.exports here because it is actually a config file u_u.
@@ -481,7 +489,7 @@ Object.assign(exports, {
       normal: 1.4,
       loose: 1.8
     },
-
+    spacing: globalSpacing,
     /*
       |-----------------------------------------------------------------------------
       | letterSpacing (letter spacing)       https://tailwindcss.com/docs/letter-spacing
@@ -768,14 +776,14 @@ Object.assign(exports, {
     maxWidth: {
       none: 'none',
       xs: '20rem',
-      // sm: '30rem',
-      // md: '40rem',
-      // lg: '50rem',
-      // xl: '60rem',
-      // '2xl': '70rem',
-      // '3xl': '80rem',
-      // '4xl': '90rem',
-      // '5xl': '100rem',
+      sm: '30rem',
+      md: '40rem',
+      lg: '50rem',
+      xl: '60rem',
+      '2xl': '70rem',
+      '3xl': '80rem',
+      '4xl': '90rem',
+      '5xl': '100rem',
       '1/4': '25%',
       '1/2': '50%',
       '3/5': '60%',
@@ -828,6 +836,8 @@ Object.assign(exports, {
       px: '1px',
       ...globalSpacing
     },
+
+    inset: globalSpacing,
 
     /*
       |-----------------------------------------------------------------------------
@@ -904,8 +914,8 @@ Object.assign(exports, {
       4: 4,
       5: 5,
       6: 6,
-      10: 10
-      // 20: 20,
+      10: 10,
+      20: 20
       // 30: 30,
       // 40: 40,
       // 50: 50,
@@ -971,6 +981,25 @@ Object.assign(exports, {
 
     stroke: {
       current: 'currentColor'
+    },
+
+    flex: {
+      1: '1 1 0', // flex-grow flex-shrink flex-basis === "growth rate" "shrink rate" "base size"
+      auto: '1 1 auto',
+      initial: '0 1 auto',
+      none: 'none',
+      2: '2 2 0%',
+      3: '3 3 0%'
+    },
+
+    rotate: {
+      '-180': '-180deg',
+      '-135': '-135deg',
+      '-90': '-90deg',
+      0: '0',
+      90: '90deg',
+      135: '135deg',
+      180: '180deg'
     }
   },
   /*
@@ -1028,7 +1057,7 @@ Object.assign(exports, {
     minHeight: ['responsive'],
     minWidth: ['responsive'],
     negativeMargin: ['responsive'],
-    opacity: ['hover'],
+    opacity: ['hover', 'group-hover'],
     outline: [],
     overflow: [],
     padding: ['responsive'],
@@ -1057,8 +1086,11 @@ Object.assign(exports, {
   },
   corePlugins: {
     backgroundAttachment: false,
-    borderCollapse: false,
+    borderCollapse: true,
     letterSpacing: false,
     userSelect: false
+  },
+  purge: {
+    enabled: false
   }
 })

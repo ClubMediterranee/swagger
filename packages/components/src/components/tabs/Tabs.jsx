@@ -13,7 +13,7 @@ export function Tabs ({ style, items, className }) {
               .map((item, index) => {
                 return (
                   <div
-                    style={{ 'cursor': 'pointer' }}
+                    style={{ cursor: 'pointer' }}
                     key={index}
                     title={item.title}
                     className={`${classes} ${activeIndex === index ? 'bg-blue text-white' : 'text-gray-darker'}`}

@@ -23,9 +23,9 @@ body {
   line-height: 1.4;
   min-height: 100vh;
 
-  @apply .text-gray-darker;
-  @apply .text-base;
-  @apply .bg-gray-lighter;
+  @apply text-gray-darker;
+  @apply text-base;
+  @apply bg-gray-lighter;
 
   @apply font-tahoma;
 }

@@ -5,7 +5,7 @@ export function wrapParamBody (BaseParamBody) {
   return class ParamBody extends BaseParamBody {
     componentWillReceiveProps (nextProps) {
       super.componentWillReceiveProps(nextProps)
-      let { param } = nextProps
+      const { param } = nextProps
 
       if (param.get('value') && !this.state.example) {
         this.setState({
@@ -15,7 +15,7 @@ export function wrapParamBody (BaseParamBody) {
     }
 
     render () {
-      let {
+      const {
         onChangeConsumes,
         param,
         specSelectors,
@@ -27,12 +27,12 @@ export function wrapParamBody (BaseParamBody) {
       const HighlightCode = getComponent('highlightCode')
       const ContentType = getComponent('contentType')
       // for domains where specSelectors not passed
-      let parameter = specSelectors ? specSelectors.parameterWithMetaByIdentity(pathMethod, param) : param
-      let errors = parameter.get('errors', List())
-      let consumesValue = specSelectors.contentTypeValues(pathMethod).get('requestContentType')
-      let consumes = this.props.consumes && this.props.consumes.size ? this.props.consumes : ParamBody.defaultProp.consumes
+      const parameter = specSelectors ? specSelectors.parameterWithMetaByIdentity(pathMethod, param) : param
+      const errors = parameter.get('errors', List())
+      const consumesValue = specSelectors.contentTypeValues(pathMethod).get('requestContentType')
+      const consumes = this.props.consumes && this.props.consumes.size ? this.props.consumes : ParamBody.defaultProp.consumes
 
-      let { value, example } = this.state
+      const { value, example } = this.state
 
       return (
         <div className="body-param" data-param-name={param.get('name')} data-param-in={param.get('in')}>

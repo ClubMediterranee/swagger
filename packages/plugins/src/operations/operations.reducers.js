@@ -22,7 +22,7 @@ export default {
       ? state
       : newState
   },
-  'spec_update_json': (state) => {
+  spec_update_json: (state) => {
     return state.set('bookmarks', Set(getKey(LOCALE_STORAGE_BOOKMARK_KEY)))
   }
 }

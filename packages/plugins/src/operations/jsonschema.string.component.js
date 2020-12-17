@@ -17,18 +17,18 @@ import { SelectUniqValues } from './select-uniq-values.component'
 import { setLastUpdate } from '../common/localeStorage'
 
 const iconFields = {
-  'api_key': KEYS,
-  'customer_id': GM45,
+  api_key: KEYS,
+  customer_id: GM45,
   'authorization.ok': PADLOCK,
   'authorization.ko': PADUNLOCK,
-  'first_date': DATE,
-  'last_date': DATE,
-  'duration': DURATION,
-  'number_of_adults': USERS,
-  'product_id': TRIDENT,
-  'departure_option_id': TRANSPORT,
-  'proposal_id': DETAILS,
-  'booking_id': NOTEBOOK
+  first_date: DATE,
+  last_date: DATE,
+  duration: DURATION,
+  number_of_adults: USERS,
+  product_id: TRIDENT,
+  departure_option_id: TRANSPORT,
+  proposal_id: DETAILS,
+  booking_id: NOTEBOOK
 }
 
 function TokenInfo ({ value }) {
@@ -62,19 +62,20 @@ export function wrapJsonSchemaString (base, system) {
         updateApiKeyFields(value)
       }
     }
+
     onEnumChange = (val) => this.props.onChange(val)
 
     render () {
       let { getComponent, name, value, schema, errors, required, description, disabled } = this.props
       schema = schema && schema.toJS()
-      let enumValue = schema['enum']
+      const enumValue = schema.enum
 
       errors = errors.toJS ? errors.toJS() : []
 
-      const isDisabled = disabled || (schema['in'] === 'formData' && !('FormData' in window))
+      const isDisabled = disabled || (schema.in === 'formData' && !('FormData' in window))
 
       const options = {
-        style: { 'width': '100%', maxWidth: '340px' },
+        style: { width: '100%', maxWidth: '340px' },
         isDisabled,
         value,
         type: schema.format === 'password' ? 'password' : 'text',
@@ -105,7 +106,7 @@ export function wrapJsonSchemaString (base, system) {
       }
 
       const Input = getComponent('Input')
-      if (schema['type'] === 'file') {
+      if (schema.type === 'file') {
         return (<Input
           type="file"
           className={errors.length ? 'invalid' : ''}

@@ -4,7 +4,7 @@ module.exports = {
   ],
   'plugins': [],
   'rules': {
-    'node/exports-style': ['error', 'exports'],
+    'multiline-ternary': 0,
     'func-names': 2,
     'no-var': 2,
     'camelcase': 0,

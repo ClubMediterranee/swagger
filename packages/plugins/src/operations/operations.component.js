@@ -33,7 +33,7 @@ export default class Operations extends React.Component {
         {
           taggedOps
             .map((tagObj, tag) => {
-              let operations = operationsFilter(tagObj.get('operations'))
+              const operations = operationsFilter(tagObj.get('operations'))
 
               if (operations.size === 0) {
                 return null

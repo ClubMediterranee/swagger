@@ -25,7 +25,7 @@ export default function SearchContainer ({ specSelectors, operationsSelectors, o
   const filter = operationsSelectors.currentFilter()
 
   return <InputText
-    style={{ 'width': '100%' }}
+    style={{ width: '100%' }}
     isDisabled={isLoading}
     value={(filter === true || filter === 'true' ? '' : filter) || ''}
     iconLeft={SEARCH}

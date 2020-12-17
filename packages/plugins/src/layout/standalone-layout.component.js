@@ -82,8 +82,8 @@ const BaseLayoutComponent = ({ errSelectors, specSelectors, getComponent }) => {
   const Row = getComponent('Row')
   const Col = getComponent('Col')
   const OnlineValidatorBadge = getComponent('onlineValidatorBadge', true)
-  let isSwagger2 = specSelectors.isSwagger2()
-  let isOAS3 = specSelectors.isOAS3()
+  const isSwagger2 = specSelectors.isSwagger2()
+  const isOAS3 = specSelectors.isOAS3()
 
   const isSpecEmpty = !specSelectors.specStr()
 

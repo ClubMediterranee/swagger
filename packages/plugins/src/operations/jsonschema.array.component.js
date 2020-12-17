@@ -28,7 +28,7 @@ export function wrapJsonSchemaArray (BaseJsonSchemaArray) {
     }
 
     renderEnum () {
-      let { getComponent, required, schema, errors, disabled } = this.props
+      const { getComponent, required, schema, errors, disabled } = this.props
       const value = this.state.value // expect Im List
       const enumItems = schema.getIn(['enum'])
 
@@ -46,7 +46,7 @@ export function wrapJsonSchemaArray (BaseJsonSchemaArray) {
     }
 
     render () {
-      let { schema } = this.props
+      const { schema } = this.props
 
       const enumItems = schema.getIn(['enum'])
 

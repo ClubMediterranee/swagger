@@ -12,9 +12,9 @@ export default class AuthorizeBtn extends React.Component {
   }
 
   logout = () => {
-    let { authActions, authSelectors } = this.props
+    const { authActions, authSelectors } = this.props
 
-    let auths = authSelectors.authorized().map((definition, key) => {
+    const auths = authSelectors.authorized().map((definition, key) => {
       logoutFromOIDC(authSelectors.authorized().get(key))
       return key
     }).toArray()
@@ -23,7 +23,7 @@ export default class AuthorizeBtn extends React.Component {
   }
 
   render () {
-    let { isAuthorized, showPopup, onClick, getComponent, className = '' } = this.props
+    const { isAuthorized, showPopup, onClick, getComponent, className = '' } = this.props
 
     // must be moved out of button component
     const AuthorizationPopup = getComponent('authorizationPopup', true)
@@ -34,9 +34,8 @@ export default class AuthorizeBtn extends React.Component {
           <AuthorizeSvg isAuthorized={isAuthorized}/>
         </button>
         {isAuthorized
-          ? <button className={'btn'} onClick={this.logout}>
-            Logout
-          </button> : null
+          ? <button className={'btn'} onClick={this.logout}>Logout</button>
+          : null
         }
         {showPopup && <AuthorizationPopup/>}
       </div>

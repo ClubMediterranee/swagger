@@ -15,8 +15,8 @@ const Header = ({ children, sticky = true }) => {
   return (
     <div style={{ height }}>
       <div ref={headerRef} className={classNames('z-6 bg-white w-full top-0 right-0 left-0 mb-10 border-b-1 border-gray-light', {
-        'absolute': !sticky,
-        'fixed': sticky
+        absolute: !sticky,
+        fixed: sticky
       })}>
         <div className="relative flex items-center px-4">
           <div className='flex flex-row w-full'>

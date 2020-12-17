@@ -13,7 +13,7 @@ const SWAGGER2_OPERATION_METHODS = [
 const OAS3_OPERATION_METHODS = SWAGGER2_OPERATION_METHODS.concat(['trace'])
 
 export function getOperationsMixins (props) {
-  let {
+  const {
     specSelectors,
     layoutSelectors,
     operationsSelectors,
@@ -23,11 +23,11 @@ export function getOperationsMixins (props) {
 
   let taggedOps = specSelectors.taggedOperations()
 
-  let {
+  const {
     maxDisplayedTags
   } = getConfigs()
 
-  let tagKeyword = layoutSelectors.currentFilter()
+  const tagKeyword = layoutSelectors.currentFilter()
 
   if (tagKeyword) {
     if (tagKeyword !== true) {

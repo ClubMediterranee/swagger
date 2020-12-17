@@ -45,7 +45,7 @@ export function SelectUniqValues ({ onChange, isInvalid, ...props }) {
     setValue(props.value)
   }, [props.value])
 
-  return <div style={{ 'maxWidth': '340px' }}><InputDatalist
+  return <div style={{ maxWidth: '340px' }}><InputDatalist
     {...props}
     value={value}
     options={options}

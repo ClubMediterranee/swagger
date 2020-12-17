@@ -6,7 +6,7 @@ export function updateAllFields (state, paramIn, paramName, value) {
           .get('parameters')
           .filter(parameter => parameter.get('in') === paramIn && parameter.get('name') === paramName)
           .forEach((parameter) => {
-            let paramKey = `${parameter.get('in')}.${parameter.get('name')}`
+            const paramKey = `${parameter.get('in')}.${parameter.get('name')}`
             state = state.setIn(
               ['meta', 'paths', path, method, 'parameters', paramKey, 'value'],
               value

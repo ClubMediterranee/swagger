@@ -30,7 +30,7 @@ storiesOf('Components/Icon', module)
         margin: '5px',
         padding: '5px',
         display: 'inline-block',
-        'border': '1px solid black',
+        border: '1px solid black',
         'text-align': 'center'
       }}>
         <div>

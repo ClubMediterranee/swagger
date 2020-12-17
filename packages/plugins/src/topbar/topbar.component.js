@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 export default function Topbar (props) {
-  let { getComponent, specSelectors, getConfigs } = props
+  const { getComponent, specSelectors, getConfigs } = props
   const info = specSelectors.info()
   const Link = getComponent('Link')
   const AuthorizeBtnContainer = getComponent('AuthorizeBtnContainer', true)

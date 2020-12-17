@@ -209,7 +209,7 @@ const init = paths => {
   console.log(chalk.green(`Found ${applicableSrcPaths.length} path(s) entry.`))
 
   if (applicableSrcPaths.length > 0) {
-    config.paths.push(...applicableSrcPaths)
+    config.paths.push(...applicableSrcPaths.map((p) => path.resolve(p)))
   }
 
   console.log(chalk.green('Exporting Workspaces config to Webpack.'))
