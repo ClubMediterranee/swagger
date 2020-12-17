@@ -74,7 +74,9 @@ body .swagger-ui .jsoneditor-text {
 }
 
 body .swagger-ui .jsoneditor {
+  background: #504747;
   border-color: #504747;
+  border-radius: 3px;
 }
 body .swagger-ui .jsoneditor-poweredBy {
   display: none;
