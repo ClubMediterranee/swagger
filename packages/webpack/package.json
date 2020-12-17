@@ -1,6 +1,6 @@
 {
   "name": "@clubmed/webpack",
-  "version": "1.13.3",
+  "version": "1.13.4",
   "description": "Configuration and scripts for React App",
   "license": "MIT",
   "engines": {
