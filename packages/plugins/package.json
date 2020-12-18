@@ -1,11 +1,11 @@
 {
   "name": "@clubmed/plugins",
-  "version": "1.13.4",
+  "version": "1.13.5",
   "private": false,
   "main": "src/index.js",
   "dependencies": {
-    "@clubmed/components": "1.13.4",
-    "@clubmed/webpack": "1.13.4"
+    "@clubmed/components": "1.13.5",
+    "@clubmed/webpack": "1.13.5"
   },
   "scripts": {
     "build": "cm-scripts build",
