@@ -1,40 +1,74 @@
-import { getRandomComponentId } from '@clubmed/components'
-import React, { useState } from 'react'
-import JSONInput from 'react-json-editor-ajrm/es'
-import locale from 'react-json-editor-ajrm/locale/en'
-
-// revert
-const themes = {
-  background: 'rgb(51, 51, 51)',
-  string: 'rgb(162, 252, 162)',
-  number: 'rgb(211, 99, 99)',
-  primitive: 'rgb(252, 194, 140)'
-}
-
-const styles = { body: { fontSize: '12px' } }
+import { callLast, getRandomComponentId } from '@clubmed/components'
+import ace from 'brace'
+import 'brace/mode/json'
+import 'brace/theme/dracula'
+import { JsonEditor } from 'jsoneditor-react'
+import 'jsoneditor-react/es/editor.min.css'
+import isEqual from 'lodash/isEqual'
+import React from 'react'
 
 function parse (value) {
   try {
     return typeof value === 'string' ? JSON.parse(value) : value
   } catch (er) {
   }
-  return undefined
+  return {}
 }
 
-export default function JsonEditorComponent ({ onChange, value }) {
-  const [localValue] = useState(parse(value))
+class Editor extends JsonEditor {
+  componentDidUpdate (props) {
+    super.componentDidUpdate(props)
 
-  return <div className="mt-1 p-1 rounded-small" style={{ background: 'rgb(51, 51, 51)' }}>
-    <JSONInput
-      locale={locale}
-      id={getRandomComponentId()}
-      onChange={(evt) => {
-        onChange({ target: { value: evt.json } })
-      }}
-      className={'rounded-small'}
-      colors={themes}
-      style={styles}
-      height='392px'
-      width='100%'
-      placeholder={localValue}/></div>
+    if (this.jsonEditor) {
+      this.jsonEditor.set(this.props.value)
+    }
+  }
+
+  shouldComponentUpdate ({ htmlElementProps, value }) {
+    try {
+      if (!isEqual(value, this.jsonEditor.get())) {
+        return true
+      }
+    } catch (er) {
+    }
+
+    return htmlElementProps !== this.props.htmlElementProps
+  }
+
+  render () {
+    const {
+      htmlElementProps,
+      tag
+    } = this.props
+
+    return React.createElement(
+      tag,
+      {
+        ...htmlElementProps,
+        className: 'w-full h-full mt-1',
+        ref: this.setRef
+      }
+    )
+  }
+}
+
+export default function JsonEditorComponent ({ onChange, value, ...props }) {
+  const localChange = callLast((value) => {
+    if (value) {
+      onChange({ target: { value: JSON.stringify(value) } })
+    }
+  }, 300)
+
+  return <Editor
+    {...props}
+    name={getRandomComponentId()}
+    value={parse(value)}
+    mode={'code'}
+    ace={ace}
+    search={false}
+    theme={'ace/theme/dracula'}
+    onChange={(value) => {
+      localChange(value)
+    }}
+    statusBar={false}/>
 }
