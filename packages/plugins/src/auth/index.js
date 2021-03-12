@@ -24,7 +24,7 @@ export const OAuth2Plugin = () => {
         actions: {
           updateAuthorizationFields: (payload) => {
             const { token } = payload
-            const value = token ? `${token.token_type} ${token.access_token}` : ''
+            const value = token ? `${token.token_type} ${token.access_token}` : null
 
             return {
               type: UPDATE_AUTHORIZATION_FIELDS,
