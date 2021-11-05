@@ -26,7 +26,7 @@
     "react-dom": "16.13.1",
     "request": "2.88.0",
     "request-promise-native": "1.0.7",
-    "swagger-ui-react": "3.34.0"
+    "swagger-ui-react": "3.52.5"
   },
   "devDependencies": {
     "babel-eslint": "10.0.3",

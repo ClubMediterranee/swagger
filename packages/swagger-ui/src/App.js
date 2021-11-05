@@ -25,6 +25,7 @@ function getConfig () {
       activate: true,
       theme: 'agate'
     },
+    useUnsafeMarkdown: true,
     ...(config || {}),
     presets: config.presets || [
       'apis'
