@@ -24,7 +24,7 @@ function getTagsState (system) {
   return (system.getConfigs().tagsSwitches || []).reduce((obj, item) => {
     return {
       ...obj,
-      [item.value]: false
+      [item.value]: !!item.checked
     }
   }, {})
 }
