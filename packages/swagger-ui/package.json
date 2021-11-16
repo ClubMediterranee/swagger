@@ -1,11 +1,11 @@
 {
   "name": "@clubmed/swagger-ui",
-  "version": "1.13.7",
+  "version": "1.14.0",
   "private": true,
   "homepage": "/dist/latest/swagger-ui",
   "dependencies": {
-    "@clubmed/plugins": "1.13.7",
-    "@clubmed/webpack": "1.13.7"
+    "@clubmed/plugins": "1.14.0",
+    "@clubmed/webpack": "1.14.0"
   },
   "devDependencies": {
     "serve": "11.3.0"
