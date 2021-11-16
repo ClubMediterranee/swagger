@@ -75,7 +75,14 @@ export function getOperationsMixins (props) {
             return false
           }
 
-          const tag = op.get('operation').get('tags').toJSON().find((tag) => {
+          const operationTags = op.get('operation').get('tags').toJSON()
+          const operationCustomFilterTags = op.get('operation').get('x-filter-tags')
+
+          if (operationCustomFilterTags) {
+            operationTags.push(...operationCustomFilterTags.toJSON())
+          }
+
+          const tag = operationTags.find((tag) => {
             return tags[tag] === undefined ? false : !tags[tag]
           })
 
