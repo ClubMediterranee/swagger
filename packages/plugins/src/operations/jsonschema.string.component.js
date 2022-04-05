@@ -31,6 +31,13 @@ const iconFields = {
   'booking_id': NOTEBOOK
 }
 
+const SYNCED_PATH_FIELDS = [
+  'booking_id',
+  'customer_id',
+  'proposal_id',
+  'product_id'
+]
+
 function TokenInfo ({ value }) {
   const token = decodeToken(value)
 
@@ -49,7 +56,7 @@ function createTargetFn (onChange) {
 
 export function wrapJsonSchemaString (base, system) {
   const { fieldsPersistence } = system.getConfigs()
-  const { updateApiKeyFields } = system.specActions
+  const { updateApiKeyFields, updatePathFields } = system.specActions
 
   return class JsonSchema_string extends Component {
     onChange = (e) => {
@@ -60,6 +67,10 @@ export function wrapJsonSchemaString (base, system) {
         setLastUpdate(this.props.name, value)
         // Put selected api_key in matching field for all routes
         updateApiKeyFields(value)
+      }
+      if (SYNCED_PATH_FIELDS.includes(this.props.name) && value) {
+        setLastUpdate(this.props.name, value)
+        updatePathFields(this.props.name, value)
       }
     }
     onEnumChange = (val) => this.props.onChange(val)
