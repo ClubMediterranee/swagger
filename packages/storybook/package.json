@@ -1,6 +1,6 @@
 {
   "name": "@clubmed/storybook",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "description": "Shared react components",
   "main": "src/index.js",
   "author": "CLUBMED",
@@ -11,7 +11,7 @@
     "build:storybook": "build-storybook -c .storybook -o .out"
   },
   "devDependencies": {
-    "@clubmed/webpack": "1.14.0",
+    "@clubmed/webpack": "1.15.0",
     "@storybook/addon-actions": "5.1.9",
     "@storybook/addon-backgrounds": "5.1.9",
     "@storybook/addon-centered": "5.1.9",
@@ -32,7 +32,7 @@
     "url-loader": "2.2.0"
   },
   "dependencies": {
-    "@clubmed/components": "1.14.0"
+    "@clubmed/components": "1.15.0"
   },
   "browserslist": {
     "production": [
