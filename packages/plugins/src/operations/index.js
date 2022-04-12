@@ -16,7 +16,7 @@ import { getKey } from '../common/localeStorage'
 import wrapOperationTag from './operationTag.component'
 import { updateAllFields } from '../common/updateAllFields'
 
-const UPDATE_APIKEY_FIELDS = 'update_apikey_fields'
+const UPDATE_REQUEST_FIELDS = 'update_request_fields'
 
 const JsonEditorComponent = React.lazy(() => import(/* webpackChunkName: "json-editor" */'./json-editor.component'))
 
@@ -50,14 +50,24 @@ export const OperationsPlugin = (system) => {
         actions: {
           updateApiKeyFields: (payload) => {
             return {
-              type: UPDATE_APIKEY_FIELDS,
+              type: UPDATE_REQUEST_FIELDS,
+              fieldName: 'api_key',
+              fieldType: 'query',
+              payload
+            }
+          },
+          updatePathFields: (fieldName, payload) => {
+            return {
+              type: UPDATE_REQUEST_FIELDS,
+              fieldName,
+              fieldType: 'path',
               payload
             }
           }
         },
         reducers: {
-          [UPDATE_APIKEY_FIELDS]: (state, action) => {
-            return updateAllFields(state, 'query', 'api_key', action.payload)
+          [UPDATE_REQUEST_FIELDS]: (state, action) => {
+            return updateAllFields(state, action.fieldType, action.fieldName, action.payload)
           }
         }
       }
