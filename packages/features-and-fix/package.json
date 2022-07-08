@@ -5,7 +5,7 @@
   "dependencies": {
     "@clubmed/webpack": "1.15.0",
     "axios": "^0.19.2",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "vue": "2.6.11",
     "vue-toastr": "2.1.2"
   },
