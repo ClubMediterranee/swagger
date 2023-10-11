@@ -3,7 +3,6 @@
   "version": "1.15.0",
   "private": true,
   "dependencies": {
-    "@clubmed/webpack": "1.15.0",
     "axios": "^0.19.2",
     "moment": "2.24.0",
     "vue": "2.6.11",

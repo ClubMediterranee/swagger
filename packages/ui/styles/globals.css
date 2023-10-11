@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Newsreader:opsz,wght@6..72,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* BRAND */
+    --color-black: 0deg 0% 0%;
+    --color-black-active: 0deg 0% 20%;
+    --color-ultramarine: 227deg 38% 19%;
+    --color-ultramarine-active: 227deg 38% 29%;
+    --color-lavender: 229deg 80% 79%;
+    --color-lavender-active: 229deg 80% 74%;
+    --color-verdigris: 163deg 12% 71%;
+    --color-verdigris-active: 163deg 12% 66%;
+    --color-sand: 35deg 18% 80%;
+    --color-sand-active: 35deg 18% 75%;
+    --color-lightSand: 32deg 45% 94%;
+    --color-lightSand-active: 40deg 36% 85%;
+    --color-saffron: 45deg 100% 50%;
+    --color-saffron-active: 45deg 100% 45%;
+    --color-sienna: 13deg 48% 39%;
+    --color-sienna-active: 13deg 48% 44%;
+    --color-wave: 180 100% 25%;
+    --color-wave-active: 180 100% 22%;
+    --color-white: 0deg 0% 100%;
+    --color-white-active: 0deg 0% 80%;
+
+    /* LAYOUT */
+    --color-darkGrey: 0deg 0% 20%;
+    --color-middleGrey: 0deg 0% 40%;
+    --color-grey: 0deg 0% 60%;
+    --color-lightGrey: 0deg 0% 80%;
+    --color-pearl: 0deg 0% 97%;
+    --color-green: 131deg 89% 29%;
+    --color-red: 9deg 79% 42%;
+    --color-orange: 25deg 100% 39%;
+  }
+}
+
+@layer components {
+  html {
+    --xDirCoefficient: 1;
+    scroll-behavior: smooth;
+  }
+
+  html[dir='rtl'] {
+    --xDirCoefficient: -1;
+  }
+
+  /* LINKS */
+  .link-underline {
+    @apply transition-bg-size;
+    @apply duration-1000;
+
+    background-image: linear-gradient(transparent calc(100% - 1px), currentcolor 1px);
+    background-repeat: no-repeat;
+    background-size: calc(100% - 0px) 100%;
+  }
+
+  .link-underline.has-icon {
+    background-size: calc(100% - 32px) 100%;
+  }
+
+  .link-container:hover .link-underline.hoverable,
+  .link-container:focus .link-underline.hoverable {
+    background-size: calc(0% - 0px) 100%;
+  }
+
+  .group:hover .link-underline.hoverable,
+  .group:focus .link-underline.hoverable {
+    background-size: calc(0% - 0px) 100%;
+  }
+
+  /* INPUTS */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    appearance: none;
+  }
+
+  .date-field {
+    @apply appearance-none;
+  }
+
+  .date-field::-webkit-calendar-picker-indicator {
+    @apply hidden;
+  }
+
+  .date-field::-webkit-datetime-edit {
+    @apply w-full;
+  }
+
+  .date-field::-webkit-datetime-edit-fields-wrapper {
+    @apply w-full;
+    @apply flex;
+    @apply justify-between;
+    @apply uppercase;
+  }
+
+  /* SCROLLVIEWS */
+  .NativeScroller {
+    --arrows-margin: calc(12.5vw - 20px - 50px);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .h-scroll-yellow {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: black #d8cdc1;
+    padding-bottom: 44px;
+    --scrollbar-margin: calc(12.5vw - 20px - 50px);
+  }
+
+  .h-scroll-yellow::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .h-scroll-yellow::-webkit-scrollbar-thumb {
+    @apply bg-saffron;
+    @apply rounded-pill;
+  }
+
+  .h-scroll-yellow::-webkit-scrollbar-track {
+    @apply rounded-pill;
+    background: transparent;
+    max-width: 1120px;
+    margin: 0 max(var(--scrollbar-margin), 20px);
+  }
+
+  .h-scroll-yellow::-webkit-scrollbar-track-piece {
+    @apply bg-pearl;
+    @apply rounded-pill;
+  }
+
+  .children-no-shrink > * {
+    @apply shrink-0;
+  }
+
+  /* CONTENT SLIDER */
+  .ContentSlider-item {
+    will-change: transform, filter;
+    transform: scale(var(--scale));
+    filter: contrast(calc(var(--opacity) / (2 - var(--opacity)))) brightness(calc(2 - var(--opacity)));
+    /* yeah we don't actually *want* to make the element transparent, we just want to make it look like it is, and this is the formula */
+  }
+
+  .force-white {
+    filter: brightness(0) saturate(100%) invert(100%);
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 2) {
+    grid-column-start: calc(2 + var(--groupOffset));
+    grid-row-start: 1;
+    grid-column-end: calc(3 + var(--groupOffset));
+    grid-row-end: 2;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 2) [data-name="Frame"] {
+    @apply aspect-horizontal;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 3) {
+    grid-column-start: calc(2 + var(--groupOffset));
+    grid-row-start: 2;
+    grid-column-end: calc(3 + var(--groupOffset));
+    grid-row-end: 3;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 3) [data-name="Frame"] {
+    @apply aspect-square;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 4) {
+    grid-column-start: calc(3 + var(--groupOffset));
+    grid-row-start: 1;
+    grid-column-end: calc(4 + var(--groupOffset));
+    grid-row-end: 3;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 4) [data-name="Frame"] {
+    @apply aspect-square;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 5) {
+    grid-column-start: calc(4 + var(--groupOffset));
+    grid-row-start: 1;
+    grid-column-end: calc(5 + var(--groupOffset));
+    grid-row-end: 3;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 5) [data-name="Frame"] {
+    @apply aspect-vertical;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 6) {
+    grid-column-start: calc(5 + var(--groupOffset));
+    grid-row-start: 1;
+    grid-column-end: calc(6 + var(--groupOffset));
+    grid-row-end: 3;
+    transform: translateY(calc(-50% - 10px));
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 6) [data-name="Frame"] {
+    @apply aspect-horizontal;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 7) {
+    grid-column-start: calc(5 + var(--groupOffset));
+    grid-row-start: 1;
+    grid-column-end: calc(6 + var(--groupOffset));
+    grid-row-end: 3;
+    transform: translateY(calc(50% + 10px));
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 7) [data-name="Frame"] {
+    @apply aspect-horizontal;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 8) {
+    grid-column-start: calc(6 + var(--groupOffset));
+    grid-row-start: 1;
+    grid-column-end: calc(7 + var(--groupOffset));
+    grid-row-end: 3;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 8) [data-name="Frame"] {
+    @apply aspect-square;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 9) {
+    grid-column-start: calc(7 + var(--groupOffset));
+    grid-row-start: 1;
+    grid-column-end: calc(8 + var(--groupOffset));
+    grid-row-end: 3;
+  }
+
+  .ProductInformationTabs-layout > *:nth-child(8n + 9) [data-name="Frame"] {
+    @apply aspect-vertical;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="2"] > *:nth-child(2) {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-column-end: 3;
+    grid-row-end: 2;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="2"] > *:nth-child(2) [data-name="Frame"] {
+    @apply aspect-vertical;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="3"] > *:nth-child(2) {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-column-end: 3;
+    grid-row-end: 2;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="3"] > *:nth-child(2) [data-name="Frame"] {
+    @apply aspect-square;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="3"] > *:nth-child(3) {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-column-end: 3;
+    grid-row-end: 3;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="3"] > *:nth-child(3) [data-name="Frame"] {
+    @apply aspect-horizontal;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="4"] > *:nth-child(2) {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-column-end: 3;
+    grid-row-end: 2;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="4"] > *:nth-child(2) [data-name="Frame"] {
+    @apply aspect-horizontal;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="4"] > *:nth-child(3) {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-column-end: 3;
+    grid-row-end: 3;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="4"] > *:nth-child(3) [data-name="Frame"] {
+    @apply aspect-square;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="4"] > *:nth-child(4) {
+    grid-column-start: 3;
+    grid-row-start: 1;
+    grid-column-end: 4;
+    grid-row-end: 3;
+  }
+
+  .ProductInformationTabs-layout[data-children-count="4"] > *:nth-child(4) [data-name="Frame"] {
+    @apply aspect-vertical;
+  }
+
+  /* TABS */
+  .Tabs-focusIndicator {
+    transform: translateX(calc(var(--index) * -100% + var(--activeIndex) * 100% - (4px * (var(--index) - var(--activeIndex)))));
+  }
+
+  html[dir="rtl"] .Tabs-focusIndicator {
+    transform: translateX(calc(var(--index) * 100% + var(--activeIndex) * -100% + (4px * (var(--index) - var(--activeIndex)))));
+  }
+
+  .ProductDestinations-focusIndicator {
+    transform: translateX(calc(var(--index) * -100% + var(--activeIndex) * 100%));
+  }
+
+  html[dir="rtl"] .ProductDestinations-focusIndicator {
+    transform: translateX(calc(var(--index) * 100% + var(--activeIndex) * -100%));
+  }
+
+  .ProductDestinations-layout > *:nth-child(4n + 2) {
+    grid-column-start: calc(2 + var(--groupOffset));
+    grid-row-start: 1;
+    grid-column-end: calc(3 + var(--groupOffset));
+    grid-row-end: 2;
+  }
+
+  .ProductDestinations-layout > *:nth-child(4n + 2) [data-name="Frame"] {
+    @apply aspect-horizontal;
+  }
+
+  .ProductDestinations-layout > *:nth-child(4n + 3) {
+    grid-column-start: calc(2 + var(--groupOffset));
+    grid-row-start: 2;
+    grid-column-end: calc(3 + var(--groupOffset));
+    grid-row-end: 3;
+  }
+
+  .ProductDestinations-layout > *:nth-child(4n + 3) [data-name="Frame"] {
+    @apply aspect-square;
+  }
+
+  .ProductDestinations-layout > *:nth-child(4n + 4) {
+    grid-column-start: calc(3 + var(--groupOffset));
+    grid-row-start: 1;
+    grid-column-end: calc(4 + var(--groupOffset));
+    grid-row-end: 3;
+    transform: translateY(calc(-50% - 10px));
+  }
+
+  .ProductDestinations-layout > *:nth-child(4n + 4) [data-name="Frame"] {
+    @apply aspect-horizontal;
+  }
+
+  .ProductDestinations-layout > *:nth-child(4n + 5) {
+    grid-column-start: calc(3 + var(--groupOffset));
+    grid-row-start: 1;
+    grid-column-end: calc(4 + var(--groupOffset));
+    grid-row-end: 3;
+    transform: translateY(calc(50% + 10px));
+  }
+
+  .ProductDestinations-layout > *:nth-child(4n + 5) [data-name="Frame"] {
+    @apply aspect-horizontal;
+  }
+
+  .tick {
+    -webkit-animation: tick 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    animation: tick 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    transform-style: preserve-3d;
+  }
+
+  .tock {
+    -webkit-animation: tock 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    animation: tock 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    transform-style: preserve-3d;
+  }
+
+  @keyframes tick {
+    0% {
+      transform: rotateX(0deg);
+    }
+    100% {
+      transform: rotateX(-180deg);
+    }
+  }
+
+  @keyframes tock {
+    0% {
+      transform: rotateX(180deg);
+    }
+    100% {
+      transform: rotateX(0deg);
+    }
+  }
+}

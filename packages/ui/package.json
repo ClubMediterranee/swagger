@@ -1,0 +1,17 @@
+{
+  "name": "@clubmed/ui",
+  "private": true,
+  "version": "1.13.7",
+  "main": "package.json",
+  "dependencies": {
+    "@react-spring/web": "^9.7.3",
+    "classnames": "^2.3.2",
+    "react-spring": "^9.7.3",
+    "use-boop": "^1.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.22",
+    "tailwindcss": "^3.3.1"
+  }
+}
