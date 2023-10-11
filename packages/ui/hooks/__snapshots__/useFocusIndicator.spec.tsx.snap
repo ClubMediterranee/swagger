@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useFocusIndicator should update focus indicator position when active item changes: after clicking second button 1`] = `
+<div
+  class="pointer-events-none absolute"
+  data-testid="focusindicator"
+  style="left: 0px; height: 0px; width: 0px; opacity: 0; transform: none;"
+/>
+`;
+
+exports[`useFocusIndicator should update focus indicator position when active item changes: initial state 1`] = `
+<div
+  class="pointer-events-none absolute"
+  data-testid="focusindicator"
+  style="left: 0px; height: 0px; width: 0px; opacity: 0; transform: none;"
+/>
+`;

@@ -4,8 +4,7 @@
   "private": false,
   "main": "src/index.js",
   "dependencies": {
-    "@clubmed/components": "1.15.0",
-    "@clubmed/webpack": "1.15.0"
+    "@clubmed/components": "1.15.0"
   },
   "scripts": {
     "build": "cm-scripts build",
