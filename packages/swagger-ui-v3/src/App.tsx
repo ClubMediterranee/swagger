@@ -1,16 +1,20 @@
 import "swagger-ui-react/swagger-ui.css";
 import SwaggerUI from "swagger-ui-react";
 import {userSwaggerUI} from "./hooks/user-swagger-ui.hook";
-import {Button} from "@clubmed/ui/molecules/Buttons/Button";
 import "@clubmed/ui/styles/globals.css";
+import {DeviceProvider, isMobile} from "@clubmed/ui/contexts/Device";
+import {ConfigContext} from "./contexts/config.context";
 
 function App() {
   const config = userSwaggerUI();
 
   return (
     <div className="App">
-      <Button>Click me</Button>
-      <SwaggerUI {...config}></SwaggerUI>
+      <ConfigContext.Provider value={config}>
+        <DeviceProvider device={isMobile() ? "mobile" : "desktop"}>
+          <SwaggerUI {...config}></SwaggerUI>
+        </DeviceProvider>
+      </ConfigContext.Provider>
     </div>
   );
 }
