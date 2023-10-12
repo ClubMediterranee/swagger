@@ -7,7 +7,7 @@ import {ApiBanner} from "./api-banner.component";
 import {useConfig} from "../../contexts/config.context";
 
 export default function BaseLayout(props: System) {
-  const {errSelectors, specSelectors, getComponent} = props;
+  const {errSelectors, specSelectors, layoutSelectors, getComponent} = props;
   const {isApiLayout} = useConfig();
 
   const SvgAssets = getComponent("SvgAssets");
@@ -22,8 +22,6 @@ export default function BaseLayout(props: System) {
 
   const ServersContainer = getComponent("ServersContainer", true);
   const SchemesContainer = getComponent("SchemesContainer", true);
-  const AuthorizeBtnContainer = getComponent("AuthorizeBtnContainer", true);
-  const FilterContainer = getComponent("FilterContainer", true);
   const isSwagger2 = specSelectors.isSwagger2();
   const isOAS3 = specSelectors.isOAS3();
   const isOAS31 = specSelectors.isOAS31();
@@ -75,7 +73,6 @@ export default function BaseLayout(props: System) {
 
   const hasServers = servers && servers.size;
   const hasSchemes = schemes && schemes.size;
-  const hasSecurityDefinitions = !!specSelectors.securityDefinitions();
 
   return (
     <div className="swagger-ui">
@@ -86,36 +83,34 @@ export default function BaseLayout(props: System) {
         alsoShow={<Errors/>}
       >
         <Errors/>
-        <div className="lg:px-120 xl:px-160 relative sm:px-20 xl:pb-0 sm:py-20 lg:py-40 text-black">
+        <div className="relative xl:pb-0 sm:py-20 lg:py-40 text-black">
           <div className="-z-1 pointer-events-none absolute inset-0 top-0 xl:bottom-40 bg-lightSand"/>
 
-          {isApiLayout ? <ApiBanner {...props} /> : (
-            <>
-              <Row className="information-container">
-                <Col mobile={12}>
-                  <InfoContainer/>
-                </Col>
-              </Row>
+          {isApiLayout ?
+            <ApiBanner {...props} />
+            : (
+              <>
+                <Row className="information-container">
+                  <Col mobile={12}>
+                    <InfoContainer/>
+                  </Col>
+                </Row>
 
-              {hasServers || hasSchemes || hasSecurityDefinitions ? (
-                <div>
-                  <div className="px-20 flex">
-                    <div>
-                      {hasServers ? <ServersContainer/> : null}
-                    </div>
-                    <div>
-                      {hasSchemes ? <SchemesContainer/> : null}
+                {hasServers || hasSchemes ? (
+                  <div>
+                    <div className="px-20 flex">
+                      <div>
+                        {hasServers ? <ServersContainer/> : null}
+                      </div>
+                      <div>
+                        {hasSchemes ? <SchemesContainer/> : null}
+                      </div>
                     </div>
                   </div>
-                  <FilterContainer/>
-                </div>
-              ) : null}
-            </>
-          )}
+                ) : null}
+              </>
+            )}
         </div>
-
-
-        {/**/}
 
         <Row>
           <Col mobile={12} desktop={12}>

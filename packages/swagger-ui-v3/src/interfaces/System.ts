@@ -8,6 +8,14 @@ export interface System {
     securityDefinitions(): Map<string, any> | undefined;
   };
   errSelectors: {},
+
+  layoutSelectors: {
+    currentFilter(): string | null | false | "false";
+  },
+  layoutActions: {
+    updateFilter(value: string): void
+  } & Record<string, any>;
+
   getConfigs(): Record<string, any> & SwaggerUIProps;
 
   getComponent(name: stringn, bool?: boolean): React.Component;
