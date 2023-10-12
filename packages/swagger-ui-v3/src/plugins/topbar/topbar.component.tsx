@@ -3,26 +3,16 @@ import React from "react";
 import {System} from "../../interfaces/System";
 import {Header} from "@clubmed/ui/organisms/Header";
 import {useConfig} from "../../contexts/config.context";
-import {ButtonAnchor} from "@clubmed/ui/molecules/Buttons/ButtonAnchor";
 
 export default function Topbar(props: System) {
   let {getComponent, specSelectors, getConfigs} = props;
   const info = specSelectors.info();
-  const Link = getComponent("Link");
   const AuthorizeBtnContainer = getComponent("AuthorizeBtnContainer", true);
-  // const ServersContainer = getComponent("ServersContainer", true);
-  // const SchemesContainer = getComponent("SchemesContainer", true);
-  // const SearchContainer = getComponent("SearchContainer", true);
-  // const TagsContainer = getComponent("TagsContainer", true);
+  const FilterContainer = getComponent("FilterContainer", true);
 
   const config = useConfig();
 
   const version = info.get("version");
-  const servers = specSelectors.servers();
-  const schemes = specSelectors.schemes();
-
-  // const hasServers = servers && servers.size && servers.size > 1;
-  // const hasSchemes = schemes && schemes.size && schemes.size > 1;
   const hasSecurityDefinitions = !!specSelectors.securityDefinitions();
 
   const HeaderSubLabel = <div className="flex items-center mx-auto ml-3 font-happiness text-b6">
@@ -31,7 +21,9 @@ export default function Topbar(props: System) {
   </div>;
 
   return (
-    <Header homepageUrl={"/"} openMenu={false} sublabel={HeaderSubLabel} >
+    <Header homepageUrl={"/"} openMenu={false} sublabel={HeaderSubLabel}>
+      <FilterContainer />
+
       {/*<Link className="cursor-pointer flex flex-no-shrink items-center pr-5 text-blue font-happiness">*/}
       {/*  <div className="flex items-center py-2">*/}
       {/*    <div className="overflow-hidden flex items-center relative" style={{height: "40px", top: "-2px"}}>*/}
@@ -52,7 +44,7 @@ export default function Topbar(props: System) {
       {/*  {SearchContainer ? <SearchContainer/> : null}*/}
       {/*</div>*/}
       {/*<div className="flex flex-no-shrink relative">*/}
-        {hasSecurityDefinitions ? <AuthorizeBtnContainer/> : null}
+      {hasSecurityDefinitions ? <AuthorizeBtnContainer/> : null}
       {/*</div>*/}
     </Header>
   );

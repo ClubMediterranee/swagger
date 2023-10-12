@@ -10,13 +10,15 @@ import {Button} from "../../molecules/Buttons";
 import {ButtonAnchor} from "../../molecules/Buttons/ButtonAnchor";
 import {ElasticHeight} from "../../molecules/ElasticHeight";
 import {HamburgerIcon} from "../../molecules/HamburgerIcon";
+
 export interface HeaderNavItemProps {
   label: string;
   url: string;
   columns?: {
     sections: { title: string; url: string; links: { label: string; url: string }[] }[];
-  }
+  };
 }
+
 export interface HeaderProps {
   sublabel?: string | ReactNode;
   homepageUrl: string;
@@ -151,9 +153,12 @@ export const Header: FunctionComponent<PropsWithChildren<Props>> = ({
     leave: {opacity: 0, x: "100%"}
   });
 
+  const height = 60;
+
   return (
-    <header role="banner">
-      <div className="z-1 relative flex items-center justify-between p-8 ps-20 lg:px-20">
+    <header role="banner" style={{height: `${height}px`}}>
+      <div style={{height: `${height}px`}}
+           className="z-1 fixed top-0 left-0 bg-white w-full relative flex items-center justify-between p-8 ps-20 lg:px-20">
         <a href={homepageUrl} title="Club Med Homepage">
           <div className="w-[120px] md:w-[160px]">
             <Icon name="ClubMed" width="100%" className="text-ultramarine"/>

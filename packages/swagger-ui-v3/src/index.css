@@ -1,8 +1,12 @@
-
-/* swagger customization */
 body {
   @apply font-sans;
 }
+
+body .swagger-ui .wrapper {
+  max-width: 1220px;
+}
+
+/* swagger customization */
 .loading-container .loading {
   display: none;
 }
@@ -41,7 +45,7 @@ body .swagger-ui .info li, body .swagger-ui .info p, body .swagger-ui .info tabl
 }
 
 body .api-banner h1.title {
-  @apply text-h1 lg:text-h0 font-serif;
+  @apply text-h2 font-serif m-0;
 }
 
 body [for='schemes'] {
