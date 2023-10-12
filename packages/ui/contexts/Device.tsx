@@ -9,6 +9,10 @@ import {
   type PropsWithChildren,
 } from 'react';
 
+export const isMobile = (header: ReturnType<typeof headers>) => {
+  return /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(window.navigator.userAgent);
+};
+
 const QUERIES = {
   MOBILE: '(min-width: 0)',
   TABLET: '(min-width: 640px)',

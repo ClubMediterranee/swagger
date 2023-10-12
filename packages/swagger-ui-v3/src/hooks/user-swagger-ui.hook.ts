@@ -1,5 +1,6 @@
-import {SwaggerUIProps} from "swagger-ui-react";
+import SwaggerUI, {SwaggerUIProps} from "swagger-ui-react";
 import {System} from "../interfaces/System";
+import * as Plugins from "../plugins";
 
 export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "plugins" | "presets"> {
   brandName: string;
@@ -24,10 +25,10 @@ declare global {
 
 export function userSwaggerUI(): SwaggerUIProps {
   let config: Partial<SwaggerUIConfiguration> = window.SwaggerUIConfiguration || {};
+  const isApiLayout = config.appName?.toLowerCase() === "api"
 
   config = {
-    // brandName: "ClubMed",
-    // appName: "API",
+    layout: "StandaloneLayout",
     // url: "https://api.integ.clubmed.com/doc/swagger.json",
     // oauth2RedirectUrl: `${window.location.origin}/doc/o2c.html`,
     // deepLinking: true,
@@ -47,22 +48,10 @@ export function userSwaggerUI(): SwaggerUIProps {
       theme: "agate"
     },
     useUnsafeMarkdown: true,
-    ...(config || {}),
-    // presets: config.presets || [
-    //   "apis"
-    // ],
-    plugins: config.plugins || [
-      "SidebarPlugin",
-      "TopbarPlugin",
-      "StandaloneLayoutPlugin",
-      "OperationsPlugin",
-      "OAuth2Plugin",
-      "HighlightPlugin",
-      "FooterPlugin"
-    ]
+    ...(config || {})
   };
 
-  if (config.appName?.toLowerCase() === "api" || config.disableBrowserCache) {
+  if (isApiLayout || config.disableBrowserCache) {
     config.requestInterceptor = (request: any) => {
       if (!request.url.endsWith("swagger.json")) {
         request.url += `${request.url.includes("?") ? "&" : "?"}timestamp=${Date.now()}`;
@@ -72,24 +61,28 @@ export function userSwaggerUI(): SwaggerUIProps {
     };
   }
 
+  const PLUGINS = {...SwaggerUI.plugins, ...Plugins};
+  const PRESETS = {...SwaggerUI.presets};
+
   // map presets
   if (config.presets) {
     config.presets = config.presets.map((plugin) => {
-      return undefined;
+      return PRESETS[plugin];
     }).filter(Boolean) as any[];
   }
 
   if (config.plugins) {
     config.plugins = config.plugins.map((plugin) => {
-      return undefined;
+      return PLUGINS[plugin];
     }).filter(Boolean) as any[];
   }
 
   function onComplete(system: System) {
-    console.log("== onComplete ==", system);
+
   }
 
   return {
+    isApiLayout,
     ...config,
     onComplete
   } as SwaggerUIProps;

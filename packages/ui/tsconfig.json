@@ -25,7 +25,8 @@
     "atoms",
     "contexts",
     "hooks",
-    "molecules"
+    "molecules",
+    "organisms"
   ],
   "references": [
     {

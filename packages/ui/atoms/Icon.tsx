@@ -52,13 +52,14 @@ export const Icon: FunctionComponent<IconProps> = ({
   style,
 }) => {
   const icon = Icons[name];
-  const { url, viewBox, aspectRatio, intrinsicRotation = 0, intrinsicClassName } = icon ?? {};
-  const iconColor = `text-${color}`;
-  const rotate = `${rotation + intrinsicRotation}deg`;
 
   if (!icon) {
     return null;
   }
+
+  const { url, viewBox, aspectRatio, intrinsicRotation = 0, intrinsicClassName } = icon ?? {};
+  const iconColor = `text-${color}`;
+  const rotate = `${rotation + intrinsicRotation}deg`;
 
   return (
     <span
