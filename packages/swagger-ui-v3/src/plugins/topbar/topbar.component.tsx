@@ -1,8 +1,19 @@
 import PropTypes from "prop-types";
+import {Header} from "@clubmed/ui/organisms/Header";
 import React from "react";
 import {System} from "../../interfaces/System";
-import {Header} from "@clubmed/ui/organisms/Header";
 import {useConfig} from "../../contexts/config.context";
+import {routes} from "../../routes";
+
+const nav = routes
+  .filter((route) => !route.hidden)
+  .map((route) => {
+    return {
+      ...route,
+      label: route.label,
+      url: route.path
+    };
+  });
 
 export default function Topbar(props: System) {
   let {getComponent, specSelectors, getConfigs} = props;
@@ -21,31 +32,9 @@ export default function Topbar(props: System) {
   </div>;
 
   return (
-    <Header homepageUrl={"/"} openMenu={false} sublabel={HeaderSubLabel}>
-      <FilterContainer />
-
-      {/*<Link className="cursor-pointer flex flex-no-shrink items-center pr-5 text-blue font-happiness">*/}
-      {/*  <div className="flex items-center py-2">*/}
-      {/*    <div className="overflow-hidden flex items-center relative" style={{height: "40px", top: "-2px"}}>*/}
-      {/*      <Icon svg={CLUBMED} width="7rem"/>*/}
-      {/*    </div>*/}
-
-      {/*  </div>*/}
-      {/*</Link>*/}
-      {/*<div className="flex items-center h-full" style={{flex: "1 1 auto"}}>*/}
-      {/*  {hasServers ? (<ServersContainer/>) : null}*/}
-      {/*  {hasSchemes ? (<SchemesContainer/>) : null}*/}
-      {/*</div>*/}
-      {/*<div className="flex items-center h-full" style={{width: "40%"}}>*/}
-      {/*  {legacyUrl &&*/}
-      {/*    <a href={legacyUrl} className={"whitespace-no-wrap pointer hover:text-blue-active h-full flex items-center"}>Legacy*/}
-      {/*      doc</a>}*/}
-      {/*  {TagsContainer ? <TagsContainer/> : null}*/}
-      {/*  {SearchContainer ? <SearchContainer/> : null}*/}
-      {/*</div>*/}
-      {/*<div className="flex flex-no-shrink relative">*/}
+    <Header homepageUrl={"/"} openMenu={"Open menu"} sublabel={HeaderSubLabel} items={nav}>
+      <FilterContainer/>
       {hasSecurityDefinitions ? <AuthorizeBtnContainer/> : null}
-      {/*</div>*/}
     </Header>
   );
 }

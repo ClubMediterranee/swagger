@@ -1,7 +1,7 @@
 import {createContext, useContext} from "react";
 
-export const ConfigContext = createContext(null);
+export const ConfigContext = createContext<any | null>(null);
 
-export function useConfig() {
-  return useContext(ConfigContext);
+export function useConfig(): any {
+  return useContext(ConfigContext)!;
 }
