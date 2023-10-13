@@ -10,13 +10,14 @@ import {Button} from "../../molecules/Buttons";
 import {ButtonAnchor} from "../../molecules/Buttons/ButtonAnchor";
 import {ElasticHeight} from "../../molecules/ElasticHeight";
 import {HamburgerIcon} from "../../molecules/HamburgerIcon";
+import {Link} from "react-router-dom";
 
-export interface HeaderNavItemProps {
+export interface HeaderNavItemProps extends Record<string, unknown> {
   label: string;
   url: string;
   columns?: {
     sections: { title: string; url: string; links: { label: string; url: string }[] }[];
-  };
+  }[];
 }
 
 export interface HeaderProps {
@@ -32,23 +33,19 @@ export const HOVER_EXIT_DURATION = 500;
 function HeaderNavPanel({index, activeIndex, item}: {
   index: number,
   activeIndex: number,
-  item: {
-    label: string;
-    url: string;
-    columns: { sections: { title: string; url: string; links: { label: string; url: string }[] }[] }[]
-  }
+  item: HeaderNavItemProps
 }) {
   return <div
     className={classnames(
       "absolute inset-x-0 top-full flex columns-5 justify-center gap-x-40 bg-white px-20 py-40",
       {
-        hidden: index !== activeIndex || item.columns.length === 0
+        hidden: index !== activeIndex || item.columns?.length === 0
       }
     )}
     role="menu"
     aria-label="desktop-menuItem"
   >
-    {item.columns.map((column, columnIndex) => {
+    {item.columns?.map((column, columnIndex) => {
       return (
         <div
           key={columnIndex}
@@ -94,13 +91,7 @@ function HeaderNavPanel({index, activeIndex, item}: {
   </div>;
 }
 
-export const Header: FunctionComponent<PropsWithChildren<Props>> = ({
-                                                                      children,
-                                                                      homepageUrl,
-                                                                      sublabel,
-                                                                      items,
-                                                                      openMenu
-                                                                    }) => {
+function useHeader() {
   const hoverInTimeout = useRef<ReturnType<typeof setTimeout>>();
   const hoverOutTimeout = useRef<ReturnType<typeof setTimeout>>();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -153,18 +144,30 @@ export const Header: FunctionComponent<PropsWithChildren<Props>> = ({
     leave: {opacity: 0, x: "100%"}
   });
 
+  return {isMobileMenuOpen, setIsMobileMenuOpen, activeIndex, setMenu, resetMenu, transition};
+}
+
+export const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
+                                                                            children,
+                                                                            homepageUrl,
+                                                                            sublabel,
+                                                                            items,
+                                                                            openMenu
+                                                                          }) => {
+  const {isMobileMenuOpen, activeIndex, setIsMobileMenuOpen, setMenu, resetMenu, transition} = useHeader();
+
   const height = 60;
 
   return (
     <header role="banner" style={{height: `${height}px`}}>
       <div style={{height: `${height}px`}}
-           className="z-1 fixed top-0 left-0 bg-white w-full relative flex items-center justify-between p-8 ps-20 lg:px-20">
-        <a href={homepageUrl} title="Club Med Homepage">
+           className="z-1 fixed top-0 left-0 bg-white w-full flex items-center justify-between p-8 ps-20 lg:px-20">
+        <Link to={homepageUrl} title="Club Med Homepage">
           <div className="w-[120px] md:w-[160px]">
             <Icon name="ClubMed" width="100%" className="text-ultramarine"/>
           </div>
           {sublabel}
-        </a>
+        </Link>
         <nav className="flex items-center gap-x-12 px-8">
           {items?.map((item, index) => {
             return (
@@ -178,6 +181,7 @@ export const Header: FunctionComponent<PropsWithChildren<Props>> = ({
                   }}
                 >
                   <ButtonAnchor
+                    variant="text"
                     theme="blackStroke"
                     onBlur={() => {
                       resetMenu(true);
@@ -192,7 +196,9 @@ export const Header: FunctionComponent<PropsWithChildren<Props>> = ({
                   </ButtonAnchor>
 
                   {
-                    item.columns.length > 0 && (<HeaderNavPanel index={index} activeIndex={activeIndex} item={item}/>)
+                    item?.columns?.length && item?.columns?.length > 0 ? (
+                        <HeaderNavPanel index={index} activeIndex={activeIndex} item={item}/>)
+                      : null
                   }
                 </div>
               </Fragment>
@@ -233,7 +239,7 @@ export const Header: FunctionComponent<PropsWithChildren<Props>> = ({
                     header={<span className="text-b2 font-bold">{item.label}</span>}
                     className="border-pearl border-b px-20 py-20"
                   >
-                    {item.columns.map((column) => {
+                    {item.columns?.map((column) => {
                       return column.sections.map((section) => {
                         return (
                           <div key={section.title} className="px-20">
