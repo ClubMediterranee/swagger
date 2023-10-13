@@ -1,14 +1,23 @@
 import classnames from "classnames";
 
-import {FunctionComponent} from "react";
-
 import {InputLabel} from "../InputLabel";
 
 import {Icon, Iconics} from "../../atoms/Icon";
+import {useValue} from "../../hooks/useValue";
 
-export interface TextFieldProps {
+export interface TextFieldProps<Value = string> extends Omit<React.HTMLAttributes<HTMLInputElement>, "onChange"> {
+  /**
+   * Additional class names
+   */
   className?: string;
-  name: string;
+  /**
+   * Input value name
+   */
+  name?: string;
+  /**
+   * Input value
+   */
+  value?: Value;
   /**
    * Label text
    */
@@ -50,34 +59,42 @@ export interface TextFieldProps {
    */
   dataTestId?: string;
 
-  onChange: (name: string, value: string) => void;
+  onChange?: (name: string, value: Value) => void;
 }
 
 let uuid = 0;
 
-export const TextField: FunctionComponent<TextFieldProps> = ({
-  className,
-                                                               label,
-                                                               name,
-                                                               description,
-                                                               placeholder,
-                                                               id = `field-date-${++uuid}`,
-                                                               status = "default",
-                                                               hasDropdown = false,
-                                                               icon = "CalendarDefault",
-                                                               errorMessage,
-                                                               isDisabled = false,
-                                                               dataTestId = "TextField",
-                                                               onChange
-                                                             }) => {
+export function TextField<Value = string>(props: TextFieldProps<Value>) {
+  const {
+    className,
+    value: initialValue,
+    label,
+    name = "",
+    description,
+    id = `field-date-${++uuid}`,
+    status = "default",
+    hasDropdown = false,
+    icon = "CalendarDefault",
+    errorMessage,
+    isDisabled = false,
+    dataTestId = "TextField",
+    onChange: initialOnChange,
+    ...rest
+  } = props;
+  const {
+    value,
+    setValue
+  } = useValue({initialValue, name, onChange: initialOnChange});
+
   const internalStatus = isDisabled ? "disabled" : status;
+
   return (
     <div className="space-y-4" data-name="TextField" data-testid={dataTestId}>
       {label && <InputLabel label={label} description={description} id={id}/>}
       <div className="relative">
         <input
+          {...rest}
           name={name}
-          onChange={(e) => onChange(name, e.target.value)}
           className={classnames(
             className,
             "text-b3 rounded-pill w-full border px-20 py-12 font-normal outline-none",
@@ -99,8 +116,9 @@ export const TextField: FunctionComponent<TextFieldProps> = ({
               }
           )}
           id={id}
+          value={value as any}
+          onChange={(e) => setValue(e.target.value as Value)}
           disabled={isDisabled}
-          placeholder={placeholder}
         />
         <div
           className={classnames(
@@ -133,4 +151,4 @@ export const TextField: FunctionComponent<TextFieldProps> = ({
       )}
     </div>
   );
-};
+}
