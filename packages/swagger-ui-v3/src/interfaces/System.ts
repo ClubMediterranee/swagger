@@ -10,7 +10,7 @@ export interface System {
   errSelectors: {},
 
   layoutSelectors: {
-    currentFilter(): string | null | false | "false";
+    currentFilter(): string | null | boolean | "false";
   },
   layoutActions: {
     updateFilter(value: string): void
@@ -18,5 +18,5 @@ export interface System {
 
   getConfigs(): Record<string, any> & SwaggerUIProps;
 
-  getComponent(name: stringn, bool?: boolean): React.Component;
+  getComponent(name: string, bool?: boolean): React.Component;
 }
