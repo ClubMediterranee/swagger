@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Backdrop /> renders a Backdrop component: backdrop 1`] = `
+<div
+  class="z-1 pointer-events-none fixed inset-0 flex items-center justify-center"
+  role="presentation"
+>
+  <button
+    class="-z-1 absolute inset-0 bg-white pointer-events-auto"
+    style="--tw-bg-opacity: 0.8; transform: none;"
+  />
+  <div>
+    backdrop content
+  </div>
+</div>
+`;

@@ -69,7 +69,7 @@ export const Icon: FunctionComponent<IconProps> = ({
         iconColor,
         className,
       )}
-      style={{ width, rotate, aspectRatio, ...style }}
+      style={{ width, rotate, aspectRatio: aspectRatio as any, ...style }}
       data-testid={`icon-${name}`}
       data-name="Icon"
     >

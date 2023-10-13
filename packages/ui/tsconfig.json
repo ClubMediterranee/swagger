@@ -18,7 +18,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "typeRoots": [
+      "./node_modules/@types",
+      "../../node_modules/@types"
+    ],
+    "types": ["node", "jest", "@testing-library/jest-dom"]
   },
   "include": [
     "assets",
@@ -26,7 +31,8 @@
     "contexts",
     "hooks",
     "molecules",
-    "organisms"
+    "organisms",
+    "tests"
   ],
   "references": [
     {
