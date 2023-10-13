@@ -1,3 +1,4 @@
+import type {Iterable, Map} from "immutable";
 import StandaloneLayout from "./custom-standalone-layout.component";
 import BaseLayout from "./base-layout.component";
 import AuthorizeBtn from "../auth/authorize-btn.component";
@@ -16,7 +17,7 @@ export const StandaloneLayoutPlugin = (system: System) => {
       OperationTag
     },
     fn: {
-      opsFilter(taggedOps, phrase) {
+      opsFilter(taggedOps: Iterable<string, Map<string, any>>, phrase: string) {
         return opsFilter(taggedOps, phrase, system);
       }
     }

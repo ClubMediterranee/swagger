@@ -75,7 +75,7 @@ export default function BaseLayout(props: System) {
   const hasSchemes = schemes && schemes.size;
 
   return (
-    <div className="swagger-ui">
+    <div>
       <SvgAssets/>
       <VersionPragmaFilter
         isSwagger2={isSwagger2}

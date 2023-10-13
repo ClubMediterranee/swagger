@@ -51,3 +51,4 @@ body .api-banner h1.title {
 body [for='schemes'] {
   @apply flex flex-col md:flex-row md:items-center md:justify-between;
 }
+
