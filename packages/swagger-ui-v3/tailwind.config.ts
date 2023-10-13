@@ -3,6 +3,7 @@ import preset from "@clubmed/ui/tailwind.preset";
 
 
 const config = {
+  important: '.swagger-ui',
   presets: [
     preset
   ],
