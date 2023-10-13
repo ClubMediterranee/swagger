@@ -1,26 +1,24 @@
-'use client';
+import classNames from "classnames";
+import type {FunctionComponent} from "react";
 
-import classNames from 'classnames';
-import type { FunctionComponent } from 'react';
-
-import { type CommonButtonProps } from './Button';
-import { rootClassName, variants } from './Button.helpers';
-import { themes } from './Button.themes';
-import { ButtonContent } from './ButtonContent';
+import {type CommonButtonProps} from "./Button";
+import {rootClassName, variants} from "./Button.helpers";
+import {themes} from "./Button.themes";
+import {ButtonContent} from "./ButtonContent";
 
 export const InertButton: FunctionComponent<CommonButtonProps> = ({
-  theme = 'yellow',
-  backgroundOverride,
-  variant = 'text',
-  className,
-  label,
-  children,
-  title,
-  icon,
-  dataTestId,
-  groupName = '',
-}) => {
-  const shouldShowLabel = variant === 'text';
+                                                                    theme = "yellow",
+                                                                    backgroundOverride,
+                                                                    variant = "text",
+                                                                    className,
+                                                                    label,
+                                                                    children,
+                                                                    title,
+                                                                    icon,
+                                                                    dataTestId,
+                                                                    groupName = ""
+                                                                  }) => {
+  const shouldShowLabel = variant === "text";
   const layout = variants[variant];
   const style = themes(theme, backgroundOverride, groupName);
 

@@ -9,7 +9,7 @@ import {
   type PropsWithChildren,
 } from 'react';
 
-export const isMobile = (header: ReturnType<typeof headers>) => {
+export const isMobile = () => {
   return /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(window.navigator.userAgent);
 };
 
