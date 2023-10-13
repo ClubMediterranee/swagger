@@ -14,9 +14,11 @@ export default function FilterContainer(props: System) {
           icon="Search"
           name="search"
           id="search"
-          value={filter === true || filter === "true" ? "" : filter}
+          value={filter === true || filter === "true" ? "" : filter as string}
           onChange={(name: string, value: string) => {
-            props.layoutActions.updateFilter(value);
+            if (value.length > 3) {
+              props.layoutActions.updateFilter(value);
+            }
           }}
           placeholder={"Search... (e.g. path: /products AND method: POST)"}
           className="w-360"

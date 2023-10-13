@@ -1803,8 +1803,6 @@ __metadata:
     "@types/react-dom": ^17.0.10
     "@types/swagger-ui-react": 4.1.1
     "@vitejs/plugin-react": ^1.0.7
-    lucene-filter: ^1.4.0
-    lucene-query-parser: ^1.2.0
     react: 18.2.0
     react-dom: 18.2.0
     swagger-ui-react: 5.4.2
@@ -12591,20 +12589,6 @@ __metadata:
   version: 7.18.3
   resolution: "lru-cache@npm:7.18.3"
   checksum: e550d772384709deea3f141af34b6d4fa392e2e418c1498c078de0ee63670f1f46f5eee746e8ef7e69e1c895af0d4224e62ee33e66a543a14763b0f2e74c1356
-  languageName: node
-  linkType: hard
-
-"lucene-filter@npm:^1.4.0":
-  version: 1.4.0
-  resolution: "lucene-filter@npm:1.4.0"
-  checksum: 0d6202da6bd3850ec9f65012c243c68c69d57b467fa742884ca0c678799c92f05c6ff4bca5cab05b5b0b592953450ab8010419b7d83a83f70609d2508ce8c565
-  languageName: node
-  linkType: hard
-
-"lucene-query-parser@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "lucene-query-parser@npm:1.2.0"
-  checksum: 26b11dca1377f5f362f0375393b270213887b05ba2088c319d896ef5c7ae5920723bfb0b3f7fb1a2898bc0b71df467e7e69f6f4991f45629ab64071096ecc363
   languageName: node
   linkType: hard
 
