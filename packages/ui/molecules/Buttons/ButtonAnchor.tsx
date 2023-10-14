@@ -33,7 +33,7 @@ export const ButtonAnchor: FunctionComponent<ButtonAnchorProps> = ({
                                                                      onClick,
                                                                      ...anchorAttrs
                                                                    }) => {
-  const shouldShowLabel = variant === "text";
+  const shouldShowLabel = variant === "text" || variant === "textSmall";
   const layout = variants[variant];
   const style = themes(theme, backgroundOverride, groupName);
   const [boopStyle, boopTrigger] = useSafeBoop({
@@ -53,7 +53,7 @@ export const ButtonAnchor: FunctionComponent<ButtonAnchorProps> = ({
   const classes = classNames(rootClassName, style, layout, variant, className);
   const titleAttr = title || label;
 
-  if (href === undefined || href.includes("://")) {
+  if (href?.includes("://")) {
     return <animated.a
       href={href}
       data-name="ButtonAnchor"

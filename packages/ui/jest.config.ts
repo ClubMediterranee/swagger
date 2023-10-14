@@ -9,7 +9,8 @@ const config: Config = {
     "<rootDir>/molecules",
     "<rootDir>/organisms",
     "<rootDir>/hooks",
-    "<rootDir>/contexts"
+    "<rootDir>/contexts",
+    "<rootDir>/utils",
   ],
   collectCoverageFrom: [
     "{atoms,molecules,organisms,hooks,contexts}/**/*.{js,jsx,ts,tsx}",

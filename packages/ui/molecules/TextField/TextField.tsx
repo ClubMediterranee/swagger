@@ -3,7 +3,7 @@ import classnames from "classnames";
 import {InputLabel} from "../InputLabel";
 
 import {Icon, Iconics} from "../../atoms/Icon";
-import {useValue} from "../../hooks/useValue";
+import {useValue} from "../../hooks/form/useValue";
 
 export interface TextFieldProps<Value = string> extends Omit<React.HTMLAttributes<HTMLInputElement>, "onChange"> {
   /**

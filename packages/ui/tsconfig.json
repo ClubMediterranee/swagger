@@ -32,7 +32,8 @@
     "hooks",
     "molecules",
     "organisms",
-    "tests"
+    "tests",
+    "utils"
   ],
   "references": [
     {

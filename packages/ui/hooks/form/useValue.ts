@@ -7,8 +7,8 @@ export interface UseValueProps<Value = string> {
   defaultValue?: Value | string;
 }
 
-export function useValue<Value = string>({ name, initialValue, onChange, defaultValue = "" }: UseValueProps<Value>) {
-  const [value, setLocalValue] = useState(initialValue || defaultValue);
+export function useValue<Value = string>({name, initialValue, onChange, defaultValue = ""}: UseValueProps<Value>) {
+  const [value, setLocalValue] = useState<Value>((initialValue || defaultValue) as Value);
 
   useEffect(() => {
     initialValue !== void 0 && setLocalValue(initialValue);
