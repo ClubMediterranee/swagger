@@ -1808,8 +1808,9 @@ __metadata:
   resolution: "@clubmed/swagger-ui-v3@workspace:packages/swagger-ui-v3"
   dependencies:
     "@clubmed/ui": 1.13.7
-    "@types/react": ^17.0.33
-    "@types/react-dom": ^17.0.10
+    "@types/lodash": ^4.14.199
+    "@types/react": ^18.2.28
+    "@types/react-dom": ^18.2.13
     "@types/swagger-ui-react": 4.1.1
     "@vitejs/plugin-react": ^1.0.7
     history: ^5.3.0
@@ -5019,6 +5020,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4.14.199":
+  version: 4.14.199
+  resolution: "@types/lodash@npm:4.14.199"
+  checksum: e68d1fcbbfce953ed87b296a628573f62939227bcda0c934954e862b421e8a34c5e71cad6fea27b9980567909e6a4698f09025692958e36d64ea9ed99ec6fb2e
+  languageName: node
+  linkType: hard
+
 "@types/mime@npm:*":
   version: 3.0.2
   resolution: "@types/mime@npm:3.0.2"
@@ -5143,16 +5151,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.10":
-  version: 17.0.21
-  resolution: "@types/react-dom@npm:17.0.21"
-  dependencies:
-    "@types/react": ^17
-  checksum: a2e3f068c1374601856b63bc57f3f436cf6270c1ba5c5cef0776def6de296c8bdd31c39b5be9e9e77f4652e923bef1e71ae377a2b038f4a81bfd0fec8d10d0d0
-  languageName: node
-  linkType: hard
-
-"@types/react-dom@npm:^18.0.0":
+"@types/react-dom@npm:^18.0.0, @types/react-dom@npm:^18.2.13":
   version: 18.2.13
   resolution: "@types/react-dom@npm:18.2.13"
   dependencies:
@@ -5171,14 +5170,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17, @types/react@npm:^17.0.33":
-  version: 17.0.68
-  resolution: "@types/react@npm:17.0.68"
+"@types/react@npm:^18.2.28":
+  version: 18.2.28
+  resolution: "@types/react@npm:18.2.28"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: c6ca4415b53b1abe91162b29af541a1797a56a6f462ef796e8ebda3eaa4d0609205f4f17b3fce8d9a12235d4ffd8a67c47b5e018ed85c2f3bee0fba8f54638c1
+  checksum: 81381bedeba83278f4c9febb0b83e0bd3f42a25897a50b9cb36ef53651d34b3d50f87ebf11211ea57ea575131f85d31e93e496ce46478a00b0f9bf7b26b5917a
   languageName: node
   linkType: hard
 
