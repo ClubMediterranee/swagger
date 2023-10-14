@@ -3,7 +3,7 @@ import {System} from "../../interfaces/System";
 import {TextField} from "@clubmed/ui/molecules/TextField";
 
 export default function FilterContainer(props: System) {
-  const {layoutSelectors, getComponent} = props;
+  const {layoutSelectors} = props;
 
   const filter = layoutSelectors.currentFilter();
 
