@@ -61,8 +61,8 @@ export function userSwaggerUI(): SwaggerUIProps {
     };
   }
 
-  const PLUGINS = {...SwaggerUI.plugins, ...Plugins};
-  const PRESETS = {...SwaggerUI.presets};
+  const PLUGINS = {...(SwaggerUI as any).plugins, ...Plugins};
+  const PRESETS = {...(SwaggerUI as any).presets};
 
   // map presets
   if (config.presets) {

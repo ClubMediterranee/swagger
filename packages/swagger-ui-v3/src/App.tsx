@@ -1,5 +1,5 @@
 import "swagger-ui-react/swagger-ui.css";
-import SwaggerUI from "swagger-ui-react";
+import SwaggerUI, {SwaggerUIProps} from "swagger-ui-react";
 import {userSwaggerUI} from "./hooks/user-swagger-ui.hook";
 import "@clubmed/ui/styles/globals.css";
 import {DeviceProvider, isMobile} from "@clubmed/ui/contexts/Device";
@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <ConfigContext.Provider value={config}>
         <DeviceProvider device={isMobile() ? "mobile" : "desktop"}>
-          <SwaggerUI {...config}></SwaggerUI>
+          <SwaggerUI {...(config as SwaggerUIProps)}/>
         </DeviceProvider>
       </ConfigContext.Provider>
     </div>

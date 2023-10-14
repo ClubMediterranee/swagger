@@ -40,7 +40,7 @@ export function ApiBanner(props: System) {
             </div>
 
             <div>
-              <Button href={"https://www.clubmed.com.au/"}>Contact us</Button>
+              <Button>Contact us</Button>
             </div>
           </div>
         </div>

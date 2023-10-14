@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PropsWithChildren} from "react";
 import Im from "immutable";
 import {System} from "../../interfaces/System";
 import {createDeepLinkPath, escapeDeepLinkPath, safeBuildUrl, sanitizeUrl} from "../../utils/url";
@@ -7,7 +7,7 @@ import {sentenceCase} from "../../utils/sentence-case";
 import {Button} from "@clubmed/ui/molecules/Buttons";
 
 
-export default function OperationTag(props: System) {
+export default function OperationTag(props: PropsWithChildren<System & { tag: string, tagObj: any }>) {
   const {
     tagObj = Im.fromJS({}),
     tag = "",
@@ -25,7 +25,7 @@ export default function OperationTag(props: System) {
     deepLinking
   } = getConfigs();
 
-  const isDeepLinkingEnabled = deepLinking && deepLinking !== "false";
+  const isDeepLinkingEnabled = deepLinking && deepLinking as any !== "false";
 
   const Collapse = getComponent("Collapse");
   const Markdown = getComponent("Markdown", true);
@@ -74,7 +74,7 @@ export default function OperationTag(props: System) {
             <small>
               <Link
                 href={sanitizeUrl(tagExternalDocsUrl)}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e: MouseEvent) => e.stopPropagation()}
                 target="_blank"
               >{tagExternalDocsDescription || tagExternalDocsUrl}</Link>
             </small>

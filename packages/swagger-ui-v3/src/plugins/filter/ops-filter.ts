@@ -1,5 +1,4 @@
 import type {Iterable, List, Map, OrderedMap} from "immutable";
-import {System} from "../../interfaces/System";
 
 interface Term {
   models: string[];
@@ -55,7 +54,7 @@ function filterOperations(operations: List<Map<string, any>>, phrase: string) {
           return true;
         }
 
-        const responseModels = getResponseModel(operation);
+        // const responseModels = getResponseModel(operation);
 
       }
     }
@@ -64,7 +63,42 @@ function filterOperations(operations: List<Map<string, any>>, phrase: string) {
   });
 }
 
-export function opsFilter(taggedOps: Iterable<string, Map<string, any>>, phrase: string, system: System) {
+export function opsAdvancedFilter(taggedOps: Iterable<string, Map<string, any>>, advancedFilters: Map<string, any>) {
+  const tags = advancedFilters.get("tags") as string[] | undefined;
+  const admin = advancedFilters.get("admin") as boolean;
+  const deprecated = advancedFilters.get("deprecated") as boolean;
+
+  return taggedOps
+    .filter((tagObj, tag) => {
+      if (tag) {
+        if (tags?.length && !tags.includes(tag)) {
+          return false;
+        }
+
+        if (tag === "admin" && !admin) {
+          return false;
+        }
+      }
+
+      return true;
+    })
+    .map((tagObj) => {
+      if (!deprecated && tagObj?.get("operations")) {
+        const operations = tagObj.get("operations").filter((operationPath: Map<string, any>) => {
+          return operationPath.get("operation")?.get("deprecated") !== true;
+        });
+
+        return tagObj.set("operations", operations);
+      }
+
+      return tagObj;
+    })
+    .filter((tagObj) => {
+      return tagObj?.get("operations").size > 0;
+    });
+}
+
+export function opsFilter(taggedOps: Iterable<string, Map<string, any>>, phrase: string) {
   phrase = phrase.toLowerCase();
 
   return taggedOps
@@ -79,35 +113,3 @@ export function opsFilter(taggedOps: Iterable<string, Map<string, any>>, phrase:
       return tagObj?.get("operations").size > 0;
     });
 }
-
-//
-// // if (!mapFilters.has(keyword)) {
-// //   mapFilters.set(keyword, getLucene(keyword));
-// // }
-//
-// // const filter = mapFilters.get(keyword);
-// // return taggedOps.filter((taggedOps) => {
-// //   return filter(mapTerms(taggedOps));
-// // });
-// // }
-//
-// function getModels(item, set = new Set()) {
-//   if (!item) {
-//     return set;
-//   }
-//
-//   if (typeof item === "string" && item.indexOf("#/definitions") > -1) {
-//     set.add(item.replace("#/definitions/", ""));
-//     return set;
-//   }
-//
-//   if (typeof item === "object") {
-//     Object
-//       .values(item)
-//       .forEach((value) => {
-//         getModels(value, set);
-//       });
-//   }
-//
-//   return set;
-// }
