@@ -1,10 +1,12 @@
 import {Button} from "@clubmed/ui/molecules/Buttons";
 import React from "react";
 import {System} from "../../interfaces/System";
+import {useConfig} from "../../contexts/config.context";
 
 export function ApiBanner(props: System) {
   const {layoutSelectors} = props;
   const filter = layoutSelectors.currentFilter();
+  const config = useConfig();
 
   const showBanner = !(typeof filter === "string" && filter.length > 0);
 
@@ -40,7 +42,9 @@ export function ApiBanner(props: System) {
             </div>
 
             <div>
-              <Button>Contact us</Button>
+              <Button onClick={() => {
+                window.location.href = `mailto:${config.contact}`;
+              }}>Contact us</Button>
             </div>
           </div>
         </div>
@@ -51,7 +55,7 @@ export function ApiBanner(props: System) {
           <div
             className="sm:max-w-1/2 lg:max-w-full flex flex-col gap-y-20 px-20 py-40 sm:-order-1 sm:p-0 sm:pe-20 lg:pe-40 xl:pe-80"
             style={{minHeight: "100px"}}>
-            <h1 className="title">Search:  {filter}</h1>
+            <h1 className="title">Search: {filter}</h1>
           </div>
         </div>
       </div>
