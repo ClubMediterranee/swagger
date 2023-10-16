@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <ConfigContext.Provider value={config}>
         <DeviceProvider device={isMobile() ? "mobile" : "desktop"}>
-          <SwaggerUI {...(config as SwaggerUIProps)}/>
+          <SwaggerUI {...(config as SwaggerUIProps)} tryItOutEnabled={true}/>
         </DeviceProvider>
       </ConfigContext.Provider>
     </div>
