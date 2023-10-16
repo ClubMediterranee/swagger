@@ -1,19 +1,56 @@
+@import "choices.js/public/assets/styles/choices.css";
+
 body {
-  .swagger-ui input[type="email"].invalid, .swagger-ui input[type="file"].invalid, .swagger-ui input[type="password"].invalid, .swagger-ui input[type="search"].invalid, .swagger-ui input[type="text"].invalid, .swagger-ui textarea.invalid {
+  .swagger-ui input[type="email"].invalid,
+  .swagger-ui input[type="file"].invalid,
+  .swagger-ui input[type="password"].invalid,
+  .swagger-ui input[type="search"].invalid,
+  .swagger-ui input[type="text"].invalid,
+  .swagger-ui textarea.invalid {
     @apply border-red;
   }
 
-  .swagger-ui input[type="email"],
-  .swagger-ui input[type="password"],
-  .swagger-ui input[type="search"],
-  .swagger-ui input[type="text"] {
-    @apply text-b5 rounded-pill w-full border px-12 py-8 font-normal outline-none border-lightGrey focus:border-black active:border-black bg-white text-black;
+  .swagger-ui :not(.choices) input[type="email"],
+  .swagger-ui :not(.choices) input[type="password"],
+  .swagger-ui input[type="search"]:not(.choices__input),
+  .swagger-ui :not(.choices) input[type="text"] {
+    @apply text-b5 rounded-pill w-full border px-12 py-12 font-normal outline-none border-lightGrey focus:border-black active:border-black bg-white text-black;
   }
 
-  .swagger-ui select {
-    @apply text-b5 rounded-pill border w-full px-12 py-8 font-normal outline-none border-lightGrey focus:border-black active:border-black bg-white text-black shadow-none;
+  .swagger-ui :not(.choices) select {
+    @apply text-b5 rounded-pill border w-full px-12 py-12 font-normal outline-none border-lightGrey focus:border-black active:border-black bg-white text-black shadow-none;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     max-width: 340px;
+  }
+
+  .choices {
+    @apply rounded-pill text-b5;
+    max-width: 340px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    .choices__inner {
+      @apply rounded-pill border-lightGrey focus:border-black active:border-black;
+    }
+  }
+
+  .choices[data-type*="select-one"] .choices__inner {
+    @apply flex items-center;
+  }
+
+  .is-open .choices__list--dropdown, .is-open .choices__list[aria-expanded] {
+    @apply border-lightGrey shadow-xl;
+  }
+
+  .choices[data-type*="select-one"] .choices__input {
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-radius: 0;
+  }
+
+  .json-schema-array .json-schema-form-item-add{
+    @apply mt-8;
   }
 }

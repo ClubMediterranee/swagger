@@ -88,9 +88,16 @@ body {
     @apply text-b5 font-sans;
   }
 
-
   .swagger-ui .errors-wrapper {
     @apply text-b5 font-sans border-red;
+  }
+
+  .swagger-ui .opblock .opblock-summary .view-line-link.copy-to-clipboard {
+    @apply rounded-pill h-32 w-32 opacity-0 transition-opacity duration-200 mx-2;
+  }
+
+  .swagger-ui .opblock .opblock-summary:hover .view-line-link.copy-to-clipboard {
+    @apply h-32 w-32 opacity-100;
   }
 }
 

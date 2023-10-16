@@ -52,7 +52,7 @@ export const Backdrop: FunctionComponent<PropsWithChildren<BackdropProps>> = ({
       item && (
         <div
           role="presentation"
-          className="z-1 pointer-events-none fixed inset-0 flex items-center justify-center"
+          className="z-5 pointer-events-none bg-white fixed inset-0 flex items-center justify-center"
         >
           <animated.button
             className={classnames("-z-1 absolute inset-0 bg-white", {

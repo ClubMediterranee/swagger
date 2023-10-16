@@ -80,13 +80,13 @@ export default function OperationSummary(props: System & { isShown: boolean, tog
       <JumpToPath path={specPath}/>{/* TODO: use wrapComponents here, swagger-ui doesn't care about jumpToPath */}
 
       <Button
-        variant={"icon"}
+        variant={"iconSmall"}
         aria-expanded={isShown}
         title={isShown ? "Collapse operation" : "Expand operation"}
         onClick={toggleShown}
         theme={"white"}
         icon={isShown ? "ArrowDefaultUp" : "ArrowDefaultDown"}
-        className={"pointer-events-auto me-auto transition-opacity h-32 w-32 mx-12"}
+        className={"pointer-events-auto me-auto transition-opacity mx-12"}
       />
 
     </div>

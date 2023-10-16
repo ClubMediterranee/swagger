@@ -7,7 +7,7 @@ export function AuthorizeOperationBtn(props: System & { isAuthorized: boolean, o
 
   return (
     <Button
-      variant={"icon"}
+      variant={"smallIcon"}
       aria-expanded={isAuthorized}
       title={isAuthorized ? "authorization button locked" : "authorization button unlocked"}
       onClick={(e) => {
