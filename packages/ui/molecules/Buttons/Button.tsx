@@ -17,7 +17,7 @@ export type CommonButtonProps = {
   /**
    * Is it a text button? An icon button? An arrow button?
    */
-  variant?: "text" | "textSmall" | "icon" | "arrow";
+  variant?: "text" | "textSmall" | "icon" | "iconSmall" | "arrow";
   /**
    * Background Color override
    * Ideally please use ONLY for the "white" and "black" themes
@@ -73,6 +73,9 @@ interface ButtonProps extends CommonButtonProps {
    * Data test id
    */
   dataTestId?: string;
+
+  height?: string;
+  width?: string;
 }
 
 export const Button: FunctionComponent<ButtonProps> = ({

@@ -7,6 +7,7 @@ import OperationTag from "../operations/operation-tag.component";
 import {AuthorizeOperationBtn} from "../auth/authorize-operation-btn.component";
 import {wrapExecute} from "../operations/wrap-execute";
 import {wrapClear} from "../operations/wrap-clear";
+import {SelectComponent} from "../form/select.component";
 
 export const StandaloneLayoutPlugin = () => {
   return {
@@ -16,7 +17,8 @@ export const StandaloneLayoutPlugin = () => {
       authorizeBtn: AuthorizeBtn,
       authorizeOperationBtn: AuthorizeOperationBtn,
       OperationSummary,
-      OperationTag
+      OperationTag,
+      Select: SelectComponent
     },
     wrapComponents: {
       operation: wrapOperation,
