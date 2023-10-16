@@ -38,7 +38,7 @@ export default function Topbar(props: System) {
     url: "",
     position: "right",
     variant: "icon",
-    icon: "Edit",
+    icon: "Filters",
     component: <AdvancedFilterPanel />
   }];
 

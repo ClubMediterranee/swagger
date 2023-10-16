@@ -1,0 +1,29 @@
+body .swagger-ui .info h1,
+body .swagger-ui .info h2,
+body .swagger-ui .info h3,
+body .swagger-ui .info h4,
+body .swagger-ui .info h5,
+body .swagger-ui .info .title {
+  @apply font-serif;
+}
+
+body .swagger-ui .info .title {
+  @apply text-ultramarine;
+}
+
+body .swagger-ui .info li, body .swagger-ui .info p, body .swagger-ui .info table {
+  @apply font-sans;
+}
+
+body .api-banner h1.title {
+  @apply text-h2 font-serif m-0;
+}
+
+.scheme-container.scheme-container {
+  background: transparent;
+  box-shadow: none;
+}
+
+body [for='schemes'] {
+  @apply flex flex-col md:flex-row md:items-center md:justify-between;
+}

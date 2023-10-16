@@ -2,8 +2,6 @@ import Topbar from "./topbar.component";
 import {AdvancedFilterPanel} from "../filter/advanced-filter-panel.component";
 import FilterContainer from "../filter/filter.container";
 import {opsAdvancedFilter, opsFilter} from "../filter/ops-filter";
-import type {Iterable, Map} from "immutable";
-import {System} from "../../interfaces/System";
 import reducers from "../filter/state/reducers";
 import * as actions from "../filter/state/actions";
 import * as selectors from "../filter/state/selectors";
@@ -19,7 +17,7 @@ export const TopbarPlugin = () => ({
     layout: {
       reducers,
       actions,
-      selectors,
+      selectors
     },
     spec: {
       wrapSelectors
