@@ -2,11 +2,14 @@ import {System} from "../../interfaces/System";
 import React, {Suspense} from "react";
 import {Route, Routes} from "react-router";
 import {routes} from "../../routes";
+import {Footer} from "@clubmed/ui/organisms/Footer/Footer";
+import {useConfig} from "../../contexts/config.context";
 
 export default function CustomStandaloneLayout(props: System) {
   const {getComponent} = props;
   const Container = getComponent("Container");
   const Topbar = getComponent("Topbar", true);
+  const config = useConfig();
 
   return (
     <Container className="swagger-ui">
@@ -22,6 +25,8 @@ export default function CustomStandaloneLayout(props: System) {
             })
         }
       </Routes>
+
+      {config.footer ? <Footer {...config.footer} /> : null}
     </Container>
   );
 }
