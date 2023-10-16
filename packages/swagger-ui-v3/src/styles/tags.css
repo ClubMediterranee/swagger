@@ -1,0 +1,12 @@
+body .swagger-ui .opblock-tag {
+  @apply text-h5 flex font-serif transition-colors duration-300 md:text-h2 justify-between gap-x-20 p-20 md:px-0 md:pb-0 md:pt-40 md:text-black md:text-black;
+  @apply border-0 bg-transparent;
+}
+
+body .swagger-ui .opblock-tag:hover {
+  @apply bg-transparent;
+}
+
+body .swagger-ui .operation-tag-content {
+  @apply space-y-40 py-40 md:pt-32;
+}

@@ -1,0 +1,19 @@
+body {
+  .swagger-ui input[type="email"].invalid, .swagger-ui input[type="file"].invalid, .swagger-ui input[type="password"].invalid, .swagger-ui input[type="search"].invalid, .swagger-ui input[type="text"].invalid, .swagger-ui textarea.invalid {
+    @apply border-red;
+  }
+
+  .swagger-ui input[type="email"],
+  .swagger-ui input[type="password"],
+  .swagger-ui input[type="search"],
+  .swagger-ui input[type="text"] {
+    @apply text-b5 rounded-pill w-full border px-12 py-8 font-normal outline-none border-lightGrey focus:border-black active:border-black bg-white text-black;
+  }
+
+  .swagger-ui select {
+    @apply text-b5 rounded-pill border w-full px-12 py-8 font-normal outline-none border-lightGrey focus:border-black active:border-black bg-white text-black shadow-none;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    max-width: 340px;
+  }
+}

@@ -26,12 +26,15 @@ function getResponseModel(operation: OrderedMap<string, any>) {
 
 
 function filterOperations(operations: List<Map<string, any>>, phrase: string) {
+  if (phrase.length < 3) {
+    return operations;
+  }
+
   return operations.filter((operationPath) => {
     if (operationPath) {
       const path = operationPath.get("path");
       const method = operationPath.get("method");
       const operation: OrderedMap<string, any> | undefined = operationPath.get("operation");
-
 
       if (path && path.toLowerCase().includes(phrase)) {
         return true;

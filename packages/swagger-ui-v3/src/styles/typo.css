@@ -1,0 +1,21 @@
+body {
+  @apply font-sans;
+}
+
+body .swagger-ui .wrapper {
+  max-width: 1220px;
+}
+
+/* swagger customization */
+.loading-container .loading {
+  display: none;
+}
+
+body {
+  .swagger-ui .markdown code {
+    @apply py-1 px-4;
+  }
+  .swagger-ui .markdown code, .swagger-ui .renderedMarkdown code {
+    @apply text-b5 text-ultramarine;
+  }
+}

@@ -1,0 +1,96 @@
+body {
+  /* operation */
+
+  .swagger-ui .opblock.opblock {
+    border: 0;
+    box-shadow: none;
+    @apply bg-lightSand;
+  }
+
+  .swagger-ui .operation-tag-content {
+    padding: 0;
+    @apply pt-8 font-sans text-b4;
+  }
+
+  .swagger-ui .opblock .opblock-summary-path, .swagger-ui .opblock .opblock-summary-path__deprecated {
+    @apply font-sans text-b4;
+  }
+
+  .swagger-ui .opblock .opblock-summary {
+    @apply px-12;
+  }
+
+  .swagger-ui .opblock .btn-group {
+    @apply flex-col;
+  }
+
+  /* operation method */
+  .swagger-ui .opblock .opblock-summary-method {
+    @apply text-b6 font-serif block;
+  }
+
+  .swagger-ui .opblock.opblock-get .opblock-summary-method {
+    @apply bg-lavender;
+  }
+
+  .swagger-ui .opblock.opblock-get .opblock-summary {
+    @apply border-lavender;
+  }
+
+  .swagger-ui .opblock.opblock-post .opblock-summary-method {
+    @apply bg-wave;
+  }
+
+  .swagger-ui .opblock.opblock-post .opblock-summary {
+    @apply border-wave;
+  }
+
+  .swagger-ui .opblock.opblock-put .opblock-summary-method {
+    @apply bg-saffron;
+  }
+
+  .swagger-ui .opblock.opblock-put .opblock-summary {
+    @apply border-verdigris;
+  }
+
+  .swagger-ui .opblock.opblock-patch .opblock-summary-method {
+    @apply bg-verdigris;
+  }
+
+  .swagger-ui .opblock.opblock-patch .opblock-summary {
+    @apply border-saffron;
+  }
+
+  .swagger-ui .opblock.opblock-delete .opblock-summary-method {
+    @apply bg-red;
+  }
+
+  .swagger-ui .opblock.opblock-delete .opblock-summary {
+    @apply border-red;
+  }
+
+  .swagger-ui .model-box-control:focus, .swagger-ui .models-control, .swagger-ui .opblock-summary-control:focus {
+    outline: none;
+  }
+
+  .operation-intersection-obs {
+    margin: 0 !important;
+  }
+
+  /*  operation parameter */
+
+  .swagger-ui .parameter__name {
+    @apply text-b4 font-sans;
+  }
+
+  .swagger-ui .parameters-col_description .markdown p,
+  .swagger-ui .parameters-col_description .renderedMarkdown p {
+    @apply text-b5 font-sans;
+  }
+
+
+  .swagger-ui .errors-wrapper {
+    @apply text-b5 font-sans border-red;
+  }
+}
+

@@ -31,8 +31,6 @@ export default function OperationTag(props: PropsWithChildren<System & { tag: st
   const Markdown = getComponent("Markdown", true);
   const DeepLink = getComponent("DeepLink");
   const Link = getComponent("Link");
-  const ArrowUpIcon = getComponent("ArrowUpIcon");
-  const ArrowDownIcon = getComponent("ArrowDownIcon");
 
   let tagDescription = tagObj.getIn(["tagDetails", "description"], null);
   let tagExternalDocsDescription = tagObj.getIn(["tagDetails", "externalDocs", "description"]);

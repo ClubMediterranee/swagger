@@ -1,54 +1,6 @@
-body {
-  @apply font-sans;
-}
-
-body .swagger-ui .wrapper {
-  max-width: 1220px;
-}
-
-/* swagger customization */
-.loading-container .loading {
-  display: none;
-}
-
-.scheme-container.scheme-container {
-  background: transparent;
-  box-shadow: none;
-}
-
-/* swagger tags title */
-body .swagger-ui .opblock-tag {
-  @apply text-h5 flex font-serif transition-colors duration-300 md:text-h2 justify-between gap-x-20 p-20 md:px-0 md:pb-0 md:pt-40 md:text-black md:text-black;
-  @apply border-0 bg-transparent;
-}
-body .swagger-ui .opblock-tag:hover {
-  @apply bg-transparent;
-}
-
-body .swagger-ui .operation-tag-content {
-  @apply space-y-40 py-40 md:pt-32;
-}
-body .swagger-ui .info h1,
-body .swagger-ui .info h2,
-body .swagger-ui .info h3,
-body .swagger-ui .info h4,
-body .swagger-ui .info h5,
-body .swagger-ui .info .title {
-  @apply font-serif;
-}
-body .swagger-ui .info .title {
-  @apply text-ultramarine;
-}
-
-body .swagger-ui .info li, body .swagger-ui .info p, body .swagger-ui .info table {
-  @apply font-sans;
-}
-
-body .api-banner h1.title {
-  @apply text-h2 font-serif m-0;
-}
-
-body [for='schemes'] {
-  @apply flex flex-col md:flex-row md:items-center md:justify-between;
-}
-
+@import "./styles/typo.css";
+@import "./styles/banner.css";
+@import "./styles/tags.css";
+@import "./styles/operation.css";
+@import "./styles/form.css";
+@import "./styles/button.css";
