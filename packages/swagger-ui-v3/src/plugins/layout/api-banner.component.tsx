@@ -31,14 +31,12 @@ export function ApiBanner(props: System) {
             </h1>
 
             <div className="text-b3">
-              Welcome to Club Med, where premium all-inclusive means so much more. It’s about the simplicity of luxury
-              and
-              peace-of-mind holidays. One booking covers everything: flights, superior accommodation, gourmet
-              cuisines,
-              unlimited drinks and refreshments and a multitude of endless included activities. Our renowned kids club
-              and
-              programme caters to all ages to create lifelong memories. Discover the ultimate all-inclusive experience
-              with Club Med.
+              Club Med, renowned for its luxury resort experiences, proudly introduces its dedicated API. This tool offers
+              developers a gateway to the diverse services and information provided by Club Med, from vacation bookings to
+              on-site activity details. By using this interface, partners and developers can effortlessly integrate Club
+              Med's offerings into their platforms. Whether you're looking for destination details, making reservations,
+              or discovering the latest promotions, the Club Med API ensures a streamlined user experience. Step into this
+              digital realm and amplify your platforms with the Club Med API.
             </div>
 
             <div>

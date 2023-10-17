@@ -1808,6 +1808,7 @@ __metadata:
   resolution: "@clubmed/swagger-ui-v3@workspace:packages/swagger-ui-v3"
   dependencies:
     "@clubmed/ui": 1.13.7
+    "@laynezh/vite-plugin-lib-assets": ^0.5.6-beta.0
     "@types/lodash": ^4.14.199
     "@types/react": ^18.2.28
     "@types/react-dom": ^18.2.13
@@ -2887,6 +2888,16 @@ __metadata:
   version: 3.4.0
   resolution: "@juggle/resize-observer@npm:3.4.0"
   checksum: 2505028c05cc2e17639fcad06218b1c4b60f932a4ebb4b41ab546ef8c157031ae377e3f560903801f6d01706dbefd4943b6c4704bf19ed86dfa1c62f1473a570
+  languageName: node
+  linkType: hard
+
+"@laynezh/vite-plugin-lib-assets@npm:^0.5.6-beta.0":
+  version: 0.5.6-beta.0
+  resolution: "@laynezh/vite-plugin-lib-assets@npm:0.5.6-beta.0"
+  dependencies:
+    loader-utils: ^3.2.1
+    mrmime: ^1.0.1
+  checksum: 3ead54de63c287b5c983750a504ff351eecb6b56b16f11958f7a0a4e61e401677d2c29ecdc91f27ce5cf1469b703a7da602fbb2638a0ff448f12a7311171828b
   languageName: node
   linkType: hard
 
@@ -12359,6 +12370,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"loader-utils@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "loader-utils@npm:3.2.1"
+  checksum: 4e3ea054cdc8be1ab1f1238f49f42fdf0483039eff920fb1d442039f3f0ad4ebd11fb8e584ccdf2cb7e3c56b3d40c1832416e6408a55651b843da288960cc792
+  languageName: node
+  linkType: hard
+
 "locate-path@npm:^2.0.0":
   version: 2.0.0
   resolution: "locate-path@npm:2.0.0"
@@ -13171,6 +13189,13 @@ __metadata:
   version: 2.24.0
   resolution: "moment@npm:2.24.0"
   checksum: 9cd93a251a2b33cb1b532eade0e496a2a7547faa6cfe37a283ee7bf69e202cd7c8ab0673d66883b5b29aed051353176dc0e6684f04073a75b0a155c500be1580
+  languageName: node
+  linkType: hard
+
+"mrmime@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "mrmime@npm:1.0.1"
+  checksum: cc979da44bbbffebaa8eaf7a45117e851f2d4cb46a3ada6ceb78130466a04c15a0de9a9ce1c8b8ba6f6e1b8618866b1352992bf1757d241c0ddca558b9f28a77
   languageName: node
   linkType: hard
 

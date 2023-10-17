@@ -8,13 +8,6 @@
     "vue": "2.6.11",
     "vue-toastr": "2.1.2"
   },
-  "scripts": {
-    "start": "cross-env PORT=3006 BROWSER=none cm-scripts start",
-    "build": "cm-scripts build",
-    "test": "cm-scripts test --coverage",
-    "lint:fix": "yarn lint --fix",
-    "lint": "eslint --config .eslintrc --cache --quiet \"./src/**/*.{js,jsx}\""
-  },
   "browserslist": {
     "production": [
       ">0.2%",
