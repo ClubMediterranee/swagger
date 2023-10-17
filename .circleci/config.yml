@@ -63,14 +63,21 @@ jobs:
   deploy:
     executor: app-executor
     environment:
-      BASE_URL: "https://clubmediterranee.github.io/swagger/latest"
-      GITHUB_PAGES_PATH: "./dist"
+#      BASE_URL: "https://clubmediterranee.github.io/swagger/latest"
+#      GITHUB_PAGES_PATH: "./dist"
     steps:
       - checkout
 #      - configure-executor
       - yarn-install
       - run: yarn dlx -p @cmflow/cli cmrelease
-
+      - run:
+          name: Publish
+          path: ./dist
+          command: |
+            git init
+            git add -A
+            git commit -m 'Deploy github pages'
+            git push -f "https://${GH_TOKEN}@github.com/ClubMediterranee/swagger.git" master:gh-pages
 workflows:
   build:
     jobs:
