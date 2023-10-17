@@ -1,12 +1,11 @@
 import React from "react";
-import {SwaggerView} from "./views/swagger/swagger.view";
-import {RouteProps} from "react-router/dist/lib/components";
+import type {RouteProps} from "react-router";
 
 export const routes: RouteProps & Record<string, any>[] = [
   {
     label: "Home",
     hidden: true,
-    element: SwaggerView,
+    element: React.lazy(() => import( "./views/swagger/swagger.view")),
     path: "/",
     index: true
   },

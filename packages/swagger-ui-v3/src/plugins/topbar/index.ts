@@ -20,7 +20,7 @@ export const TopbarPlugin = () => ({
       selectors
     },
     spec: {
-      wrapSelectors
+     wrapSelectors
     }
   },
   fn: {
