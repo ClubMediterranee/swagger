@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build --base 'https://clubmediterranee.github.io/swagger/latest/swagger-ui-v3'",
+    "build:dev": "tsc && vite build --base 'http://localhost:3000/latest/swagger-ui-v3'",
     "preview": "vite preview"
   },
   "files": [
