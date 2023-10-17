@@ -25,7 +25,7 @@ declare global {
 
 export function userSwaggerUI(): SwaggerUIProps {
   let config: Partial<SwaggerUIConfiguration> = window.SwaggerUIConfiguration || {};
-  const isApiLayout = config.appName?.toLowerCase() === "api";
+  const isApiLayout = config.appName?.toLowerCase() === "api"
 
   config = {
     layout: "StandaloneLayout",
@@ -39,7 +39,6 @@ export function userSwaggerUI(): SwaggerUIProps {
     fieldsPersistence: [
       "api_key"
     ],
-
     // tagsSwitches: [
     //   {label: "Deprecated", value: "deprecated"},
     //   {label: "Admin", value: "admin"}
@@ -49,12 +48,7 @@ export function userSwaggerUI(): SwaggerUIProps {
       theme: "agate"
     },
     useUnsafeMarkdown: true,
-    ...(config || {}),
-    plugins: [
-      "TopbarPlugin",
-      "StandaloneLayoutPlugin",
-      ...config.plugins || []
-    ]
+    ...(config || {})
   };
 
   if (isApiLayout || config.disableBrowserCache) {

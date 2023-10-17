@@ -1614,13 +1614,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime-corejs3@npm:^7.20.7, @babel/runtime-corejs3@npm:^7.22.10, @babel/runtime-corejs3@npm:^7.22.15":
+"@babel/runtime-corejs3@npm:^7.20.7, @babel/runtime-corejs3@npm:^7.22.15":
   version: 7.23.1
   resolution: "@babel/runtime-corejs3@npm:7.23.1"
   dependencies:
     core-js-pure: ^3.30.2
     regenerator-runtime: ^0.14.0
   checksum: 5d52b0cc8b5d243e67cf29c584d15acdc0c89b64de4a3fe1cb8a83b84b64a5621802e36931f93ca696cb637884abd11c8514615d890a4edf057ec4464f73915d
+  languageName: node
+  linkType: hard
+
+"@babel/runtime-corejs3@npm:^7.23.1":
+  version: 7.23.2
+  resolution: "@babel/runtime-corejs3@npm:7.23.2"
+  dependencies:
+    core-js-pure: ^3.30.2
+    regenerator-runtime: ^0.14.0
+  checksum: 922f25c47996a8af604cea82441e41be8b11910e96c662511e54120078f4c64258c045a28a311467a8f14a0c17f46a1f057f7c0501e567869a4343a6ce017962
   languageName: node
   linkType: hard
 
@@ -1808,11 +1818,10 @@ __metadata:
   resolution: "@clubmed/swagger-ui-v3@workspace:packages/swagger-ui-v3"
   dependencies:
     "@clubmed/ui": 1.13.7
-    "@laynezh/vite-plugin-lib-assets": ^0.5.6-beta.0
     "@types/lodash": ^4.14.199
     "@types/react": ^18.2.28
     "@types/react-dom": ^18.2.13
-    "@types/swagger-ui-react": 4.1.1
+    "@types/swagger-ui-react": 4.18.1
     "@vitejs/plugin-react": ^1.0.7
     history: ^5.3.0
     react: 18.2.0
@@ -1820,7 +1829,7 @@ __metadata:
     react-intersection-observer: ^9.5.2
     react-router: 6.16.0
     react-router-dom: ^6.16.0
-    swagger-ui-react: 5.4.2
+    swagger-ui-react: 5.9.0
     tailwindcss: ^3.3.1
     typescript: 5.2.2
     vite: ^4.4.9
@@ -2888,16 +2897,6 @@ __metadata:
   version: 3.4.0
   resolution: "@juggle/resize-observer@npm:3.4.0"
   checksum: 2505028c05cc2e17639fcad06218b1c4b60f932a4ebb4b41ab546ef8c157031ae377e3f560903801f6d01706dbefd4943b6c4704bf19ed86dfa1c62f1473a570
-  languageName: node
-  linkType: hard
-
-"@laynezh/vite-plugin-lib-assets@npm:^0.5.6-beta.0":
-  version: 0.5.6-beta.0
-  resolution: "@laynezh/vite-plugin-lib-assets@npm:0.5.6-beta.0"
-  dependencies:
-    loader-utils: ^3.2.1
-    mrmime: ^1.0.1
-  checksum: 3ead54de63c287b5c983750a504ff351eecb6b56b16f11958f7a0a4e61e401677d2c29ecdc91f27ce5cf1469b703a7da602fbb2638a0ff448f12a7311171828b
   languageName: node
   linkType: hard
 
@@ -5229,12 +5228,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/swagger-ui-react@npm:4.1.1":
-  version: 4.1.1
-  resolution: "@types/swagger-ui-react@npm:4.1.1"
+"@types/swagger-ui-react@npm:4.18.1":
+  version: 4.18.1
+  resolution: "@types/swagger-ui-react@npm:4.18.1"
   dependencies:
     "@types/react": "*"
-  checksum: 45888b93de441be5f9b3bb2acb8cdbc2f0dc9b88be3120bc5d1b8e9a2b8c37f66adb1b25a833e26983d91892c71bb6d2e92e3d4df3ad329394720be4c44e2924
+  checksum: 33c5e9aeccaf6591bd8f59489f8ef50b941daf491f08ba00cb1f26140a756b00ecd6a84fcf0171cdb068134e52c3877bdac571357e12f224ae7fc5979aeedb6f
   languageName: node
   linkType: hard
 
@@ -7937,10 +7936,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:=3.0.5":
-  version: 3.0.5
-  resolution: "dompurify@npm:3.0.5"
-  checksum: 2d9421570c833ce26ce7022955241749b646d41e8bf453f42ede9f22d0e98af482cedb7dfbf8129419eb48b351c1d677a08fc9f1cd91836ce7f6c1807a0676b2
+"dompurify@npm:=3.0.6":
+  version: 3.0.6
+  resolution: "dompurify@npm:3.0.6"
+  checksum: e5c6cdc5fe972a9d0859d939f1d86320de275be00bbef7bd5591c80b1e538935f6ce236624459a1b0c84ecd7c6a1e248684aa4637512659fccc0ce7c353828a6
   languageName: node
   linkType: hard
 
@@ -12370,13 +12369,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loader-utils@npm:^3.2.1":
-  version: 3.2.1
-  resolution: "loader-utils@npm:3.2.1"
-  checksum: 4e3ea054cdc8be1ab1f1238f49f42fdf0483039eff920fb1d442039f3f0ad4ebd11fb8e584ccdf2cb7e3c56b3d40c1832416e6408a55651b843da288960cc792
-  languageName: node
-  linkType: hard
-
 "locate-path@npm:^2.0.0":
   version: 2.0.0
   resolution: "locate-path@npm:2.0.0"
@@ -13189,13 +13181,6 @@ __metadata:
   version: 2.24.0
   resolution: "moment@npm:2.24.0"
   checksum: 9cd93a251a2b33cb1b532eade0e496a2a7547faa6cfe37a283ee7bf69e202cd7c8ab0673d66883b5b29aed051353176dc0e6684f04073a75b0a155c500be1580
-  languageName: node
-  linkType: hard
-
-"mrmime@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "mrmime@npm:1.0.1"
-  checksum: cc979da44bbbffebaa8eaf7a45117e851f2d4cb46a3ada6ceb78130466a04c15a0de9a9ce1c8b8ba6f6e1b8618866b1352992bf1757d241c0ddca558b9f28a77
   languageName: node
   linkType: hard
 
@@ -17192,9 +17177,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swagger-client@npm:^3.20.0":
-  version: 3.23.0
-  resolution: "swagger-client@npm:3.23.0"
+"swagger-client@npm:^3.22.3":
+  version: 3.23.1
+  resolution: "swagger-client@npm:3.23.1"
   dependencies:
     "@babel/runtime-corejs3": ^7.22.15
     "@swagger-api/apidom-core": ">=0.77.0 <1.0.0"
@@ -17211,21 +17196,21 @@ __metadata:
     qs: ^6.10.2
     traverse: ~0.6.6
     undici: ^5.24.0
-  checksum: 988b672ed05b115504e2b09afd8285f694c1e5061854fa8ab3beb56e1a273d7f47e4ee5f25292693c7f695292bd2924d8e6c33f28bd86843859a5083f96044ac
+  checksum: 8cb15e2af7bc3857fd14a3846353970217db1a2dca1c9abd3c10cd00b1ebb059b95135524762c2469f66c5d2ee75c190be7939abc5367fc8b50decd7a58137fa
   languageName: node
   linkType: hard
 
-"swagger-ui-react@npm:5.4.2":
-  version: 5.4.2
-  resolution: "swagger-ui-react@npm:5.4.2"
+"swagger-ui-react@npm:5.9.0":
+  version: 5.9.0
+  resolution: "swagger-ui-react@npm:5.9.0"
   dependencies:
-    "@babel/runtime-corejs3": ^7.22.10
+    "@babel/runtime-corejs3": ^7.23.1
     "@braintree/sanitize-url": =6.0.4
     base64-js: ^1.5.1
     classnames: ^2.3.1
     css.escape: 1.5.1
     deep-extend: 0.6.0
-    dompurify: =3.0.5
+    dompurify: =3.0.6
     ieee754: ^1.2.1
     immutable: ^3.x.x
     js-file-download: ^0.4.12
@@ -17248,7 +17233,7 @@ __metadata:
     reselect: ^4.1.8
     serialize-error: ^8.1.0
     sha.js: ^2.4.11
-    swagger-client: ^3.20.0
+    swagger-client: ^3.22.3
     url-parse: ^1.5.10
     xml: =1.0.1
     xml-but-prettier: ^1.0.1
@@ -17256,7 +17241,7 @@ __metadata:
   peerDependencies:
     react: ">=17.0.0"
     react-dom: ">=17.0.0"
-  checksum: bb8e6a2beb5fbce0dcd052ae2eebd36f71ffedfed061ce75912bdd87c6bf4c4200aba3aac3b946e3839f71def7f6e3b75f9cac104b3ecd70d1c23d30f24494f5
+  checksum: 73ebfeaaad364899f7c3304cbe30a165066970b65a4822c6d22c0ae7f00cbe476849571bacdb938ef4e173579cb9c1ea9623b8c677bc452bcd57e8fb27ff63f6
   languageName: node
   linkType: hard
 

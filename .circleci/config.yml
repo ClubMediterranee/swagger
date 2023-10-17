@@ -58,7 +58,7 @@ jobs:
   deploy:
     executor: app-executor
     environment:
-#      BASE_URL: "https://clubmediterranee.github.io/swagger/latest"
+      BASE_URL: "https://clubmediterranee.github.io/swagger/latest"
 #      GITHUB_PAGES_PATH: "./dist"
     steps:
       - checkout

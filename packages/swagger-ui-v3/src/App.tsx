@@ -6,8 +6,6 @@ import "@clubmed/ui/styles/globals.css";
 import {DeviceProvider, isMobile} from "@clubmed/ui/contexts/Device";
 import {ConfigContext} from "./contexts/config.context";
 
-const SUI = (SwaggerUI as any);
-
 function App() {
   const config = userSwaggerUI();
 
@@ -15,7 +13,8 @@ function App() {
     <div className="App">
       <ConfigContext.Provider value={config}>
         <DeviceProvider device={isMobile() ? "mobile" : "desktop"}>
-          <SUI {...(config as SwaggerUIProps)} tryItOutEnabled={true}/>
+          { /* @ts-ignore */ }
+          <SwaggerUI {...(config as SwaggerUIProps)} tryItOutEnabled={true}/>
         </DeviceProvider>
       </ConfigContext.Provider>
     </div>
