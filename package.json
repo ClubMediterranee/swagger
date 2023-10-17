@@ -21,10 +21,10 @@
     "release:dryrun": "cmrelease --dry-run"
   },
   "dependencies": {
+    "@cmflow/cli": "0.73.6",
     "nx": "16.0.0"
   },
   "devDependencies": {
-    "@cmflow/cli": "0.73.6",
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
     "@storybook/test-runner": "^0.10.0",

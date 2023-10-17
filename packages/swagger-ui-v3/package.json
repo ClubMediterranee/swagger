@@ -1,7 +1,7 @@
 {
   "name": "@clubmed/swagger-ui-v3",
   "private": true,
-  "version": "1.13.7",
+  "version": "1.15.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,8 +10,8 @@
   "files": [
     "dist"
   ],
-  "main":"./dist/swagger-ui-v3.umd.js",
-  "module":"./dist/swagger-ui-v3.es.js",
+  "main": "./dist/swagger-ui-v3.umd.js",
+  "module": "./dist/swagger-ui-v3.es.js",
   "exports": {
     ".": {
       "import": "./dist/swagger-ui-v3.es.js",
