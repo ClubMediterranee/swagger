@@ -10,16 +10,13 @@
     "url": "https://github.com/ClubMediterranee/swagger.git"
   },
   "scripts": {
-    "build": "yarn build:features && yarn build:swagger",
-    "build:swagger": "cross-env PUBLIC_URL=${BASE_URL}/swagger-ui lerna run build --stream --scope @clubmed/swagger-ui",
-    "build:features": "lerna run build --stream --scope @clubmed/features-and-fix",
-    "start:swagger": "lerna run start --stream --no-prefix --scope @clubmed/swagger-ui",
-    "test": "cross-env CI=true lerna run test --concurrency 2 -- --passWithNoTests",
-    "test:ci": "cross-env CI=true lerna run test:ci --concurrency 2 -- --passWithNoTests",
-    "lint:fix": "lerna run lint:fix --parallel",
-    "lint:ci": "cross-env NODE_ENV=travis CI=true lerna run lint:ci --parallel",
-    "lint": "cross-env NODE_ENV=travis CI=true lerna run lint --parallel",
-    "start:prod": "serve",
+    "build": "yarn build:swagger:v3",
+    "build:swagger:v3": "nx build @clubmed/swagger-ui-v3",
+    "test": "nx test",
+    "test:ci": "nx build test:ci",
+    "lint:fix": "nx lint:fix",
+    "lint:ci": "nx lint:ci",
+    "lint": "nx run lint ",
     "release": "cmrelease",
     "release:dryrun": "cmrelease --dry-run"
   },

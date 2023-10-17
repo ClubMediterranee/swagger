@@ -43,6 +43,9 @@ node_modules
 **/build
 **/lib
 
+!dist/latest/features-and-fix/**
+!dist/latest/swagger-ui/**
+
 # Yarn
 .pnp.*
 .yarn/*

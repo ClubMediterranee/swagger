@@ -1,4 +1,5 @@
 import {sanitizeUrl as braintreeSanitizeUrl} from "@braintree/sanitize-url";
+// @ts-ignore
 import cssEscape from "css.escape";
 
 export function isAbsoluteUrl(url: string) {
@@ -45,7 +46,7 @@ export const createDeepLinkPath = (str: any) => typeof str == "string" || str in
 export const escapeDeepLinkPath = (str: string) => cssEscape(createDeepLinkPath(str).replace(/%20/g, "_"));
 
 
-export function sanitizeUrl(url) {
+export function sanitizeUrl(url: any) {
   if (typeof url !== "string" || url === "") {
     return "";
   }
