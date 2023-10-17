@@ -1,4 +1,4 @@
-const { getSemanticConfig } = require('@clubmed/cmflow')
+const {getSemanticConfig} = require('@cmflow/cli')
 
 process.env.PRODUCTION_BRANCH = 'master'
 process.env.DEVELOP_BRANCH = 'master'

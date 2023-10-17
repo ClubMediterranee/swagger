@@ -1744,7 +1744,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@clubmed/components@1.13.7, @clubmed/components@workspace:packages/components":
+"@clubmed/components@1.15.0, @clubmed/components@workspace:packages/components":
   version: 0.0.0-use.local
   resolution: "@clubmed/components@workspace:packages/components"
   dependencies:
@@ -1764,11 +1764,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@clubmed/plugins@1.13.7, @clubmed/plugins@workspace:packages/plugins":
+"@clubmed/plugins@1.15.0, @clubmed/plugins@workspace:packages/plugins":
   version: 0.0.0-use.local
   resolution: "@clubmed/plugins@workspace:packages/plugins"
   dependencies:
-    "@clubmed/components": 1.13.7
+    "@clubmed/components": 1.15.0
   languageName: unknown
   linkType: soft
 
@@ -1831,7 +1831,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/swagger-ui@workspace:packages/swagger-ui"
   dependencies:
-    "@clubmed/plugins": 1.13.7
+    "@clubmed/plugins": 1.15.0
     serve: 11.3.0
   languageName: unknown
   linkType: soft

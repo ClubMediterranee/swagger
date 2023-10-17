@@ -1,0 +1,91 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.1.0
+
+executors:
+  app-executor:
+    docker:
+      - image: cimg/node:14.18.1
+    resource_class: large
+
+commands:
+  configure-executor:
+    steps:
+      - setup_remote_docker:
+          version: 19.03.13
+      - checkout
+  yarn-install:
+    description: "Yarn install with cache optimization"
+    steps:
+      - node/install-packages:
+          pkg-manager: yarn
+#  workspace-restore:
+#    description: "Restore workspace"
+#    steps:
+#      - attach_workspace:
+#          at: .
+
+jobs:
+#  install:
+#    executor: app-executor
+#    steps:
+#      - configure-executor
+#      - yarn-install
+#      - persist_to_workspace:
+#          root: .
+#          paths:
+#            - node_modules
+#            - packages/*/node_modules
+#  lint:
+#    executor: app-executor
+#    steps:
+#      - configure-executor
+#      - workspace-restore
+#      - run:
+#          name: Lint
+#          command: yarn lint:ci
+#      - store_test_results:
+#          path: reports
+#      - store_artifacts:
+#          path: ./reports
+#  test:
+#    executor: app-executor
+#    steps:
+#      - configure-executor
+#      - workspace-restore
+#      - run:
+#          name: Unit test
+#          command: yarn test:ci
+#      - store_test_results:
+#          path: reports
+#      - store_artifacts:
+#          path: ./reports
+  deploy:
+    executor: app-executor
+    environment:
+      BASE_URL: "https://clubmediterranee.github.io/swagger/latest"
+      GITHUB_PAGES_PATH: "./dist"
+    steps:
+      - checkout
+#      - configure-executor
+      - yarn-install
+      - run: yarn dlx -p @cmflow/cli cmrelease
+
+workflows:
+  build:
+    jobs:
+#      - install
+#      - lint:
+#          requires:
+#            - install
+#      - test:
+#          requires:
+#            - install
+      - deploy:
+#          requires:
+#            - lint
+#            - test
+#          filters:
+#            branches:
+#              only: /^master$/
+          context: api
