@@ -5,15 +5,10 @@ orbs:
 executors:
   app-executor:
     docker:
-      - image: cimg/node:14.18.1
+      - image: cimg/node:18.17.1
     resource_class: large
 
 commands:
-  configure-executor:
-    steps:
-      - setup_remote_docker:
-          version: 19.03.13
-      - checkout
   yarn-install:
     description: "Yarn install with cache optimization"
     steps:
@@ -67,7 +62,6 @@ jobs:
 #      GITHUB_PAGES_PATH: "./dist"
     steps:
       - checkout
-#      - configure-executor
       - yarn-install
       - run: yarn dlx -p @cmflow/cli cmrelease
       - run:
