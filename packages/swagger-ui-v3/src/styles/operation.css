@@ -38,11 +38,11 @@ body {
   }
 
   .swagger-ui .opblock.opblock-post .opblock-summary-method {
-    @apply bg-wave;
+    @apply bg-green;
   }
 
   .swagger-ui .opblock.opblock-post .opblock-summary {
-    @apply border-wave;
+    @apply border-green;
   }
 
   .swagger-ui .opblock.opblock-put .opblock-summary-method {
@@ -50,11 +50,11 @@ body {
   }
 
   .swagger-ui .opblock.opblock-put .opblock-summary {
-    @apply border-verdigris;
+    @apply border-wave;
   }
 
   .swagger-ui .opblock.opblock-patch .opblock-summary-method {
-    @apply bg-verdigris;
+    @apply bg-wave;
   }
 
   .swagger-ui .opblock.opblock-patch .opblock-summary {

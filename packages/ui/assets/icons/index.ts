@@ -89,7 +89,7 @@ import AllInclusiveFlexible from "./Brand/AllInclusiveFlexible.svg";
 import BabyClubMed from "./Brand/BabyClubMed.svg";
 import Bars from "./Brand/Bars.svg";
 import ChillPass from "./Brand/ChillPass.svg";
-import ClubMed from "./Brand/ClubMed.svg";
+import ClubMed from "./Brand/ClubMed.svg?react";
 import Diamond from "./Brand/Diamond.svg";
 import ExclusiveCollection from "./Brand/ExclusiveCollection.svg";
 import HappyToCare from "./Brand/HappyToCare.svg";
@@ -726,7 +726,7 @@ export const Brand = {
   },
   BabyClubMed: {url: `${BabyClubMed}#BabyClubMed`, viewBox: "0 0 160 72", aspectRatio: 160 / 72},
   Bars: {url: `${Bars}#Bars`, viewBox: "0 0 30 30", aspectRatio: 1},
-  ClubMed: {url: `${ClubMed}#ClubMed`, viewBox: "0 0 120 24", aspectRatio: 120 / 24},
+  ClubMed: {component: ClubMed, viewBox: "0 0 120 24", aspectRatio: 120 / 24},
   ChillPass: {url: `${ChillPass}#ChillPass`, viewBox: "0 0 79 95", aspectRatio: 79 / 95},
   Diamond: {url: `${Diamond}#Diamond`, viewBox: "0 0 30 30", aspectRatio: 1},
   ExclusiveCollection: {
