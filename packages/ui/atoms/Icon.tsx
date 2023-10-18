@@ -1,10 +1,10 @@
-import { CSS, Interpolation, SpringValue } from '@react-spring/web';
-import classnames from 'classnames';
-import { FunctionComponent } from 'react';
+import {CSS, Interpolation, SpringValue} from "@react-spring/web";
+import classnames from "classnames";
+import {FunctionComponent} from "react";
 
-import { Icons, type Iconics } from '../assets/icons';
+import {type Iconics, Icons} from "../assets/icons";
 
-export { Iconics };
+export {Iconics};
 
 interface IconProps {
   /**
@@ -44,38 +44,41 @@ interface IconProps {
 }
 
 export const Icon: FunctionComponent<IconProps> = ({
-  className,
-  rotation = 0,
-  width = '16px',
-  color = 'inherit',
-  name,
-  style,
-}) => {
+                                                     className,
+                                                     rotation = 0,
+                                                     width = "16px",
+                                                     color = "inherit",
+                                                     name,
+                                                     style
+                                                   }) => {
   const icon = Icons[name];
 
   if (!icon) {
     return null;
   }
 
-  const { url, viewBox, aspectRatio, intrinsicRotation = 0, intrinsicClassName } = icon ?? {};
+  const {url, component: SVG, viewBox, aspectRatio, intrinsicRotation = 0, intrinsicClassName} = icon ?? {};
   const iconColor = `text-${color}`;
   const rotate = `${rotation + intrinsicRotation}deg`;
 
   return (
     <span
       className={classnames(
-        'inline-block shrink-0 align-middle',
+        "inline-block shrink-0 align-middle",
         intrinsicClassName,
         iconColor,
-        className,
+        className
       )}
-      style={{ width, rotate, aspectRatio: aspectRatio as any, ...style }}
+      style={{width, rotate, aspectRatio: aspectRatio as any, ...style}}
       data-testid={`icon-${name}`}
       data-name="Icon"
     >
-      <svg viewBox={viewBox}>
-        <use xlinkHref={url} />
-      </svg>
+      {url ?
+        <svg viewBox={viewBox}>
+          <use xlinkHref={url}/>
+        </svg>
+        : (SVG ? <SVG viewBox={viewBox}/> : null)
+      }
     </span>
   );
 };
