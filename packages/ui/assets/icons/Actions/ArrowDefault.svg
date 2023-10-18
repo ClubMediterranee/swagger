@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none">
-<symbol id="ArrowDefault">
+<!--<symbol id="ArrowDefault">-->
 <path fill="currentColor" d="M18.7 14.31a.95.95 0 0 1 0 1.37l-5.03 4.9a1 1 0 0 1-.7.28 1 1 0 0 1-.7-.29.95.95 0 0 1 0-1.37l4.32-4.2-4.33-4.22a.95.95 0 0 1 0-1.37 1.04 1.04 0 0 1 1.41 0l5.04 4.9Z"/>
-</symbol>
+<!--</symbol>-->
 </svg>

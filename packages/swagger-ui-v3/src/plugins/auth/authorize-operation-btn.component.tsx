@@ -15,7 +15,7 @@ export function AuthorizeOperationBtn(props: System & { isAuthorized: boolean, o
         props.onClick();
       }}
       theme={isAuthorized ? "black" : "white"}
-      icon={"PeopleSingle"}
+      icon="PeopleSingle"
       className={"pointer-events-auto me-auto transition-opacity h-32 w-32 text-b6 mx-12"}
     />
   );

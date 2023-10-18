@@ -1,12 +1,14 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 /* ACTIONS */
-import ArrowDefault from "./Actions/ArrowDefault.svg";
-import ArrowFilled from "./Actions/ArrowFilled.svg";
+import ArrowDefault from "./Actions/ArrowDefault.svg?react";
+import ArrowFilled from "./Actions/ArrowFilled.svg?react";
 import ArrowOutlined from "./Actions/ArrowOutlined.svg";
 import ArrowTail from "./Actions/ArrowTail.svg";
 import CheckDefault from "./Actions/CheckDefault.svg";
 import CheckFilled from "./Actions/CheckFilled.svg";
 import CheckOutlined from "./Actions/CheckOutlined.svg";
-import Clipboard from "./Actions/Clipboard.svg";
+import Clipboard from "./Actions/Clipboard.svg?react";
 import Compare from "./Actions/Compare.svg";
 import CrossDefault from "./Actions/CrossDefault.svg";
 import CrossFilled from "./Actions/CrossFilled.svg";
@@ -28,7 +30,7 @@ import PlusFilled from "./Actions/PlusFilled.svg";
 import PlusOutlined from "./Actions/PlusOutlined.svg";
 import Reduce from "./Actions/Reduce.svg";
 import Reload from "./Actions/Reload.svg";
-import Search from "./Actions/Search.svg";
+import Search from "./Actions/Search.svg?react";
 import Share from "./Actions/Share.svg";
 import StarFilled from "./Actions/StarFilled.svg";
 import StarOutlined from "./Actions/StarOutlined.svg";
@@ -429,23 +431,23 @@ import VideoSurveillance from "./Services/VideoSurveillance.svg";
 import WelcomeGift from "./Services/WelcomeGift.svg";
 
 /* SOCIALS */
-import Facebook from "./Socials/Facebook.svg";
+import Facebook from "./Socials/Facebook.svg?react";
 import FacebookMessenger from "./Socials/FacebookMessenger.svg";
 import Flickr from "./Socials/Flickr.svg";
 import Google from "./Socials/Google.svg";
 import GoogleMonogram from "./Socials/GoogleMonogram.svg";
-import Instagram from "./Socials/Instagram.svg";
-import Pinterest from "./Socials/Pinterest.svg";
+import Instagram from "./Socials/Instagram.svg?react";
+import Pinterest from "./Socials/Pinterest.svg?react";
 import TripAdvisor from "./Socials/TripAdvisor.svg";
 import TripAdvisorMonogram from "./Socials/TripAdvisorMonogram.svg";
-import Twitter from "./Socials/Twitter.svg";
+import Twitter from "./Socials/Twitter.svg?react";
 import VK from "./Socials/VK.svg";
 import Vine from "./Socials/Vine.svg";
 import WeChat from "./Socials/WeChat.svg";
 import WeChatPay from "./Socials/WeChatPay.svg";
 import Weibo from "./Socials/Weibo.svg";
 import WhatsApp from "./Socials/WhatsApp.svg";
-import YouTube from "./Socials/YouTube.svg";
+import YouTube from "./Socials/YouTube.svg?react";
 
 /* TRANSPORTS */
 import Boat from "./Transports/Boat.svg";
@@ -481,7 +483,7 @@ import DocumentPDF from "./Utilities/DocumentPDF.svg";
 import DocumentPassport from "./Utilities/DocumentPassport.svg";
 import DocumentTicket from "./Utilities/DocumentTicket.svg";
 import DocumentUserDetails from "./Utilities/DocumentUserDetails.svg";
-import Filters from "./Utilities/Filters.svg";
+import Filters from "./Utilities/Filters.svg?react";
 import Folder from "./Utilities/Folder.svg";
 import GridDefault from "./Utilities/GridDefault.svg";
 import GridList from "./Utilities/GridList.svg";
@@ -499,9 +501,9 @@ import PeopleBaby from "./Utilities/PeopleBaby.svg";
 import PeopleDouble from "./Utilities/PeopleDouble.svg";
 import PeopleFamily from "./Utilities/PeopleFamily.svg";
 import PeopleKids from "./Utilities/PeopleKids.svg";
-import PeopleSingle from "./Utilities/PeopleSingle.svg";
+import PeopleSingle from "./Utilities/PeopleSingle.svg?react";
 import PeopleTeenagers from "./Utilities/PeopleTeenagers.svg";
-import Phone from "./Utilities/Phone.svg";
+import Phone from "./Utilities/Phone.svg?react";
 import Pictures from "./Utilities/Pictures.svg";
 import PromoCode from "./Utilities/PromoCode.svg";
 import Questions from "./Utilities/Questions.svg";
@@ -511,9 +513,11 @@ import SpecialOffers from "./Utilities/SpecialOffers.svg";
 import Videos from "./Utilities/Videos.svg";
 import Visible from "./Utilities/Visible.svg";
 import VoiceMail from "./Utilities/VoiceMail.svg";
+import {FunctionComponent} from "react";
 
 interface Icon {
-  url: string;
+  component?: FunctionComponent<any>;
+  url?: string;
   viewBox: string;
   aspectRatio: number;
   intrinsicRotation?: number;
@@ -526,51 +530,51 @@ type IconsSet<Set extends Record<string, Icon> = Record<string, Icon>> = {
 
 export const Actions = {
   ArrowDefaultDown: {
-    url: `${ArrowDefault}#ArrowDefault`,
+    component: ArrowDefault,
     viewBox: "0 0 30 30",
     aspectRatio: 1,
     intrinsicRotation: 90
   },
   ArrowDefaultLeft: {
-    url: `${ArrowDefault}#ArrowDefault`,
+    component: ArrowDefault,
     viewBox: "0 0 30 30",
     aspectRatio: 1,
     intrinsicRotation: 180,
     intrinsicClassName: "rtl:-scale-x-100"
   },
   ArrowDefaultRight: {
-    url: `${ArrowDefault}#ArrowDefault`,
+    component: ArrowDefault,
     viewBox: "0 0 30 30",
     aspectRatio: 1,
     intrinsicClassName: "rtl:-scale-x-100"
   },
   ArrowDefaultUp: {
-    url: `${ArrowDefault}#ArrowDefault`,
+    component: ArrowDefault,
     viewBox: "0 0 30 30",
     aspectRatio: 1,
     intrinsicRotation: 270
   },
   ArrowFilledDown: {
-    url: `${ArrowFilled}#ArrowFilled`,
+    component: ArrowFilled,
     viewBox: "0 0 30 30",
     aspectRatio: 1,
     intrinsicRotation: 90
   },
   ArrowFilledLeft: {
-    url: `${ArrowFilled}#ArrowFilled`,
+    component: ArrowFilled,
     viewBox: "0 0 30 30",
     aspectRatio: 1,
     intrinsicRotation: 180,
     intrinsicClassName: "rtl:-scale-x-100"
   },
   ArrowFilledRight: {
-    url: `${ArrowFilled}#ArrowFilled`,
+    component: ArrowFilled,
     viewBox: "0 0 30 30",
     aspectRatio: 1,
     intrinsicClassName: "rtl:-scale-x-100"
   },
   ArrowFilledUp: {
-    url: `${ArrowFilled}#ArrowFilled`,
+    component: ArrowFilled,
     viewBox: "0 0 30 30",
     aspectRatio: 1,
     intrinsicRotation: 270
@@ -628,7 +632,7 @@ export const Actions = {
   CheckDefault: {url: `${CheckDefault}#CheckDefault`, viewBox: "0 0 30 30", aspectRatio: 1},
   CheckFilled: {url: `${CheckFilled}#CheckFilled`, viewBox: "0 0 30 30", aspectRatio: 1},
   CheckOutlined: {url: `${CheckOutlined}#CheckOutlined`, viewBox: "0 0 30 30", aspectRatio: 1},
-  Clipboard: {url: `${Clipboard}#Clipboard`, viewBox: "0 0 30 30", aspectRatio: 1},
+  Clipboard: {component: Clipboard, viewBox: "0 0 30 30", aspectRatio: 1},
   Compare: {url: `${Compare}#Compare`, viewBox: "0 0 30 30", aspectRatio: 1},
   CrossDefault: {url: `${CrossDefault}#CrossDefault`, viewBox: "0 0 30 30", aspectRatio: 1},
   CrossFilled: {url: `${CrossFilled}#CrossFilled`, viewBox: "0 0 30 30", aspectRatio: 1},
@@ -650,7 +654,7 @@ export const Actions = {
   PlusOutlined: {url: `${PlusOutlined}#PlusOutlined`, viewBox: "0 0 30 30", aspectRatio: 1},
   Reduce: {url: `${Reduce}#Reduce`, viewBox: "0 0 30 30", aspectRatio: 1},
   Reload: {url: `${Reload}#Reload`, viewBox: "0 0 30 30", aspectRatio: 1},
-  Search: {url: `${Search}#Search`, viewBox: "0 0 30 30", aspectRatio: 1},
+  Search: {component: Search, viewBox: "0 0 30 30", aspectRatio: 1},
   Share: {url: `${Share}#Share`, viewBox: "0 0 30 30", aspectRatio: 1},
   StarFilled: {url: `${StarFilled}#StarFilled`, viewBox: "0 0 30 30", aspectRatio: 1},
   StarOutlined: {url: `${StarOutlined}#StarOutlined`, viewBox: "0 0 30 30", aspectRatio: 1}
@@ -1624,7 +1628,7 @@ export const Services = {
 } satisfies IconsSet;
 
 export const Socials = {
-  Facebook: {url: `${Facebook}#Facebook`, viewBox: "0 0 30 30", aspectRatio: 1},
+  Facebook: {component: Facebook, viewBox: "0 0 30 30", aspectRatio: 1},
   FacebookMessenger: {
     url: `${FacebookMessenger}#FacebookMessenger`,
     viewBox: "0 0 30 30",
@@ -1633,22 +1637,22 @@ export const Socials = {
   Flickr: {url: `${Flickr}#Flickr`, viewBox: "0 0 30 30", aspectRatio: 1},
   Google: {url: `${Google}#Google`, viewBox: "0 0 60 19", aspectRatio: 60 / 19},
   GoogleMonogram: {url: `${GoogleMonogram}#GoogleMonogram`, viewBox: "0 0 16 16", aspectRatio: 1},
-  Instagram: {url: `${Instagram}#Instagram`, viewBox: "0 0 30 30", aspectRatio: 1},
-  Pinterest: {url: `${Pinterest}#Pinterest`, viewBox: "0 0 30 30", aspectRatio: 1},
+  Instagram: {component: Instagram, viewBox: "0 0 30 30", aspectRatio: 1},
+  Pinterest: {component: Pinterest, viewBox: "0 0 30 30", aspectRatio: 1},
   TripAdvisor: {url: `${TripAdvisor}#TripAdvisor`, viewBox: "0 0 101 22", aspectRatio: 101 / 22},
   TripAdvisorMonogram: {
     url: `${TripAdvisorMonogram}#TripAdvisorMonogram`,
     viewBox: "0 0 16 16",
     aspectRatio: 1
   },
-  Twitter: {url: `${Twitter}#Twitter`, viewBox: "0 0 30 30", aspectRatio: 1},
+  Twitter: {component: Twitter, viewBox: "0 0 30 30", aspectRatio: 1},
   VK: {url: `${VK}#VK`, viewBox: "0 0 30 30", aspectRatio: 1},
   Vine: {url: `${Vine}#Vine`, viewBox: "0 0 30 30", aspectRatio: 1},
   WeChat: {url: `${WeChat}#WeChat`, viewBox: "0 0 30 30", aspectRatio: 1},
   WeChatPay: {url: `${WeChatPay}#WeChatPay`, viewBox: "0 0 30 30", aspectRatio: 1},
   Weibo: {url: `${Weibo}#Weibo`, viewBox: "0 0 30 30", aspectRatio: 1},
   WhatsApp: {url: `${WhatsApp}#WhatsApp`, viewBox: "0 0 30 30", aspectRatio: 1},
-  YouTube: {url: `${YouTube}#YouTube`, viewBox: "0 0 30 30", aspectRatio: 1}
+  YouTube: {component: YouTube, viewBox: "0 0 30 30", aspectRatio: 1}
 } satisfies IconsSet;
 
 export const Transports = {
@@ -1718,7 +1722,7 @@ export const Utilities = {
     viewBox: "0 0 30 30",
     aspectRatio: 1
   },
-  Filters: {url: `${Filters}#Filters`, viewBox: "0 0 30 30", aspectRatio: 1},
+  Filters: {component: Filters, viewBox: "0 0 30 30", aspectRatio: 1},
   Folder: {url: `${Folder}#Folder`, viewBox: "0 0 30 30", aspectRatio: 1},
   GridDefault: {url: `${GridDefault}#GridDefault`, viewBox: "0 0 30 30", aspectRatio: 1},
   GridList: {url: `${GridList}#GridList`, viewBox: "0 0 30 30", aspectRatio: 1},
@@ -1730,7 +1734,7 @@ export const Utilities = {
   Letter: {url: `${Letter}#Letter`, viewBox: "0 0 30 30", aspectRatio: 1},
   Menu: {url: `${Menu}#Menu`, viewBox: "0 0 30 30", aspectRatio: 1},
   MenuClosed: {url: `${MenuClosed}#MenuClosed`, viewBox: "0 0 30 30", aspectRatio: 1},
-  PeopleSingle: {url: `${PeopleSingle}#PeopleSingle`, viewBox: "0 0 30 30", aspectRatio: 1},
+  PeopleSingle: {component: PeopleSingle, viewBox: "0 0 30 30", aspectRatio: 1},
   PeopleDouble: {url: `${PeopleDouble}#PeopleDouble`, viewBox: "0 0 30 30", aspectRatio: 1},
   PeopleFamily: {url: `${PeopleFamily}#PeopleFamily`, viewBox: "0 0 30 30", aspectRatio: 1},
   PeopleBaby: {url: `${PeopleBaby}#PeopleBaby`, viewBox: "0 0 30 30", aspectRatio: 1},
@@ -1742,7 +1746,7 @@ export const Utilities = {
   },
   Padlock: {url: `${Padlock}#Padlock`, viewBox: "0 0 30 30", aspectRatio: 1},
   PaymentPlan: {url: `${PaymentPlan}#PaymentPlan`, viewBox: "0 0 30 30", aspectRatio: 1},
-  Phone: {url: `${Phone}#Phone`, viewBox: "0 0 30 30", aspectRatio: 1},
+  Phone: {component: Phone, viewBox: "0 0 30 30", aspectRatio: 1},
   Pictures: {url: `${Pictures}#Pictures`, viewBox: "0 0 30 30", aspectRatio: 1},
   PromoCode: {url: `${PromoCode}#PromoCode`, viewBox: "0 0 30 30", aspectRatio: 1},
   Questions: {url: `${Questions}#Questions`, viewBox: "0 0 30 30", aspectRatio: 1},
