@@ -25,6 +25,7 @@ body {
   }
 
   /* operation method */
+
   .swagger-ui .opblock .opblock-summary-method {
     @apply text-b6 font-serif block;
   }
@@ -80,7 +81,31 @@ body {
   /*  operation parameter */
 
   .swagger-ui .parameter__name {
-    @apply text-b4 font-sans;
+    @apply text-b5 font-sans;
+
+    &.required {
+      &::after {
+        top: -3px;
+      }
+
+      &::after,
+      span {
+        @apply text-red;
+      }
+    }
+  }
+
+  .swagger-ui table tbody tr td:first-of-type {
+    min-width: 13em;
+  }
+
+  .swagger-ui .parameter__type {
+    @apply text-b6 font-sans;
+  }
+
+  .swagger-ui .parameter__extension,
+  .swagger-ui .parameter__in {
+    @apply text-b6 font-sans;
   }
 
   .swagger-ui .parameters-col_description .markdown p,
@@ -99,5 +124,95 @@ body {
   .swagger-ui .opblock .opblock-summary:hover .view-line-link.copy-to-clipboard {
     @apply h-32 w-32 opacity-100;
   }
+
+  .swagger-ui .tab {
+    @apply mb-4;
+  }
+
+  /* Model */
+
+  .swagger-ui .model-box {
+    @apply w-full font-sans;
+  }
+
+  .swagger-ui .model {
+    @apply font-sans;
+  }
+
+  .swagger-ui .model-title {
+    @apply text-b5 font-serif;
+  }
+
+  .swagger-ui .property-row:nth-child(odd) {
+    background: rgba(250, 250, 250, 0.2);
+  }
+
+  .swagger-ui table.model tr.property-row td {
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+
+  .swagger-ui table.model tbody tr td:first-of-type {
+    @apply font-sans;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+
+  .swagger-ui table.model tr.description td:first-child, .swagger-ui table.model tr.property-row td:first-child {
+    @apply text-ultramarine-active;
+  }
+
+  .swagger-ui table.model tr.property-row .star {
+    @apply ml-4 text-red;
+  }
+
+  .swagger-ui .model-box-control {
+    @apply flex items-center;
+  }
+
+  .swagger-ui .model-box-control > span {
+    display: block;
+  }
+
+  .swagger-ui .model-toggle {
+    @apply bg-white rounded-pill m-4 mx-8 top-0;
+  }
+
+  /* Response */
+
+  .swagger-ui table tbody tr td.response-col_status {
+    @apply text-b2 font-serif text-ultramarine;
+  }
+  .swagger-ui table tbody tr[data-code^="20"] {
+    td.response-col_status {
+      @apply text-b2 font-serif text-wave;
+    }
+  }
+
+  .swagger-ui table tbody tr[data-code^="30"] {
+    td.response-col_status {
+      @apply text-b2 font-serif text-saffron-active;
+    }
+  }
+
+  .swagger-ui table tbody tr[data-code^="40"] {
+    td.response-col_status {
+      @apply text-b2 font-serif text-red;
+    }
+  }
+
+  .swagger-ui table tbody tr[data-code="400"],
+  .swagger-ui table tbody tr[data-code="404"] {
+    td.response-col_status {
+      @apply text-b2 font-serif text-saffron;
+    }
+  }
+
+
+  .swagger-ui table tbody tr td {
+    @apply pb-12;
+  }
 }
+
+
 
