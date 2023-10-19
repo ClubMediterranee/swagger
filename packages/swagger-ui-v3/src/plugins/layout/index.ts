@@ -9,6 +9,7 @@ import {wrapExecute} from "../operations/wrap-execute";
 import {wrapClear} from "../operations/wrap-clear";
 import {SelectComponent} from "../form/select.component";
 import {TextareaComponent} from "../form/textarea.component";
+import {Markdown} from "../form/markdown";
 
 export const StandaloneLayoutPlugin = () => {
   return {
@@ -20,7 +21,8 @@ export const StandaloneLayoutPlugin = () => {
       OperationSummary,
       OperationTag,
       Select: SelectComponent,
-      TextArea: TextareaComponent
+      TextArea: TextareaComponent,
+      Markdown: Markdown
     },
     wrapComponents: {
       operation: wrapOperation,
