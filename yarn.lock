@@ -1874,6 +1874,7 @@ __metadata:
     "@types/lodash": ^4.14.199
     "@types/react": ^18.2.28
     "@types/react-dom": ^18.2.13
+    "@types/remarkable": ^2.0.7
     "@types/swagger-ui-react": 4.18.1
     "@vitejs/plugin-react": ^1.0.7
     brace: ^0.11.1
@@ -5404,6 +5405,13 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 81381bedeba83278f4c9febb0b83e0bd3f42a25897a50b9cb36ef53651d34b3d50f87ebf11211ea57ea575131f85d31e93e496ce46478a00b0f9bf7b26b5917a
+  languageName: node
+  linkType: hard
+
+"@types/remarkable@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "@types/remarkable@npm:2.0.7"
+  checksum: 30a79ac4f2ead68df7a34fd3d5cfd310eeb00089ebadacc26ba601d3c86f5f5dcb3a46744aa29317863f7702a5e94d025efe3fdb05fd0152c544581e533a0221
   languageName: node
   linkType: hard
 
