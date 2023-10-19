@@ -1,0 +1,13 @@
+
+.markdown ul {
+  li {
+    list-style: disc;
+    margin-left: 2rem;
+    li {
+      list-style: circle;
+      li {
+        list-style: square;
+      }
+    }
+  }
+}
