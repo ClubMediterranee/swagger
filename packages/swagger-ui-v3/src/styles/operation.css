@@ -195,14 +195,16 @@ body {
     }
   }
 
-  .swagger-ui table tbody tr[data-code^="40"] {
+  .swagger-ui table tbody tr[data-code^="40"],
+  .swagger-ui table tbody tr[data-code^="41"] {
     td.response-col_status {
       @apply text-b2 font-serif text-red;
     }
   }
 
   .swagger-ui table tbody tr[data-code="400"],
-  .swagger-ui table tbody tr[data-code="404"] {
+  .swagger-ui table tbody tr[data-code="404"],
+  .swagger-ui table tbody tr[data-code="416"] {
     td.response-col_status {
       @apply text-b2 font-serif text-saffron;
     }
