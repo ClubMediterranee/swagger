@@ -1,13 +1,64 @@
+body .swagger-ui {
+  .renderedMarkdown {
+    h1, h2, h3, h4, h5 {
+      @apply  text-ultramarine pt-8 mb-12;
+    }
+    h1 {
+      @apply text-h3 font-serif pt-12 mb-16;
+    }
 
-.markdown ul {
-  li {
-    list-style: disc;
-    margin-left: 2rem;
-    li {
-      list-style: circle;
+    h2 {
+      @apply text-h4 font-serif pt-12 mb-16;
+    }
+
+    h3 {
+      @apply text-b3 font-sans;
+    }
+
+    h4 {
+      @apply text-b4 font-sans;
+    }
+
+    h5 {
+      @apply text-b5 font-sans;
+    }
+
+    h2 + h3 {
+      @apply pt-0;
+    }
+
+    p {
+      @apply text-b5 mb-12;
+    }
+  }
+
+  .markdown, .renderedMarkdown {
+
+    code {
+      @apply py-1 px-4;
+      @apply text-b5 text-ultramarine-active;
+    }
+
+    pre code {
+      background: rgb(51, 51, 51);
+      color: white;
+      @apply p-12;
+    }
+
+    ul {
+      @apply mb-12;
+
       li {
-        list-style: square;
+        list-style: disc;
+        margin-left: 2rem;
+        li {
+          list-style: circle;
+          li {
+            list-style: square;
+          }
+        }
       }
     }
   }
 }
+
