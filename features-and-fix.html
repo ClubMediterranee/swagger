@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <link rel="shortcut icon" href="https://www.clubmed.fr/favicon.ico"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="/dist/latest/features-and-fix/main.bundle.css" rel="stylesheet"/>
+  <!--
+    Notice the use of %PUBLIC_URL% in the tags above.
+    It will be replaced with the URL of the `public` folder during the build.
+    Only files inside the `public` folder can be referenced from the HTML.
+
+    Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+    work correctly both with client-side routing and a non-root public URL.
+    Learn how to configure a non-root public URL by running `npm run build`.
+  -->
+  <title>ClubMed API - Features and Fix validation</title>
+
+  <script>
+    window.appConfig = {
+      jenkinsUrl: 'https://moytux-pra/jenkins',
+      stagingUrl: 'https://api.staging.clubmed.com',
+      pageUrl: 'https://api.integ.clubmed.com/apiFeaturesMap.html',
+      jobs: {
+        build: 'API test feature',
+        clean: 'API-clean-feature-instance'
+      }
+    }
+  </script>
+</head>
+<body class="swagger-section">
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="app"></div>
+
+<script id="features-data" type="application/json">
+  [
+    {
+      "label": "feat_3854_caller_recognition",
+      "url": "https://api0.integ.clubmed.com/doc",
+      "date": "2020-04-07 08:30:20.701509"
+    },
+    {
+      "label": "0.2189.0",
+      "url": "https://api1.integ.clubmed.com/doc",
+      "date": "2020-04-07 08:24:32.491114"
+    },
+    {
+      "label": "notif_partners",
+      "url": "https://api3.integ.clubmed.com/doc",
+      "date": "2020-03-31 09:43:16.982087"
+    }
+  ]
+</script>
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+-->
+<script src="/dist/latest/features-and-fix/main.bundle.js" type="application/javascript"></script>
+
+</body>
+</html>
+
+
