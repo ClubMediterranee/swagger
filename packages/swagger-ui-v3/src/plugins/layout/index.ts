@@ -8,6 +8,7 @@ import {AuthorizeOperationBtn} from "../auth/authorize-operation-btn.component";
 import {wrapExecute} from "../operations/wrap-execute";
 import {wrapClear} from "../operations/wrap-clear";
 import {SelectComponent} from "../form/select.component";
+import {TextareaComponent} from "../form/textarea.component";
 
 export const StandaloneLayoutPlugin = () => {
   return {
@@ -18,7 +19,8 @@ export const StandaloneLayoutPlugin = () => {
       authorizeOperationBtn: AuthorizeOperationBtn,
       OperationSummary,
       OperationTag,
-      Select: SelectComponent
+      Select: SelectComponent,
+      TextArea: TextareaComponent
     },
     wrapComponents: {
       operation: wrapOperation,

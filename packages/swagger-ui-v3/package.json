@@ -22,7 +22,10 @@
   "dependencies": {
     "@clubmed/ui": "1.13.7",
     "@types/swagger-ui-react": "4.18.1",
+    "brace": "^0.11.1",
     "history": "^5.3.0",
+    "jsoneditor": "^9.10.3",
+    "jsoneditor-react18": "^0.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intersection-observer": "^9.5.2",

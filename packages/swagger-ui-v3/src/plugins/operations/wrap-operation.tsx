@@ -14,7 +14,7 @@ export function wrapOperation(Base: any) {
             el.classList.add("opacity-0");
             el.classList.add("loaded");
             el.classList.add("transition-opacity");
-            el.classList.add("duration-500");
+            el.classList.add("duration-200");
             el.classList.add("ease-in-out");
           }
 
