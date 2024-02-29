@@ -1677,6 +1677,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.21.0":
+  version: 7.23.9
+  resolution: "@babel/runtime@npm:7.23.9"
+  dependencies:
+    regenerator-runtime: ^0.14.0
+  checksum: 6bbebe8d27c0c2dd275d1ac197fc1a6c00e18dab68cc7aaff0adc3195b45862bae9c4cc58975629004b0213955b2ed91e99eccb3d9b39cabea246c657323d667
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.11.2
   resolution: "@babel/runtime@npm:7.11.2"
@@ -1870,6 +1879,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/swagger-ui-v3@workspace:packages/swagger-ui-v3"
   dependencies:
+    "@clubmed/trident-ui": 1.0.0-alpha.14
     "@clubmed/ui": 1.13.7
     "@types/lodash": ^4.14.199
     "@types/react": ^18.2.28
@@ -1903,10 +1913,37 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@clubmed/trident-ui@npm:1.0.0-alpha.14":
+  version: 1.0.0-alpha.14
+  resolution: "@clubmed/trident-ui@npm:1.0.0-alpha.14"
+  dependencies:
+    "@juggle/resize-observer": ^3.4.0
+    "@netsells/storybook-mockdate": ^0.3.2
+    "@react-spring/web": ^9.7.3
+    "@storybook/addon-viewport": ^7.6.12
+    "@use-gesture/react": ^10.2.26
+    "@whitespace/storybook-addon-html": ^5.1.6
+    classnames: ^2.3.2
+    date-fns: ^2.30.0
+    react-day-picker: ^8.10.0
+    react-hot-toast: ^2.4.1
+    react-use-measure: ^2.1.1
+    tailwindcss: ^3.3.5
+    use-boop: ^1.1.1
+    use-resize-observer: ^9.1.0
+  peerDependencies:
+    react: ">=17.0.2"
+    react-dom: ">=17.0.2"
+    tailwindcss: ">=3.3.5"
+  checksum: a5ae148eee31fe672c823e4807a714842c44b53ae73f36286da4319976cf1ec24670f384411a504612552cce6496a921f82e1c11b14548076b5976526bbea499
+  languageName: node
+  linkType: hard
+
 "@clubmed/ui@1.13.7, @clubmed/ui@workspace:packages/ui":
   version: 0.0.0-use.local
   resolution: "@clubmed/ui@workspace:packages/ui"
   dependencies:
+    "@clubmed/trident-ui": 1.0.0-alpha.14
     "@clubmed/workspace": 1.13.7
     "@juggle/resize-observer": ^3.4.0
     "@react-spring/web": ^9.7.3
@@ -1923,7 +1960,7 @@ __metadata:
     jest-coverage-thresholds-bumper: ^1.0.0
     postcss: ^8.4.22
     react-spring: ^9.7.3
-    tailwindcss: ^3.3.1
+    tailwindcss: 3.4.1
     use-boop: ^1.0.0
   languageName: unknown
   linkType: soft
@@ -2951,10 +2988,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@juggle/resize-observer@npm:^3.4.0":
+"@juggle/resize-observer@npm:^3.3.1, @juggle/resize-observer@npm:^3.4.0":
   version: 3.4.0
   resolution: "@juggle/resize-observer@npm:3.4.0"
   checksum: 2505028c05cc2e17639fcad06218b1c4b60f932a4ebb4b41ab546ef8c157031ae377e3f560903801f6d01706dbefd4943b6c4704bf19ed86dfa1c62f1473a570
+  languageName: node
+  linkType: hard
+
+"@netsells/storybook-mockdate@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "@netsells/storybook-mockdate@npm:0.3.2"
+  dependencies:
+    dayjs: ^1.10.4
+    mockdate: ^3.0.2
+  checksum: 26930a8a638b53543a13f40d0b41d7df039c83fc849378f233f5d842828bc8835a1056fd8ca8bb32deafd6a03116cc4a0cdb0bd952ac38228da9a3ab31ff38e4
   languageName: node
   linkType: hard
 
@@ -4219,6 +4266,15 @@ __metadata:
   version: 2.2.2
   resolution: "@sphinxxxx/color-conversion@npm:2.2.2"
   checksum: 73d07e5b0d0039bd7176c8693320cadd375fce66adc9ee33326caa97a82847d39ab7ce9396dd7a6a0ccc568f72fc2acbbf94eca51945ee5c2c262ed417fc7617
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-viewport@npm:^7.6.12":
+  version: 7.6.17
+  resolution: "@storybook/addon-viewport@npm:7.6.17"
+  dependencies:
+    memoizerific: ^1.11.3
+  checksum: 26ff73639c47d8363fcfe7ba84bebb327c54309480e8499109d7e319e31e22fe7b18e9bf7246961dd625c14e53d7e5a1e724ad6efd3623d54bad38221f20c1f9
   languageName: node
   linkType: hard
 
@@ -5505,6 +5561,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@use-gesture/core@npm:10.3.0":
+  version: 10.3.0
+  resolution: "@use-gesture/core@npm:10.3.0"
+  checksum: cd6782b0cf61ae2306ecee4bd3c30942251427c142e3fd3584778d86e1a93b27e087033246700b54c4ad7063aa78747dc793f0dbb7434925c306215fb18dee82
+  languageName: node
+  linkType: hard
+
+"@use-gesture/react@npm:^10.2.26":
+  version: 10.3.0
+  resolution: "@use-gesture/react@npm:10.3.0"
+  dependencies:
+    "@use-gesture/core": 10.3.0
+  peerDependencies:
+    react: ">= 16.8.0"
+  checksum: d43a2296e536ea8e4885ca082b7c554eabb0e19bb7f89b5db96e0511712c849db879de64c2746c94e3c9a5032e8918c90ace67fc023c754034d75b2ea3b727c4
+  languageName: node
+  linkType: hard
+
 "@vitejs/plugin-react@npm:^1.0.7":
   version: 1.3.2
   resolution: "@vitejs/plugin-react@npm:1.3.2"
@@ -5518,6 +5592,28 @@ __metadata:
     react-refresh: ^0.13.0
     resolve: ^1.22.0
   checksum: 9e083e561145cad00bdd2bc93d56b7ec8e209a05c4a9ebce8d1891e88e74de7eda197934c716023a1642582f250e330da6269e0cd1dc2285762f628c82f32229
+  languageName: node
+  linkType: hard
+
+"@whitespace/storybook-addon-html@npm:^5.1.6":
+  version: 5.1.6
+  resolution: "@whitespace/storybook-addon-html@npm:5.1.6"
+  peerDependencies:
+    "@storybook/addons": ^6.5.8 || ^7.0.12
+    "@storybook/api": ^6.5.8 || ^7.0.12
+    "@storybook/components": ^6.5.8 || ^7.0.12
+    "@storybook/core-events": ^6.5.8 || ^7.0.12
+    "@storybook/theming": ^6.5.8 || ^7.0.12
+    prettier: ^2.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-syntax-highlighter: ^15.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 6e4374ef5d961282623e41e7fc9a921858d9b0abd5bdd7fbf9d3aae206bde436a3f724d23e5e2a0fbd7c10b01da5d7b94ce50f14c04730bd8841027a106313c9
   languageName: node
   linkType: hard
 
@@ -7910,10 +8006,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-fns@npm:^2.30.0":
+  version: 2.30.0
+  resolution: "date-fns@npm:2.30.0"
+  dependencies:
+    "@babel/runtime": ^7.21.0
+  checksum: f7be01523282e9bb06c0cd2693d34f245247a29098527d4420628966a2d9aad154bd0e90a6b1cf66d37adcb769cd108cf8a7bd49d76db0fb119af5cdd13644f4
+  languageName: node
+  linkType: hard
+
 "dateformat@npm:^3.0.0, dateformat@npm:^3.0.3":
   version: 3.0.3
   resolution: "dateformat@npm:3.0.3"
   checksum: ca4911148abb09887bd9bdcd632c399b06f3ecad709a18eb594d289a1031982f441e08e281db77ffebcb2cbcbfa1ac578a7cbfbf8743f41009aa5adc1846ed34
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.10.4":
+  version: 1.11.10
+  resolution: "dayjs@npm:1.11.10"
+  checksum: a6b5a3813b8884f5cd557e2e6b7fa569f4c5d0c97aca9558e38534af4f2d60daafd3ff8c2000fed3435cfcec9e805bcebd99f90130c6d1c5ef524084ced588c4
+  languageName: node
+  linkType: hard
+
+"debounce@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "debounce@npm:1.2.1"
+  checksum: 682a89506d9e54fb109526f4da255c5546102fbb8e3ae75eef3b04effaf5d4853756aee97475cd4650641869794e44f410eeb20ace2b18ea592287ab2038519e
   languageName: node
   linkType: hard
 
@@ -9706,6 +9825,15 @@ __metadata:
     merge2: ^1.4.1
     slash: ^4.0.0
   checksum: f3d84ced58a901b4fcc29c846983108c426631fe47e94872868b65565495f7bee7b3defd68923bd480582771fd4bbe819217803a164a618ad76f1d22f666f41e
+  languageName: node
+  linkType: hard
+
+"goober@npm:^2.1.10":
+  version: 2.1.14
+  resolution: "goober@npm:2.1.14"
+  peerDependencies:
+    csstype: ^3.0.10
+  checksum: 78978b7192d6a1af5cfbf1fd64b661b5f53ee6c733554b1f1b2ad3e1e2c979847fc080434390647640bb8358c0b193895d0007432c0886d12001f02f8f56b5e6
   languageName: node
   linkType: hard
 
@@ -12059,6 +12187,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jiti@npm:^1.19.1":
+  version: 1.21.0
+  resolution: "jiti@npm:1.21.0"
+  bin:
+    jiti: bin/jiti.js
+  checksum: a7bd5d63921c170eaec91eecd686388181c7828e1fa0657ab374b9372bfc1f383cf4b039e6b272383d5cb25607509880af814a39abdff967322459cca41f2961
+  languageName: node
+  linkType: hard
+
 "jmespath@npm:^0.16.0":
   version: 0.16.0
   resolution: "jmespath@npm:0.16.0"
@@ -13623,6 +13760,13 @@ __metadata:
   version: 2.4.13
   resolution: "mobius1-selectr@npm:2.4.13"
   checksum: 6014642d798ded2d462240755c96e10781de9d9a4781ac800b62d2706f893502228b2e5acaae7eab775029c09eaf77c9a89765ff1561fb2f64b0ae55b4806c45
+  languageName: node
+  linkType: hard
+
+"mockdate@npm:^3.0.2":
+  version: 3.0.5
+  resolution: "mockdate@npm:3.0.5"
+  checksum: 72b66786d9e072379693f80bf9fb82eb5153c9741030a4294184e3ccaf952d0713fae8966f77780580cf902f8ec7ccc95577b0ad47980d255e2ffb71fc7ca49c
   languageName: node
   linkType: hard
 
@@ -15771,6 +15915,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-day-picker@npm:^8.10.0":
+  version: 8.10.0
+  resolution: "react-day-picker@npm:8.10.0"
+  peerDependencies:
+    date-fns: ^2.28.0 || ^3.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: a265e8c2f3f0e92e5a23e2edeca40fe67c67c00bae64aa9e1a99c6fe7f58b2f697b538937822b8f68d4b890d7903a06f074f1365deb465a0aeef1a14c701cc65
+  languageName: node
+  linkType: hard
+
 "react-debounce-input@npm:=3.3.0":
   version: 3.3.0
   resolution: "react-debounce-input@npm:3.3.0"
@@ -15792,6 +15946,18 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
   checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
+  languageName: node
+  linkType: hard
+
+"react-hot-toast@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "react-hot-toast@npm:2.4.1"
+  dependencies:
+    goober: ^2.1.10
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 3e337816db574782454bf09c63a8aca546bf9c5be3f83d0494d24bdcfd97ca2db64d4c151c4ab0184d2342d7a7226403e6812e70caf03c8b55a07787bb4ad0f2
   languageName: node
   linkType: hard
 
@@ -15948,6 +16114,18 @@ __metadata:
   peerDependencies:
     react: ">= 0.14.0"
   checksum: c082b48f30f8ba8d0c55ed1d761910630860077c7ff5793c4c912adcb5760df06436ed0ad62be0de28113aac9ad2af55eccd995f8eee98df53382e4ced2072fb
+  languageName: node
+  linkType: hard
+
+"react-use-measure@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "react-use-measure@npm:2.1.1"
+  dependencies:
+    debounce: ^1.2.1
+  peerDependencies:
+    react: ">=16.13"
+    react-dom: ">=16.13"
+  checksum: b8e8939229d463c3c505f7b617925c0228efae0cd6f651371f463846417b06c9170be57df51293a61027c41770f8a090fdb8a08717c4e36290ccb496e0318f1f
   languageName: node
   linkType: hard
 
@@ -17793,6 +17971,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwindcss@npm:3.4.1, tailwindcss@npm:^3.3.5":
+  version: 3.4.1
+  resolution: "tailwindcss@npm:3.4.1"
+  dependencies:
+    "@alloc/quick-lru": ^5.2.0
+    arg: ^5.0.2
+    chokidar: ^3.5.3
+    didyoumean: ^1.2.2
+    dlv: ^1.1.3
+    fast-glob: ^3.3.0
+    glob-parent: ^6.0.2
+    is-glob: ^4.0.3
+    jiti: ^1.19.1
+    lilconfig: ^2.1.0
+    micromatch: ^4.0.5
+    normalize-path: ^3.0.0
+    object-hash: ^3.0.0
+    picocolors: ^1.0.0
+    postcss: ^8.4.23
+    postcss-import: ^15.1.0
+    postcss-js: ^4.0.1
+    postcss-load-config: ^4.0.1
+    postcss-nested: ^6.0.1
+    postcss-selector-parser: ^6.0.11
+    resolve: ^1.22.2
+    sucrase: ^3.32.0
+  bin:
+    tailwind: lib/cli.js
+    tailwindcss: lib/cli.js
+  checksum: ef5a587dd32bb4e91e1549ead6162f85f0b78d3e6ffd8b4e8eeb15585b7b886cb3af6ae9df5092ed8ccb7e590608d1b3eec79ca08c862b07cd9ff7e72f73104b
+  languageName: node
+  linkType: hard
+
 "tailwindcss@npm:^3.3.1":
   version: 3.3.3
   resolution: "tailwindcss@npm:3.3.3"
@@ -18633,13 +18844,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-boop@npm:^1.0.0":
+"use-boop@npm:^1.0.0, use-boop@npm:^1.1.1":
   version: 1.1.1
   resolution: "use-boop@npm:1.1.1"
   peerDependencies:
     react: ">=16.8.0"
     react-spring: ">=9"
   checksum: f5c85a5054d0f264e4ca5ede23052b9895121be84966bb7023397eff72807cded2c979426c76f0496c9d07f358b25e962e18eb573b4214396754cff7676aef6e
+  languageName: node
+  linkType: hard
+
+"use-resize-observer@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "use-resize-observer@npm:9.1.0"
+  dependencies:
+    "@juggle/resize-observer": ^3.3.1
+  peerDependencies:
+    react: 16.8.0 - 18
+    react-dom: 16.8.0 - 18
+  checksum: 92be0ac34a3b3cf884cd55847c90792b5b44833dc258e96d650152815ad246afe45825aa223332203004d836535a927ab74f18dc0313229e2c7c69510eddf382
   languageName: node
   linkType: hard
 
