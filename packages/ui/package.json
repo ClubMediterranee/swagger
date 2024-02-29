@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.13.7",
   "main": "package.json",
+  "type": "module",
   "scripts": {
     "test": "yarn jest --coverage",
     "test:ci": " yarn test --ci --reporters=default --reporters=jest-junit --max-workers=2 && yarn test:coverage:update",
@@ -12,6 +13,7 @@
     "lint:ci": "yarn lint --format junit --output-file ../../reports/test-results-app-lint.xml"
   },
   "dependencies": {
+    "@clubmed/trident-ui": "1.0.0-alpha.14",
     "@clubmed/workspace": "1.13.7",
     "@juggle/resize-observer": "^3.4.0",
     "@react-spring/web": "^9.7.3",
@@ -31,6 +33,6 @@
     "jest": "^29.7.0",
     "jest-coverage-thresholds-bumper": "^1.0.0",
     "postcss": "^8.4.22",
-    "tailwindcss": "^3.3.1"
+    "tailwindcss": "3.4.1"
   }
 }
