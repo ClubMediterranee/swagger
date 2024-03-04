@@ -1,4 +1,4 @@
-import {Select} from "@clubmed/ui/molecules/Select/Select";
+import {Select} from "@clubmed/ui/molecules/Forms/Select/Select";
 
 export function SelectComponent(props: any) {
   let {allowedValues, allowEmptyValue, disabled} = props;

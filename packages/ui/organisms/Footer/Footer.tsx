@@ -2,15 +2,12 @@
 
 import {animated, useSpring} from "@react-spring/web";
 import classnames from "classnames";
-
 import {Fragment, FunctionComponent, PropsWithChildren, ReactNode, useState} from "react";
-
-import {Icon, Iconics} from "../../atoms/Icon";
-
-import {Button} from "../../molecules/Buttons";
-import {ButtonAnchor} from "../../molecules/Buttons/ButtonAnchor";
-import {ElasticHeight} from "../../molecules/ElasticHeight";
-import {Link} from "../../molecules/Link";
+import {ButtonAnchor} from "@clubmed/trident-ui/molecules/Buttons/ButtonAnchor";
+import {Icon, Iconics} from "@clubmed/trident-ui/atoms/Icon";
+import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
+import {Link} from "@clubmed/trident-ui/molecules/Link";
+import {ElasticHeight} from "@clubmed/trident-ui/molecules/ElasticHeight";
 
 export interface FooterLink {
   label: string;

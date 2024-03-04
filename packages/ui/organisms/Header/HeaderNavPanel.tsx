@@ -1,8 +1,7 @@
+import {Fragment, PropsWithChildren, ReactNode} from "react";
 import classnames from "classnames";
-import classNames from "classnames";
-import {ButtonAnchor} from "../../molecules/Buttons/ButtonAnchor";
-import React, {Fragment, PropsWithChildren} from "react";
-import {Button, CommonButtonProps} from "../../molecules/Buttons";
+import {ButtonAnchor} from "@clubmed/trident-ui/molecules/Buttons/ButtonAnchor";
+import { CommonButtonProps, Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
 
 export interface HeaderNavSectionProps {
   title: string;
@@ -19,7 +18,7 @@ export interface HeaderNavItemProps extends CommonButtonProps, Record<string, un
   url?: string;
   position?: string;
   columns?: HeaderNavColumnProps[];
-  component?: React.ReactNode;
+  component?: ReactNode;
 }
 
 export function HeaderNavTab({index, activeIndex, setMenu, resetMenu, item}: {
@@ -110,7 +109,7 @@ export function HeaderNavSection({title, url, sectionIndex, links}: HeaderNavSec
 export function HeaderNavColumn({children, className}: PropsWithChildren<{className?: string}>) {
   return (
     <div
-      className={classNames("text-b3 break-inside-avoid-column", className)}
+      className={classnames("text-b3 break-inside-avoid-column", className)}
       role="menuitem"
     >
       {children}
@@ -133,17 +132,12 @@ export function HeaderNavColumns({item}: { item: HeaderNavItemProps }) {
   </>;
 }
 
-export function HeaderNavPanel({index, activeIndex, children}: PropsWithChildren<{
+export function HeaderNavPanel({children}: PropsWithChildren<{
   index: number,
   activeIndex: number
 }>) {
   return <div
-    className={classnames(
-      "absolute inset-x-0 top-full flex columns-5 justify-center gap-x-40 bg-white px-20 py-40",
-      {
-        hidden: index !== activeIndex
-      }
-    )}
+    className="m mb-24 flex columns-5 justify-center gap-x-40"
     role="menu"
     aria-label="desktop-menuItem"
   >

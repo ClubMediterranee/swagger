@@ -1,5 +1,5 @@
 import React from "react";
-import {Button} from "@clubmed/ui/molecules/Buttons";
+import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
 import {System} from "../../interfaces/System";
 
 

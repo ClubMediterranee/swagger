@@ -1,12 +1,10 @@
 import { Meta, StoryFn } from '@storybook/react';
-
+import { DeviceProvider } from '@clubmed/trident-ui/contexts/Device';
 import { Footer } from './Footer';
-
-import { DeviceProvider } from '../contexts/Device';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'UI-Library/Component/Organisms/Footer',
+  title: 'Footer',
   component: Footer,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   parameters: { layout: 'fullscreen' },

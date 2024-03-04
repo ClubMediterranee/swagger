@@ -1,7 +1,7 @@
-import {HOVER_ENTRY_DURATION, HOVER_EXIT_DURATION} from "../Header";
-import {useEffect, useRef, useState} from "react";
-import {useDevice} from "../../../contexts/Device";
+import {useDevice} from "@clubmed/trident-ui/contexts/Device";
 import {useTransition} from "@react-spring/web";
+import {useEffect, useRef, useState} from "react";
+import {HOVER_ENTRY_DURATION, HOVER_EXIT_DURATION} from "../Header";
 
 export function useMenu() {
   const hoverInTimeout = useRef<ReturnType<typeof setTimeout>>();

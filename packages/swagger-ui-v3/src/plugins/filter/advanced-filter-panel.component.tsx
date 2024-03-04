@@ -1,8 +1,8 @@
-import {Switch} from "@clubmed/ui/molecules/Switch";
+import {Switch} from "@clubmed/trident-ui/molecules/Forms/Switch";
 import {Map} from "immutable";
 import {HeaderNavColumn} from "@clubmed/ui/organisms/Header/HeaderNavPanel";
 import React from "react";
-import {Button} from "@clubmed/ui/molecules/Buttons";
+import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
 import {GroupButtons} from "@clubmed/ui/molecules/GroupButtons/GroupButtons";
 import {System} from "../../interfaces/System";
 import {useLocalStorage} from "@clubmed/ui/hooks/storage/useLocaleStorage";
@@ -57,7 +57,7 @@ export function AdvancedFilterPanel(props: System) {
             name="deprecated"
             className="mr-20"
             onChange={onChangeSelection}
-            value={!!filters.get("deprecated")}/> Deprecated
+            checked={!!filters.get("deprecated")}/> Deprecated
         </label>
 
         {
@@ -67,7 +67,7 @@ export function AdvancedFilterPanel(props: System) {
                 name="admin"
                 className="mr-20"
                 onChange={onChangeSelection}
-                value={!!filters.get("admin")}/> Admin
+                checked={!!filters.get("admin")}/> Admin
             </label>
           )
         }

@@ -1,5 +1,5 @@
 import {System} from "../../interfaces/System";
-import {Button} from "@clubmed/ui/molecules/Buttons";
+import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
 import React from "react";
 
 export default function OperationSummary(props: System & { isShown: boolean, toggleShown: () => void, operationProps: Record<string, any> }) {
