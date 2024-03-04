@@ -1,6 +1,6 @@
 import React from "react";
 import {System} from "../../interfaces/System";
-import {TextField} from "@clubmed/ui/molecules/TextField";
+import {TextField} from "@clubmed/trident-ui/molecules/Forms/TextField";
 
 export default function FilterContainer(props: System) {
   const {layoutSelectors} = props;

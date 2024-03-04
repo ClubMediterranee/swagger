@@ -1,12 +1,11 @@
 import { StoryObj, Meta } from '@storybook/react';
 
 import { Header } from './Header';
-
-import { DeviceProvider } from '../contexts/Device';
-import { ButtonAnchor } from '../molecules/Buttons/ButtonAnchor';
+import { DeviceProvider } from '@clubmed/trident-ui/contexts/Device';
+import { ButtonAnchor } from '@clubmed/trident-ui/molecules/Buttons/ButtonAnchor';
 
 export default {
-  title: 'UI-Library/Component/Organisms/Header',
+  title: 'Header',
   component: Header,
   parameters: { layout: 'fullscreen' },
   args: {
@@ -396,7 +395,7 @@ export default {
                 ],
               },
               {
-                title: 'Title',
+                title: 'Title 1',
                 url: '/',
                 links: [
                   {
@@ -406,7 +405,7 @@ export default {
                 ],
               },
               {
-                title: 'Title',
+                title: 'Title 2',
                 url: '/',
                 links: [
                   {
@@ -416,7 +415,7 @@ export default {
                 ],
               },
               {
-                title: 'Title',
+                title: 'Title 3',
                 url: '/',
                 links: [
                   {
@@ -426,7 +425,7 @@ export default {
                 ],
               },
               {
-                title: 'Title',
+                title: 'Title 4',
                 url: '/',
                 links: [
                   {

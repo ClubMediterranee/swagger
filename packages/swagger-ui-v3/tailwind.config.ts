@@ -1,15 +1,18 @@
 import {dirname} from "path";
-import preset from "@clubmed/ui/tailwind.preset";
+import {tailwindPreset} from "@clubmed/trident-ui/tailwind";
 
 
 const config = {
   important: '.swagger-ui',
   presets: [
-    preset
+    tailwindPreset
   ],
   content: [
     "./src/**/*.{ts,tsx}",
-    `${dirname(require.resolve("@clubmed/ui"))}/{assets,atoms,contexts,molecules,organisms}/**/*.{ts,tsx}`
+    "../../node_modules/**/trident-ui/**/*.js",
+    "./node_modules/**/trident-ui/**/*.js",
+    `${dirname(require.resolve("@clubmed/ui"))}/{assets,atoms,contexts,molecules,organisms}/**/*.{ts,tsx}`,
+
   ],
   safelist: [
     "margin"
