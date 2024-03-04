@@ -1,15 +1,15 @@
-import {animated, useSpring} from "@react-spring/web";
+'use client';
+import { animated, useSpring, useTransition } from '@react-spring/web';
+
 import classnames from "classnames";
 import React, {Fragment, FunctionComponent, PropsWithChildren, ReactNode, useMemo, useState} from "react";
-
-import {Icon} from "../../atoms/Icon";
-import {Button} from "../../molecules/Buttons";
-import {ElasticHeight} from "../../molecules/ElasticHeight";
-import {HamburgerIcon} from "../../molecules/HamburgerIcon";
 import {Link} from "react-router-dom";
 import {HeaderNavItemProps, HeaderNavTab} from "./HeaderNavPanel";
+import {Icon} from "@clubmed/trident-ui/atoms/Icon";
+import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
+import {HamburgerIcon} from "@clubmed/trident-ui/molecules/HamburgerIcon";
+import {ElasticHeight} from "@clubmed/trident-ui/molecules/ElasticHeight";
 import {useMenu} from "./hooks/useMenu";
-
 
 export interface HeaderProps {
   sublabel?: string | ReactNode;
@@ -27,6 +27,7 @@ export const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                                                                             items,
                                                                             openMenu
                                                                           }) => {
+
   const {isMobileMenuOpen, activeIndex, setIsMobileMenuOpen, setMenu, resetMenu, transition} = useMenu();
 
   const height = 60;
@@ -75,7 +76,8 @@ export const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                 index={item.index as number}
                 activeIndex={activeIndex}
                 setMenu={setMenu}
-                resetMenu={resetMenu} item={item}/>;
+                resetMenu={resetMenu}
+                item={item}/>;
             })}
           {children}
           {items && (
@@ -101,7 +103,7 @@ export const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
                 style={styles}
                 role="menu"
                 aria-label="mobile-menu"
-                className="z-1 fixed inset-x-0 bottom-0 top-[64px] overflow-y-auto bg-white md:hidden"
+                className="z-2 fixed inset-x-0 bottom-0 top-[calc(var(--mobile-menu-offset,0px)+64px)] overflow-y-auto bg-white md:hidden"
               >
                 {items?.map((item) => {
                   return (

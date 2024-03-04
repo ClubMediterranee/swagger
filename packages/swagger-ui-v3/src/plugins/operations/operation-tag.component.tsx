@@ -4,7 +4,7 @@ import {System} from "../../interfaces/System";
 import {createDeepLinkPath, escapeDeepLinkPath, safeBuildUrl, sanitizeUrl} from "../../utils/url";
 import isFunc from "lodash/isFunction";
 import {sentenceCase} from "../../utils/sentence-case";
-import {Button} from "@clubmed/ui/molecules/Buttons";
+import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
 
 
 export default function OperationTag(props: PropsWithChildren<System & { tag: string, tagObj: any }>) {

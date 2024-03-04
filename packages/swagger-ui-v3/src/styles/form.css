@@ -1,4 +1,3 @@
-@import "choices.js/public/assets/styles/choices.css";
 
 body {
   .swagger-ui input[type="email"].invalid,
@@ -22,32 +21,6 @@ body {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     max-width: 340px;
-  }
-
-  .choices {
-    @apply rounded-pill text-b5;
-    max-width: 340px;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-
-    .choices__inner {
-      @apply rounded-pill border-lightGrey focus:border-black active:border-black;
-    }
-  }
-
-  .choices[data-type*="select-one"] .choices__inner {
-    @apply flex items-center;
-  }
-
-  .is-open .choices__list--dropdown, .is-open .choices__list[aria-expanded] {
-    @apply border-lightGrey shadow-xl;
-  }
-
-  .choices[data-type*="select-one"] .choices__input {
-    border-top: transparent;
-    border-left: transparent;
-    border-right: transparent;
-    border-radius: 0;
   }
 
   .json-schema-array .json-schema-form-item-add{

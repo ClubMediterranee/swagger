@@ -1,5 +1,5 @@
+import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
 import {System} from "../../interfaces/System";
-import {Button} from "@clubmed/ui/molecules/Buttons";
 import React from "react";
 
 export function AuthorizeOperationBtn(props: System & { isAuthorized: boolean, onClick: () => void }) {

@@ -1,5 +1,5 @@
 import {System} from "../../interfaces/System";
-import {Loader} from "@clubmed/ui/molecules/Loader";
+import {Loader} from "@clubmed/trident-ui/molecules/Loader";
 import React, {useEffect} from "react";
 import {Simulate} from "react-dom/test-utils";
 import load = Simulate.load;

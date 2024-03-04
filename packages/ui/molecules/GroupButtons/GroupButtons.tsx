@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import {TagProps} from "../Tag/Tag";
-import {useValue, UseValueProps} from "../../hooks/form/useValue";
-import {Button} from "../Buttons";
+import {TagProps} from "@clubmed/trident-ui/molecules/Tag";
+import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
+import {useValue, UseValueProps} from "@clubmed/trident-ui/hooks/useValue";
 
 export interface GroupButtonsProps extends Omit<UseValueProps<string[]>, "initialValue"> {
   className?: string;

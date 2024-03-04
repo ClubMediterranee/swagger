@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "allowImportingTsExtensions": true,
     "useDefineForClassFields": true,
     "lib": [
       "DOM",
@@ -8,32 +9,26 @@
       "ESNext"
     ],
     "allowJs": false,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": [
-      "./node_modules/@types",
-      "../../node_modules/@types"
+    "skipDefaultLibCheck": true,
+    "types": [
+      "vitest/globals"
     ],
-    "types": ["node", "jest", "@testing-library/jest-dom"]
   },
   "include": [
-    "assets",
-    "atoms",
-    "contexts",
-    "hooks",
-    "molecules",
-    "organisms",
-    "tests",
-    "utils"
+    "src",
+    "src/**/*.ts{x}",
+    "."
   ],
   "references": [
     {

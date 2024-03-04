@@ -1,4 +1,4 @@
-import {Button} from "@clubmed/ui/molecules/Buttons";
+import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
 import React from "react";
 import {System} from "../../interfaces/System";
 import {useConfig} from "../../contexts/config.context";
