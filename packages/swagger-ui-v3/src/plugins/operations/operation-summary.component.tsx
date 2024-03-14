@@ -80,7 +80,7 @@ export default function OperationSummary(props: System & { isShown: boolean, tog
       <JumpToPath path={specPath}/>{/* TODO: use wrapComponents here, swagger-ui doesn't care about jumpToPath */}
 
       <Button
-        variant={"iconSmall"}
+        variant={"iconSmall" as any}
         aria-expanded={isShown}
         title={isShown ? "Collapse operation" : "Expand operation"}
         onClick={toggleShown}
