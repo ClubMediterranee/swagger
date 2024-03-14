@@ -12,7 +12,7 @@
     "lint:ci": "yarn lint --format junit --output-file ../../reports/test-results-app-lint.xml"
   },
   "dependencies": {
-    "@clubmed/trident-ui": "1.0.0-alpha.26",
+    "@clubmed/trident-ui": "1.0.0-alpha.27",
     "@clubmed/workspace": "1.13.7",
     "@juggle/resize-observer": "^3.4.0",
     "@react-spring/web": "^9.7.3",
