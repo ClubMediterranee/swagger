@@ -25,7 +25,7 @@
     "nx": "16.0.0"
   },
   "devDependencies": {
-    "@clubmed/trident-ui": "1.0.0-alpha.26",
+    "@clubmed/trident-ui": "1.0.0-alpha.27",
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
     "@storybook/test-runner": "^0.10.0",
