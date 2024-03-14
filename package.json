@@ -69,5 +69,6 @@
       "production": "main"
     },
     "bumpMethod": "cmflow"
-  }
+  },
+  "packageManager": "yarn@4.1.1"
 }
