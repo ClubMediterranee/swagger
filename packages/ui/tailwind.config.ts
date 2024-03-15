@@ -1,5 +1,6 @@
-import type {Config} from "tailwindcss";
-import {tailwindPreset} from "@clubmed/trident-ui/tailwind";
+// @ts-ignore
+import { tailwindPreset } from "@clubmed/trident-ui/tailwind";
+import type { Config } from "tailwindcss";
 
 const config = {
   presets: [tailwindPreset as unknown as Config],

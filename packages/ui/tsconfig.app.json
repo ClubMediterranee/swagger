@@ -1,0 +1,28 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "types": [
+      "node",
+      "vite/client"
+    ]
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.test.tsx",
+    "**/*.spec.js",
+    "**/*.test.js",
+    "**/*.spec.jsx",
+    "**/*.test.jsx"
+  ],
+  "include": [
+    "hooks/**/*.ts",
+    "hooks/**/*.tsx",
+    "molecules/**/*.ts",
+    "molecules/**/*.tsx",
+    "organisms/**/*.ts",
+    "organisms/**/*.tsx"
+  ]
+}

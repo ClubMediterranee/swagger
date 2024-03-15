@@ -1,6 +1,6 @@
-import {JsonEditorField} from "../JsonEditorField/index.ts";
+import {JsonEditorField} from "../JsonEditorField";
 import {Meta, StoryObj} from "@storybook/react";
-import {Select} from "./Select.tsx";
+import {Select} from "./Select";
 
 export default {
   title: "Forms/Select",

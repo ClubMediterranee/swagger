@@ -1,0 +1,25 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "types": [
+      "vitest/globals",
+      "vitest/importMeta",
+      "vite/client",
+      "@testing-library/jest-dom",
+      "node",
+      "vitest"
+    ]
+  },
+  "include": [
+    "vite.config.ts",
+    "vitest.config.ts",
+    "vitest.setup.ts",
+    "hooks/**/*.spec.ts",
+    "hooks/**/*.spec.tsx",
+    "molecules/**/*.spec.ts",
+    "molecules/**/*.spec.tsx",
+    "organisms/**/*.spec.ts",
+    "organisms/**/*.spec.tsx"
+  ]
+}

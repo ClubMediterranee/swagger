@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "react-app",
+    "plugin:jsx-a11y/strict",
+    "plugin:tailwindcss/recommended",
+    "plugin:prettier/recommended",
+    "plugin:vitest/recommended"
+  ],
+  "plugins": ["workspaces", "simple-import-sort", "tailwindcss", "jsx-a11y"],
+  "rules": {
+    "@typescript-eslint/lines-between-class-members": ["error", "always", { "exceptAfterOverload": true }],
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/camelcase": 0,
+    "@typescript-eslint/no-inferrable-types": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-unused-vars": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "import/no-anonymous-default-export": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "workspaces/no-absolute-imports": "error",
+    "tailwindcss/classnames-order": "off",
+    "tailwindcss/no-custom-classname": "warn",
+    "prettier/prettier": "error"
+  }
+}

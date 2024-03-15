@@ -1,7 +1,8 @@
-import {useDevice} from "@clubmed/trident-ui/contexts/Device";
-import {useTransition} from "@react-spring/web";
-import {useEffect, useRef, useState} from "react";
-import {HOVER_ENTRY_DURATION, HOVER_EXIT_DURATION} from "../Header";
+import { useDevice } from "@clubmed/trident-ui/contexts/Device";
+import { useTransition } from "@react-spring/web";
+import { useEffect, useRef, useState } from "react";
+
+import { HOVER_ENTRY_DURATION, HOVER_EXIT_DURATION } from "../Header";
 
 export function useMenu() {
   const hoverInTimeout = useRef<ReturnType<typeof setTimeout>>();
@@ -18,7 +19,6 @@ export function useMenu() {
     };
   }, []);
 
-
   useEffect(() => {
     window.scrollTo(0, 0);
     if (isMobileMenuOpen) {
@@ -33,11 +33,10 @@ export function useMenu() {
   }, [isDesktop]);
 
   const transition = useTransition(isMobileMenuOpen, {
-    from: {opacity: 0, x: "-100%"},
-    enter: {opacity: 1, x: "0"},
-    leave: {opacity: 0, x: "100%"}
+    from: { opacity: 0, x: "-100%" },
+    enter: { opacity: 1, x: "0" },
+    leave: { opacity: 0, x: "100%" }
   });
-
 
   const setMenu = (index: number, isFocused?: boolean) => {
     clearTimeout(hoverOutTimeout.current);
@@ -58,7 +57,6 @@ export function useMenu() {
       isFocused ? 0 : HOVER_EXIT_DURATION
     );
   };
-
 
   return {
     hoverInTimeout,

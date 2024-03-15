@@ -1,5 +1,5 @@
 import {Meta, StoryObj} from "@storybook/react";
-import {JsonEditorField} from "./JsonEditorField.tsx";
+import {JsonEditorField} from "./JsonEditorField";
 
 export default {
   title: "Forms/JsonEditorField",
