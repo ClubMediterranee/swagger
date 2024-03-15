@@ -1,4 +1,3 @@
-
 body {
   .swagger-ui input[type="email"].invalid,
   .swagger-ui input[type="file"].invalid,
@@ -23,7 +22,7 @@ body {
     max-width: 340px;
   }
 
-  .json-schema-array .json-schema-form-item-add{
+  .json-schema-array .json-schema-form-item-add {
     @apply mt-8;
   }
 }

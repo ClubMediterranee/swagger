@@ -12,7 +12,8 @@ body {
     @apply pt-8 font-sans text-b4;
   }
 
-  .swagger-ui .opblock .opblock-summary-path, .swagger-ui .opblock .opblock-summary-path__deprecated {
+  .swagger-ui .opblock .opblock-summary-path,
+  .swagger-ui .opblock .opblock-summary-path__deprecated {
     @apply font-sans text-b4;
   }
 
@@ -70,7 +71,9 @@ body {
     @apply border-red;
   }
 
-  .swagger-ui .model-box-control:focus, .swagger-ui .models-control, .swagger-ui .opblock-summary-control:focus {
+  .swagger-ui .model-box-control:focus,
+  .swagger-ui .models-control,
+  .swagger-ui .opblock-summary-control:focus {
     outline: none;
   }
 
@@ -158,7 +161,8 @@ body {
     padding-top: 5px;
   }
 
-  .swagger-ui table.model tr.description td:first-child, .swagger-ui table.model tr.property-row td:first-child {
+  .swagger-ui table.model tr.description td:first-child,
+  .swagger-ui table.model tr.property-row td:first-child {
     @apply text-ultramarine-active;
   }
 
@@ -210,11 +214,7 @@ body {
     }
   }
 
-
   .swagger-ui table tbody tr td {
     @apply pb-12;
   }
 }
-
-
-

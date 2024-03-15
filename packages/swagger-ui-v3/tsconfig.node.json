@@ -2,14 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "types": [
-      "node",
-      "vitest"
-    ]
+    "types": ["node", "vitest"]
   },
-  "include": [
-    "vite.config.ts",
-    "vitest.config.ts",
-    "tailwind.config.ts"
-  ]
+  "include": ["vite.config.ts", "vitest.config.ts", "tailwind.config.ts"]
 }

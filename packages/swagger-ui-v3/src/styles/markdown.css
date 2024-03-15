@@ -1,7 +1,11 @@
 body .swagger-ui {
   .renderedMarkdown {
-    h1, h2, h3, h4, h5 {
-      @apply  text-ultramarine pt-8 mb-12;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      @apply text-ultramarine pt-8 mb-12;
     }
     h1 {
       @apply text-h3 font-serif pt-12 mb-16;
@@ -32,8 +36,8 @@ body .swagger-ui {
     }
   }
 
-  .markdown, .renderedMarkdown {
-
+  .markdown,
+  .renderedMarkdown {
     code {
       @apply py-1 px-4;
       @apply text-b5 text-ultramarine-active;
@@ -61,4 +65,3 @@ body .swagger-ui {
     }
   }
 }
-
