@@ -1,6 +1,6 @@
-import {SwaggerUIProps} from "swagger-ui-react";
-import {FunctionComponent} from "react";
-import {Iterable, Map} from "immutable";
+import { Iterable, Map } from "immutable";
+import { FunctionComponent } from "react";
+import { SwaggerUIProps } from "swagger-ui-react";
 
 export interface SpecSelectors extends Record<string, any> {
   info(): any;
@@ -45,18 +45,18 @@ export interface Oas3Selectors extends Record<string, any> {
 export interface System {
   specSelectors: SpecSelectors;
   errSelectors: ErrSelectors;
-  layoutSelectors: LayoutSelectors,
+  layoutSelectors: LayoutSelectors;
   layoutActions: LayoutActions;
   oas3Selectors: Oas3Selectors;
   authActions: {
     showDefinitions(security: Record<string, any>): void;
-  }
+  };
   authSelectors: {
     definitionsForRequirements(security: string): Record<string, any>;
-  },
+  };
   specPath: {
     get(i: number): string;
-  }
+  };
   fn: {
     opsFilter(taggedOps: Iterable<string, Map<string, any>>, phrase: string): Iterable<string, Map<string, any>>;
     opsAdvancedFilter(taggedOps: Iterable<string, Map<string, any>>, advancedFilters: Map<string, any>): Iterable<string, Map<string, any>>;

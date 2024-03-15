@@ -1,11 +1,9 @@
-import type { Config } from "tailwindcss";
 // @ts-ignore
-import {tailwindPreset} from "@clubmed/trident-ui/tailwind";
+import { tailwindPreset } from "@clubmed/trident-ui/tailwind";
+import type { Config } from "tailwindcss";
 
 export default {
-  presets: [
-    tailwindPreset
-  ],
+  presets: [tailwindPreset as any],
   content: [
     "./index.html",
     "../ui/**/*.{ts,tsx,css}",

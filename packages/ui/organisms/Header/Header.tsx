@@ -1,8 +1,8 @@
 'use client';
-import { animated, useSpring, useTransition } from '@react-spring/web';
+import { animated, useSpring } from '@react-spring/web';
 
 import classnames from "classnames";
-import React, {Fragment, FunctionComponent, PropsWithChildren, ReactNode, useMemo, useState} from "react";
+import {Fragment, FunctionComponent, PropsWithChildren, ReactNode, useMemo, useState} from "react";
 import {Link} from "react-router-dom";
 import {HeaderNavItemProps, HeaderNavTab} from "./HeaderNavPanel";
 import {Icon} from "@clubmed/trident-ui/atoms/Icon";
@@ -56,7 +56,7 @@ export const Header: FunctionComponent<PropsWithChildren<HeaderProps>> = ({
             ?.filter(({position}) => {
               return position !== "right";
             })
-            .map((item, index) => {
+            .map((item) => {
               return <HeaderNavTab
                 key={item.url}
                 index={item.index as number}

@@ -1,4 +1,4 @@
-import {UPDATE_ADVANCED_FILTER} from "./actions";
+import { UPDATE_ADVANCED_FILTER } from "./actions";
 
 export default {
   [UPDATE_ADVANCED_FILTER]: (state: any, action: any) => {

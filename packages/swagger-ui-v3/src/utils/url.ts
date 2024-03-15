@@ -1,4 +1,4 @@
-import {sanitizeUrl as braintreeSanitizeUrl} from "@braintree/sanitize-url";
+import { sanitizeUrl as braintreeSanitizeUrl } from "@braintree/sanitize-url";
 // @ts-ignore
 import cssEscape from "css.escape";
 
@@ -19,7 +19,7 @@ export function buildBaseUrl(selectedServer: string, specUrl: string) {
   return new URL(selectedServer, specUrl).href;
 }
 
-export function buildUrl(url: string, specUrl: string, {selectedServer = ""} = {}) {
+export function buildUrl(url: string, specUrl: string, { selectedServer = "" } = {}) {
   if (!url) return undefined;
   if (isAbsoluteUrl(url)) return url;
 
@@ -34,17 +34,16 @@ export function buildUrl(url: string, specUrl: string, {selectedServer = ""} = {
  * Safe version of buildUrl function. `selectedServer` can contain server variables
  * which can fail the URL resolution.
  */
-export function safeBuildUrl(url: string, specUrl: string, {selectedServer = ""} = {}) {
+export function safeBuildUrl(url: string, specUrl: string, { selectedServer = "" } = {}) {
   try {
-    return buildUrl(url, specUrl, {selectedServer});
+    return buildUrl(url, specUrl, { selectedServer });
   } catch {
     return undefined;
   }
 }
 
-export const createDeepLinkPath = (str: any) => typeof str == "string" || str instanceof String ? str.trim().replace(/\s/g, "%20") : "";
+export const createDeepLinkPath = (str: any) => (typeof str == "string" || str instanceof String ? str.trim().replace(/\s/g, "%20") : "");
 export const escapeDeepLinkPath = (str: string) => cssEscape(createDeepLinkPath(str).replace(/%20/g, "_"));
-
 
 export function sanitizeUrl(url: any) {
   if (typeof url !== "string" || url === "") {

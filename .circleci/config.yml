@@ -5,7 +5,7 @@ orbs:
 executors:
   app-executor:
     docker:
-      - image: cimg/node:18.17.1
+      - image: cimg/node:20.11.0
     resource_class: large
 
 commands:
@@ -14,52 +14,37 @@ commands:
     steps:
       - node/install-packages:
           pkg-manager: yarn
-#  workspace-restore:
-#    description: "Restore workspace"
-#    steps:
-#      - attach_workspace:
-#          at: .
 
 jobs:
-#  install:
-#    executor: app-executor
-#    steps:
-#      - configure-executor
-#      - yarn-install
-#      - persist_to_workspace:
-#          root: .
-#          paths:
-#            - node_modules
-#            - packages/*/node_modules
-#  lint:
-#    executor: app-executor
-#    steps:
-#      - configure-executor
-#      - workspace-restore
-#      - run:
-#          name: Lint
-#          command: yarn lint:ci
-#      - store_test_results:
-#          path: reports
-#      - store_artifacts:
-#          path: ./reports
-#  test:
-#    executor: app-executor
-#    steps:
-#      - configure-executor
-#      - workspace-restore
-#      - run:
-#          name: Unit test
-#          command: yarn test:ci
-#      - store_test_results:
-#          path: reports
-#      - store_artifacts:
-#          path: ./reports
+  lint:
+    executor: app-executor
+    steps:
+      - checkout
+      - yarn-install
+      - run:
+          name: Lint
+          command: yarn lint
+      - store_test_results:
+          path: reports
+      - store_artifacts:
+          path: ./reports
+  test:
+    executor: app-executor
+    steps:
+      - checkout
+      - yarn-install
+      - run:
+          name: Unit test
+          command: yarn test:ci
+      - store_test_results:
+          path: reports
+      - store_artifacts:
+          path: ./reports
   deploy:
     executor: app-executor
     environment:
       BASE_URL: "https://clubmediterranee.github.io/swagger/latest"
-#      GITHUB_PAGES_PATH: "./dist"
+    #      GITHUB_PAGES_PATH: "./dist"
     steps:
       - checkout
       - yarn-install
@@ -75,18 +60,13 @@ jobs:
 workflows:
   build:
     jobs:
-#      - install
-#      - lint:
-#          requires:
-#            - install
-#      - test:
-#          requires:
-#            - install
+      - lint
+      - test
       - deploy:
-#          requires:
-#            - lint
-#            - test
-#          filters:
-#            branches:
-#              only: /^master$/
+          requires:
+            - lint
+            - test
+          filters:
+            branches:
+              only: /^release-v3/
           context: api

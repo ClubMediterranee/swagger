@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import omit from "lodash/omit";
 import {FormControl} from "@clubmed/trident-ui/molecules/Forms/FormControl";
-import {AllSelectProps, useSelect} from "./useSelect.tsx";
+import {AllSelectProps, useSelect} from "./useSelect";
 import "./Select.css";
 
 let uuid = 0;
@@ -23,7 +23,7 @@ export function Select(props: AllSelectProps) {
     ...rest
   } = props;
 
-  const {ref, choicesRef} = useSelect(props);
+  const {ref} = useSelect(props);
   const internalStatus = disabled ? "disabled" : status;
 
   return (

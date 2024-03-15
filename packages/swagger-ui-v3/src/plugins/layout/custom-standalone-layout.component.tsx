@@ -1,8 +1,8 @@
-import {System} from "../../interfaces/System";
-import React, {Suspense} from "react";
+import {Suspense} from "react";
 import {Route, Routes} from "react-router";
-import {routes} from "../../routes";
 import {Footer} from "@clubmed/ui/organisms/Footer/Footer";
+import {System} from "../../interfaces/System";
+import {routes} from "../../routes";
 import {useConfig} from "../../contexts/config.context";
 
 export default function CustomStandaloneLayout(props: System) {
