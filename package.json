@@ -72,7 +72,10 @@
     }
   },
   "lint-staged": {
-    "packages/**/*.{ts,tsx,js,jsx}": "eslint --fix",
+    "packages/**/*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
     "**/*.{css,json,md,yml,yaml}": "prettier --write"
   },
   "flow": {

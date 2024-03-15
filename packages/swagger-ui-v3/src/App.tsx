@@ -1,22 +1,23 @@
-import {DeviceProvider} from "@clubmed/trident-ui/contexts/Device";
-import React, {Suspense} from "react";
+import { DeviceProvider } from "@clubmed/trident-ui/contexts/Device";
+import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
+
+import { ConfigContext } from "./contexts/config.context";
+import { userSwaggerUI } from "./hooks/user-swagger-ui.hook";
 
 export const isMobile = () => {
   return /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(window.navigator.userAgent);
 };
 
-const LazySwaggerUI = React.lazy(() => import("./components/SwaggerUIContainer"));
-
 function App() {
+  const config = userSwaggerUI();
+
   return (
-    <div className="App">
+    <ConfigContext.Provider value={config}>
       <DeviceProvider device={isMobile() ? "mobile" : "desktop"}>
-        { /* @ts-ignore */}
-        <Suspense fallback={() => <></>}>
-          <LazySwaggerUI/>
-        </Suspense>
+        {/* @ts-ignore */}
+        <SwaggerUI {...(config as SwaggerUIProps)} tryItOutEnabled={true} />
       </DeviceProvider>
-    </div>
+    </ConfigContext.Provider>
   );
 }
 

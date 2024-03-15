@@ -11,7 +11,9 @@ body .swagger-ui .info .title {
   @apply text-ultramarine;
 }
 
-body .swagger-ui .info li, body .swagger-ui .info p, body .swagger-ui .info table {
+body .swagger-ui .info li,
+body .swagger-ui .info p,
+body .swagger-ui .info table {
   @apply font-sans;
 }
 
@@ -24,6 +26,6 @@ body .api-banner h1.title {
   box-shadow: none;
 }
 
-body [for='schemes'] {
+body [for="schemes"] {
   @apply flex flex-col md:flex-row md:items-center md:justify-between;
 }

@@ -1,5 +1,6 @@
-import {SwaggerView} from "./views/swagger/swagger.view";
-import {RouteProps} from "react-router/dist/lib/components";
+import { RouteProps } from "react-router";
+
+import { SwaggerView } from "./views/swagger/swagger.view";
 
 export const routes: RouteProps & Record<string, any>[] = [
   {
