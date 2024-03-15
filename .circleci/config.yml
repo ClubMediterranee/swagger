@@ -48,15 +48,15 @@ jobs:
     steps:
       - checkout
       - yarn-install
-      - run: yarn dlx -p @cmflow/cli cmrelease
-      - run:
-          name: Publish
-          path: ./dist
-          command: |
-            git init
-            git add -A
-            git commit -m 'Deploy github pages'
-            git push -f "https://${GH_TOKEN}@github.com/ClubMediterranee/swagger.git" master:gh-pages
+#      - run: yarn dlx -p @cmflow/cli cmrelease
+#      - run:
+#          name: Publish
+#          path: ./dist
+#          command: |
+#            git init
+#            git add -A
+#            git commit -m 'Deploy github pages'
+#            git push -f "https://${GH_TOKEN}@github.com/ClubMediterranee/swagger.git" master:gh-pages
 workflows:
   build:
     jobs:
