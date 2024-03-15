@@ -1,0 +1,103 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Build
+
+on:
+  push:
+  pull_request:
+    branches: [release-v3]
+    types: [opened, synchronize, closed]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+      - name: Install dependencies 🚀
+        run: yarn install --immutable
+      - name: Run lint 🔍
+        run: yarn lint
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+      - name: Install dependencies 🚀
+        run: yarn install --immutable
+      - name: Run Test 🔍
+        run: yarn test
+
+  deploy:
+    needs: [test, lint]
+    if: github.event_name != 'pull_request' && contains('
+      refs/heads/main
+      refs/heads/release-v3
+      refs/heads/alpha
+      refs/heads/beta
+      refs/heads/rc
+      ', github.ref)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+
+      - name: Install dependencies 🚀
+        run: yarn install --immutable
+
+      - name: Create release 🔖
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          export GIT_USER_EMAIL="${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+          export GIT_USER_NAME="$(gh api /users/${GITHUB_ACTOR} | jq .name -r)"
+          git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name "$(gh api /users/${GITHUB_ACTOR} | jq .name -r)"
+          git config -l  
+          yarn dlx -p @cmflow/cli cmrelease
+      - name: Upload artifact 📝
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: "./dist"
+      - name: Deploy to GitHub Pages 📝
+        id: deployment
+        uses: actions/deploy-pages@v4

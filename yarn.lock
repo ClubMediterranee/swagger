@@ -1742,7 +1742,7 @@ __metadata:
   resolution: "@clubmed/root@workspace:."
   dependencies:
     "@clubmed/trident-ui": "npm:1.0.0-alpha.27"
-    "@cmflow/cli": "npm:1.0.9"
+    "@cmflow/cli": "npm:1.0.10"
     "@commitlint/cli": "npm:19.2.0"
     "@commitlint/config-conventional": "npm:19.1.0"
     "@storybook/test-runner": "npm:^0.10.0"
@@ -1858,9 +1858,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cmflow/cli@npm:1.0.9":
-  version: 1.0.9
-  resolution: "@cmflow/cli@npm:1.0.9"
+"@cmflow/cli@npm:1.0.10":
+  version: 1.0.10
+  resolution: "@cmflow/cli@npm:1.0.10"
   dependencies:
     "@samverschueren/stream-to-observable": "npm:0.3.1"
     axios: "npm:^0.27.2"
@@ -1907,7 +1907,7 @@ __metadata:
     cmrelease: bin/cmrelease.js
     cmrepublish: bin/cm-republish.js
     cmstart: bin/cm-start.js
-  checksum: 10/7c7ca7bef34a63b3a083e9af980948af3fb7711f29466b1fdb67fb76c214e94c3e64121c6e937b8f324639b7819c12e147bcc4c228b6c73d83f6ceb9c1cfa769
+  checksum: 10/c7b46e956841d24b31e4a239a7ca55dbd209647477120fc3627c7a53e070df81d78b0ef5356d38facac1de887c149cae2c3e5af9e3683c187a781d1eabcd9fd4
   languageName: node
   linkType: hard
 
