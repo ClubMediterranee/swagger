@@ -18,10 +18,11 @@
     "@storybook/react-vite": "^7.6.17",
     "@storybook/test": "^7.6.17",
     "@storybook/testing-library": "^0.2.2",
-    "storybook": "7.6.17"
+    "storybook": "1.16.0"
   },
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
-  }
+  },
+  "version": "1.16.0"
 }
