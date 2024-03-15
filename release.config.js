@@ -1,12 +1,12 @@
-const {getSemanticConfig} = require('@cmflow/cli')
+import { getSemanticConfig } from "@cmflow/cli";
 
-process.env.PRODUCTION_BRANCH = 'master'
-process.env.DEVELOP_BRANCH = 'master'
-process.env.DEPLOY_ON_DOCKER = false
+process.env.PRODUCTION_BRANCH = "release-v3";
+process.env.DEVELOP_BRANCH = "release-v3";
+process.env.DEPLOY_ON_DOCKER = "false";
 
-module.exports = {
+export default {
   ...getSemanticConfig(),
   npmPublish: false,
   // eslint-disable-next-line no-template-curly-in-string
-  tagFormat: 'v${version}'
-}
+  tagFormat: "v${version}"
+};

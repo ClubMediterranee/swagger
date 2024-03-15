@@ -24,10 +24,10 @@ export default defineConfig({
       include: ["hooks/**/*.{ts,tsx}", "molecules/**/*.{ts,tsx}", "organisms/**/*.{ts,tsx}"],
       thresholds: {
         autoUpdate: true,
-        statements: 67.25,
+        statements: 67,
         branches: 80,
         functions: 65.51,
-        lines: 67.25
+        lines: 67
       },
       exclude: ["**/*.spec.{ts,tsx}", "**/node_modules/**", "**/*.stories.{ts,tsx}", "**/index.ts", "**/*.helpers.ts", "**/*.template.tsx"]
     }

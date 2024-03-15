@@ -17,15 +17,17 @@
     "lint": "eslint 'packages/**/*.{ts,js}'",
     "lint:fix": "eslint 'packages/**/*.{ts,js}' --fix",
     "release": "cmrelease",
-    "release:dryrun": "cmrelease --dry-run"
+    "release:dryrun": "cmrelease --dry-run",
+    "prepare": "is-ci || husky install"
   },
   "dependencies": {
     "nx": "18.0.8"
   },
   "devDependencies": {
     "@clubmed/trident-ui": "1.0.0-alpha.27",
-    "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^17.6.1",
+    "@cmflow/cli": "1.0.9",
+    "@commitlint/cli": "19.2.0",
+    "@commitlint/config-conventional": "19.1.0",
     "@storybook/test-runner": "^0.10.0",
     "@testing-library/dom": "9.3.3",
     "@testing-library/jest-dom": "^6.1.4",
@@ -45,11 +47,11 @@
     "eslint-plugin-vitest": "0.3.26",
     "eslint-plugin-workspaces": "0.10.0",
     "husky": "^8.0.3",
+    "is-ci": "^3.0.1",
     "lint-staged": "^13.2.2",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.0",
-    "semantic-release": "^21.0.1",
-    "serve": "^14.2.1",
+    "semantic-release": "23.0.3",
     "ts-node": "^10.9.1",
     "typescript": "5.4.2",
     "vite": "5.1.6",
@@ -74,8 +76,8 @@
   },
   "flow": {
     "branch": {
-      "develop": "main",
-      "production": "main"
+      "develop": "release-v3",
+      "production": "release-v3"
     },
     "bumpMethod": "cmflow"
   },
