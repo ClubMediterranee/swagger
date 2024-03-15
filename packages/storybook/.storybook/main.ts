@@ -15,7 +15,7 @@ export default {
       titlePrefix: "Organisms"
     }
   ],
-  addons: ["@storybook/addon-a11y", "@storybook/addon-links", "@storybook/addon-essentials", "@whitespace/storybook-addon-html"],
+  addons: ["@storybook/addon-a11y", "@storybook/addon-links", "@storybook/addon-essentials"],
   framework: "@storybook/react-vite",
   typescript: {
     reactDocgen: "react-docgen"

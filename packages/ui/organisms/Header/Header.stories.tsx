@@ -395,7 +395,7 @@ export default {
                 ]
               },
               {
-                title: "Title 1",
+                title: "Title",
                 url: "/",
                 links: [
                   {
@@ -405,7 +405,7 @@ export default {
                 ]
               },
               {
-                title: "Title 2",
+                title: "Title",
                 url: "/",
                 links: [
                   {
@@ -415,7 +415,7 @@ export default {
                 ]
               },
               {
-                title: "Title 3",
+                title: "Title",
                 url: "/",
                 links: [
                   {
@@ -425,7 +425,7 @@ export default {
                 ]
               },
               {
-                title: "Title 4",
+                title: "Title",
                 url: "/",
                 links: [
                   {
@@ -449,6 +449,38 @@ export const Base: StoryObj<typeof Header> = {
       <DeviceProvider device="mobile">
         <div>
           <Header {...args}>
+            <ButtonAnchor theme="blackStroke" variant="icon" icon="PeopleSingle" href="/" label="Account" />
+          </Header>
+          <div className="bg-red h-screen w-full" />
+        </div>
+      </DeviceProvider>
+    );
+  }
+};
+
+const TextContent = () => (
+  <div
+    data-testid="languages-for-mobile"
+    className="bg-red text-b3 border-pearl mx-8 flex items-center justify-center gap-4 border-b p-20 font-sans font-semibold text-white"
+    data-name="Languages"
+  >
+    <a className="text-b3 decoration-none link-container cursor-pointer capitalize text-inherit" data-name="Link" href="/?locale=fr-CH">
+      <span className="hoverable link-underline">
+        Before Menu Items<span className="inline-block"></span>
+      </span>
+    </a>
+  </div>
+);
+
+/**
+ * Use to display a ***content*** in top of the items submenu for `mobile view`.
+ */
+export const WithTopBurgerMenuContent: StoryObj<typeof Header> = {
+  render: (args) => {
+    return (
+      <DeviceProvider device="mobile">
+        <div>
+          <Header {...args} topBurgerMenuContent={<TextContent />}>
             <ButtonAnchor theme="blackStroke" variant="icon" icon="PeopleSingle" href="/" label="Account" />
           </Header>
           <div className="bg-red h-screen w-full" />

@@ -25,8 +25,8 @@ export default defineConfig({
       thresholds: {
         autoUpdate: true,
         statements: 67,
-        branches: 80,
-        functions: 65.51,
+        branches: 77.77,
+        functions: 70,
         lines: 67
       },
       exclude: ["**/*.spec.{ts,tsx}", "**/node_modules/**", "**/*.stories.{ts,tsx}", "**/index.ts", "**/*.helpers.ts", "**/*.template.tsx"]

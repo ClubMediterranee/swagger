@@ -2,14 +2,16 @@ import { useDevice } from "@clubmed/trident-ui/contexts/Device";
 import { useTransition } from "@react-spring/web";
 import { useEffect, useRef, useState } from "react";
 
-import { HOVER_ENTRY_DURATION, HOVER_EXIT_DURATION } from "../Header";
+export const HOVER_ENTRY_DURATION = 300;
+export const HOVER_EXIT_DURATION = 500;
 
 export function useMenu() {
   const hoverInTimeout = useRef<ReturnType<typeof setTimeout>>();
   const hoverOutTimeout = useRef<ReturnType<typeof setTimeout>>();
-  const [activeIndex, setActiveIndex] = useState(-1);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+
   const isDesktop = useDevice("desktop");
 
   useEffect(() => {
@@ -21,22 +23,21 @@ export function useMenu() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
     if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.setProperty("overflow", "hidden");
     } else {
-      document.body.style.overflow = "";
+      document.body.style.removeProperty("overflow");
     }
+
+    return () => {
+      document.body.style.removeProperty("overflow");
+    };
   }, [isMobileMenuOpen]);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [isDesktop]);
-
-  const transition = useTransition(isMobileMenuOpen, {
-    from: { opacity: 0, x: "-100%" },
-    enter: { opacity: 1, x: "0" },
-    leave: { opacity: 0, x: "100%" }
-  });
 
   const setMenu = (index: number, isFocused?: boolean) => {
     clearTimeout(hoverOutTimeout.current);
@@ -57,6 +58,12 @@ export function useMenu() {
       isFocused ? 0 : HOVER_EXIT_DURATION
     );
   };
+
+  const transition = useTransition(isMobileMenuOpen, {
+    from: { opacity: 0, x: "-100%" },
+    enter: { opacity: 1, x: "0" },
+    leave: { opacity: 0, x: "100%" }
+  });
 
   return {
     hoverInTimeout,

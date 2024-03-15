@@ -12,6 +12,10 @@ on:
   schedule:
     - cron: "0 14 * * 4"
 
+concurrency:
+  group: "code-ql"
+  cancel-in-progress: false
+
 jobs:
   CodeQL-Build:
     runs-on: ubuntu-latest
