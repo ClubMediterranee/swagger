@@ -1,7 +1,7 @@
 import { getSemanticConfig } from "@cmflow/cli";
 
-process.env.PRODUCTION_BRANCH = "release-v3";
-process.env.DEVELOP_BRANCH = "release-v3";
+process.env.PRODUCTION_BRANCH = "main";
+process.env.DEVELOP_BRANCH = "main";
 process.env.DEPLOY_ON_DOCKER = "false";
 
 export default {
