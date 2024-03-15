@@ -91,7 +91,7 @@ jobs:
           git config --global user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
           git config --global user.name "$(gh api /users/${GITHUB_ACTOR} | jq .name -r)"
           git config -l  
-          yarn dlx -p @cmflow/cli cmrelease
+          yarn dlx -p @cmflow/cli@v1.0.10 cmrelease
       - name: Upload artifact 📝
         uses: actions/upload-pages-artifact@v3
         with:

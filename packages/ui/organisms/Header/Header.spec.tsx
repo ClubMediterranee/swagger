@@ -1,16 +1,20 @@
-import {act, render, screen, waitFor} from "@testing-library/react";
+import { Devices, deviceWrapper } from "@clubmed/trident-ui/tests/helpers/device";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {ComponentProps, FunctionComponent, PropsWithChildren} from "react";
+import { ComponentProps, FunctionComponent, PropsWithChildren } from "react";
+import { BrowserRouter } from "react-router-dom";
 
-import {Header} from "./Header";
-import {Devices, deviceWrapper} from "@clubmed/trident-ui/tests/helpers/device";
-import {BrowserRouter} from "react-router-dom";
+import { Header } from "./Header";
 
 const createWrapper = (device: Devices) => {
-  const Wrapper: FunctionComponent<PropsWithChildren<any>> = ({children}) => {
+  const Wrapper: FunctionComponent<PropsWithChildren<any>> = ({ children }) => {
     const DeviceProvider = deviceWrapper(device);
 
-    return <BrowserRouter><DeviceProvider>{children}</DeviceProvider></BrowserRouter>;
+    return (
+      <BrowserRouter>
+        <DeviceProvider>{children}</DeviceProvider>
+      </BrowserRouter>
+    );
   };
 
   return Wrapper;
@@ -69,7 +73,7 @@ describe("<Header />", () => {
         <Header {...(props as ComponentProps<typeof Header>)}>
           <div>child</div>
         </Header>,
-        {wrapper: createWrapper(Devices.desktop)}
+        { wrapper: createWrapper(Devices.desktop) }
       );
       expect(screen.getByText("child")).toBeInTheDocument();
     });
@@ -83,17 +87,15 @@ describe("<Header />", () => {
             wrapper: createWrapper(Devices.desktop)
           });
 
-          const trigger = screen.getByRole("link", {name: "Discover"});
+          const trigger = screen.getByRole("link", { name: "Discover" });
           act(() => {
             trigger.focus();
           });
           await waitFor(
             () => {
-              expect(screen.getByRole("menu", {name: "desktop-menuItem"})).not.toHaveClass(
-                "hidden"
-              );
+              expect(screen.getByRole("menu", { name: "desktop-menuItem" })).not.toHaveClass("hidden");
             },
-            {timeout: 100}
+            { timeout: 100 }
           );
 
           act(() => {
@@ -109,13 +111,13 @@ describe("<Header />", () => {
           wrapper: createWrapper(Devices.mobile)
         });
 
-        const trigger = screen.getByRole("button", {name: "open menu"});
+        const trigger = screen.getByRole("button", { name: "open menu" });
         await act(() => userEvent.click(trigger));
         await waitFor(
           () => {
-            expect(screen.getByRole("menu", {name: "mobile-menu"})).toBeInTheDocument();
+            expect(screen.getByRole("menu", { name: "mobile-menu" })).toBeInTheDocument();
           },
-          {timeout: 100}
+          { timeout: 100 }
         );
       });
     });

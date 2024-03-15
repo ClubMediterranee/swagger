@@ -6,6 +6,7 @@
   "private": true,
   "author": "Lenzotti Romain",
   "license": "ISC",
+  "type": "module",
   "repository": {
     "url": "https://github.com/ClubMediterranee/swagger.git"
   },
