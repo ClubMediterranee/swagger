@@ -1,15 +1,15 @@
-import StandaloneLayout from "./custom-standalone-layout.component";
-import BaseLayout from "./base-layout.component";
 import AuthorizeBtn from "../auth/authorize-btn.component";
-import {wrapOperation} from "../operations/wrap-operation";
+import { AuthorizeOperationBtn } from "../auth/authorize-operation-btn.component";
+import { Markdown } from "../form/markdown";
+import { SelectComponent } from "../form/select.component";
+import { TextareaComponent } from "../form/textarea.component";
 import OperationSummary from "../operations/operation-summary.component";
 import OperationTag from "../operations/operation-tag.component";
-import {AuthorizeOperationBtn} from "../auth/authorize-operation-btn.component";
-import {wrapExecute} from "../operations/wrap-execute";
-import {wrapClear} from "../operations/wrap-clear";
-import {SelectComponent} from "../form/select.component";
-import {TextareaComponent} from "../form/textarea.component";
-import {Markdown} from "../form/markdown";
+import { wrapClear } from "../operations/wrap-clear";
+import { wrapExecute } from "../operations/wrap-execute";
+import { wrapOperation } from "../operations/wrap-operation";
+import BaseLayout from "./base-layout.component";
+import StandaloneLayout from "./custom-standalone-layout.component";
 
 export const StandaloneLayoutPlugin = () => {
   return {

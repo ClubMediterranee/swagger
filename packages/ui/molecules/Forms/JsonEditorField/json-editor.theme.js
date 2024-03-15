@@ -1,9 +1,9 @@
-
-ace.define("ace/theme/monokai", ["require", "exports", "module", "ace/lib/dom"], function (acequire, exports, module) {
-
+// eslint-disable-next-line no-undef
+window.ace.define("ace/theme/monokai", ["require", "exports", "module", "ace/lib/dom"], function (acequire, exports, module) {
   exports.isDark = true;
   exports.cssClass = "ace-monokai";
-  exports.cssText = ".ace-monokai .ace_gutter {\
+  exports.cssText =
+    ".ace-monokai .ace_gutter {\
 background: #2F3129;\
 color: #8F908A\
 }\

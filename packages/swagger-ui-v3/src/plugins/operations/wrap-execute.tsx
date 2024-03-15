@@ -7,7 +7,7 @@ export function wrapExecute(Base: React.ComponentClass<{
     render() {
       const {disabled} = this.props;
       return (
-        <Button className="block w-full" onClick={(this as any).onClick} isDisabled={disabled}>
+        <Button className="block w-full" onClick={(this as any).onClick} disabled={disabled}>
           Execute
         </Button>
       );

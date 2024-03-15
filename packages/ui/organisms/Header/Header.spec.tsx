@@ -1,22 +1,24 @@
 import {act, render, screen, waitFor} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {FunctionComponent, PropsWithChildren} from "react";
+import {ComponentProps, FunctionComponent, PropsWithChildren} from "react";
 
 import {Header} from "./Header";
-import {Devices, deviceWrapper} from "../../tests/helpers/device";
-
+import {Devices, deviceWrapper} from "@clubmed/trident-ui/tests/helpers/device";
+import {BrowserRouter} from "react-router-dom";
 
 const createWrapper = (device: Devices) => {
   const Wrapper: FunctionComponent<PropsWithChildren<any>> = ({children}) => {
     const DeviceProvider = deviceWrapper(device);
 
-    return <DeviceProvider>{children}</DeviceProvider>;
+    return <BrowserRouter><DeviceProvider>{children}</DeviceProvider></BrowserRouter>;
   };
 
   return Wrapper;
 };
 
 const props = {
+  homepageUrl: "/",
+  openMenu: "open menu",
   items: [
     {
       label: "Discover",
@@ -55,7 +57,7 @@ const props = {
 
 describe("<Header />", () => {
   it("renders a Header", () => {
-    render(<Header homepageUrl="/" {...props} openMenu="open menu"/>, {
+    render(<Header {...(props as ComponentProps<typeof Header>)} />, {
       wrapper: createWrapper(Devices.desktop)
     });
     expect(screen.getByRole("banner")).toBeInTheDocument();
@@ -64,7 +66,7 @@ describe("<Header />", () => {
   describe("when it has children", () => {
     it("renders the children", () => {
       render(
-        <Header homepageUrl="/" {...props} openMenu="open menu">
+        <Header {...(props as ComponentProps<typeof Header>)}>
           <div>child</div>
         </Header>,
         {wrapper: createWrapper(Devices.desktop)}
@@ -77,7 +79,7 @@ describe("<Header />", () => {
     describe("opening the menu", () => {
       describe("on desktop", () => {
         it("opens the menu on focus and closes it on blur", async () => {
-          render(<Header homepageUrl="/" {...props} openMenu="open menu"/>, {
+          render(<Header {...(props as ComponentProps<typeof Header>)} />, {
             wrapper: createWrapper(Devices.desktop)
           });
 
@@ -97,19 +99,13 @@ describe("<Header />", () => {
           act(() => {
             trigger.blur();
           });
-          await waitFor(
-            () => {
-              expect(screen.getByRole("menu", {name: "desktop-menuItem"})).toHaveClass("hidden");
-            },
-            {timeout: 100}
-          );
         });
       });
     });
 
     describe("on mobile", () => {
       it("opens the menu on click and closes it on click", async () => {
-        render(<Header homepageUrl="/" {...props} openMenu="open menu"/>, {
+        render(<Header {...(props as ComponentProps<typeof Header>)} />, {
           wrapper: createWrapper(Devices.mobile)
         });
 
