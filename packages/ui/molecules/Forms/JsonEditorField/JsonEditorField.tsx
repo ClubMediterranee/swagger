@@ -1,5 +1,4 @@
 import {useValue, UseValueProps} from "@clubmed/trident-ui/hooks/useValue";
-import React from "react";
 import ace from "brace";
 import {JsonEditor} from "jsoneditor-react18";
 import "brace/mode/json.js";

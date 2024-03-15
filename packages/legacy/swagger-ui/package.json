@@ -9,15 +9,7 @@
   "devDependencies": {
     "serve": "11.3.0"
   },
-  "scripts": {
-    "start": "cross-env PORT=8083 BROWSER=none cm-scripts start",
-    "build": "cm-scripts build",
-    "test": "cm-scripts test --coverage",
-    "test:ci": "yarn test",
-    "lint:fix": "yarn lint --fix",
-    "lint:ci": "yarn lint --format junit --output-file ../../reports/test-results-swaggerui-lint.xml",
-    "lint": "eslint --config .eslintrc --cache --quiet \"./src/**/*.{js,jsx}\""
-  },
+  "scripts": {},
   "browserslist": {
     "production": [
       ">0.2%",

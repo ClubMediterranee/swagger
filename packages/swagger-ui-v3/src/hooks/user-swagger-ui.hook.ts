@@ -1,5 +1,5 @@
-import SwaggerUI, {SwaggerUIProps} from "swagger-ui-react";
-import {System} from "../interfaces/System";
+import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
+
 import * as Plugins from "../plugins";
 
 export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "plugins" | "presets"> {
@@ -25,7 +25,7 @@ declare global {
 
 export function userSwaggerUI(): SwaggerUIProps {
   let config: Partial<SwaggerUIConfiguration> = window.SwaggerUIConfiguration || {};
-  const isApiLayout = config.appName?.toLowerCase() === "api"
+  const isApiLayout = config.appName?.toLowerCase() === "api";
 
   config = {
     layout: "StandaloneLayout",
@@ -36,9 +36,7 @@ export function userSwaggerUI(): SwaggerUIProps {
     // filter: true,
     defaultModelsExpandDepth: 0,
     docExpansion: "list",
-    fieldsPersistence: [
-      "api_key"
-    ],
+    fieldsPersistence: ["api_key"],
     // tagsSwitches: [
     //   {label: "Deprecated", value: "deprecated"},
     //   {label: "Admin", value: "admin"}
@@ -61,25 +59,27 @@ export function userSwaggerUI(): SwaggerUIProps {
     };
   }
 
-  const PLUGINS = {...(SwaggerUI as any).plugins, ...Plugins};
-  const PRESETS = {...(SwaggerUI as any).presets};
+  const PLUGINS = { ...(SwaggerUI as any).plugins, ...Plugins };
+  const PRESETS = { ...(SwaggerUI as any).presets };
 
   // map presets
   if (config.presets) {
-    config.presets = config.presets.map((plugin) => {
-      return PRESETS[plugin];
-    }).filter(Boolean) as any[];
+    config.presets = config.presets
+      .map((plugin) => {
+        return PRESETS[plugin];
+      })
+      .filter(Boolean) as any[];
   }
 
   if (config.plugins) {
-    config.plugins = config.plugins.map((plugin) => {
-      return PLUGINS[plugin];
-    }).filter(Boolean) as any[];
+    config.plugins = config.plugins
+      .map((plugin) => {
+        return PLUGINS[plugin];
+      })
+      .filter(Boolean) as any[];
   }
 
-  function onComplete(system: System) {
-
-  }
+  function onComplete(/*system: System*/) {}
 
   return {
     isApiLayout,

@@ -14,23 +14,8 @@ commands:
     steps:
       - node/install-packages:
           pkg-manager: yarn
-#  workspace-restore:
-#    description: "Restore workspace"
-#    steps:
-#      - attach_workspace:
-#          at: .
 
 jobs:
-#  install:
-#    executor: app-executor
-#    steps:
-#      - configure-executor
-#      - yarn-install
-#      - persist_to_workspace:
-#          root: .
-#          paths:
-#            - node_modules
-#            - packages/*/node_modules
 #  lint:
 #    executor: app-executor
 #    steps:
@@ -43,18 +28,18 @@ jobs:
 #          path: reports
 #      - store_artifacts:
 #          path: ./reports
-#  test:
-#    executor: app-executor
-#    steps:
-#      - configure-executor
-#      - workspace-restore
-#      - run:
-#          name: Unit test
-#          command: yarn test:ci
-#      - store_test_results:
-#          path: reports
-#      - store_artifacts:
-#          path: ./reports
+  test:
+    executor: app-executor
+    steps:
+      - configure-executor
+      - workspace-restore
+      - run:
+          name: Unit test
+          command: yarn test:ci
+      - store_test_results:
+          path: reports
+      - store_artifacts:
+          path: ./reports
   deploy:
     executor: app-executor
     environment:

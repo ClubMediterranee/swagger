@@ -1,1 +1,1 @@
-export * from "./JsonEditorField.tsx"
+export * from "./JsonEditorField";

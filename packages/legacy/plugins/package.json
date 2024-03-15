@@ -6,13 +6,6 @@
     "@clubmed/components": "1.15.0"
   },
   "scripts": {
-    "build": "cm-scripts build",
-    "start": "cm-scripts start",
-    "test": "cm-scripts test --coverage",
-    "test:ci": "yarn test",
-    "lint:fix": "yarn lint --fix",
-    "lint:ci": "yarn lint --format junit --output-file ../../reports/test-results-plugins-lint.xml",
-    "lint": "eslint --config .eslintrc --cache --quiet \"./src/**/*.{js,jsx}\""
   },
   "browserslist": {
     "production": [
