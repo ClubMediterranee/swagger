@@ -60,7 +60,7 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
 
               return (
                 <HeaderPanel
-                  key={item.url}
+                  key={"header-panel-" + index}
                   url={item.url}
                   label={item.label}
                   isActive={!!(item.index === activeIndex && (item.columns || item.component))}
@@ -70,9 +70,13 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
                   {item.columns && (
                     <HeaderColumns>
                       {item.columns?.map((column, columnIndex) => (
-                        <HeaderColumn key={columnIndex}>
+                        <HeaderColumn key={"col-" + index + "-" + columnIndex}>
                           {column.sections.map((section, sectionIndex) => (
-                            <HeaderSection key={section.title} {...section} sectionIndex={sectionIndex} />
+                            <HeaderSection
+                              key={"col-section-" + index + "-" + columnIndex + "-" + sectionIndex}
+                              {...section}
+                              sectionIndex={sectionIndex}
+                            />
                           ))}
                         </HeaderColumn>
                       ))}
@@ -93,12 +97,16 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
               const index: number = item.index as number;
 
               if (!item.url && !item.columns?.length && !item.component) {
-                return <span className={item.className}>{item.label}</span>;
+                return (
+                  <span key={`header-panel-${index}`} className={item.className}>
+                    {item.label}
+                  </span>
+                );
               }
 
               return (
                 <HeaderPanel
-                  key={item.url}
+                  key={`header-panel-${index}`}
                   {...item}
                   isActive={!!(item.index === activeIndex && (item.columns || item.component))}
                   onMouseEnter={() => setMenu(index)}
@@ -107,9 +115,13 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
                   {item.columns && (
                     <HeaderColumns>
                       {item.columns?.map((column, columnIndex) => (
-                        <HeaderColumn key={columnIndex}>
+                        <HeaderColumn key={"col-" + index + "-" + columnIndex}>
                           {column.sections.map((section, sectionIndex) => (
-                            <HeaderSection key={section.title} {...section} sectionIndex={sectionIndex} />
+                            <HeaderSection
+                              key={"col-section-" + index + "-" + columnIndex + "-" + sectionIndex}
+                              {...section}
+                              sectionIndex={sectionIndex}
+                            />
                           ))}
                         </HeaderColumn>
                       ))}
