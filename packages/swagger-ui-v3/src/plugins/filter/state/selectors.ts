@@ -18,16 +18,16 @@ export const currentAdvancedFilters = (state: Map<string, any>) => {
 
 export const tagsChoices =
   (state: any) =>
-  ({ getConfigs, specSelectors }: System) => {
+  ({ specSelectors }: System) => {
     return specSelectors
       .operationsWithTags(state)
       .sortBy(
-        (val: any, key: any) => key, // get the name of the tag to be passed to the sorter
+        (_: any, key: any) => key, // get the name of the tag to be passed to the sorter
         (tagA: any, tagB: any) => {
           return tagA > tagB ? 1 : tagA < tagB ? -1 : 0;
         }
       )
-      .map((ops: any, tag: any) => {
+      .map((_: any, tag: any) => {
         return {
           label: sentenceCase(tag),
           value: tag

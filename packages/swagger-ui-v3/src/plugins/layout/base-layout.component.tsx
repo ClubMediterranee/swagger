@@ -1,14 +1,10 @@
-/**
- * @prettier
- */
-import React from "react";
-import {System} from "../../interfaces/System";
-import {ApiBanner} from "./api-banner.component";
-import {useConfig} from "../../contexts/config.context";
+import { useConfig } from "../../contexts/config.context";
+import { System } from "../../interfaces/System";
+import { ApiBanner } from "./api-banner.component";
 
 export default function BaseLayout(props: System) {
-  const {errSelectors, specSelectors, layoutSelectors, getComponent} = props;
-  const {isApiLayout} = useConfig();
+  const { errSelectors, specSelectors, getComponent } = props;
+  const { isApiLayout } = useConfig();
 
   const SvgAssets = getComponent("SvgAssets");
   const InfoContainer = getComponent("InfoContainer", true);
@@ -37,7 +33,7 @@ export default function BaseLayout(props: System) {
       <div className="info">
         <div className="loading-container">
           <h4 className="title">Failed to load API definition.</h4>
-          <Errors/>
+          <Errors />
         </div>
       </div>
     );
@@ -76,59 +72,51 @@ export default function BaseLayout(props: System) {
 
   return (
     <div>
-      <SvgAssets/>
-      <VersionPragmaFilter
-        isSwagger2={isSwagger2}
-        isOAS3={isOAS3}
-        alsoShow={<Errors/>}
-      >
-        <Errors/>
+      <SvgAssets />
+      <VersionPragmaFilter isSwagger2={isSwagger2} isOAS3={isOAS3} alsoShow={<Errors />}>
+        <Errors />
         <div className="relative xl:pb-0 sm:py-20 lg:py-40 text-black">
-          <div className="-z-1 pointer-events-none absolute inset-0 top-0 xl:bottom-40 bg-lightSand"/>
+          <div className="-z-1 pointer-events-none absolute inset-0 xl:bottom-40 bg-lightSand" />
 
-          {isApiLayout ?
+          {isApiLayout ? (
             <ApiBanner {...props} />
-            : (
-              <>
-                <Row className="information-container">
-                  <Col mobile={12}>
-                    <InfoContainer/>
-                  </Col>
-                </Row>
+          ) : (
+            <>
+              <Row className="information-container">
+                <Col mobile={12}>
+                  <InfoContainer />
+                </Col>
+              </Row>
 
-                {hasServers || hasSchemes ? (
-                  <div>
-                    <div className="px-20 flex">
-                      <div>
-                        {hasServers ? <ServersContainer/> : null}
-                      </div>
-                      <div>
-                        {hasSchemes ? <SchemesContainer/> : null}
-                      </div>
-                    </div>
+              {hasServers || hasSchemes ? (
+                <div>
+                  <div className="px-20 flex">
+                    <div>{hasServers ? <ServersContainer /> : null}</div>
+                    <div>{hasSchemes ? <SchemesContainer /> : null}</div>
                   </div>
-                ) : null}
-              </>
-            )}
+                </div>
+              ) : null}
+            </>
+          )}
         </div>
 
         <Row>
           <Col mobile={12} desktop={12}>
-            <Operations/>
+            <Operations />
           </Col>
         </Row>
 
         {isOAS31 && (
           <Row className="webhooks-container">
             <Col mobile={12} desktop={12}>
-              <Webhooks/>
+              <Webhooks />
             </Col>
           </Row>
         )}
 
         <Row>
           <Col mobile={12} desktop={12}>
-            <Models/>
+            <Models />
           </Col>
         </Row>
       </VersionPragmaFilter>

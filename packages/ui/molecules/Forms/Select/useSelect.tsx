@@ -1,6 +1,6 @@
+import type { Iconics } from "@clubmed/trident-ui/atoms/Icon";
 import Choices from "choices.js";
-import {ReactNode, useEffect, useRef} from "react";
-import type {Iconics} from "@clubmed/trident-ui/atoms/Icon";
+import { ReactNode, useEffect, useRef } from "react";
 
 export interface SelectOptionProps<Data = any> extends Record<string, any> {
   label: string | ReactNode;
@@ -57,18 +57,19 @@ export interface SelectMultiple extends SelectProps {
 
 export type SelectOptionsByGroups = { label: string; id: number; choices: SelectOptionProps[] }[];
 
-export type AllSelectProps = SelectSingle | SelectMultiple
+export type AllSelectProps = SelectSingle | SelectMultiple;
 
 export function useSelect({
-                            name,
-                            disabled,
-                            multiple,
-                            options,
-                            placeholder,
-                            searchEnabled = true,
-                            value,
-                            onChange
-                          }: AllSelectProps) {
+  name,
+  disabled,
+  multiple,
+  options,
+  placeholder,
+  searchEnabled = true,
+  value,
+  defaultValue,
+  onChange
+}: AllSelectProps) {
   const ref = useRef<any>();
   const choicesRef = useRef<Choices>();
 
@@ -99,9 +100,13 @@ export function useSelect({
         shouldSort: false,
         classNames: {
           containerOuter: `choices`
-        },
-       // callbackOnCreateTemplates
+        }
+        // callbackOnCreateTemplates
       } as any);
+    }
+
+    if (value || defaultValue) {
+      choicesRef.current.setValue([value || defaultValue] as any);
     }
 
     if (disabled) {
@@ -110,19 +115,22 @@ export function useSelect({
       choicesRef.current?.enable();
     }
 
-    const addItem = ({detail: {value: newValue}}: any) => {
+    const addItem = ({ detail: { value: newValue } }: any) => {
       if (onChange) {
         if (multiple) {
-          onChange(name, [...value as string[], newValue]);
+          onChange(name, [...(value as string[]), newValue]);
         } else {
           onChange(name, newValue);
         }
       }
     };
 
-    const removeItem = ({detail: {value: newValue}}: any) => {
+    const removeItem = ({ detail: { value: newValue } }: any) => {
       if (multiple) {
-        onChange?.(name, (value as string[]).filter((v) => v !== newValue));
+        onChange?.(
+          name,
+          (value as string[]).filter((v) => v !== newValue)
+        );
       }
     };
 
@@ -133,7 +141,7 @@ export function useSelect({
       choicesRef.current?.passedElement.element.removeEventListener("addItem", addItem);
       choicesRef.current?.passedElement.element.removeEventListener("removeItem", removeItem);
     };
-  }, [disabled, multiple, onChange, options, placeholder, searchEnabled, value]);
+  }, [disabled, multiple, onChange, options, placeholder, searchEnabled, value, defaultValue]);
 
   return {
     ref,

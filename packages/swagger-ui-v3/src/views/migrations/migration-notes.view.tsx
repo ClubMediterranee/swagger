@@ -1,5 +1,3 @@
 export default function MigrationNotesView() {
-  return <div className="wrapper">
-    Hello from MigrationNotesView
-  </div>;
+  return <div className="wrapper">Hello from MigrationNotesView</div>;
 }

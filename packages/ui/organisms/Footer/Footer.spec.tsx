@@ -1,8 +1,9 @@
-import {ComponentProps} from "react";
-import {act, render, screen} from "@testing-library/react";
+import { Devices, deviceWrapper } from "@clubmed/trident-ui/tests/helpers/device";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {Devices, deviceWrapper} from "@clubmed/trident-ui/tests/helpers/device";
-import {Footer} from "./Footer";
+import { ComponentProps } from "react";
+
+import { Footer } from "./Footer";
 
 const footerProps: ComponentProps<typeof Footer> = {
   contact: {
@@ -63,16 +64,16 @@ describe("<Footer />", () => {
   });
 
   it("renders a Footer", () => {
-    render(<Footer {...footerProps} />, {wrapper});
+    render(<Footer {...footerProps} />, { wrapper });
     expect(screen.getByRole("contentinfo")).toBeInTheDocument();
   });
 
   describe("on mobile", () => {
     it("opens the collapse when clicking on its title", () => {
-      render(<Footer {...footerProps} />, {wrapper});
+      render(<Footer {...footerProps} />, { wrapper });
 
       act(() => {
-        userEvent.click(screen.getByRole("button", {name: "Column 1"}));
+        userEvent.click(screen.getByRole("button", { name: "Column 1" }));
       });
 
       expect(screen.getByRole("presentation")).not.toHaveClass("h-0");

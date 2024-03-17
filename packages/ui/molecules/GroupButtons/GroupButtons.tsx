@@ -1,7 +1,7 @@
+import { useValue, UseValueProps } from "@clubmed/trident-ui/hooks/useValue";
+import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { TagProps } from "@clubmed/trident-ui/molecules/Tag";
 import classNames from "classnames";
-import {TagProps} from "@clubmed/trident-ui/molecules/Tag";
-import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
-import {useValue, UseValueProps} from "@clubmed/trident-ui/hooks/useValue";
 
 export interface GroupButtonsProps extends Omit<UseValueProps<string[]>, "initialValue"> {
   className?: string;
@@ -10,7 +10,7 @@ export interface GroupButtonsProps extends Omit<UseValueProps<string[]>, "initia
 }
 
 export function GroupButtons(props: GroupButtonsProps) {
-  const {value, setValue} = useValue<string[]>({
+  const { value, setValue } = useValue<string[]>({
     ...props,
     initialValue: props.value,
     defaultValue: []
@@ -26,15 +26,20 @@ export function GroupButtons(props: GroupButtonsProps) {
     };
   }
 
-  return <ul className={classNames("gap-8 flex flex-wrap", props.className)}>
-    {
-      props.choices?.map(({value: itemValue, ...item}) => {
-        return <li key={itemValue}>
-          <Button {...item} className={"text-b6 py-4 px-12"}
-                  theme={value.includes(itemValue) ? "yellow" : "blackStroke"}
-                  onClick={handleClick(itemValue)} />
-        </li>;
-      })
-    }
-  </ul>;
+  return (
+    <ul className={classNames("gap-8 flex flex-wrap", props.className)}>
+      {props.choices?.map(({ value: itemValue, ...item }) => {
+        return (
+          <li key={itemValue}>
+            <Button
+              {...item}
+              className={"text-b6 py-4 px-12"}
+              theme={value.includes(itemValue) ? "yellow" : "blackStroke"}
+              onClick={handleClick(itemValue)}
+            />
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
