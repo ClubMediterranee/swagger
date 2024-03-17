@@ -43,7 +43,6 @@ export function useMenu() {
     clearTimeout(hoverOutTimeout.current);
     hoverInTimeout.current = setTimeout(
       () => {
-        console.trace("=====");
         setActiveIndex(index);
       },
       isFocused ? 0 : HOVER_ENTRY_DURATION
@@ -54,8 +53,6 @@ export function useMenu() {
     clearTimeout(hoverInTimeout.current);
     hoverOutTimeout.current = setTimeout(
       () => {
-        console.trace("reset");
-
         setActiveIndex(-1);
       },
       isFocused ? 0 : HOVER_EXIT_DURATION
