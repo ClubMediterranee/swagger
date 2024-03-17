@@ -12,7 +12,15 @@ body {
   .swagger-ui :not(.choices) input[type="password"],
   .swagger-ui input[type="search"]:not(.choices__input),
   .swagger-ui :not(.choices) input[type="text"] {
-    @apply text-b5 rounded-pill w-full border px-12 py-12 font-normal outline-none border-lightGrey focus:border-black active:border-black bg-white text-black;
+    @apply text-b4 rounded-pill w-full border px-12 py-12 font-normal outline-none border-lightGrey bg-white text-black;
+
+    &:not([disabled]) {
+      @apply focus:border-black active:border-black;
+    }
+
+    &.invalid {
+      @apply border-red;
+    }
   }
 
   .swagger-ui :not(.choices) select {

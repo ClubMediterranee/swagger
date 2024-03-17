@@ -1,5 +1,12 @@
 body .swagger-ui .btn {
   @apply text-b5 rounded-pill font-sans shrink-0 font-semibold transition-colors duration-200 bg-saffron hover:bg-saffron-active active:bg-saffron-active border border-solid border-saffron hover:border-saffron-active active:border-saffron-active text-black disabled:bg-pearl disabled:text-grey disabled:border-pearl group-hover:bg-saffron-active group-hover:border-saffron-active h-auto py-12 px-20;
+  transition: all 0.2s ease-in-out;
+  transform: translate3D(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale3D(1, 1, 1) skew(0deg, 0deg);
+
+  &:active {
+    transform: translate3D(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)
+      scale3D(0.9799515022153259, 0.9799515022153259, 0.9799515022153259) skew(0deg, 0deg);
+  }
 }
 
 body .swagger-ui .btn.cancel {
