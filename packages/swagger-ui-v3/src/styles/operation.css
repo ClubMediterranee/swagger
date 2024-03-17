@@ -4,7 +4,7 @@ body {
   .swagger-ui .opblock.opblock {
     border: 0;
     box-shadow: none;
-    @apply bg-lightSand;
+    /* @apply bg-lightSand;*/
   }
 
   .swagger-ui .operation-tag-content {
@@ -216,5 +216,11 @@ body {
 
   .swagger-ui table tbody tr td {
     @apply pb-12;
+  }
+
+  .swagger-ui .opblock-description {
+    .text-xxs {
+      @apply flex items-center justify-center text-b6 py-4 px-8 mx-4 rounded-16 bg-wave;
+    }
   }
 }
