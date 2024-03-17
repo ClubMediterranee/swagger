@@ -1,7 +1,7 @@
-import {Select} from "@clubmed/ui/molecules/Forms/Select/Select";
+import { Select } from "@clubmed/ui/molecules/Forms/Select/Select";
 
 export function SelectComponent(props: any) {
-  let {allowedValues, allowEmptyValue, disabled} = props;
+  let { allowedValues, allowEmptyValue, disabled } = props;
 
   const opts = (() => {
     const opts = allowedValues.map((value: string) => {
@@ -21,18 +21,20 @@ export function SelectComponent(props: any) {
     return opts;
   })();
 
-
   return (
-    <Select {...props}
-            isDisabled={disabled}
-            value={props.value}
-            options={opts}
-            multiple={props.multiple}
-            isRequired={!allowEmptyValue}
-            onChange={(_: string, value: string | string[]) => {
-              let {onChange} = props;
+    <Select
+      {...props}
+      isDisabled={disabled}
+      value={props.value}
+      defaultValue={opts[0]}
+      options={opts}
+      multiple={props.multiple}
+      isRequired={!allowEmptyValue}
+      onChange={(_: string, value: string | string[]) => {
+        let { onChange } = props;
 
-              onChange && onChange(value);
-            }}/>
+        onChange && onChange(value);
+      }}
+    />
   );
 }

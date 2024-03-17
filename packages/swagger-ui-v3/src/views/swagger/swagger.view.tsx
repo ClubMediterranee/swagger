@@ -1,11 +1,12 @@
-import {System} from "../../interfaces/System";
-import {Loader} from "@clubmed/trident-ui/molecules/Loader";
-import React, {useEffect} from "react";
-import {Simulate} from "react-dom/test-utils";
+import { Loader } from "@clubmed/trident-ui/molecules/Loader";
+import React, { useEffect } from "react";
+import { Simulate } from "react-dom/test-utils";
+
+import { System } from "../../interfaces/System";
 import load = Simulate.load;
 
 export function SwaggerView(props: System) {
-  const {getComponent, specSelectors} = props;
+  const { getComponent, specSelectors } = props;
 
   const BaseLayout = getComponent("BaseLayout", true);
   const loadingStatus = specSelectors.loadingStatus();
@@ -15,16 +16,16 @@ export function SwaggerView(props: System) {
   useEffect(() => {
     if (loadingStatus === "loading") {
       setTimeout(() => {
-        setLoading(false)
-      }, 500)
+        setLoading(false);
+      }, 500);
     }
   }, [loadingStatus]);
 
-  return <>
-    {loadingStatus !== "loading" ? <BaseLayout/> : null}
+  return (
+    <>
+      {loadingStatus !== "loading" ? <BaseLayout /> : null}
 
-    <Loader isVisible={loading}
-            label={"We're loading our documentation. It shouldn't take too long!"}/>
-  </>;
+      <Loader isVisible={loading} label={"We're loading our documentation. It shouldn't take too long!"} />
+    </>
+  );
 }
-

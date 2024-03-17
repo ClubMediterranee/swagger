@@ -1,13 +1,13 @@
-import React from "react";
 import cx from "classnames";
-import {Remarkable} from "remarkable";
-import {System} from "../../interfaces/System";
+import { Remarkable } from "remarkable";
+
+import { System } from "../../interfaces/System";
 
 const parser = new Remarkable("commonmark");
 parser.block.ruler.enable(["table"]);
-parser.set({linkTarget: "_blank"});
+parser.set({ linkTarget: "_blank" });
 
-export const Markdown = ({source, className = ""}: System & { source: any, className: any }) => {
+export const Markdown = ({ source, className = "" }: System & { source: any; className: any }) => {
   if (typeof source !== "string") {
     return null;
   }
@@ -26,6 +26,3 @@ export const Markdown = ({source, className = ""}: System & { source: any, class
   }
   return null;
 };
-
-
-

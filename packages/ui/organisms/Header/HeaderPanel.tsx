@@ -1,21 +1,22 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { Button, CommonButtonProps } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import { ButtonAnchor } from "@clubmed/trident-ui/molecules/Buttons/ButtonAnchor";
 import classnames from "classnames";
 import { Fragment, HTMLAttributes } from "react";
 
-export interface HeaderPanelProps extends HTMLAttributes<HTMLDivElement> {
+export interface HeaderPanelProps extends CommonButtonProps, HTMLAttributes<HTMLDivElement> {
   isActive: boolean;
   url?: string;
-  label: string;
 }
 
-export function HeaderPanel({ url, label, isActive, onFocus, onBlur, children, ...props }: HeaderPanelProps) {
+export function HeaderPanel({ url, label, variant, icon, isActive, onFocus, onBlur, children, ...props }: HeaderPanelProps) {
   const Btn = url ? ButtonAnchor : Button;
   return (
     <Fragment>
       <div {...props}>
         <Btn
           label={label}
+          variant={variant}
+          icon={icon}
           theme="blackStroke"
           onBlur={(e) => onBlur?.(e as any)}
           onFocus={(e) => onFocus?.(e as any)}

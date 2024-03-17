@@ -1,3 +1,4 @@
+import React from "react";
 import { RouteProps } from "react-router";
 
 import { SwaggerView } from "./views/swagger/swagger.view";
@@ -21,11 +22,11 @@ export const routes: RouteProps & Record<string, any>[] = [
   //   path: "/migration-notes",
   //   element: React.lazy(() => import("./views/migrations/migration-notes.view"))
   // },
-  // {
-  //   label: "Webhooks",
-  //   path: "/webhooks",
-  //   element: React.lazy(() => import("./views/webhooks/webhooks.view"))
-  // },
+  {
+    label: "Webhooks",
+    path: "/webhooks",
+    element: React.lazy(() => import("./views/webhooks/webhooks.view"))
+  },
   {
     label: "Status",
     path: "https://status.api.clubmed/",

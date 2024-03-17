@@ -21,7 +21,7 @@
 
 .is-open .choices__list--dropdown,
 .is-open .choices__list[aria-expanded] {
-  @apply border-lightGrey shadow-xl;
+  @apply border-lightGrey shadow-xl z-5;
 }
 
 .choices[data-type*="select-one"] .choices__input {

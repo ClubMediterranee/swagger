@@ -1,22 +1,23 @@
-import {JsonEditorField} from "../JsonEditorField";
-import {Meta, StoryObj} from "@storybook/react";
-import {Select} from "./Select";
+import { Meta, StoryObj } from "@storybook/react";
+
+import { JsonEditorField } from "../JsonEditorField";
+import { Select } from "./Select";
 
 export default {
   title: "Forms/Select",
   component: Select,
   parameters: {
     layout: "centered",
-    backgrounds: {default: "pearl"}
+    backgrounds: { default: "pearl" }
   },
-  args: {
-
-  },
+  args: {},
   argTypes: {},
   render(args) {
-    return <div style={{"width": "300px"}}>
-      <Select {...args} />
-    </div>
+    return (
+      <div style={{ width: "300px" }}>
+        <Select {...args} />
+      </div>
+    );
   }
 } satisfies Meta<typeof Select>;
 
@@ -24,4 +25,4 @@ type Story = StoryObj<typeof JsonEditorField>;
 
 export const Default: Story = {
   args: {}
-}
+};

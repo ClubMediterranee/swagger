@@ -57,14 +57,13 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
             })
             .map((item) => {
               const index: number = item.index as number;
+
               return (
                 <HeaderPanel
                   key={item.url}
                   url={item.url}
                   label={item.label}
                   isActive={!!(item.index === activeIndex && (item.columns || item.component))}
-                  onBlur={() => resetMenu(true)}
-                  onFocus={() => setMenu(index, true)}
                   onMouseEnter={() => setMenu(index)}
                   onMouseLeave={() => resetMenu(false)}
                 >
@@ -93,14 +92,15 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
             .map((item) => {
               const index: number = item.index as number;
 
+              if (!item.url && !item.columns?.length && !item.component) {
+                return <span className={item.className}>{item.label}</span>;
+              }
+
               return (
                 <HeaderPanel
                   key={item.url}
-                  url={item.url}
-                  label={item.label}
+                  {...item}
                   isActive={!!(item.index === activeIndex && (item.columns || item.component))}
-                  onBlur={() => resetMenu(true)}
-                  onFocus={() => setMenu(index, true)}
                   onMouseEnter={() => setMenu(index)}
                   onMouseLeave={() => resetMenu(false)}
                 >

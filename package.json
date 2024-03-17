@@ -15,8 +15,8 @@
     "build:swagger:v3": "nx build @clubmed/swagger-ui-v3",
     "test": "nx run-many --target=test --all",
     "test:ci": "nx run-many --target=test:ci --all",
-    "lint": "eslint 'packages/**/*.{ts,js}'",
-    "lint:fix": "eslint 'packages/**/*.{ts,js}' --fix",
+    "lint": "eslint 'packages/**/*.{ts,js,tsx,jsx}'",
+    "lint:fix": "eslint 'packages/**/*.{ts,js,tsx,jsx}' --fix",
     "release": "cmrelease",
     "release:dryrun": "cmrelease --dry-run",
     "prepare": "is-ci || husky install"

@@ -1,9 +1,10 @@
-import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
-import {System} from "../../interfaces/System";
+import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import React from "react";
 
-export function AuthorizeOperationBtn(props: System & { isAuthorized: boolean, onClick: () => void }) {
-  let {isAuthorized} = props;
+import { System } from "../../interfaces/System";
+
+export function AuthorizeOperationBtn(props: System & { isAuthorized: boolean; onClick: () => void }) {
+  let { isAuthorized } = props;
 
   return (
     <Button
@@ -16,7 +17,7 @@ export function AuthorizeOperationBtn(props: System & { isAuthorized: boolean, o
       }}
       theme={isAuthorized ? "black" : "white"}
       icon="PeopleSingle"
-      className={"pointer-events-auto me-auto transition-opacity h-32 w-32 text-b6 mx-12"}
+      className={"pointer-events-auto me-auto transition-opacity size-32 text-b6 mx-12"}
     />
   );
 }

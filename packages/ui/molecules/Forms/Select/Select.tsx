@@ -1,15 +1,16 @@
+import "./Select.css";
+
+import { FormControl } from "@clubmed/trident-ui/molecules/Forms/FormControl";
 import classnames from "classnames";
 import omit from "lodash/omit";
-import {FormControl} from "@clubmed/trident-ui/molecules/Forms/FormControl";
-import {AllSelectProps, useSelect} from "./useSelect";
-import "./Select.css";
+
+import { AllSelectProps, useSelect } from "./useSelect";
 
 let uuid = 0;
 
 export function Select(props: AllSelectProps) {
   const {
     className,
-    value: initialValue,
     name = "",
     id = `field-date-${++uuid}`,
     label,
@@ -23,26 +24,21 @@ export function Select(props: AllSelectProps) {
     ...rest
   } = props;
 
-  const {ref} = useSelect(props);
+  const { ref } = useSelect(props);
   const internalStatus = disabled ? "disabled" : status;
 
   return (
     <FormControl dataTestId={dataTestId} dataName={"Select"} label={label} description={description}>
-      <select
-        {...omit(rest, ["options"])}
-        ref={ref}
-        name={name}
-        id={id}
-      />
+      <select {...omit(rest, ["options"])} ref={ref} name={name} id={id} />
       <div
         className={classnames(
           "pointer-events-none absolute inset-0 flex items-center justify-between px-20 py-12",
           disabled
-            ? {"text-grey": true}
+            ? { "text-grey": true }
             : {
-              "text-red": internalStatus === "error",
-              "text-green": internalStatus === "success"
-            }
+                "text-red": internalStatus === "error",
+                "text-green": internalStatus === "success"
+              }
         )}
       >
         {/*{icon && <Icon name={icon} width="24px"/>}*/}
@@ -54,5 +50,6 @@ export function Select(props: AllSelectProps) {
         {/*   </button>*/}
         {/*</span>*/}
       </div>
-    </FormControl>);
+    </FormControl>
+  );
 }

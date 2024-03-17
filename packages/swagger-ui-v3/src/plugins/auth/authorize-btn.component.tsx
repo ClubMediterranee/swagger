@@ -1,14 +1,15 @@
-import React from "react";
-import {Button} from "@clubmed/trident-ui/molecules/Buttons/Button";
-import {System} from "../../interfaces/System";
+import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
 
+import { System } from "../../interfaces/System";
 
-export default function AuthorizeBtn(props: System & {
-  isAuthorized: boolean,
-  showPopup: boolean,
-  onClick: () => void
-}) {
-  let {isAuthorized, showPopup, onClick, getComponent} = props;
+export default function AuthorizeBtn(
+  props: System & {
+    isAuthorized: boolean;
+    showPopup: boolean;
+    onClick: () => void;
+  }
+) {
+  let { isAuthorized, showPopup, onClick, getComponent } = props;
 
   //must be moved out of button component
   const AuthorizationPopup = getComponent("authorizationPopup", true);
@@ -23,7 +24,7 @@ export default function AuthorizeBtn(props: System & {
         label={isAuthorized ? "Hello" : "Authorize"}
       ></Button>
 
-      {showPopup && <AuthorizationPopup/>}
+      {showPopup && <AuthorizationPopup />}
     </div>
   );
 }

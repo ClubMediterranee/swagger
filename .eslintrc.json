@@ -29,7 +29,7 @@
     "simple-import-sort/exports": "error",
     "workspaces/no-absolute-imports": "error",
     "tailwindcss/classnames-order": "off",
-    "tailwindcss/no-custom-classname": "warn",
+    "tailwindcss/no-custom-classname": "off",
     "prettier/prettier": "error"
   }
 }
