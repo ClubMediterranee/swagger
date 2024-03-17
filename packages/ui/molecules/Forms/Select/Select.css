@@ -6,8 +6,16 @@
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 
-  .choices__inner {
-    @apply rounded-pill border-lightGrey focus:border-black active:border-black bg-white text-black;
+  .choices__inner.choices__inner {
+    @apply rounded-pill border-lightGrey bg-white;
+  }
+
+  &:not(.is-disabled) .choices__inner.choices__inner {
+    @apply focus:border-black active:border-black text-black;
+  }
+
+  &.is-disabled .choices__inner.choices__inner {
+    @apply text-grey;
   }
 
   &.is-open .choices__inner {
