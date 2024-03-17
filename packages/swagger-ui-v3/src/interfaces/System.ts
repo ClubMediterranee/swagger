@@ -52,6 +52,7 @@ export interface System {
     showDefinitions(security: Record<string, any>): void;
   };
   authSelectors: {
+    definitionsToAuthorize(): Record<string, any>;
     definitionsForRequirements(security: string): Record<string, any>;
   };
   specPath: {
