@@ -29,7 +29,7 @@ export function Select(props: AllSelectProps) {
 
   return (
     <FormControl dataTestId={dataTestId} dataName={"Select"} label={label} description={description}>
-      <select {...omit(rest, ["options"])} ref={ref} name={name} id={id} />
+      <select {...omit(rest, ["options", "defaultValue", "value"])} disabled={disabled} ref={ref} name={name} id={id} />
       <div
         className={classnames(
           "pointer-events-none absolute inset-0 flex items-center justify-between px-20 py-12",

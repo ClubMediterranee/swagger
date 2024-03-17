@@ -90,6 +90,7 @@ export function useSelect({
     if (!choicesRef.current) {
       choicesRef.current = new Choices(ref.current, {
         silent: true,
+        disabled,
         searchEnabled,
         searchPlaceholderValue: "Filter options",
         removeItemButton: true,
@@ -107,12 +108,6 @@ export function useSelect({
 
     if (value || defaultValue) {
       choicesRef.current.setValue([value || defaultValue] as any);
-    }
-
-    if (disabled) {
-      choicesRef.current?.disable();
-    } else {
-      choicesRef.current?.enable();
     }
 
     const addItem = ({ detail: { value: newValue } }: any) => {
@@ -141,7 +136,17 @@ export function useSelect({
       choicesRef.current?.passedElement.element.removeEventListener("addItem", addItem);
       choicesRef.current?.passedElement.element.removeEventListener("removeItem", removeItem);
     };
-  }, [disabled, multiple, onChange, options, placeholder, searchEnabled, value, defaultValue]);
+  }, [multiple, onChange, options, placeholder, searchEnabled, value, defaultValue]);
+
+  useEffect(() => {
+    if (choicesRef.current) {
+      if (disabled) {
+        choicesRef.current?.disable();
+      } else {
+        choicesRef.current?.enable();
+      }
+    }
+  }, [choicesRef, disabled]);
 
   return {
     ref,
