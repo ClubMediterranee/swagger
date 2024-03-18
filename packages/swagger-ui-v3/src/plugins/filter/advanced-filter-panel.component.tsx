@@ -9,7 +9,7 @@ import { System } from "../../interfaces/System";
 
 function useAdvancedFilterPanel(props: System) {
   const { layoutSelectors, layoutActions } = props;
-  const [, setStoreValue] = useLocalStorage<Object>("swagger_advancedFilters", {});
+  const { setItem } = useLocalStorage<Object>("swagger_advancedFilters", {});
   const filters: Map<string, any> = layoutSelectors.currentAdvancedFilters();
 
   const { tags, hasAdmin, defaultChoices } = (() => {
@@ -27,14 +27,14 @@ function useAdvancedFilterPanel(props: System) {
     const newFilter = filters.set("deprecated", false).set("admin", false).set("tags", defaultChoices);
 
     layoutActions.updateAdvancedFilters(newFilter);
-    setStoreValue(newFilter.toJS());
+    setItem(newFilter.toJS());
   };
 
   const onChangeSelection = (name: string, value: any) => {
     const newFilter = filters.set(name, value);
     layoutActions.updateAdvancedFilters(newFilter);
 
-    setStoreValue(newFilter.toJS());
+    setItem(newFilter.toJS());
   };
 
   return { layoutActions, filters, tags, hasAdmin, tagsValue, onReset, onChangeSelection };
