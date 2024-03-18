@@ -59,7 +59,7 @@ export type SelectOptionsByGroups = { label: string; id: number; choices: Select
 
 export type AllSelectProps = SelectSingle | SelectMultiple;
 
-export function useSelect({
+export function useChoice({
   name,
   disabled,
   multiple,

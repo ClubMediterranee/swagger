@@ -1,5 +1,9 @@
 @import "choices.js/public/assets/styles/choices.css";
 
+.dropdown-container {
+  max-width: 340px;
+}
+
 .choices {
   @apply rounded-pill text-b5;
   max-width: 340px;
@@ -28,8 +32,9 @@
 }
 
 .is-open .choices__list--dropdown,
-.is-open .choices__list[aria-expanded] {
-  @apply border-lightGrey shadow-xl z-5;
+.is-open .choices__list[aria-expanded],
+.dropdown {
+  @apply z-5;
 }
 
 .choices[data-type*="select-one"] .choices__input {
@@ -40,6 +45,89 @@
 }
 
 .choices__list--dropdown,
-.choices__list[aria-expanded] {
+.choices__list[aria-expanded],
+.dropdown {
   @apply border-lightGrey shadow-xl rounded-4 mt-8;
+}
+
+.dropdown-container {
+  @apply relative;
+
+  button {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==");
+    padding: 0;
+    background-size: 8px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    margin-right: 25px;
+    height: 20px;
+    width: 20px;
+    border-radius: 10em;
+    opacity: 0.25;
+    text-indent: -9999px;
+    border: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    transform: scale(0);
+    transform-origin: center;
+    transition: all var(--transition-duration-boop) var(--transition-fn-boop);
+
+    &[aria-hidden="false"] {
+      transform: scale(1);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &.-has-options:after {
+    content: "";
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+    border-width: 5px;
+    position: absolute;
+    right: 11.5px;
+    top: 50%;
+    margin-top: -2.5px;
+    pointer-events: none;
+  }
+
+  .dropdown {
+    @apply border rounded-4 absolute bg-white left-0 right-0 overflow-y-auto overflow-x-hidden opacity-0;
+    top: calc(100% - 4px);
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: all var(--transition-duration-boop) var(--transition-fn-boop);
+    max-height: 300px;
+
+    [role="listbox"] > [role="option"] {
+      @apply py-8 px-8 relative;
+
+      &[aria-selected="true"] {
+        @apply bg-pearl;
+
+        button {
+          transform: scale(1);
+        }
+      }
+
+      button {
+        transform: scale(0);
+        margin-right: 5px;
+      }
+    }
+
+    &[aria-expanded="true"] {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
 }
