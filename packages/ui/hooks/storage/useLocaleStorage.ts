@@ -1,5 +1,6 @@
 import isEqual from "lodash/isEqual";
-import { Dispatch, useCallback, useEffect, useState } from "react";
+import uniqBy from "lodash/uniqBy.js";
+import { useCallback, useEffect, useState } from "react";
 
 export function getStorageValue<Type = any>(key: string, initialValue?: Type): Type | undefined {
   try {
@@ -14,7 +15,7 @@ export function setStorageValue(key: string, value: any) {
   window.localStorage.setItem(key, JSON.stringify(value));
 }
 
-export function useLocalStorage<Type = any>(key: string, initialValue: Type): [Type, Dispatch<Type>] {
+export function useLocalStorage<Type = any>(key: string, initialValue: Type) {
   const [value, setValue] = useState(() => {
     return getStorageValue(key, initialValue);
   });
@@ -46,5 +47,49 @@ export function useLocalStorage<Type = any>(key: string, initialValue: Type): [T
     return () => window.removeEventListener("storage", handleStorage);
   }, [handleStorage]);
 
-  return [value!, setItem];
+  return {
+    value,
+    setItem
+  };
+}
+
+export function useListStorage<Type = string>(key: string, initialValue: any[] = []) {
+  const { value, setItem: setValue } = useLocalStorage<{ id: Type; lastUpdate: Date }[]>(key, initialValue)!;
+  function pushValue(addValue: Type) {
+    const newValue = uniqBy(
+      [
+        {
+          id: addValue,
+          lastUpdate: new Date()
+        },
+        ...(value as any[])
+      ],
+      "id"
+    );
+
+    setStorageValue(key, newValue);
+    setValue(newValue as any);
+  }
+
+  function setLastUpdate(id: Type) {
+    const newValue = (value as any[]).map((item) => {
+      if (item.id === id) {
+        item.lastUpdate = new Date();
+      }
+
+      return item;
+    });
+
+    setStorageValue(key, newValue);
+    setValue(newValue as any);
+  }
+
+  function removeValue(id: Type) {
+    const newValue = (value as any[]).filter((item) => item.id !== id);
+
+    setStorageValue(key, newValue);
+    setValue(newValue as any);
+  }
+
+  return { options: value!, pushValue, setLastUpdate, removeValue };
 }
