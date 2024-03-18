@@ -1,6 +1,7 @@
 import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import { variants } from "@clubmed/trident-ui/molecules/Buttons/Button.helpers";
 import { DebouncedTextField } from "@clubmed/ui/molecules/Forms/TextField/DebouncedTextField";
+import { ApikeyField } from "@clubmed/ui/organisms/Forms/ApiKeyField";
 import { FunctionComponent } from "react";
 
 import { System } from "../../interfaces/System";
@@ -13,6 +14,7 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
     const enumValue = schema && schema.get ? schema.get("enum") : null;
     const format = schema && schema.get ? schema.get("format") : null;
     const type = schema && schema.get ? schema.get("type") : null;
+    const name = description.split("-")[0];
 
     if ((type && type === "file") || enumValue) {
       return <Base {...props} />;
@@ -38,6 +40,27 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
         ) : null;
       }
       return <></>;
+    }
+
+    if (description === "api_key") {
+      return (
+        <ApikeyField
+          name={name}
+          disabled={disabled}
+          required={required}
+          className={errors.size ? "invalid" : ""}
+          type="text"
+          value={value || ""}
+          minLength={0}
+          debounceTimeout={350}
+          placeholder={description}
+          validationStatus={errors.size > 0 ? "error" : "default"}
+          errorMessage={errors.get(0) || ""}
+          onChange={(_: string, value: any) => {
+            props?.onChange(value);
+          }}
+        />
+      );
     }
 
     return (
