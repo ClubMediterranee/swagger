@@ -1,6 +1,6 @@
 @import "choices.js/public/assets/styles/choices.css";
 
-.dropdown-container {
+.dropdown-container:not(.w-full) {
   max-width: 340px;
 }
 

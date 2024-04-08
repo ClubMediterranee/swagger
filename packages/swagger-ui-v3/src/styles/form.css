@@ -34,3 +34,14 @@ body {
     @apply mt-8;
   }
 }
+
+label > span {
+  > input[type="checkbox"]:not([role="switch"]),
+  > input[type="radio"] {
+    @apply opacity-0 absolute w-full h-full border-0;
+
+    + span {
+      @apply bg-white;
+    }
+  }
+}

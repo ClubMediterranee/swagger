@@ -1,5 +1,6 @@
 import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
 
+import { InitOAuthOptions, System } from "../interfaces/System";
 import * as Plugins from "../plugins";
 
 export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "plugins" | "presets"> {
@@ -15,6 +16,7 @@ export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "p
   syntaxHighlight?: any;
   useUnsafeMarkdown?: boolean;
   disableBrowserCache?: boolean;
+  oauth?: InitOAuthOptions;
 }
 
 declare global {
@@ -79,7 +81,11 @@ export function userSwaggerUI(): SwaggerUIProps {
       .filter(Boolean) as any[];
   }
 
-  function onComplete(/*system: System*/) {}
+  function onComplete(system: System) {
+    if (config.oauth) {
+      system.initOAuth(config.oauth);
+    }
+  }
 
   return {
     isApiLayout,

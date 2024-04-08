@@ -11,7 +11,7 @@
   window.SwaggerUIConfiguration = {
     brandName: 'ClubMed',
     appName: 'Api',
-    url: 'https://api.clubmed.com/doc/swagger.json',
+    url: '/doc/v3/swagger.json',
     filter: true,
     presets: [],
     plugins: [
@@ -117,6 +117,11 @@
           href: '/sign-up'
         }
       }
+    },
+    oauth: {
+      usePkceWithAuthorizationCodeGrant: true,
+      allowedScopes: ["openid", "email", "profile", "clubmed", "api_admin"],
+      defaultSelectedScopes: ["openid", "email", "profile", "clubmed"]
     }
   }
 </script>

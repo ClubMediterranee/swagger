@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "outDir": "dist",
+    "types": ["vitest/globals", "vitest/importMeta", "vite/client", "@testing-library/jest-dom", "node", "vitest"]
+  },
+  "include": ["vitest.workspace.mts"]
+}

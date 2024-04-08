@@ -1,8 +1,8 @@
-import { Devices, deviceWrapper } from "@clubmed/trident-ui/tests/helpers/device";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ComponentProps } from "react";
 
+import { Devices, deviceWrapper } from "../../tests/helpers/device";
 import { Footer } from "./Footer";
 
 const footerProps: ComponentProps<typeof Footer> = {

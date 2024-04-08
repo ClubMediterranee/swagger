@@ -1,9 +1,9 @@
-import { Devices, deviceWrapper } from "@clubmed/trident-ui/tests/helpers/device";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ComponentProps, FunctionComponent, PropsWithChildren } from "react";
 import { BrowserRouter } from "react-router-dom";
 
+import { Devices, deviceWrapper } from "../../tests/helpers/device";
 import { Header } from "./Header";
 
 const createWrapper = (device: Devices) => {

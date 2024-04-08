@@ -2,7 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "types": ["node", "vite/client"]
+    "types": ["node", "vite/client"],
+    "target": "ESNext"
   },
   "exclude": [
     "src/**/*.spec.ts",

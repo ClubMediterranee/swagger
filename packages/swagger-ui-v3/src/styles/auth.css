@@ -1,0 +1,7 @@
+.swagger-ui.swagger-ui .auth-container:last-of-type {
+  padding: 0;
+}
+
+.swagger-ui .auth-container .scope-def {
+  @apply border-l-4 border-solid border-lavender mb-20 pl-16 bg-pearl py-8 text-b5;
+}

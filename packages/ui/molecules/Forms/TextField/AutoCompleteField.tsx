@@ -110,9 +110,13 @@ export function AutoCompleteField<Value = string>({ debounceTimeout, ...props }:
 
   return (
     <div
-      className={classnames("relative dropdown-container", {
-        "-has-options": props.options?.length
-      })}
+      className={classnames(
+        "relative dropdown-container",
+        {
+          "-has-options": props.options?.length
+        },
+        props.className
+      )}
       ref={containerRef}
     >
       <TextField
