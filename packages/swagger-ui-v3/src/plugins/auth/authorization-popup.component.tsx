@@ -1,0 +1,123 @@
+import { Popin } from "@clubmed/trident-ui/molecules/Popin";
+import { Tabs, TabsBody, TabsHeader, TabsHeading, TabsPanel } from "@clubmed/trident-ui/molecules/Tabs";
+import { List, Map as M } from "immutable";
+import React from "react";
+
+import { System } from "../../interfaces/System.js";
+
+export function getOauthName(name: string) {
+  if (name.indexOf("Bearer_") > -1) {
+    return `OAuth ${name.split(" (")[0].replace("Bearer_", "").toUpperCase()}`;
+  }
+
+  return name;
+}
+
+function getAuthsByGroups(authSelectors: System["authSelectors"]) {
+  let definitions = authSelectors.shownDefinitions();
+  let allDefinitions = M<string, { schemaName: string; others: List<any>; oauth: List<any> }>();
+
+  (definitions.valueSeq() as any).forEach((definition: Map<string, Map<string, any>>) => {
+    definition.forEach((schema: any, schemaName: string) => {
+      if (!allDefinitions.has(schemaName)) {
+        allDefinitions = allDefinitions.set(schemaName, {
+          schemaName,
+          others: List(),
+          oauth: List()
+        });
+      }
+
+      const group = allDefinitions.get(schemaName)!;
+
+      if (schema.get("type") === "oauth2") {
+        group.oauth = group.oauth!.push(schema);
+      } else {
+        group.others = group.others.push(schema);
+      }
+    });
+  });
+
+  return allDefinitions;
+}
+
+function AuthorizationPopupBody(props: System) {}
+
+export function AuthorizationPopup(props: System) {
+  const close = () => {
+    let { authActions } = props;
+
+    authActions.showDefinitions(false);
+  };
+
+  let {
+    authSelectors,
+    authActions,
+    getComponent,
+    errSelectors,
+    specSelectors,
+    fn: { AST = {} }
+  } = props;
+  const Auths = getComponent("auths");
+  const allDefinitions = getAuthsByGroups(authSelectors);
+  const Oauth2 = getComponent("oauth2", true);
+  let authorized = authSelectors.authorized();
+
+  return (
+    <Tabs max={3} compacted={true}>
+      <Popin
+        title={
+          <TabsHeader constrained={true} className={"pt-0"}>
+            <div className="px-8 font-sans">
+              {allDefinitions
+                .keySeq()
+                .map((name, index) => {
+                  const label = getOauthName(name!);
+                  return <TabsHeading key={`${index}-${name}`} label={label} value={index!} />;
+                })
+                .toArray()}
+            </div>
+          </TabsHeader>
+        }
+        isVisible={true}
+        Footer={false}
+        onClose={() => close()}
+        closeLabel="Close"
+        className={"sm:max-w-[800px]"}
+      >
+        <TabsBody>
+          {allDefinitions
+            .valueSeq()
+            .map((obj, index) => {
+              return (
+                <TabsPanel key={"panel-" + index} value={index!}>
+                  {obj?.oauth.size ? (
+                    <div className="">
+                      <Oauth2 authorized={authorized} schemaName={obj.schemaName} flows={obj.oauth} />
+                    </div>
+                  ) : null}
+
+                  {obj?.others.size
+                    ? obj.others
+                        .map((definition, key) => (
+                          <Auths
+                            key={`auth-${key}`}
+                            AST={AST}
+                            definitions={definition}
+                            getComponent={getComponent}
+                            errSelectors={errSelectors}
+                            authSelectors={authSelectors}
+                            authActions={authActions}
+                            specSelectors={specSelectors}
+                          />
+                        ))
+                        .toArray()
+                    : null}
+                </TabsPanel>
+              );
+            })
+            .toArray()}
+        </TabsBody>
+      </Popin>
+    </Tabs>
+  );
+}

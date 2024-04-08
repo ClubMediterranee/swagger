@@ -1702,7 +1702,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/root@workspace:."
   dependencies:
-    "@clubmed/trident-ui": "npm:1.0.0-alpha.27"
+    "@clubmed/trident-ui": "npm:1.0.0-beta.13"
     "@cmflow/cli": "npm:1.0.10"
     "@commitlint/cli": "npm:19.2.0"
     "@commitlint/config-conventional": "npm:19.1.0"
@@ -1743,7 +1743,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/swagger-ui-v3@workspace:packages/swagger-ui-v3"
   dependencies:
-    "@clubmed/trident-ui": "npm:1.0.0-alpha.27"
+    "@clubmed/trident-ui": "npm:1.0.0-beta.13"
     "@clubmed/ui": "npm:1.18.0"
     "@types/lodash": "npm:^4.14.199"
     "@types/react": "npm:^18.2.28"
@@ -1769,14 +1769,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@clubmed/trident-ui@npm:1.0.0-alpha.27":
-  version: 1.0.0-alpha.27
-  resolution: "@clubmed/trident-ui@npm:1.0.0-alpha.27"
+"@clubmed/trident-ui@npm:1.0.0-beta.13":
+  version: 1.0.0-beta.13
+  resolution: "@clubmed/trident-ui@npm:1.0.0-beta.13"
   dependencies:
     "@juggle/resize-observer": "npm:^3.4.0"
     "@react-spring/web": "npm:^9.7.3"
     "@use-gesture/react": "npm:^10.2.26"
-    "@whitespace/storybook-addon-html": "npm:^5.1.6"
+    "@whitespace/storybook-addon-html": "npm:6.0.5"
     classnames: "npm:^2.3.2"
     date-fns: "npm:^2.30.0"
     react-day-picker: "npm:^8.10.0"
@@ -1788,7 +1788,7 @@ __metadata:
     react: ">=17.0.2"
     react-dom: ">=17.0.2"
     tailwindcss: ">=3.3.5"
-  checksum: 10/9d2b0e4d3b843ab36e4abe6f12c2b9cc79fd714b418e51e7f88221d87087c15f51a324f412a89e9278f5472917430157bb93861ec88ada9a2a62edeb2c64ff0c
+  checksum: 10/d6ef8098ba1a18330ae424099074d80863e1fe0b40313b302a9ed11caf2ceb28e1f130f8b33cf344341412f8ab43db88ba0795f6122dba850cc00562ad4c198b
   languageName: node
   linkType: hard
 
@@ -1796,7 +1796,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/ui@workspace:packages/ui"
   dependencies:
-    "@clubmed/trident-ui": "npm:1.0.0-alpha.27"
+    "@clubmed/trident-ui": "npm:1.0.0-beta.13"
     "@juggle/resize-observer": "npm:^3.4.0"
     "@react-spring/web": "npm:^9.7.3"
     "@rollup/plugin-node-resolve": "npm:^15.2.3"
@@ -7086,25 +7086,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@whitespace/storybook-addon-html@npm:^5.1.6":
-  version: 5.1.6
-  resolution: "@whitespace/storybook-addon-html@npm:5.1.6"
+"@whitespace/storybook-addon-html@npm:6.0.5":
+  version: 6.0.5
+  resolution: "@whitespace/storybook-addon-html@npm:6.0.5"
   peerDependencies:
-    "@storybook/addons": ^6.5.8 || ^7.0.12
-    "@storybook/api": ^6.5.8 || ^7.0.12
-    "@storybook/components": ^6.5.8 || ^7.0.12
-    "@storybook/core-events": ^6.5.8 || ^7.0.12
-    "@storybook/theming": ^6.5.8 || ^7.0.12
-    prettier: ^2.0.0
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    prettier: ^3.0.0
     react-syntax-highlighter: ^15.0.0
-  peerDependenciesMeta:
-    react:
-      optional: true
-    react-dom:
-      optional: true
-  checksum: 10/7c7f5aae11d1d92aceecef8ff6d75c7a271166fcbb5c99d0bfb663651885692b8053226103a28eb76f36cb7952e33e5600c43ba59c7414299eb14924437e0f1c
+  checksum: 10/7633f88a873bb529d9bafbbffeff5c9cf3fb93a35a5234b35ee90c5cc768c64e40ccbc689249c9000e81dfb808d014cf1e5aff480dfb845abd61d0b5f041b225
   languageName: node
   linkType: hard
 

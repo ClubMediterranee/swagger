@@ -6,6 +6,7 @@ import svgr from "vite-plugin-svgr";
 export default defineConfig({
   plugins: [react(), svgr()],
   build: {
+    minify: false,
     outDir: "../../dist/latest/swagger-ui-v3",
     rollupOptions: {
       output: {
@@ -13,6 +14,11 @@ export default defineConfig({
         chunkFileNames: `assets/[name].js`,
         assetFileNames: `assets/[name].[ext]`
       }
+    }
+  },
+  server: {
+    proxy: {
+      "/doc": "https://api.clubmed.com"
     }
   }
 });

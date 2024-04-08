@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "strict": true,
-    "types": ["vite/client", "vitest"]
+    "types": ["vite/client", "vitest"],
+    "lib": ["esnext", "dom"]
   },
   "files": [],
   "include": [],
@@ -11,8 +14,10 @@
       "path": "./tsconfig.app.json"
     },
     {
+      "path": "./tsconfig.node.json"
+    },
+    {
       "path": "./tsconfig.spec.json"
     }
-  ],
-  "extends": "../../tsconfig.base.json"
+  ]
 }

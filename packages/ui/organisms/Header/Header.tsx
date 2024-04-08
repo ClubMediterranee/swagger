@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@clubmed/trident-ui/atoms/Icon";
+import { Icon } from "@clubmed/trident-ui/atoms/Icons/Icon";
 import { Button, CommonButtonProps } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import { HamburgerIcon } from "@clubmed/trident-ui/molecules/HamburgerIcon";
 import classnames from "classnames";
@@ -47,7 +47,7 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
       <div className="z-2 relative flex items-center justify-between p-8 ps-20 lg:px-20">
         <a href={homepageUrl} title="Club Med Homepage">
           <div className="w-[120px] md:w-[160px]">
-            <Icon name="ClubMed" width="100%" className="text-ultramarine" />
+            <Icon name="ClubMed" width="100%" aspectRatio className="text-ultramarine" />
           </div>
         </a>
         <nav className="flex items-center gap-x-12 px-8">

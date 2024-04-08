@@ -20,7 +20,7 @@
     }
   },
   "dependencies": {
-    "@clubmed/trident-ui": "1.0.0-alpha.27",
+    "@clubmed/trident-ui": "1.0.0-beta.13",
     "@clubmed/ui": "1.18.0",
     "@types/swagger-ui-react": "4.18.1",
     "brace": "^0.11.1",

@@ -1,4 +1,3 @@
-// @ts-ignore
 import { tailwindPreset } from "@clubmed/trident-ui/tailwind";
 import { dirname } from "path";
 

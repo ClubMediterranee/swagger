@@ -13,7 +13,7 @@
   "scripts": {
     "build": "yarn build:swagger:v3",
     "build:swagger:v3": "nx build @clubmed/swagger-ui-v3",
-    "test": "nx run-many --target=test --all",
+    "test": "vitest run",
     "test:ci": "nx run-many --target=test:ci --all",
     "lint": "eslint 'packages/**/*.{ts,js,tsx,jsx}'",
     "lint:fix": "eslint 'packages/**/*.{ts,js,tsx,jsx}' --fix",
@@ -26,7 +26,7 @@
     "nx": "18.0.8"
   },
   "devDependencies": {
-    "@clubmed/trident-ui": "1.0.0-alpha.27",
+    "@clubmed/trident-ui": "1.0.0-beta.13",
     "@cmflow/cli": "1.0.10",
     "@commitlint/cli": "19.2.0",
     "@commitlint/config-conventional": "19.1.0",

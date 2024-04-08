@@ -1,5 +1,7 @@
+import { AuthorizationPopup } from "../auth/authorization-popup.component.js";
 import AuthorizeBtn from "../auth/authorize-btn.component";
 import { AuthorizeOperationBtn } from "../auth/authorize-operation-btn.component";
+import { Oauth2Component } from "../auth/oauth2.component";
 import { Markdown } from "../form/markdown";
 import { SelectComponent } from "../form/select.component";
 import { TextareaComponent } from "../form/textarea.component";
@@ -27,7 +29,9 @@ export const StandaloneLayoutPlugin = () => {
       BaseLayout,
       authorizeBtn: AuthorizeBtn,
       authorizeOperationBtn: AuthorizeOperationBtn,
+      authorizationPopup: AuthorizationPopup,
       OperationSummary,
+      oauth2: Oauth2Component,
       OperationTag,
       Select: SelectComponent,
       TextArea: TextareaComponent,

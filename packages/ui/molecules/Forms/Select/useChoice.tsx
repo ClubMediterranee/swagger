@@ -1,4 +1,4 @@
-import type { Iconics } from "@clubmed/trident-ui/atoms/Icon";
+import type { IconicNames } from "@clubmed/trident-ui/atoms/Icons";
 import Choices from "choices.js";
 import { ReactNode, useEffect, useRef } from "react";
 
@@ -28,7 +28,7 @@ export interface SelectProps extends Omit<React.HTMLAttributes<HTMLSelectElement
   /**
    * Icon name
    */
-  icon?: Iconics;
+  icon?: IconicNames;
   /**
    * Error message
    */
