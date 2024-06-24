@@ -36,7 +36,7 @@ export function useScopes({
 
   const selectScopes = (all: boolean) => {
     if (all) {
-      setScopes(Array.from((schema.get("allowedScopes") || schema.get("scopes")).keys()));
+      setScopes(scopesOptions.map(({ scope }) => scope));
     } else {
       setScopes([]);
     }
@@ -45,7 +45,7 @@ export function useScopes({
   return {
     scopes,
     setScopes,
-    scopesOptions: scopesOptions.sort(),
+    scopesOptions: scopesOptions.sort((a, b) => a.scope.localeCompare(b.scope)),
     selectScopes
   };
 }

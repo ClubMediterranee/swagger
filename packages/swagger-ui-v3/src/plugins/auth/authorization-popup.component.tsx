@@ -13,8 +13,10 @@ export function getOauthName(name: string) {
   return name;
 }
 
-function getAuthsByGroups(authSelectors: System["authSelectors"]) {
+function getAuthsByGroups(authSelectors: System["authSelectors"], specSelectors: System["specSelectors"]) {
   let definitions = authSelectors.shownDefinitions();
+  const securityDefinitions = specSelectors.securityDefinitions()!;
+
   let allDefinitions = M<string, { schemaName: string; others: List<any>; oauth: List<any> }>();
 
   (definitions.valueSeq() as any).forEach((definition: Map<string, Map<string, any>>) => {
@@ -30,6 +32,10 @@ function getAuthsByGroups(authSelectors: System["authSelectors"]) {
       const group = allDefinitions.get(schemaName)!;
 
       if (schema.get("type") === "oauth2") {
+        if (securityDefinitions?.get(schemaName)?.get("openIdConnectData")) {
+          schema = schema.set("endSessionUrl", securityDefinitions?.get(schemaName)?.get("openIdConnectData")?.get("end_session_endpoint"));
+        }
+
         group.oauth = group.oauth!.push(schema);
       } else {
         group.others = group.others.push(schema);
@@ -57,8 +63,9 @@ export function AuthorizationPopup(props: System) {
     specSelectors,
     fn: { AST = {} }
   } = props;
+
   const Auths = getComponent("auths");
-  const allDefinitions = getAuthsByGroups(authSelectors);
+  const allDefinitions = getAuthsByGroups(authSelectors, specSelectors);
   const Oauth2 = getComponent("oauth2", true);
   let authorized = authSelectors.authorized();
 

@@ -18,7 +18,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/doc": "https://api.clubmed.com"
+      "/doc/v3/swagger.json": "https://api.integ.clubmed.com"
     }
   }
 });

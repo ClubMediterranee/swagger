@@ -1,10 +1,10 @@
 import { Map } from "immutable";
 import { SyntheticEvent, useState } from "react";
 
+import { open } from "../../utils/open";
+import { oauth2Authorize } from "./oauth2-authorize.util";
 import { useFlows, UseFlowsOptions } from "./use-flows.hook";
 import { useScopes } from "./use-scopes.hook";
-
-function oauth2Authorize(opts: any) {}
 
 export interface OAuth2Props extends UseFlowsOptions {
   authorized: Map<string, Map<string, any>>;
@@ -20,6 +20,8 @@ export function useOAuth2(props: OAuth2Props) {
   const auth = authorized && authorized.get(schemaName);
   const authorizedAuth = authSelectors.authorized().get(schemaName);
   const isAuthorized = !!authorizedAuth;
+  const accessToken = isAuthorized && auth.get("token") && auth.get("token").get("access_token");
+  const idToken = isAuthorized && auth.get("token") && auth.get("token").get("id_token");
   const errors = errSelectors.allErrors().filter((err) => err!.get("authId") === schemaName);
   const isValid = !errors.filter((err) => err!.get("source") === "validation").size;
 
@@ -54,16 +56,16 @@ export function useOAuth2(props: OAuth2Props) {
       case "scopes":
         setScopes(value as string[]);
         break;
-      case "clientId":
+      case "client_id":
         setClientId(value as string);
         break;
-      case "clientSecret":
+      case "client_secret":
         setClientSecret(value as string);
         break;
       case "password":
         setPassword(value as string);
         break;
-      case "passwordType":
+      case "password_type":
         setPasswordType(value as string);
         break;
       case "username":
@@ -73,9 +75,9 @@ export function useOAuth2(props: OAuth2Props) {
   }
 
   const authorize = () => {
-    let { authActions, errActions, getConfigs, authSelectors, oas3Selectors } = props;
-    let configs = getConfigs();
-    let authConfigs = authSelectors.getConfigs();
+    const { authActions, errActions, getConfigs, authSelectors, oas3Selectors } = props;
+    const configs = getConfigs();
+    const authConfigs = authSelectors.getConfigs();
 
     errActions.clear({ authId: schemaName, type: "auth", source: "auth" });
 
@@ -108,14 +110,40 @@ export function useOAuth2(props: OAuth2Props) {
 
   const logout = (e: SyntheticEvent) => {
     e.preventDefault();
-    let { authActions, errActions } = props;
+    let { authActions, getConfigs, errActions } = props;
 
     errActions.clear({ authId: schemaName, type: "auth", source: "auth" });
-    authActions.logoutWithPersistOption([schemaName]);
+    // authActions.logoutWithPersistOption([schemaName]);
+
+    if (schema.get("endSessionUrl")) {
+      const authConfigs = authSelectors.getConfigs();
+      const redirectUrl = authConfigs.postLogoutRedirectUrl || authConfigs.redirectUrl || getConfigs().oauth2RedirectUrl;
+
+      authActions.logoutPopup(schema.get("endSessionUrl"), {
+        idToken,
+        postLogoutRedirectUrl: redirectUrl,
+        callback() {
+          authActions.logoutWithPersistOption([schemaName]);
+        }
+      });
+    }
   };
+
+  function checkIsValid() {
+    switch (flowsProps.flow) {
+      case "implicit":
+      case "authorization_code":
+        return clientId && scopes.length > 0;
+      case "password":
+        return clientId && scopes.length > 0 && username && password;
+      case "application":
+        return clientId && clientSecret && scopes.length > 0;
+    }
+  }
 
   return {
     ...flowsProps,
+    accessToken,
     name: schemaName,
     flowsSchemes,
     appName,
@@ -140,7 +168,7 @@ export function useOAuth2(props: OAuth2Props) {
     logout,
     setState,
     isAuthorized,
-    isValid,
+    isValid: isValid ? checkIsValid() : false,
     errors
   };
 }

@@ -45,3 +45,16 @@ label > span {
     }
   }
 }
+
+label > span > input[type="radio"] {
+  &[checked=""] + span svg {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &[checked=""] {
+    + span {
+      @apply border-black;
+    }
+  }
+}

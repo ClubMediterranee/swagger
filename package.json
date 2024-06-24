@@ -26,7 +26,7 @@
     "nx": "18.0.8"
   },
   "devDependencies": {
-    "@clubmed/trident-ui": "1.0.0-beta.13",
+    "@clubmed/trident-ui": "1.0.0-beta.14",
     "@cmflow/cli": "1.0.10",
     "@commitlint/cli": "19.2.0",
     "@commitlint/config-conventional": "19.1.0",
