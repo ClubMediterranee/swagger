@@ -20,7 +20,7 @@
     }
   },
   "dependencies": {
-    "@clubmed/trident-ui": "1.0.0-beta.13",
+    "@clubmed/trident-ui": "1.0.0-beta.14",
     "@clubmed/ui": "1.18.0",
     "@types/swagger-ui-react": "4.18.1",
     "brace": "^0.11.1",
@@ -32,7 +32,7 @@
     "react-intersection-observer": "^9.5.2",
     "react-router": "6.22.3",
     "react-router-dom": "6.22.3",
-    "swagger-ui-react": "5.9.0"
+    "swagger-ui-react": "5.17.14"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.199",

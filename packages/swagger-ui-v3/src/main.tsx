@@ -1,4 +1,5 @@
 import "./index.css";
+import "./patch-window.ts";
 import "swagger-ui-react/swagger-ui.css";
 import "@clubmed/trident-ui/style.css";
 import "@clubmed/trident-ui/fonts/Brand/tui-brand.css";

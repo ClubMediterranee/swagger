@@ -1,7 +1,13 @@
-.swagger-ui.swagger-ui .auth-container:last-of-type {
-  padding: 0;
-}
+.swagger-ui .errors {
+  @apply rounded-16 p-12;
+  background-color: #fee;
+  border-radius: 4px;
+  color: #3b4151;
+  font-family: monospace;
 
-.swagger-ui .auth-container .scope-def {
-  @apply border-l-4 border-solid border-lavender mb-20 pl-16 bg-pearl py-8 text-b5;
+  b {
+    @apply text-b3;
+    display: block;
+    margin-right: 10px;
+  }
 }

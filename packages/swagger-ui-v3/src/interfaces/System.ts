@@ -2,6 +2,8 @@ import { Iterable, List, Map } from "immutable";
 import { FunctionComponent } from "react";
 import { SwaggerUIProps } from "swagger-ui-react";
 
+import type { logoutPopup } from "../plugins/auth/auth-popup.action";
+
 export interface InitOAuthOptions {
   clientId?: string;
   clientSecret?: string;
@@ -15,6 +17,8 @@ export interface InitOAuthOptions {
   allowedFlows?: string[];
   allowedScopes?: string[];
   defaultSelectedScopes?: string[];
+  redirectUrl?: string;
+  postLogoutRedirectUrl?: string;
 }
 
 export interface AuthSelectors extends Record<string, unknown> {
@@ -58,6 +62,17 @@ export interface AuthActions extends Record<string, any> {
   showDefinitions(security: Record<string, any>): void;
   showDefinitions(show: false): void;
   logoutWithPersistOption(auth: Record<string, any>): void;
+  authPopup(
+    authUrl: string,
+    options: {
+      auth: any;
+      state: string;
+      redirectUrl: string;
+      callback: () => void;
+      errCb: (err: Error) => void;
+    }
+  ): void;
+  logoutPopup: typeof logoutPopup;
 }
 
 export interface LayoutActions extends Record<string, any> {

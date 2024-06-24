@@ -14,7 +14,7 @@ body {
 
   .swagger-ui .opblock .opblock-summary-path,
   .swagger-ui .opblock .opblock-summary-path__deprecated {
-    @apply font-sans text-b4;
+    @apply font-sans text-b4 pl-8;
   }
 
   .swagger-ui .opblock .opblock-summary {

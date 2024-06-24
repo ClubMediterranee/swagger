@@ -9,7 +9,7 @@ function isClientID(value: string) {
 }
 
 export function ClientIdField(props: Omit<AutoCompleteFieldProps, "options">) {
-  const { options, pushValue, removeValue } = useListStorage("client_id", []);
+  const { options, pushValue, removeValue } = useListStorage(props.id || "client_id", []);
 
   const onRemoveOption = (options: SelectOptionProps) => {
     removeValue(options.value);

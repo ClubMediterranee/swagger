@@ -18,7 +18,7 @@ function useAutoCompleteField<Value>(props: AutoCompleteFieldProps<Value>) {
   const [focused, setFocused] = useState<boolean>(false);
   const [currentSelection, setCurrentSelection] = useState<number>(-1);
   const items = props.options.filter((item) => {
-    return item.value.includes(value as string);
+    return item.value.includes(value as string) || !value;
   });
   const containerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -122,6 +122,7 @@ export function AutoCompleteField<Value = string>({ debounceTimeout, ...props }:
       <TextField
         {...omit(props, ["onRemoveOption"])}
         autoComplete="off"
+        value={value}
         onKeyDown={onKeyDown}
         onFocus={onFocus}
         onBlur={onBlur}

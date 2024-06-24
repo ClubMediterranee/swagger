@@ -1,3 +1,4 @@
+import { authPopup, logoutPopup } from "../auth/auth-popup.action";
 import { AuthorizationPopup } from "../auth/authorization-popup.component.js";
 import AuthorizeBtn from "../auth/authorize-btn.component";
 import { AuthorizeOperationBtn } from "../auth/authorize-operation-btn.component";
@@ -21,6 +22,12 @@ export const StandaloneLayoutPlugin = () => {
       spec: {
         reducers: {
           spec_update_param: updateFields
+        }
+      },
+      auth: {
+        actions: {
+          authPopup,
+          logoutPopup
         }
       }
     },

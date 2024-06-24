@@ -120,9 +120,11 @@
     },
     oauth: {
       usePkceWithAuthorizationCodeGrant: true,
-      allowedScopes: ["openid", "email", "profile", "clubmed", "api_admin"],
-      defaultSelectedScopes: ["openid", "email", "profile", "clubmed"]
-    }
+      allowedScopes: ["openid", "email", "profile", "api_admin"],
+      defaultSelectedScopes: ["openid", "email", "profile"],
+    },
+    persistAuthorization: true,
+    oauth2RedirectUrl: window.location.origin + '/doc/v3/oauth2-redirect.html',
   }
 </script>
 
