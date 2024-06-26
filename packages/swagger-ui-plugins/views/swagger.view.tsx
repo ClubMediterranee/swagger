@@ -1,9 +1,7 @@
 import { Loader } from "@clubmed/trident-ui/molecules/Loader";
 import React, { useEffect } from "react";
-import { Simulate } from "react-dom/test-utils";
 
-import { System } from "../../interfaces/System";
-import load = Simulate.load;
+import { System } from "../interfaces/System";
 
 export function SwaggerView(props: System) {
   const { getComponent, specSelectors } = props;

@@ -53,6 +53,7 @@ export interface SpecSelectors extends Record<string, unknown> {
   isOAS3(): boolean;
   isOAS31(): boolean;
   specStr(): string;
+  operationsWithTags(state: any): any;
 }
 
 /**

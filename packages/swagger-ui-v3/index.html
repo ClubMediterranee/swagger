@@ -1,38 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <link rel="icon" type="image/svg+xml" href="/src/favicon.svg"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
 </head>
 <body>
 <script>
   window.SwaggerUIConfiguration = {
-    brandName: 'ClubMed',
-    appName: 'Api',
-    url: '/doc/v3/swagger.json',
+    brandName: "ClubMed",
+    appName: "Api",
+    url: "/doc/v3/swagger.json",
     filter: true,
-    presets: [],
-    plugins: [
-      'TopbarPlugin',
-      'StandaloneLayoutPlugin'
-      //   'SidebarPlugin',
-      //   'AuthorizeBtnPlugin',
-      //   'OperationsPlugin',
-      //   'OAuth2Plugin',
-      //   'HighlightPlugin',
-      //   'FooterPlugin',
-      //   'DownloadUrl'
-    ],
-    // tagsSwitches: [
-    //   {label: 'Deprecated', value: 'deprecated'},
-    //   {label: 'Admin', value: 'admin'}
-    // ],
-    // layout: 'StandaloneLayout',
-    // deepLinking: true,
-    // useUnsafeMarkdown: true,
-    contact: 'mailto:lvisdigiapi@clubmed.com',
+    contact: "mailto:lvisdigiapi@clubmed.com",
     footer: {
       // contact: {
       //   phoneCost: 'Toll free number',
@@ -40,92 +21,92 @@
       // },
       columns: [
         {
-          label: 'Club Med Universe',
+          label: "Club Med Universe",
           links: [
             {
-              label: 'Club Med',
-              href: 'https://clubmed.com'
+              label: "Club Med",
+              href: "https://clubmed.com"
             },
             {
-              label: 'Club Med Suppliers',
-              href: 'https://www.google.com'
+              label: "Club Med Suppliers",
+              href: "https://www.google.com"
             },
             {
-              label: 'Club Med Loyalty Programme',
-              href: 'https://www.google.com'
+              label: "Club Med Loyalty Programme",
+              href: "https://www.google.com"
             },
             {
-              label: 'Responsible Tourism',
-              href: 'https://www.google.com'
+              label: "Responsible Tourism",
+              href: "https://www.google.com"
             },
             {
-              label: 'My Club Med App',
-              href: 'https://www.google.com'
+              label: "My Club Med App",
+              href: "https://www.google.com"
             }
           ]
         }
       ],
       socialNetworks: [
         {
-          label: 'Instagram',
-          href: 'https://www.instagram.com/clubmed',
-          icon: 'Instagram'
+          label: "Instagram",
+          href: "https://www.instagram.com/clubmed",
+          icon: "Instagram"
         },
         {
-          label: 'Facebook',
-          href: 'https://www.facebook.com/ClubMedFrance',
-          icon: 'Facebook'
+          label: "Facebook",
+          href: "https://www.facebook.com/ClubMedFrance",
+          icon: "Facebook"
         },
         {
-          label: 'Twitter',
-          href: 'https://twitter.com/ClubMedfr',
-          icon: 'Twitter'
+          label: "Twitter",
+          href: "https://twitter.com/ClubMedfr",
+          icon: "Twitter"
         },
         {
-          label: 'Youtube',
-          href: 'https://www.youtube.com/clubmed',
-          icon: 'YouTube'
+          label: "Youtube",
+          href: "https://www.youtube.com/clubmed",
+          icon: "YouTube"
         },
         {
-          label: 'Pinterest',
-          href: 'https://fr.pinterest.com/clubmed/',
-          icon: 'Pinterest'
+          label: "Pinterest",
+          href: "https://fr.pinterest.com/clubmed/",
+          icon: "Pinterest"
         }
       ],
       corporateLinks: [
         {
-          label: 'Club Med Corporate',
-          description: 'Visit the Corporate Club Med site, to learn more about the Group, the ownership and sustainable development policy.',
-          href: 'https://corporate.clubmed/?lang=en'
+          label: "Club Med Corporate",
+          description: "Visit the Corporate Club Med site, to learn more about the Group, the ownership and sustainable development policy.",
+          href: "https://corporate.clubmed/?lang=en"
         },
         {
-          label: 'Club Med Jobs',
-          description: 'Looking to participate in the ClubMed adventure? Learn more on the international recruitment page and stay ahead of the latest Club Med HR news.',
-          href: 'https://www.clubmedjobs.com/en-gb/resort'
+          label: "Club Med Jobs",
+          description: "Looking to participate in the ClubMed adventure? Learn more on the international recruitment page and stay ahead of the latest Club Med HR news.",
+          href: "https://www.clubmedjobs.com/en-gb/resort"
         }
       ],
       legalLinks: [
         {
-          label: 'Legal Information',
-          href: 'https://www.clubmed.fr/l/informations-legales'
+          label: "Legal Information",
+          href: "https://www.clubmed.fr/l/informations-legales"
         }
       ],
       newsletter: {
-        label: 'Sign up to our newsletter',
+        label: "Sign up to our newsletter",
         cta: {
-          label: 'Sign up',
-          href: '/sign-up'
+          label: "Sign up",
+          href: "/sign-up"
         }
       }
     },
     oauth: {
       usePkceWithAuthorizationCodeGrant: true,
       allowedScopes: ["openid", "email", "profile", "api_admin"],
-      defaultSelectedScopes: ["openid", "email", "profile"],
+      defaultSelectedScopes: ["openid", "email", "profile"]
     },
     persistAuthorization: true,
-    oauth2RedirectUrl: window.location.origin + '/doc/v3/oauth2-redirect.html',
-  }
+    oauth2RedirectUrl: window.location.origin + "/doc/v3/oauth2-redirect.html"
+  };
 </script>
 
 <div id="root"></div>

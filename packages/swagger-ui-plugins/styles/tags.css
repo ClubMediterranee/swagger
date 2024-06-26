@@ -8,5 +8,5 @@ body .swagger-ui .opblock-tag:hover {
 }
 
 body .swagger-ui .operation-tag-content {
-  @apply space-y-40 py-40 md:pt-32;
+  @apply py-40 md:pt-32;
 }

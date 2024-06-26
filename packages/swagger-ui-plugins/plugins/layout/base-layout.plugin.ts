@@ -1,8 +1,3 @@
-import { authPopup, logoutPopup } from "../auth/auth-popup.action";
-import { AuthorizationPopup } from "../auth/authorization-popup.component.js";
-import AuthorizeBtn from "../auth/authorize-btn.component";
-import { AuthorizeOperationBtn } from "../auth/authorize-operation-btn.component";
-import { Oauth2Component } from "../auth/oauth2.component";
 import { Markdown } from "../form/markdown";
 import { SelectComponent } from "../form/select.component";
 import { TextareaComponent } from "../form/textarea.component";
@@ -14,31 +9,21 @@ import { wrapClear } from "../operations/wrap-clear";
 import { wrapExecute } from "../operations/wrap-execute";
 import { wrapOperation } from "../operations/wrap-operation";
 import BaseLayout from "./base-layout.component";
-import StandaloneLayout from "./custom-standalone-layout.component";
+import { HeroBanner } from "./hero-banner.component";
 
-export const StandaloneLayoutPlugin = () => {
+export const BaseLayoutPlugin = () => {
   return {
     statePlugins: {
       spec: {
         reducers: {
           spec_update_param: updateFields
         }
-      },
-      auth: {
-        actions: {
-          authPopup,
-          logoutPopup
-        }
       }
     },
     components: {
-      StandaloneLayout,
+      HeroBanner,
       BaseLayout,
-      authorizeBtn: AuthorizeBtn,
-      authorizeOperationBtn: AuthorizeOperationBtn,
-      authorizationPopup: AuthorizationPopup,
       OperationSummary,
-      oauth2: Oauth2Component,
       OperationTag,
       Select: SelectComponent,
       TextArea: TextareaComponent,

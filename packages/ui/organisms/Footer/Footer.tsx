@@ -22,7 +22,7 @@ export interface FooterReviews {
 }
 
 export interface FooterProps {
-  contact: {
+  contact?: {
     phoneCost: string;
     phoneNumber: string;
   };
@@ -30,7 +30,7 @@ export interface FooterProps {
     label: string;
     links: FooterLink[];
   }[];
-  cookiesConsentLabel: string;
+  cookiesConsentLabel?: string;
   corporateLinks: {
     label: string;
     href: string;
@@ -46,7 +46,7 @@ export interface FooterProps {
     cta: FooterLink;
     label: string;
   } | null;
-  reviews: FooterReviews;
+  reviews?: FooterReviews;
 }
 
 const openDidomiPreferences = (e: React.SyntheticEvent) => {

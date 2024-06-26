@@ -1,23 +1,18 @@
-import { useConfig } from "../../contexts/config.context";
 import { System } from "../../interfaces/System";
-import { ApiBanner } from "./api-banner.component";
 
 export default function BaseLayout(props: System) {
   const { errSelectors, specSelectors, getComponent } = props;
-  const { isApiLayout } = useConfig();
 
   const SvgAssets = getComponent("SvgAssets");
-  const InfoContainer = getComponent("InfoContainer", true);
   const VersionPragmaFilter = getComponent("VersionPragmaFilter");
   const Operations = getComponent("operations", true);
   const Models = getComponent("Models", true);
   const Webhooks = getComponent("Webhooks", true);
   const Row = getComponent("Row");
   const Col = getComponent("Col");
+  const HeroBanner = getComponent("HeroBanner", true);
   const Errors = getComponent("errors", true);
 
-  const ServersContainer = getComponent("ServersContainer", true);
-  const SchemesContainer = getComponent("SchemesContainer", true);
   const isSwagger2 = specSelectors.isSwagger2();
   const isOAS3 = specSelectors.isOAS3();
   const isOAS31 = specSelectors.isOAS31();
@@ -64,41 +59,13 @@ export default function BaseLayout(props: System) {
     );
   }
 
-  const servers = specSelectors.servers();
-  const schemes = specSelectors.schemes();
-
-  const hasServers = servers && servers.size;
-  const hasSchemes = schemes && schemes.size;
-
   return (
     <div>
       <SvgAssets />
       <VersionPragmaFilter isSwagger2={isSwagger2} isOAS3={isOAS3} alsoShow={<Errors />}>
         <Errors />
-        <div className="relative xl:pb-0 sm:py-20 lg:py-40 text-black">
-          <div className="-z-1 pointer-events-none absolute inset-0 xl:bottom-40 bg-lightSand" />
 
-          {isApiLayout ? (
-            <ApiBanner {...props} />
-          ) : (
-            <>
-              <Row className="information-container">
-                <Col mobile={12}>
-                  <InfoContainer />
-                </Col>
-              </Row>
-
-              {hasServers || hasSchemes ? (
-                <div>
-                  <div className="px-20 flex">
-                    <div>{hasServers ? <ServersContainer /> : null}</div>
-                    <div>{hasSchemes ? <SchemesContainer /> : null}</div>
-                  </div>
-                </div>
-              ) : null}
-            </>
-          )}
-        </div>
+        <HeroBanner {...props} />
 
         <Row>
           <Col mobile={12} desktop={12}>

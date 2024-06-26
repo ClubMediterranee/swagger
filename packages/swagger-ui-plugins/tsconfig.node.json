@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "outDir": "dist",
+    "types": ["node", "vitest"]
+  },
+  "include": ["vite.config.mts", "vitest.config.ts", "tailwind.config.ts"]
+}

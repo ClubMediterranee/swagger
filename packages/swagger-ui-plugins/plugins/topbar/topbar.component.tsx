@@ -3,17 +3,8 @@ import PropTypes from "prop-types";
 
 import { useConfig } from "../../contexts/config.context";
 import { System } from "../../interfaces/System";
-import { routes } from "../../routes";
-
-const nav = routes
-  .filter((route) => !route.hidden)
-  .map((route) => {
-    return {
-      ...route,
-      label: route.label,
-      url: route.path
-    };
-  });
+// import { routes } from "../../routes";
+//
 
 export default function Topbar(props: System) {
   let { getComponent, specSelectors } = props;
@@ -21,14 +12,13 @@ export default function Topbar(props: System) {
   const AuthorizeBtnContainer = getComponent("AuthorizeBtnContainer", true);
   const FilterContainer = getComponent("FilterContainer", true);
   const AdvancedFilterPanel = getComponent("AdvancedFilterPanel", true);
-
   const config = useConfig();
 
   const version = info.get("version");
   const hasSecurityDefinitions = !!specSelectors.securityDefinitions();
 
   const items: HeaderNavItemProps[] = [
-    ...nav,
+    ...(config.nav || []),
     version && {
       position: "right",
       label: (
