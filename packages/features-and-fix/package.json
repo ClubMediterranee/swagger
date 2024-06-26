@@ -1,6 +1,6 @@
 {
   "name": "@clubmed/features-and-fix",
-  "version": "1.19.0",
+  "version": "1.19.1",
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",

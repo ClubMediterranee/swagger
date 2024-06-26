@@ -1749,7 +1749,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@clubmed/swagger-ui-plugins@workpace:*, @clubmed/swagger-ui-plugins@workspace:packages/swagger-ui-plugins":
+"@clubmed/swagger-ui-plugins@npm:1.19.1, @clubmed/swagger-ui-plugins@workspace:packages/swagger-ui-plugins":
   version: 0.0.0-use.local
   resolution: "@clubmed/swagger-ui-plugins@workspace:packages/swagger-ui-plugins"
   dependencies:
@@ -1783,7 +1783,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/swagger-ui-standalone-v3@workspace:packages/swagger-ui-standalone-v3"
   dependencies:
-    "@clubmed/swagger-ui-plugins": "workpace:*"
+    "@clubmed/swagger-ui-plugins": "npm:1.19.1"
     "@clubmed/trident-ui": "npm:1.0.0-beta.14"
     "@clubmed/ui": "workspace:*"
     "@types/lodash": "npm:^4.14.199"
@@ -1814,7 +1814,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/swagger-ui-v3@workspace:packages/swagger-ui-v3"
   dependencies:
-    "@clubmed/swagger-ui-plugins": "workpace:*"
+    "@clubmed/swagger-ui-plugins": "npm:1.19.1"
     "@clubmed/trident-ui": "npm:1.0.0-beta.14"
     "@clubmed/ui": "workspace:*"
     "@types/lodash": "npm:^4.14.199"
@@ -19712,7 +19712,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"storybook@npm:1.19.0, storybook@workspace:packages/storybook":
+"storybook@npm:1.19.1, storybook@workspace:packages/storybook":
   version: 0.0.0-use.local
   resolution: "storybook@workspace:packages/storybook"
   dependencies:
@@ -19731,7 +19731,7 @@ __metadata:
     "@storybook/react-vite": "npm:^7.6.17"
     "@storybook/test": "npm:^7.6.17"
     "@storybook/testing-library": "npm:^0.2.2"
-    storybook: "npm:1.19.0"
+    storybook: "npm:1.19.1"
   languageName: unknown
   linkType: soft
 
