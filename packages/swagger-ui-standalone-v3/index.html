@@ -1,32 +1,46 @@
-import { ConfigContext } from "@clubmed/swagger-ui-plugins/contexts/config.context";
-import { useSwaggerUI } from "@clubmed/swagger-ui-plugins/hooks/user-swagger-ui.hook";
-import { DeviceProvider } from "@clubmed/trident-ui/contexts/Device";
-import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
-
-import { StandaloneLayoutPlugin } from "./layout/standalone-layout.plugin";
-import { routes } from "./routes";
-
-export const isMobile = () => {
-  return /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(window.navigator.userAgent);
-};
-
-function App() {
-  const nav: { label: string; url: string }[] = routes
-    .filter((route) => !route.hidden)
-    .map((route) => {
-      return {
-        ...route,
-        label: String(route.label),
-        url: String(route.path)
-      };
-    });
-
-  const config = useSwaggerUI({
-    nav,
-    disableBrowserCache: true,
-    overridePlugins: [StandaloneLayoutPlugin],
-    plugins: ["TopbarPlugin", "StandaloneLayoutPlugin"],
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
+<body>
+<script>
+  window.SwaggerUIConfiguration = {
+    brandName: "ClubMed",
+    appName: "Api",
+    url: "/doc/v3/swagger.json",
+    filter: true,
+    presets: [],
+    routes: [
+      {}
+    ],
+    plugins: [
+      "TopbarPlugin",
+      "StandaloneLayoutPlugin"
+      //   'SidebarPlugin',
+      //   'AuthorizeBtnPlugin',
+      //   'OperationsPlugin',
+      //   'OAuth2Plugin',
+      //   'HighlightPlugin',
+      //   'FooterPlugin',
+      //   'DownloadUrl'
+    ],
+    // tagsSwitches: [
+    //   {label: 'Deprecated', value: 'deprecated'},
+    //   {label: 'Admin', value: 'admin'}
+    // ],
+    // layout: 'StandaloneLayout',
+    // deepLinking: true,
+    // useUnsafeMarkdown: true,
+    contact: "mailto:lvisdigiapi@clubmed.com",
     footer: {
+      // contact: {
+      //   phoneCost: 'Toll free number',
+      //   phoneNumber: '+1 (88) 932-2582'
+      // },
       columns: [
         {
           label: "Club Med Universe",
@@ -84,14 +98,12 @@ function App() {
       corporateLinks: [
         {
           label: "Club Med Corporate",
-          description:
-            "Visit the Corporate Club Med site, to learn more about the Group, the ownership and sustainable development policy.",
+          description: "Visit the Corporate Club Med site, to learn more about the Group, the ownership and sustainable development policy.",
           href: "https://corporate.clubmed/?lang=en"
         },
         {
           label: "Club Med Jobs",
-          description:
-            "Looking to participate in the ClubMed adventure? Learn more on the international recruitment page and stay ahead of the latest Club Med HR news.",
+          description: "Looking to participate in the ClubMed adventure? Learn more on the international recruitment page and stay ahead of the latest Club Med HR news.",
           href: "https://www.clubmedjobs.com/en-gb/resort"
         }
       ],
@@ -108,17 +120,18 @@ function App() {
           href: "/sign-up"
         }
       }
-    }
-  });
+    },
+    oauth: {
+      usePkceWithAuthorizationCodeGrant: true,
+      allowedScopes: ["openid", "email", "profile", "api_admin"],
+      defaultSelectedScopes: ["openid", "email", "profile"]
+    },
+    persistAuthorization: true,
+    oauth2RedirectUrl: window.location.origin + "/doc/v3/oauth2-redirect.html"
+  };
+</script>
 
-  return (
-    <ConfigContext.Provider value={config}>
-      <DeviceProvider device={isMobile() ? "mobile" : "desktop"}>
-        {/* @ts-ignore */}
-        <SwaggerUI {...(config as SwaggerUIProps)} tryItOutEnabled={true} />
-      </DeviceProvider>
-    </ConfigContext.Provider>
-  );
-}
-
-export default App;
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

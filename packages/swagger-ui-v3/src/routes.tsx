@@ -1,13 +1,12 @@
-import React from "react";
+import { SwaggerView } from "@clubmed/swagger-ui-plugins/views/swagger.view";
+import React, { ReactNode } from "react";
 import { RouteProps } from "react-router";
 
-import { SwaggerView } from "./views/swagger/swagger.view";
-
-export const routes: RouteProps & Record<string, any>[] = [
+export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[] = [
   {
     label: "Home",
     hidden: true,
-    element: SwaggerView,
+    element: SwaggerView as unknown as ReactNode,
     path: "/",
     index: true
   },
@@ -25,11 +24,13 @@ export const routes: RouteProps & Record<string, any>[] = [
   {
     label: "Webhooks",
     path: "/webhooks",
-    element: React.lazy(() => import("./views/webhooks/webhooks.view"))
+    element: React.lazy(() => import("./views/webhooks/webhooks.view")),
+    index: false
   },
   {
     label: "Status",
     path: "https://status.api.clubmed/",
-    external: true
+    external: true,
+    index: false
   }
 ];

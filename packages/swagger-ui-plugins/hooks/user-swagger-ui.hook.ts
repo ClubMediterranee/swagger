@@ -1,7 +1,10 @@
+import type { FooterProps } from "@clubmed/ui/organisms/Footer/Footer";
 import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
 
-import { InitOAuthOptions, System } from "../interfaces/System";
-import * as Plugins from "../plugins";
+import type { InitOAuthOptions, System } from "../interfaces/System";
+import { Oauth2Plugin } from "../plugins/auth/oauth2.plugin";
+import { BaseLayoutPlugin } from "../plugins/layout/base-layout.plugin";
+import { TopbarPlugin } from "../plugins/topbar/topbar.plugin";
 
 export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "plugins" | "presets"> {
   brandName: string;
@@ -17,6 +20,8 @@ export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "p
   useUnsafeMarkdown?: boolean;
   disableBrowserCache?: boolean;
   oauth?: InitOAuthOptions;
+  nav?: { label: string; url: string }[];
+  footer?: FooterProps;
 }
 
 declare global {
@@ -25,33 +30,29 @@ declare global {
   }
 }
 
-export function userSwaggerUI(): SwaggerUIProps {
+export interface UseSwaggerUIOptions extends Partial<SwaggerUIConfiguration> {
+  overridePlugins?: SwaggerUIProps["plugins"];
+}
+
+export function useSwaggerUI(baseOpts: UseSwaggerUIOptions): SwaggerUIProps {
   let config: Partial<SwaggerUIConfiguration> = window.SwaggerUIConfiguration || {};
-  const isApiLayout = config.appName?.toLowerCase() === "api";
 
   config = {
     layout: "StandaloneLayout",
-    // url: "https://api.integ.clubmed.com/doc/swagger.json",
-    // oauth2RedirectUrl: `${window.location.origin}/doc/o2c.html`,
-    // deepLinking: true,
-    // disableBrowserCache: false,
-    // filter: true,
     defaultModelsExpandDepth: 0,
     docExpansion: "list",
     fieldsPersistence: ["api_key"],
-    // tagsSwitches: [
-    //   {label: "Deprecated", value: "deprecated"},
-    //   {label: "Admin", value: "admin"}
-    // ],
     syntaxHighlight: {
       activate: true,
       theme: "agate"
     },
     useUnsafeMarkdown: true,
-    ...(config || {})
+    nav: baseOpts.nav,
+    ...(config || {}),
+    ...(baseOpts || {})
   };
 
-  if (isApiLayout || config.disableBrowserCache) {
+  if (baseOpts.disableBrowserCache || config.disableBrowserCache) {
     config.requestInterceptor = (request: any) => {
       if (!request.url.endsWith("swagger.json")) {
         request.url += `${request.url.includes("?") ? "&" : "?"}timestamp=${Date.now()}`;
@@ -61,7 +62,7 @@ export function userSwaggerUI(): SwaggerUIProps {
     };
   }
 
-  const PLUGINS = { ...(SwaggerUI as any).plugins, ...Plugins };
+  const PLUGINS = [BaseLayoutPlugin, TopbarPlugin, Oauth2Plugin, ...(baseOpts.overridePlugins || [])];
   const PRESETS = { ...(SwaggerUI as any).presets };
 
   // map presets
@@ -74,10 +75,18 @@ export function userSwaggerUI(): SwaggerUIProps {
   }
 
   if (config.plugins) {
-    config.plugins = config.plugins
-      .map((plugin) => {
-        return PLUGINS[plugin];
-      })
+    config.plugins = ["Oauth2Plugin", "BaseLayoutPlugin"]
+      .concat(config.plugins)
+      .map((plugin) =>
+        PLUGINS.find(
+          (p) =>
+            (
+              p as {
+                name: string;
+              }
+            ).name === plugin
+        )
+      )
       .filter(Boolean) as any[];
   }
 
@@ -88,7 +97,6 @@ export function userSwaggerUI(): SwaggerUIProps {
   }
 
   return {
-    isApiLayout,
     ...config,
     onComplete
   } as SwaggerUIProps;

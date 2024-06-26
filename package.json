@@ -11,8 +11,9 @@
     "url": "https://github.com/ClubMediterranee/swagger.git"
   },
   "scripts": {
-    "build": "yarn build:swagger:v3",
+    "build": "yarn build:swagger:v3 && yarn build:swagger:standalone:v3",
     "build:swagger:v3": "nx build @clubmed/swagger-ui-v3",
+    "build:swagger:standalone:v3": "nx build @clubmed/swagger-ui-standalone-v3",
     "test": "vitest run",
     "test:ci": "nx run-many --target=test:ci --all",
     "lint": "eslint 'packages/**/*.{ts,js,tsx,jsx}'",
