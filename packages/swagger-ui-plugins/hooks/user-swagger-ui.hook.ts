@@ -22,6 +22,7 @@ export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "p
   oauth?: InitOAuthOptions;
   nav?: { label: string; url: string }[];
   footer?: FooterProps;
+  contact?: string;
 }
 
 declare global {

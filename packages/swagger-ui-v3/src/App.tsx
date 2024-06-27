@@ -26,6 +26,14 @@ function App() {
     disableBrowserCache: true,
     overridePlugins: [StandaloneLayoutPlugin],
     plugins: ["TopbarPlugin", "StandaloneLayoutPlugin"],
+    contact: "mailto:lvisdigiapi@clubmed.com",
+    oauth: {
+      usePkceWithAuthorizationCodeGrant: true,
+      allowedFlows: ["authorization_code", "implicit"],
+      allowedScopes: ["openid", "email", "profile", "api_admin"],
+      defaultSelectedScopes: ["openid", "email", "profile"]
+    },
+    persistAuthorization: true,
     footer: {
       columns: [
         {
