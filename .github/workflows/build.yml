@@ -92,6 +92,8 @@ jobs:
           git config --global user.name "$(gh api /users/${GITHUB_ACTOR} | jq .name -r)"
           git config -l  
           yarn dlx -p @cmflow/cli@v1.0.10 cmrelease
+          # force rebuild
+          yarn build
       - name: Upload artifact 📝
         uses: actions/upload-pages-artifact@v3
         with:

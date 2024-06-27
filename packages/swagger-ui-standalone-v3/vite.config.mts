@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), svgr()],
   build: {
     minify: false,
-    outDir: "../../dist/latest/swagger-ui-v3-standalone",
+    outDir: "../../dist/latest/swagger-ui-standalone-v3",
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name].js`,
