@@ -38,15 +38,17 @@ function getAuthsByGroups(authSelectors: System["authSelectors"], specSelectors:
 
         group.oauth = group.oauth!.push(schema);
       } else {
-        group.others = group.others.push(schema);
+        group.others = group.others.push(
+          M({
+            [schemaName]: schema
+          })
+        );
       }
     });
   });
 
   return allDefinitions;
 }
-
-function AuthorizationPopupBody(props: System) {}
 
 export function AuthorizationPopup(props: System) {
   const close = () => {
