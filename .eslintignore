@@ -1,3 +1,4 @@
 node_modules
 packages/legacy
 packages/features-and-fix
+dist

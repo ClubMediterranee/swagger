@@ -6,6 +6,7 @@ import { Fragment, HTMLAttributes } from "react";
 export interface HeaderPanelProps extends CommonButtonProps, HTMLAttributes<HTMLDivElement> {
   isActive: boolean;
   url?: string;
+  target?: string;
 }
 
 export function HeaderPanel({ url, label, variant, icon, isActive, onFocus, onBlur, children, ...props }: HeaderPanelProps) {
@@ -17,6 +18,7 @@ export function HeaderPanel({ url, label, variant, icon, isActive, onFocus, onBl
           label={label}
           variant={variant}
           icon={icon}
+          target={props.target}
           theme="blackStroke"
           onBlur={(e) => onBlur?.(e as any)}
           onFocus={(e) => onFocus?.(e as any)}

@@ -44,7 +44,7 @@ node_modules
 **/build
 **/lib
 
-!dist/latest/features-and-fix/**
+!dist/latest/features-and-fix-legacy/**
 !dist/latest/swagger-ui/**
 
 # Yarn
