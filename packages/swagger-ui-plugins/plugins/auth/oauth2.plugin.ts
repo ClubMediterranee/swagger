@@ -1,6 +1,3 @@
-import { Markdown } from "../form/markdown";
-import { SelectComponent } from "../form/select.component";
-import { TextareaComponent } from "../form/textarea.component";
 import { updateFields } from "../operations/reducers/update-fields.reducer";
 import { authPopup, logoutPopup } from "./auth-popup.action";
 import { AuthorizationPopup } from "./authorization-popup.component";
@@ -27,10 +24,7 @@ export const Oauth2Plugin = () => {
       authorizeBtn: AuthorizeBtn,
       authorizeOperationBtn: AuthorizeOperationBtn,
       authorizationPopup: AuthorizationPopup,
-      oauth2: Oauth2Component,
-      Select: SelectComponent,
-      TextArea: TextareaComponent,
-      Markdown: Markdown
+      oauth2: Oauth2Component
     }
   };
 };

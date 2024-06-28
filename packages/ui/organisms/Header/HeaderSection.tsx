@@ -26,11 +26,11 @@ export function HeaderSection({ title, url, sectionIndex, links }: HeaderSection
         </a>
       )}
       <ul className="space-y-8">
-        {links.map((link) => {
+        {links.map(({ label, url, ...link }) => {
           return (
-            <li key={link.label}>
-              <a href={link.url || undefined} className="">
-                {link.label}
+            <li key={label}>
+              <a href={url || undefined} {...link} className="">
+                {label}
               </a>
             </li>
           );

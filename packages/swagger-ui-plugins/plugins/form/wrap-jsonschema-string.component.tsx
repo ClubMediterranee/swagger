@@ -39,7 +39,8 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
           </Button>
         ) : null;
       }
-      return <></>;
+      console.log(value);
+      return <>Connected</>;
     }
 
     if (description === "api_key") {

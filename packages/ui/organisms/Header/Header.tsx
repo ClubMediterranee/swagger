@@ -61,8 +61,7 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
               return (
                 <HeaderPanel
                   key={"header-panel-" + index}
-                  url={item.url}
-                  label={item.label}
+                  {...item}
                   isActive={!!(item.index === activeIndex && (item.columns || item.component))}
                   onMouseEnter={() => setMenu(index)}
                   onMouseLeave={() => resetMenu(false)}
