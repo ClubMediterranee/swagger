@@ -1,6 +1,6 @@
-import { getTitle } from "./get-title";
+import { getEnv } from "./get-env";
 
-describe("getTitle", () => {
+describe("getEnv", () => {
   it.each([
     {
       env: "integx",
@@ -11,7 +11,7 @@ describe("getTitle", () => {
       branch: "feat-8380-customer-profile.1",
       state: "OK",
       doc_url: "https://api0.integ.clubmed.com/doc",
-      expected: "API - Integration 0"
+      expected: "Integ 0"
     },
     {
       env: "production",
@@ -22,7 +22,7 @@ describe("getTitle", () => {
       branch: "",
       state: "OK",
       doc_url: "https://api.clubmed.com/doc",
-      expected: "API - Production"
+      expected: "Prod"
     },
     {
       type: "go",
@@ -32,9 +32,9 @@ describe("getTitle", () => {
       state: "OK",
       env: "integ",
       doc_url: "https://auth.integ.clubmed.com/doc",
-      expected: "OIDC GO - Integration"
+      expected: "Integ"
     }
   ])(`should return correct title from $type $url`, ({ expected, ...env }) => {
-    expect(getTitle(env as never)).toEqual(expected);
+    expect(getEnv(env as never)).toEqual(expected);
   });
 });
