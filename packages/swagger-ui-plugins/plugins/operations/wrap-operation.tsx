@@ -3,7 +3,9 @@ import { useInView } from "react-intersection-observer";
 
 export function wrapOperation(Base: any) {
   return (props: Record<string, any>) => {
-    const { ref, inView, entry } = useInView({});
+    const { ref, inView, entry } = useInView({
+      triggerOnce: true
+    });
 
     useEffect(() => {
       if (entry) {
