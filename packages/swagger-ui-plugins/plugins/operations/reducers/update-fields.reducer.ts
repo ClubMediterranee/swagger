@@ -14,6 +14,13 @@ export interface UpdateFieldsAction {
   };
 }
 
+type Parameters = Map<string, Map<string, string>>;
+type Operation = Map<string, Parameters>;
+type Methods = Map<string, Operation>;
+type Paths = Map<string, Methods>;
+type Json = Map<"paths", Paths>;
+type State = Map<"json", Json>;
+
 export function paramToIdentifier(param: any, { returnAll = false, allowHashes = true } = {}) {
   if (!Map.isMap(param)) {
     throw new Error("paramToIdentifier: received a non-Im.Map parameter as input");
@@ -40,7 +47,7 @@ export function paramToIdentifier(param: any, { returnAll = false, allowHashes =
   return returnAll ? generatedIdentifiers : generatedIdentifiers[0] || "";
 }
 
-export function updateFields(state: any, action: UpdateFieldsAction) {
+export function updateFields(state: State, action: UpdateFieldsAction) {
   const { payload } = action;
   let { path: pathMethod, paramName, paramIn, param, value, isXml } = payload;
 
@@ -60,14 +67,15 @@ export function updateFields(state: any, action: UpdateFieldsAction) {
   state
     .get("json")
     .get("paths")
-    .forEach((methods: Map<string, any>, path: string) => {
-      methods.forEach((operation: any, method) => {
-        if (operation.get("parameters")) {
+    .forEach((methods, path) => {
+      methods?.forEach((operation, method) => {
+        if (operation?.get("parameters")) {
           operation
             .get("parameters")
-            .filter((parameter: any) => parameter.get("in") === paramIn && parameter.get("name") === paramName)
-            .forEach((parameter: any) => {
-              let paramKey = `${parameter.get("in")}.${parameter.get("name")}`;
+            .filter((parameter) => parameter?.get("in") === paramIn && parameter?.get("name") === paramName)
+            .forEach((parameter) => {
+              const paramKey = paramToIdentifier(parameter);
+
               state = state.setIn(["meta", "paths", path, method, "parameters", paramKey, "value"], value);
             });
         }
