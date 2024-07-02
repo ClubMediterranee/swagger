@@ -76,6 +76,10 @@ export interface AuthActions extends Record<string, any> {
   logoutPopup: typeof logoutPopup;
 }
 
+export interface SpecActions extends Record<string, any> {
+  updatePathFields(name: string, value: unknown): void;
+}
+
 export interface LayoutActions extends Record<string, any> {
   updateFilter(value: string): void;
   updateAdvancedFilters(value: Map<string, any>): void;
@@ -107,6 +111,7 @@ export interface System {
   authActions: AuthActions;
   layoutActions: LayoutActions;
   errActions: ErrActions;
+  specActions: SpecActions;
 
   specPath: {
     get(i: number): string;

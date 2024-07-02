@@ -39,7 +39,7 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
           </Button>
         ) : null;
       }
-      console.log(value);
+
       return <>Connected</>;
     }
 
