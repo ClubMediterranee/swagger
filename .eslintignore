@@ -1,4 +1,4 @@
 node_modules
-packages/legacy
-packages/features-and-fix
 dist
+vitest.workspace.mts
+vitest.config.mts
