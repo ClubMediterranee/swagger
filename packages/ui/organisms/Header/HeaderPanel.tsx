@@ -1,20 +1,36 @@
 import { Button, CommonButtonProps } from "@clubmed/trident-ui/molecules/Buttons/Button";
-import { ButtonAnchor } from "@clubmed/trident-ui/molecules/Buttons/ButtonAnchor";
 import classnames from "classnames";
 import { Fragment, HTMLAttributes } from "react";
+
+import { ButtonAnchor } from "../../molecules/Button/ButtonAnchor";
+import { Link as BaseLink } from "../../molecules/Link/Link";
+import { HeaderSectionProps } from "./HeaderSection";
 
 export interface HeaderPanelProps extends CommonButtonProps, HTMLAttributes<HTMLDivElement> {
   isActive: boolean;
   url?: string;
   target?: string;
+  Link?: HeaderSectionProps["Link"];
 }
 
-export function HeaderPanel({ url, label, variant, icon, isActive, onFocus, onBlur, children, ...props }: HeaderPanelProps) {
+export function HeaderPanel({
+  Link = BaseLink,
+  url,
+  label,
+  variant,
+  icon,
+  isActive,
+  onFocus,
+  onBlur,
+  children,
+  ...props
+}: HeaderPanelProps) {
   const Btn = url ? ButtonAnchor : Button;
   return (
     <Fragment>
       <div {...props}>
         <Btn
+          component={Link}
           label={label}
           variant={variant}
           icon={icon}

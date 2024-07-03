@@ -1,12 +1,24 @@
 import classnames from "classnames";
+import { AnchorHTMLAttributes, FunctionComponent, PropsWithChildren } from "react";
+
+import { Link as BaseLink } from "../../molecules/Link/Link";
 
 export interface HeaderSectionProps {
+  Link?: FunctionComponent<PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement>>>;
   title: string;
   url: string;
   links: { label: string; url: string }[];
 }
 
-export function HeaderSection({ title, url, sectionIndex, links }: HeaderSectionProps & { sectionIndex: number }) {
+export function HeaderSection({
+  Link = BaseLink,
+  title,
+  url,
+  sectionIndex,
+  links
+}: HeaderSectionProps & {
+  sectionIndex: number;
+}) {
   return (
     <div
       key={title}
@@ -16,22 +28,22 @@ export function HeaderSection({ title, url, sectionIndex, links }: HeaderSection
       })}
     >
       {title && (
-        <a
+        <Link
           href={url || undefined}
           className={classnames("block font-bold", {
             "pb-20": links.length
           })}
         >
           {title}
-        </a>
+        </Link>
       )}
       <ul className="space-y-8">
         {links.map(({ label, url, ...link }) => {
           return (
             <li key={label}>
-              <a href={url || undefined} {...link} className="">
+              <Link href={url || undefined} {...link} className="">
                 {label}
-              </a>
+              </Link>
             </li>
           );
         })}
