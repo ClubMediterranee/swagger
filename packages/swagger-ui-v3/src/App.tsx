@@ -1,5 +1,6 @@
 import { ConfigContext } from "@clubmed/swagger-ui-plugins/contexts/config.context";
 import { useSwaggerUI } from "@clubmed/swagger-ui-plugins/hooks/user-swagger-ui.hook";
+import { RequestSnippetGeneratorPlugin } from "@clubmed/swagger-ui-plugins/plugins/request-snippets/request-snippets.plugin";
 import { DeviceProvider } from "@clubmed/trident-ui/contexts/Device";
 import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
 
@@ -21,11 +22,15 @@ function App() {
       };
     });
 
+  const isSwaggerPage = window.location.pathname === (window.basename || "") + "/";
+
   const config = useSwaggerUI({
     nav,
+    showAdvancedFilter: isSwaggerPage,
     disableBrowserCache: true,
+    tags: isSwaggerPage ? null : ["webhooks"],
     overridePlugins: [StandaloneLayoutPlugin],
-    plugins: ["TopbarPlugin", "StandaloneLayoutPlugin"],
+    plugins: ["TopbarPlugin", "StandaloneLayoutPlugin", RequestSnippetGeneratorPlugin],
     contact: "mailto:lvisdigiapi@clubmed.com",
     oauth: {
       usePkceWithAuthorizationCodeGrant: true,
@@ -34,6 +39,23 @@ function App() {
       defaultSelectedScopes: ["openid", "email", "profile"]
     },
     persistAuthorization: true,
+    requestSnippetsEnabled: true,
+    requestSnippets: {
+      generators: {
+        node_axios: {
+          title: "Axios",
+          syntax: "javascript"
+        },
+        node_fetch: {
+          title: "Fetch",
+          syntax: "javascript"
+        },
+        node_native: {
+          title: "NodeJs Native",
+          syntax: "javascript"
+        }
+      }
+    },
     footer: {
       columns: [
         {

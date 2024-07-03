@@ -11,10 +11,12 @@ export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "p
   appName: string;
   url: string;
   filter?: boolean;
-  plugins?: string[];
+  plugins?: (string | any)[];
   presets?: string[];
   oauth2RedirectUrl?: string;
   fieldsPersistence?: string[];
+  showAdvancedFilter?: boolean;
+  tags?: null | string[];
   tagsSwitches?: { label: string; value: string }[];
   syntaxHighlight?: any;
   useUnsafeMarkdown?: boolean;
@@ -39,6 +41,7 @@ export function useSwaggerUI(baseOpts: UseSwaggerUIOptions): SwaggerUIProps {
   let config: Partial<SwaggerUIConfiguration> = window.SwaggerUIConfiguration || {};
 
   config = {
+    showAdvancedFilter: true,
     layout: "StandaloneLayout",
     defaultModelsExpandDepth: 0,
     docExpansion: "list",
@@ -78,16 +81,19 @@ export function useSwaggerUI(baseOpts: UseSwaggerUIOptions): SwaggerUIProps {
   if (config.plugins) {
     config.plugins = ["Oauth2Plugin", "BaseLayoutPlugin"]
       .concat(config.plugins)
-      .map((plugin) =>
-        PLUGINS.find(
-          (p) =>
-            (
-              p as {
-                name: string;
-              }
-            ).name === plugin
-        )
-      )
+      .map((plugin: string | any) => {
+        if (typeof plugin === "string") {
+          return PLUGINS.find(
+            (p) =>
+              (
+                p as {
+                  name: string;
+                }
+              ).name === plugin
+          );
+        }
+        return plugin;
+      })
       .filter(Boolean) as any[];
   }
 
