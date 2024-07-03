@@ -21,7 +21,7 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "json", "html"],
       all: true,
-      include: ["hooks/**/*.{ts,tsx}", "molecules/**/*.{ts,tsx}", "organisms/**/*.{ts,tsx}"],
+      include: ["**/*.{ts,tsx}", "**/*.{ts,tsx}", "**/*.{ts,tsx}"],
       thresholds: {
         autoUpdate: true,
         statements: 48.7,

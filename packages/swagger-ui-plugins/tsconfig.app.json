@@ -6,14 +6,14 @@
     "target": "ESNext"
   },
   "exclude": [
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts",
-    "src/**/*.spec.tsx",
-    "src/**/*.test.tsx",
-    "src/**/*.spec.js",
-    "src/**/*.test.js",
-    "src/**/*.spec.jsx",
-    "src/**/*.test.jsx"
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.test.tsx",
+    "**/*.spec.js",
+    "**/*.test.js",
+    "**/*.spec.jsx",
+    "**/*.test.jsx"
   ],
   "include": ["**/*.ts", "**/*.tsx"]
 }
