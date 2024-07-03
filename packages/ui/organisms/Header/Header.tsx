@@ -6,6 +6,7 @@ import { HamburgerIcon } from "@clubmed/trident-ui/molecules/HamburgerIcon";
 import classnames from "classnames";
 import { type PropsWithChildren, type ReactNode, useMemo } from "react";
 
+import { Link as BaseLink } from "../../molecules/Link/Link";
 import { HeaderColumn, HeaderColumns } from "./HeaderColumns.js";
 import { HeaderMobile } from "./HeaderMobile";
 import { HeaderPanel } from "./HeaderPanel";
@@ -29,9 +30,10 @@ export interface HeaderProps {
   items?: HeaderNavItemProps[];
   openMenu: string;
   topBurgerMenuContent?: ReactNode;
+  Link?: HeaderSectionProps["Link"];
 }
 
-export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuContent }: PropsWithChildren<HeaderProps>) {
+export function Header({ children, Link = BaseLink, homepageUrl, items, openMenu, topBurgerMenuContent }: PropsWithChildren<HeaderProps>) {
   const { isMobileMenuOpen, activeIndex, setIsMobileMenuOpen, setMenu, resetMenu, transition } = useMenu();
   items = useMemo(() => {
     return items?.map((item, index) => {
@@ -45,11 +47,11 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
   return (
     <header role="banner">
       <div className="z-2 relative flex items-center justify-between p-8 lg:px-20">
-        <a href={homepageUrl} title="Club Med Homepage">
+        <Link href={homepageUrl} title="Club Med Homepage">
           <div className="w-[120px] md:w-[160px]">
             <Icon name="ClubMed" width="100%" aspectRatio className="text-ultramarine" />
           </div>
-        </a>
+        </Link>
         <nav className="flex items-center gap-x-12 px-8">
           {items
             ?.filter(({ position }) => {
@@ -60,6 +62,7 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
 
               return (
                 <HeaderPanel
+                  Link={Link}
                   key={"header-panel-" + index}
                   {...item}
                   isActive={!!(item.index === activeIndex && (item.columns || item.component))}
@@ -72,6 +75,7 @@ export function Header({ children, homepageUrl, items, openMenu, topBurgerMenuCo
                         <HeaderColumn key={"col-" + index + "-" + columnIndex}>
                           {column.sections.map((section, sectionIndex) => (
                             <HeaderSection
+                              Link={Link}
                               key={"col-section-" + index + "-" + columnIndex + "-" + sectionIndex}
                               {...section}
                               sectionIndex={sectionIndex}

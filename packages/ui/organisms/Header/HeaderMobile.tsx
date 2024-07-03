@@ -1,13 +1,17 @@
 import { animated } from "@react-spring/web";
 
+import { Link as BaseLink } from "../../molecules/Link/Link";
 import type { HeaderNavItemProps } from "./Header";
 import { HeaderMobileCollapse } from "./HeaderMobileCollapse";
+import { HeaderSectionProps } from "./HeaderSection";
 
 export function HeaderMobile({
   styles,
   topBurgerMenuContent,
-  items
+  items,
+  Link = BaseLink
 }: {
+  Link?: HeaderSectionProps["Link"];
   styles: any;
   topBurgerMenuContent: any;
   items: HeaderNavItemProps[];
@@ -38,9 +42,9 @@ export function HeaderMobile({
                           {section.links.map((link) => {
                             return (
                               <li key={link.label}>
-                                <a href={link.url} className="">
+                                <Link href={link.url} className="">
                                   {link.label}
-                                </a>
+                                </Link>
                               </li>
                             );
                           })}
