@@ -27,3 +27,5 @@ export function SwaggerView(props: System) {
     </>
   );
 }
+
+export default SwaggerView;

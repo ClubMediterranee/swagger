@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { SwaggerUIProps } from "swagger-ui-react";
 
 import type { logoutPopup } from "../plugins/auth/auth-popup.action";
+import type { opsAdvancedFilter, opsFilter } from "../plugins/filter/ops-filter";
 
 export interface InitOAuthOptions {
   clientId?: string;
@@ -44,7 +45,8 @@ export interface Oas3Selectors extends Record<string, any> {
 }
 
 export interface SpecSelectors extends Record<string, unknown> {
-  info(): any;
+  url(): string;
+  info(): Map<string, unknown>;
   loadingStatus(): string;
   servers(): Map<string, any> | undefined;
   schemes(): Map<string, any> | undefined;
@@ -54,6 +56,8 @@ export interface SpecSelectors extends Record<string, unknown> {
   isOAS31(): boolean;
   specStr(): string;
   operationsWithTags(state: any): any;
+  validOperationMethods(): List<string>;
+  taggedOperations(): Map<string, Map<string, unknown>>;
 }
 
 /**
@@ -91,8 +95,8 @@ export interface ErrActions extends Record<string, any> {
 
 export interface Fn extends Record<string, any> {
   AST: any;
-  opsFilter(taggedOps: Iterable<string, Map<string, any>>, phrase: string): Iterable<string, Map<string, any>>;
-  opsAdvancedFilter(taggedOps: Iterable<string, Map<string, any>>, advancedFilters: Map<string, any>): Iterable<string, Map<string, any>>;
+  opsFilter: typeof opsFilter;
+  opsAdvancedFilter: typeof opsAdvancedFilter;
 }
 
 export interface System {
