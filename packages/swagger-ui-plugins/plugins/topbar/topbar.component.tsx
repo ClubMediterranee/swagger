@@ -1,10 +1,9 @@
 import { Header, HeaderNavItemProps } from "@clubmed/ui/organisms/Header";
+import { HeaderSectionProps } from "@clubmed/ui/organisms/Header/HeaderSection";
 import PropTypes from "prop-types";
 
 import { useConfig } from "../../contexts/config.context";
 import { System } from "../../interfaces/System";
-// import { routes } from "../../routes";
-//
 
 export default function Topbar(props: System) {
   let { getComponent, specSelectors } = props;
@@ -12,9 +11,10 @@ export default function Topbar(props: System) {
   const AuthorizeBtnContainer = getComponent("AuthorizeBtnContainer", true);
   const FilterContainer = getComponent("FilterContainer", true);
   const AdvancedFilterPanel = getComponent("AdvancedFilterPanel", true);
+  const RouterLink: HeaderSectionProps["Link"] | undefined = getComponent("RouterLink");
   const config = useConfig();
 
-  const version = info.get("version");
+  const version = info.get("version") as string;
   const hasSecurityDefinitions = !!specSelectors.securityDefinitions();
 
   const items: HeaderNavItemProps[] = [
@@ -28,7 +28,7 @@ export default function Topbar(props: System) {
       ),
       className: "inline-block flex items-center text-b4 font-sans shrink-0 bg-transparent text-grayDarker h-auto py-12 px-8"
     },
-    {
+    config.showAdvancedFilter && {
       label: "Options",
       url: "",
       position: "right",
@@ -39,7 +39,7 @@ export default function Topbar(props: System) {
   ];
 
   return (
-    <Header homepageUrl="/" openMenu="Open menu" items={items.filter(Boolean)}>
+    <Header Link={RouterLink} homepageUrl="/" openMenu="Open menu" items={items.filter(Boolean)}>
       <FilterContainer />
       {hasSecurityDefinitions ? <AuthorizeBtnContainer /> : null}
     </Header>
