@@ -1,9 +1,8 @@
 import "../styles/markdown.css";
 
+import { parser } from "@clubmed/swagger-ui-plugins/plugins/form/remarkable";
 import classnames from "classnames";
 import React, { useMemo } from "react";
-
-import { parser } from "../utils/remarkable";
 
 export interface ContentProps {
   className?: string;

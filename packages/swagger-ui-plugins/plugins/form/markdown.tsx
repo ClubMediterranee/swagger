@@ -1,13 +1,8 @@
 import cx from "classnames";
-import { Remarkable } from "remarkable";
 
-import { System } from "../../interfaces/System";
+import { parser } from "./remarkable";
 
-const parser = new Remarkable("commonmark");
-parser.block.ruler.enable(["table"]);
-parser.set({ linkTarget: "_blank" });
-
-export const Markdown = ({ source, className = "" }: System & { source: any; className: any }) => {
+export const Markdown = ({ source, className = "" }: { source: any; className: any }) => {
   if (typeof source !== "string") {
     return null;
   }
