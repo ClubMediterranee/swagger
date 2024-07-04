@@ -1,5 +1,5 @@
 import React from "react";
-import { RouteProps } from "react-router";
+import { RouteObject, RouteProps } from "react-router";
 
 declare global {
   interface Window {
@@ -21,11 +21,19 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
   //   element: React.lazy(() => import("./views/discover/discover.view")),
   //   columns: []
   // },
-  // {
-  //   label: "Migration notes",
-  //   path: "/migration-notes",
-  //   element: React.lazy(() => import("./views/migrations/migration-notes.view"))
-  // },
+  {
+    label: "Migration notes",
+    path: "/migration-notes",
+    element: React.lazy(() => import("./views/migrations/migration-notes.view")),
+    index: false
+  },
+  {
+    label: "Migration notes",
+    path: "/migration-notes/:id",
+    element: React.lazy(() => import("./views/migrations/migration-note.view")),
+    index: false,
+    hidden: true
+  },
   {
     label: "Webhooks",
     path: `/webhooks`,

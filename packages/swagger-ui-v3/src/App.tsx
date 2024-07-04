@@ -25,7 +25,7 @@ function App() {
       return {
         ...route,
         label: String(route.label),
-        url: String(route.path)
+        url: String(route.href || route.path)
       };
     });
   const isSwaggerPage = useIsSwaggerUIPage();
