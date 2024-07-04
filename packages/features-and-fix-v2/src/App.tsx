@@ -12,7 +12,7 @@ export const isMobile = () => {
 };
 
 function App() {
-  const { isLoadedOnce, envs, isActive, dateUpdate } = useEnvsInfoHook();
+  const { isLoadedOnce, data, isActive, dateUpdate } = useEnvsInfoHook();
 
   return (
     <DeviceProvider device={isMobile() ? "mobile" : "desktop"}>
@@ -30,10 +30,14 @@ function App() {
           </div>
 
           <div className="flex flex-1 overflow-auto w-full pb-24">
-            <Column envs={envs.filter((env) => env.type === "api" && env.state === "OK")} />
-            <Column envs={envs.filter((env) => env.type === "gm")} />
-            <Column envs={envs.filter((env) => env.type === "go")} />
-            <Column envs={envs.filter((env) => env.type === "partner")} />
+            {data && (
+              <>
+                <Column envs={data.filter((env) => env.type === "api" && env.state === "OK")} />
+                <Column envs={data.filter((env) => env.type === "gm")} />
+                <Column envs={data.filter((env) => env.type === "go")} />
+                <Column envs={data.filter((env) => env.type === "partner")} />
+              </>
+            )}
           </div>
         </div>
       </main>

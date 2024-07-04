@@ -1,0 +1,24 @@
+.toc {
+  @apply ml-20 py-40 bg-lightSand rounded-s-16 pe-20;
+
+  ul {
+    @apply pl-32;
+
+    li {
+      @apply text-b3 font-serif transition-colors duration-300 mb-8 last:mb-0 line-clamp-2 relative pl-12;
+
+      &:before {
+        content: "";
+        @apply bg-saffron w-8 h-8 rounded-full left-0 absolute top-8;
+      }
+
+      &.-level-3 {
+        @apply ml-12;
+      }
+    }
+  }
+
+  a {
+    @apply relative block py-1 pl-8 transition duration-500 ease-in-out;
+  }
+}

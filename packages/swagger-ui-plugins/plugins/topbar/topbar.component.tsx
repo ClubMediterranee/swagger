@@ -11,12 +11,11 @@ export default function Topbar(props: System) {
   const AuthorizeBtnContainer = getComponent("AuthorizeBtnContainer", true);
   const FilterContainer = getComponent("FilterContainer", true);
   const AdvancedFilterPanel = getComponent("AdvancedFilterPanel", true);
-  const RouterLink: HeaderSectionProps["Link"] | undefined = getComponent("RouterLink");
-  const config = useConfig();
+  const RouterLink: HeaderSectionProps["Link"] | undefined = getComponent("RouterLink") || undefined;
 
+  const config = useConfig();
   const version = info.get("version") as string;
   const hasSecurityDefinitions = !!specSelectors.securityDefinitions();
-
   const items: HeaderNavItemProps[] = [
     ...(config.nav || []),
     version && {

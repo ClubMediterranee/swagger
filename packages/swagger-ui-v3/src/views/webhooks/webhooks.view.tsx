@@ -1,87 +1,45 @@
 import { System } from "@clubmed/swagger-ui-plugins/interfaces/System";
-import { List, OrderedMap } from "immutable";
 
-import * as webhooks from "../../../docs/webhooks.md";
+import { Content } from "../../components/content.component";
 import { Page } from "../../components/page.component";
-
-function WebhookRoutes(props: System) {
-  const { specSelectors, getComponent } = props;
-
-  const SvgAssets = getComponent("SvgAssets");
-  const VersionPragmaFilter = getComponent("VersionPragmaFilter");
-  const OperationContainer = getComponent("OperationContainer", true);
-  const Row = getComponent("Row");
-  const Col = getComponent("Col");
-  const Errors = getComponent("errors", true);
-
-  const isSwagger2 = specSelectors.isSwagger2();
-  const isOAS3 = specSelectors.isOAS3();
-  const isSpecEmpty = !specSelectors.specStr();
-
-  if (isSpecEmpty) {
-    return (
-      <div className="swagger-ui">
-        <div className="loading-container">Loading in progress...</div>
-      </div>
-    );
-  }
-
-  let taggedOps = specSelectors.taggedOperations();
-
-  if (taggedOps.size === 0) {
-    return <h3> No operations defined in spec!</h3>;
-  }
-
-  const operations = taggedOps.get("webhooks")!.get("operations") as unknown as List<OrderedMap<string, any>>;
-
-  return (
-    <div>
-      <SvgAssets />
-      <VersionPragmaFilter isSwagger2={isSwagger2} isOAS3={isOAS3} alsoShow={<Errors />}>
-        <Errors />
-
-        <Row>
-          <Col mobile={12} desktop={12}>
-            <h3 className={"font-serif text-h3"}>Routes</h3>
-
-            <div className="operation-tag-content">
-              {operations
-                .map((op) => {
-                  const path = op!.get("path");
-                  const method = op!.get("method");
-                  const specPath = List(["paths", path, method]);
-
-                  return (
-                    <OperationContainer
-                      key={`${path}-${method}`}
-                      specPath={specPath}
-                      op={op}
-                      path={path}
-                      method={method}
-                      tag={"webhooks"}
-                    />
-                  );
-                })
-                .toArray()}
-            </div>
-          </Col>
-        </Row>
-      </VersionPragmaFilter>
-    </div>
-  );
-}
+import { useWebhooks } from "./hooks/webhooks.hook";
+import { WebhookRoutes } from "./webhooks-routes.component";
 
 export default function WebhooksView(props: System) {
-  const { getComponent } = props;
-  const Row = getComponent("Row");
-  const Col = getComponent("Col");
+  const { data: events } = useWebhooks();
+  const webhooks = useWebhooks();
 
   return (
-    <div>
-      <Page attributes={webhooks.attributes} html={webhooks.html} />
-      <br />
-      <br />
-      <WebhookRoutes {...props} />
-    </div>
+    <main>
+      <Page {...webhooks} classContainer={"xl:max-w-1220 px-20 m-auto"}>
+        {events && events?.length > 0 && (
+          <>
+            <h2 id="Routes" className="page-h2">
+              Events
+            </h2>
+            <div>
+              {events.map((event) => {
+                return (
+                  <div key={event.event} className="mb-24">
+                    <div className="mb-16">
+                      <div className="markdown-body">
+                        <h3 id={event.event}>{event.event}</h3>
+
+                        <blockquote>{event.description}</blockquote>
+                      </div>
+                    </div>
+                    <div className="bg-lightSand rounded-16 p-20">
+                      <Content markdown={event.notes} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
+
+        <WebhookRoutes {...props} />
+      </Page>
+    </main>
   );
 }

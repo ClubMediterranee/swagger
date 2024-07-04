@@ -24,7 +24,7 @@ export default function CustomStandaloneLayout(props: System) {
                 key={route.path}
                 {...route}
                 element={
-                  <Suspense fallback={"Not found"}>
+                  <Suspense fallback={<></>}>
                     <route.element basePath={route.path} {...props} />
                   </Suspense>
                 }
