@@ -1,6 +1,6 @@
+import { parser } from "@clubmed/swagger-ui-plugins/plugins/form/remarkable";
 import { PropsWithChildren } from "react";
 
-import { parser } from "../utils/remarkable";
 import { Container } from "./container.component";
 import { Content } from "./content.component";
 import { HeroBanner } from "./hero-banner.component";
@@ -17,6 +17,7 @@ export function Page({
 }: PropsWithChildren<{
   className?: string;
   classContainer?: string;
+  html?: string;
   toc?: { level: string; content: string }[];
   attributes: Record<string, unknown>;
   markdown: string;

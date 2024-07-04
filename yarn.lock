@@ -2053,6 +2053,8 @@ __metadata:
     react-intersection-observer: "npm:^9.10.3"
     react-router: "npm:6.24.0"
     react-router-dom: "npm:6.24.0"
+    remark-highlight.js: "npm:7.0.1"
+    remarkable: "npm:2.0.1"
     swagger-ui-react: "npm:5.17.14"
     tailwindcss: "npm:^3.4.4"
     typescript: "npm:^5.5.3"
@@ -2115,9 +2117,6 @@ __metadata:
     react-intersection-observer: "npm:^9.10.3"
     react-router: "npm:6.24.0"
     react-router-dom: "npm:6.24.0"
-    remark-highlight.js: "npm:7.0.1"
-    remarkable: "npm:2.0.1"
-    remarkable-plugin-heading-id: "npm:^1.0.0"
     swagger-ui-react: "npm:5.17.14"
     tailwindcss: "npm:^3.4.4"
     typescript: "npm:^5.5.3"
@@ -20169,15 +20168,6 @@ __metadata:
     mdast-util-to-string: "npm:^1.0.0"
     unist-util-visit: "npm:^2.0.0"
   checksum: 10/8c90815a0f1f0568450e923391de0183205e18befb7a7e19e111c75ad08cabf7daebe62fccc82b6fbf9f54148dd311b87463632299dbf9fdfe412f6a0a9ab3ea
-  languageName: node
-  linkType: hard
-
-"remarkable-plugin-heading-id@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "remarkable-plugin-heading-id@npm:1.0.0"
-  peerDependencies:
-    remarkable: 2.x
-  checksum: 10/f4edb7f5458268bdd41e696e1f07ab829532242f94958c2b8aa7b1041fd4f446d66fc10867006775698b38deae85e8f95d0d0cb438fdcff7040e6227cbf61190
   languageName: node
   linkType: hard
 

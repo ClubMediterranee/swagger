@@ -22,6 +22,8 @@
     "react-intersection-observer": "^9.10.3",
     "react-router": "6.24.0",
     "react-router-dom": "6.24.0",
+    "remark-highlight.js": "7.0.1",
+    "remarkable": "2.0.1",
     "swagger-ui-react": "5.17.14"
   },
   "devDependencies": {

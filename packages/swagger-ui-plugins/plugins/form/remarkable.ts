@@ -1,7 +1,5 @@
 import hljs from "highlight.js";
 import { Remarkable } from "remarkable";
-// @ts-ignore
-import { remarkablePluginHeadingId } from "remarkable-plugin-heading-id";
 
 export const parser = new Remarkable("commonmark", {
   highlight: (str, lang) => {
@@ -16,4 +14,3 @@ export const parser = new Remarkable("commonmark", {
 });
 parser.block.ruler.enable(["table"]);
 parser.set({ linkTarget: "_blank" });
-parser.use(remarkablePluginHeadingId, {});
