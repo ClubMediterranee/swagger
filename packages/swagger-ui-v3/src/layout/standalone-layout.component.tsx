@@ -1,7 +1,7 @@
 import { useConfig } from "@clubmed/swagger-ui-plugins/contexts/config.context";
 import { System } from "@clubmed/swagger-ui-plugins/interfaces/System";
 import { Footer } from "@clubmed/ui/organisms/Footer/Footer";
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { Route, Routes } from "react-router";
 
 import { routes } from "../routes";
