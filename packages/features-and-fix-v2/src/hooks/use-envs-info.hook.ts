@@ -1,5 +1,5 @@
+import { useFetch } from "@clubmed/ui/hooks/useFetch";
 import { useInterval } from "@clubmed/ui/hooks/useInterval";
-import { useState } from "react";
 
 export interface EnvInfo {
   type: string;
@@ -19,36 +19,12 @@ export interface ApiEnvInfo extends EnvInfo {
 }
 
 export function useEnvsInfoHook() {
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const [isLoadedOnce, setIsLoadedOnce] = useState<boolean>(false);
-  const [error, setError] = useState<Error | null>(null);
-  const [envs, setEnvs] = useState<(EnvInfo | ApiEnvInfo)[]>([]);
-  const [dateUpdate, setDateUpdate] = useState<Date | null>(null);
+  const hook = useFetch<(EnvInfo | ApiEnvInfo)[]>({ url: "https://www.dataviz.clubmed/rest/envs/info" });
 
-  async function fetchEnvsInfo() {
-    setIsActive(true);
-
-    try {
-      const response = await fetch("https://www.dataviz.clubmed/rest/envs/info").then((res) => res.json());
-
-      setEnvs(response);
-      setDateUpdate(new Date());
-    } catch (er: unknown) {
-      setError(er as Error);
-    } finally {
-      setIsActive(false);
-      setIsLoadedOnce(true);
-    }
-  }
-
-  useInterval(fetchEnvsInfo, 10000, []);
+  useInterval(hook.fetchData, 10000, []);
 
   return {
-    isLoadedOnce,
-    isActive,
-    setIsActive,
-    error,
-    dateUpdate,
-    envs
+    ...hook,
+    envs: hook.data
   };
 }
