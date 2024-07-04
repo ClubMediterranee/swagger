@@ -17,7 +17,6 @@ export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "p
   fieldsPersistence?: string[];
   showAdvancedFilter?: boolean;
   showSearch?: boolean;
-  tags?: null | string[];
   tagsSwitches?: { label: string; value: string }[];
   syntaxHighlight?: any;
   useUnsafeMarkdown?: boolean;

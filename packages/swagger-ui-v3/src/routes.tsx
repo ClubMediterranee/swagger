@@ -7,8 +7,6 @@ declare global {
   }
 }
 
-const base = window["basename"] || "";
-
 export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[] = [
   {
     label: "Documentation",
@@ -30,7 +28,7 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
   // },
   {
     label: "Webhooks",
-    path: `${base}/webhooks`,
+    path: `/webhooks`,
     element: React.lazy(() => import("./views/webhooks/webhooks.view")),
     index: false
   },
