@@ -1,7 +1,8 @@
 import { ConfigContext } from "@clubmed/swagger-ui-plugins/contexts/config.context";
-import { useSwaggerUI } from "@clubmed/swagger-ui-plugins/hooks/user-swagger-ui.hook";
+import { useSwaggerUI } from "@clubmed/swagger-ui-plugins/hooks/use-swagger-ui.hook";
 import { RequestSnippetGeneratorPlugin } from "@clubmed/swagger-ui-plugins/plugins/request-snippets/request-snippets.plugin";
 import { DeviceProvider } from "@clubmed/trident-ui/contexts/Device";
+import { useLocation } from "react-router-dom";
 import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
 
 import { StandaloneLayoutPlugin } from "./layout/standalone-layout.plugin";
@@ -10,6 +11,12 @@ import { routes } from "./routes";
 export const isMobile = () => {
   return /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(window.navigator.userAgent);
 };
+
+function useIsSwaggerUIPage() {
+  const location = useLocation();
+
+  return location.pathname === "/";
+}
 
 function App() {
   const nav: { label: string; url: string }[] = routes
@@ -21,14 +28,13 @@ function App() {
         url: String(route.path)
       };
     });
-
-  const isSwaggerPage = window.location.pathname === (window.basename || "") + "/";
+  const isSwaggerPage = useIsSwaggerUIPage();
 
   const config = useSwaggerUI({
     nav,
     showAdvancedFilter: isSwaggerPage,
+    showSearch: isSwaggerPage,
     disableBrowserCache: true,
-    tags: isSwaggerPage ? null : ["webhooks"],
     overridePlugins: [StandaloneLayoutPlugin],
     plugins: ["TopbarPlugin", "StandaloneLayoutPlugin", RequestSnippetGeneratorPlugin],
     contact: "mailto:lvisdigiapi@clubmed.com",
@@ -130,14 +136,7 @@ function App() {
           label: "Legal Information",
           href: "https://www.clubmed.fr/l/informations-legales"
         }
-      ],
-      newsletter: {
-        label: "Sign up to our newsletter",
-        cta: {
-          label: "Sign up",
-          href: "/sign-up"
-        }
-      }
+      ]
     }
   });
 

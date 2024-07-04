@@ -7,7 +7,7 @@ export interface HeroBannerProps extends ImgHTMLAttributes<HTMLImageElement> {
 
 export function HeroBanner({ children, className, ...props }: PropsWithChildren<HeroBannerProps>) {
   return (
-    <div className={classnames("api-banner sm:grid sm:grid-cols-2 lg:grid-cols-5 wrapper", className)}>
+    <div className={classnames("api-banner sm:grid sm:grid-cols-2 lg:grid-cols-5", className)}>
       <div className="sm:col-start-2 lg:col-start-4 sm:row-start-1 lg:col-span-2">
         <img
           draggable="false"

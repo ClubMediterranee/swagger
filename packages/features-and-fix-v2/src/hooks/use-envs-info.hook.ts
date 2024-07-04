@@ -23,8 +23,5 @@ export function useEnvsInfoHook() {
 
   useInterval(hook.fetchData, 10000, []);
 
-  return {
-    ...hook,
-    envs: hook.data
-  };
+  return hook;
 }

@@ -1,5 +1,20 @@
 import "../styles/markdown.css";
 
-export function Content({ html, markdown }: { html?: string; markdown?: string }) {
-  return <div className="markdown-body" dangerouslySetInnerHTML={{ __html: html || markdown || "" }} />;
+import classnames from "classnames";
+import React, { useMemo } from "react";
+
+import { parser } from "../utils/remarkable";
+
+export interface ContentProps {
+  className?: string;
+  html?: string;
+  markdown?: string;
+}
+
+export function Content({ html, markdown, className }: ContentProps) {
+  const content = useMemo<string>(() => {
+    return html || parser.render(markdown || "");
+  }, [html, markdown]);
+
+  return <div className={classnames("markdown-body", className)} dangerouslySetInnerHTML={{ __html: content }} />;
 }
