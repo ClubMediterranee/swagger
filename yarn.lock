@@ -2115,6 +2115,9 @@ __metadata:
     react-intersection-observer: "npm:^9.10.3"
     react-router: "npm:6.24.0"
     react-router-dom: "npm:6.24.0"
+    remark-highlight.js: "npm:7.0.1"
+    remarkable: "npm:2.0.1"
+    remarkable-plugin-heading-id: "npm:^1.0.0"
     swagger-ui-react: "npm:5.17.14"
     tailwindcss: "npm:^3.4.4"
     typescript: "npm:^5.5.3"
@@ -12635,6 +12638,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fault@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "fault@npm:2.0.1"
+  dependencies:
+    format: "npm:^0.2.0"
+  checksum: 10/c9b30f47d95769177130a9409976a899ed31eb598450fbad5b0d39f2f5f56d5f4a9ff9257e0bee8407cb0fc3ce37165657888c6aa6d78472e403893104329b72
+  languageName: node
+  linkType: hard
+
 "fb-watchman@npm:^2.0.0":
   version: 2.0.2
   resolution: "fb-watchman@npm:2.0.2"
@@ -13657,6 +13669,13 @@ __metadata:
   version: 10.7.3
   resolution: "highlight.js@npm:10.7.3"
   checksum: 10/db8d10a541936b058e221dbde77869664b2b45bca75d660aa98065be2cd29f3924755fbc7348213f17fd931aefb6e6597448ba6fe82afba6d8313747a91983ee
+  languageName: node
+  linkType: hard
+
+"highlight.js@npm:~11.8.0":
+  version: 11.8.0
+  resolution: "highlight.js@npm:11.8.0"
+  checksum: 10/a1952caae8ae07b9e60faad87307881eaf38d2356b0b1295b0692b16fb57811da6bb4d143a4940609f58c6a8facf73ff493bab4d946fb24731af9355d51d0a69
   languageName: node
   linkType: hard
 
@@ -16336,6 +16355,17 @@ __metadata:
     fault: "npm:^1.0.0"
     highlight.js: "npm:~10.7.0"
   checksum: 10/3294677be15bbc256556f097d9b675f23f14309aceeada7880473c57bdbdd7761f200d903fe26d8fa5e82259f70a39465d1d40754c4c049ad2bbd33d77e2c06f
+  languageName: node
+  linkType: hard
+
+"lowlight@npm:^2.0.0":
+  version: 2.9.0
+  resolution: "lowlight@npm:2.9.0"
+  dependencies:
+    "@types/hast": "npm:^2.0.0"
+    fault: "npm:^2.0.0"
+    highlight.js: "npm:~11.8.0"
+  checksum: 10/71f07b5de3acf8d5326e66105981cebff4da25f85ed57055b3e5cc576aa4ce096ca0292f28db0eccda1511436783ec79aeeb41e60c0fa0c0a9dbc64c6ab754f8
   languageName: node
   linkType: hard
 
@@ -20119,6 +20149,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"remark-highlight.js@npm:7.0.1":
+  version: 7.0.1
+  resolution: "remark-highlight.js@npm:7.0.1"
+  dependencies:
+    "@types/mdast": "npm:^3.0.0"
+    lowlight: "npm:^2.0.0"
+    unified: "npm:^10.0.0"
+    unist-util-visit: "npm:^4.0.0"
+  checksum: 10/cfaa10ec5096acae453ba7167ea0ce83f61732422fc9419c1675a89777da07e11c1cd3fd446da663d1bdaffc7cf5446b3e39d7734a94a282fac0a9d3c40f768d
+  languageName: node
+  linkType: hard
+
 "remark-slug@npm:^6.0.0":
   version: 6.1.0
   resolution: "remark-slug@npm:6.1.0"
@@ -20130,7 +20172,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remarkable@npm:^2.0.1":
+"remarkable-plugin-heading-id@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "remarkable-plugin-heading-id@npm:1.0.0"
+  peerDependencies:
+    remarkable: 2.x
+  checksum: 10/f4edb7f5458268bdd41e696e1f07ab829532242f94958c2b8aa7b1041fd4f446d66fc10867006775698b38deae85e8f95d0d0cb438fdcff7040e6227cbf61190
+  languageName: node
+  linkType: hard
+
+"remarkable@npm:2.0.1, remarkable@npm:^2.0.1":
   version: 2.0.1
   resolution: "remarkable@npm:2.0.1"
   dependencies:
