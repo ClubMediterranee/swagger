@@ -5,12 +5,6 @@ export const taggedOperations =
   (state: any, ...args: any[]) => {
     let taggedOps = oriSelector(state, ...args);
 
-    if (window.location.href.includes("webhooks")) {
-      return taggedOps.filter((_: unknown, tag: string) => {
-        return tag === "webhooks";
-      });
-    }
-
     const { fn, layoutSelectors, getConfigs } = system.getSystem();
     const configs = getConfigs();
     const { maxDisplayedTags } = configs;

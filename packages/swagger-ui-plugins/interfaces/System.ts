@@ -1,4 +1,4 @@
-import { Iterable, List, Map } from "immutable";
+import { Iterable, List, Map, OrderedMap } from "immutable";
 import { FunctionComponent } from "react";
 import { SwaggerUIProps } from "swagger-ui-react";
 
@@ -55,7 +55,7 @@ export interface SpecSelectors extends Record<string, unknown> {
   isOAS3(): boolean;
   isOAS31(): boolean;
   specStr(): string;
-  operationsWithTags(state: any): any;
+  operationsWithTags(): Map<string, OrderedMap<string, Map<string, unknown>>>;
   validOperationMethods(): List<string>;
   taggedOperations(): Map<string, Map<string, unknown>>;
 }

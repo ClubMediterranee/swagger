@@ -1,7 +1,31 @@
+import { Loader } from "@clubmed/trident-ui/molecules/Loader";
+import React, { useEffect } from "react";
+
 import { System } from "../../interfaces/System";
 
 export default function BaseLayout(props: System) {
   const { errSelectors, specSelectors, getComponent } = props;
+  const loadingStatus = specSelectors.loadingStatus();
+
+  const [loading, setLoading] = React.useState(loadingStatus === "loading");
+  const HeroBanner = getComponent("HeroBanner", true);
+
+  useEffect(() => {
+    if (loadingStatus === "loading") {
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
+    }
+  }, [loadingStatus]);
+
+  if (loading) {
+    return (
+      <div className="swagger-ui">
+        <HeroBanner {...props} />
+        <Loader isVisible={loading} label={"We're loading our documentation. It shouldn't take too long!"} />
+      </div>
+    );
+  }
 
   const SvgAssets = getComponent("SvgAssets");
   const VersionPragmaFilter = getComponent("VersionPragmaFilter");
@@ -10,16 +34,12 @@ export default function BaseLayout(props: System) {
   const Webhooks = getComponent("Webhooks", true);
   const Row = getComponent("Row");
   const Col = getComponent("Col");
-  const HeroBanner = getComponent("HeroBanner", true);
   const Errors = getComponent("errors", true);
 
   const isSwagger2 = specSelectors.isSwagger2();
   const isOAS3 = specSelectors.isOAS3();
   const isOAS31 = specSelectors.isOAS31();
-
   const isSpecEmpty = !specSelectors.specStr();
-
-  const loadingStatus = specSelectors.loadingStatus();
 
   let loadingMessage = null;
 
@@ -54,6 +74,7 @@ export default function BaseLayout(props: System) {
   if (loadingMessage) {
     return (
       <div className="swagger-ui">
+        <HeroBanner {...props} />
         <div className="loading-container">{loadingMessage}</div>
       </div>
     );

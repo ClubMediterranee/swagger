@@ -1,11 +1,11 @@
 import type { Iterable, List, Map, OrderedMap } from "immutable";
 
-interface Term {
-  models: string[];
-  tags: string[];
-  properties: string[];
-  raw: any;
-}
+// interface Term {
+//   models: string[];
+//   tags: string[];
+//   properties: string[];
+//   raw: any;
+// }
 
 function getPayloadModels(operation: OrderedMap<string, any>) {
   return (operation.get("parameters") as List<Map<string, any>>)
@@ -17,11 +17,11 @@ function getPayloadModels(operation: OrderedMap<string, any>) {
     });
 }
 
-function getResponseModel(operation: OrderedMap<string, any>) {
-  return (operation.get("responses") as Map<string, any>)?.map((response) => {
-    return response?.get("schema")?.get("$ref")?.replace("#/definitions/", "");
-  });
-}
+// function getResponseModel(operation: OrderedMap<string, any>) {
+//   return (operation.get("responses") as Map<string, any>)?.map((response) => {
+//     return response?.get("schema")?.get("$ref")?.replace("#/definitions/", "");
+//   });
+// }
 
 function filterOperations(operations: List<Map<string, any>>, phrase: string) {
   if (phrase.length < 3) {
