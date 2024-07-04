@@ -40,7 +40,7 @@ export default function Topbar(props: System) {
 
   return (
     <Header Link={RouterLink} homepageUrl="/" openMenu="Open menu" items={items.filter(Boolean)}>
-      <FilterContainer />
+      {config.showSearch && <FilterContainer />}
       {hasSecurityDefinitions ? <AuthorizeBtnContainer /> : null}
     </Header>
   );

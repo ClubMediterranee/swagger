@@ -16,6 +16,7 @@ export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "p
   oauth2RedirectUrl?: string;
   fieldsPersistence?: string[];
   showAdvancedFilter?: boolean;
+  showSearch?: boolean;
   tags?: null | string[];
   tagsSwitches?: { label: string; value: string }[];
   syntaxHighlight?: any;
@@ -42,6 +43,7 @@ export function useSwaggerUI(baseOpts: UseSwaggerUIOptions): SwaggerUIProps {
 
   config = {
     showAdvancedFilter: true,
+    showSearch: true,
     layout: "StandaloneLayout",
     defaultModelsExpandDepth: 0,
     docExpansion: "list",
