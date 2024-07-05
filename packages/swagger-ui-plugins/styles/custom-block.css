@@ -1,0 +1,26 @@
+.swagger-ui .markdown-body .custom-block,
+.custom-block {
+  @apply rounded-8 p-24 pb-8 my-24;
+
+  p:first-child {
+    @apply text-b3;
+  }
+
+  &.info {
+    @apply bg-pearl;
+  }
+
+  .custom-block-title {
+    @apply font-serif;
+  }
+
+  &.note {
+    background-color: #e9eaff;
+  }
+  &.warning {
+    background-color: #fcf4dc;
+  }
+  &.danger {
+    background-color: #fee4e8;
+  }
+}
