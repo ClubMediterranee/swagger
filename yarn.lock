@@ -1977,7 +1977,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/feature-and-fix-v2@workspace:packages/features-and-fix-v2"
   dependencies:
-    "@clubmed/trident-ui": "npm:1.0.0-beta.14"
+    "@clubmed/trident-ui": "npm:1.0.0-beta.18"
     "@clubmed/ui": "workspace:*"
     "@types/react": "npm:^18.3.3"
     "@vitejs/plugin-react": "npm:4.3.1"
@@ -1995,7 +1995,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/root@workspace:."
   dependencies:
-    "@clubmed/trident-ui": "npm:1.0.0-beta.14"
+    "@clubmed/trident-ui": "npm:1.0.0-beta.18"
     "@cmflow/cli": "npm:1.0.12"
     "@commitlint/cli": "npm:19.3.0"
     "@commitlint/config-conventional": "npm:19.2.2"
@@ -2036,7 +2036,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/swagger-ui-plugins@workspace:packages/swagger-ui-plugins"
   dependencies:
-    "@clubmed/trident-ui": "npm:1.0.0-beta.14"
+    "@clubmed/trident-ui": "npm:1.0.0-beta.18"
     "@clubmed/ui": "workspace:*"
     "@types/lodash": "npm:^4.17.6"
     "@types/react": "npm:^18.3.3"
@@ -2074,7 +2074,7 @@ __metadata:
   resolution: "@clubmed/swagger-ui-standalone-v3@workspace:packages/swagger-ui-standalone-v3"
   dependencies:
     "@clubmed/swagger-ui-plugins": "npm:1.22.0"
-    "@clubmed/trident-ui": "npm:1.0.0-beta.14"
+    "@clubmed/trident-ui": "npm:1.0.0-beta.18"
     "@clubmed/ui": "workspace:*"
     "@types/lodash": "npm:^4.17.6"
     "@types/react": "npm:^18.3.3"
@@ -2105,7 +2105,7 @@ __metadata:
   resolution: "@clubmed/swagger-ui-v3@workspace:packages/swagger-ui-v3"
   dependencies:
     "@clubmed/swagger-ui-plugins": "npm:1.22.0"
-    "@clubmed/trident-ui": "npm:1.0.0-beta.14"
+    "@clubmed/trident-ui": "npm:1.0.0-beta.18"
     "@clubmed/ui": "workspace:*"
     "@types/lodash": "npm:^4.17.6"
     "@types/react": "npm:^18.3.3"
@@ -2132,9 +2132,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@clubmed/trident-ui@npm:1.0.0-beta.14":
-  version: 1.0.0-beta.14
-  resolution: "@clubmed/trident-ui@npm:1.0.0-beta.14"
+"@clubmed/trident-ui@npm:1.0.0-beta.18":
+  version: 1.0.0-beta.18
+  resolution: "@clubmed/trident-ui@npm:1.0.0-beta.18"
   dependencies:
     "@juggle/resize-observer": "npm:^3.4.0"
     "@react-spring/web": "npm:^9.7.3"
@@ -2151,7 +2151,7 @@ __metadata:
     react: ">=17.0.2"
     react-dom: ">=17.0.2"
     tailwindcss: ">=3.3.5"
-  checksum: 10/98cab9f7848cb48336bc35bf411596b85a48eea0657ee9aa3de82398826c757029e86b6d6f2f9905cc5e60a36e0e5ae9608a3b25e58e659532c13ddd74d13543
+  checksum: 10/225845772c70c2f1356f24c10479e5bb38e01dbfb630cbe7526fe5fd329ccda6c47ba839268345ecd729b7c718c4ecd1dd48d6d471802b8e43b049d5f894d605
   languageName: node
   linkType: hard
 
@@ -2159,7 +2159,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/ui@workspace:packages/ui"
   dependencies:
-    "@clubmed/trident-ui": "npm:1.0.0-beta.14"
+    "@clubmed/trident-ui": "npm:1.0.0-beta.18"
     "@juggle/resize-observer": "npm:^3.4.0"
     "@react-spring/web": "npm:^9.7.3"
     "@rollup/plugin-node-resolve": "npm:^15.2.3"

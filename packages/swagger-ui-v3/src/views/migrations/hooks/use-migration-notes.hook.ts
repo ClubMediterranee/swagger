@@ -1,32 +1,15 @@
 import { useFetch } from "@clubmed/ui/hooks/useFetch";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 
 import * as migrationNotes from "../../../../docs/migration-notes.md";
-
-export interface MigrationNote {
-  id: string;
-  number: number;
-  title: string;
-  published_at: string;
-  updated_at: string;
-  content: string;
-  category: string;
-  route: {
-    path: string;
-    method: string;
-    deprecated: boolean;
-    discussion_id: string;
-    replacement_route: string;
-    deletion_date: string;
-    id: string;
-  };
-}
+import type { MigrationNote } from "../interfaces/migration-note";
 
 export function useMigrationNotes() {
   const hooks = useFetch<MigrationNote[]>({ url: "https://www.dataviz.clubmed/rest/migration-notes" });
-  const toc = useMemo(() => {
-    return [...migrationNotes.toc];
-  }, [hooks.data]);
+
+  hooks.data = (hooks.data || []).sort((a, b) => {
+    return b.route.deletion_date < a.route.deletion_date ? -1 : 1;
+  });
 
   useEffect(() => {
     hooks.fetchData();
@@ -35,6 +18,16 @@ export function useMigrationNotes() {
   return {
     ...migrationNotes,
     ...hooks,
-    toc
+    toc: [
+      ...migrationNotes.toc,
+      {
+        level: "3",
+        content: "Deprecated routes"
+      },
+      {
+        level: "3",
+        content: "Outdated routes"
+      }
+    ]
   };
 }

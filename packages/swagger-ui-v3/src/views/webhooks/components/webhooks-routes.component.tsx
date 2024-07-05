@@ -1,4 +1,4 @@
-import { System } from "@clubmed/swagger-ui-plugins/interfaces/System";
+import type { System } from "@clubmed/swagger-ui-plugins/interfaces/System";
 import { List } from "immutable";
 
 export function WebhookRoutes(props: System) {
