@@ -1,23 +1,20 @@
 import cx from "classnames";
 
-import { parser } from "./remarkable";
+import { useMarkdown } from "./use-markdown.hook";
 
 export const Markdown = ({ source, className = "" }: { source: any; className: any }) => {
-  if (typeof source !== "string") {
+  const { content } = useMarkdown({ source });
+
+  if (typeof source !== "string" || !source || !content) {
     return null;
   }
 
-  if (source) {
-    const html = parser.render(source);
-
-    return (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: html.trim()
-        }}
-        className={cx(className, "renderedMarkdown")}
-      />
-    );
-  }
-  return null;
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: content
+      }}
+      className={cx(className, "renderedMarkdown")}
+    />
+  );
 };
