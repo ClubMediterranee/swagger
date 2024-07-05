@@ -1,7 +1,7 @@
 {
   "name": "@clubmed/swagger-ui-v3",
   "private": true,
-  "version": "1.21.0",
+  "version": "1.22.0",
   "scripts": {
     "dev": "vite --port 5173",
     "build": "tsc && vite build --base 'https://clubmediterranee.github.io/swagger/latest/swagger-ui-v3'",
@@ -20,7 +20,7 @@
     }
   },
   "dependencies": {
-    "@clubmed/swagger-ui-plugins": "1.21.0",
+    "@clubmed/swagger-ui-plugins": "1.22.0",
     "@clubmed/trident-ui": "1.0.0-beta.14",
     "@clubmed/ui": "workspace:*",
     "@types/swagger-ui-react": "4.18.3",
