@@ -21,8 +21,8 @@ export default function Topbar(props: System) {
     version && {
       position: "right",
       label: (
-        <span>
-          <span className="uppercase text-red">{config.appName}</span> v{version}
+        <span className={"flex items-center gap-4"}>
+          <span className="text-b6">v{version}</span>
         </span>
       ),
       className: "inline-block flex items-center text-b4 font-sans shrink-0 bg-transparent text-grayDarker h-auto py-12 px-8"
