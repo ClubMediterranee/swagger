@@ -41,3 +41,14 @@ Any additive (non-breaking) changes will be available in all supported API versi
 - adding enum values
 
 When a new REST API version is released, the previous API version will be supported for at least 6 more months following the release of the new version a route.
+
+## Breaking changes
+
+Here are the routes that will be removed in the future. Please make sure to update your code accordingly.
+
+::: warning
+We have two states for breaking changes: `deprecated` and `outdated`.
+
+- The `deprecated` state means that the route will be removed in the future (6 months). Only critical bug fixes will be applied to the route.
+- The `removed` state means that the route is consumed by one our consumers. So the route are not removed yet but will be removed when it's possible. In this case the route is not maintained anymore.
+  :::
