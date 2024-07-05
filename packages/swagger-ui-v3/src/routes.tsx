@@ -1,5 +1,5 @@
 import React from "react";
-import { RouteObject, RouteProps } from "react-router";
+import { RouteProps } from "react-router";
 
 declare global {
   interface Window {

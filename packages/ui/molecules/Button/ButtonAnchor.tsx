@@ -8,7 +8,7 @@ import type { AnchorHTMLAttributes, FunctionComponent } from "react";
 import { Link } from "../Link/Link";
 
 interface ButtonAnchorProps extends CommonButtonProps, AnchorHTMLAttributes<HTMLAnchorElement> {
-  component?: FunctionComponent;
+  component?: FunctionComponent | string;
 }
 
 export const ButtonAnchor: FunctionComponent<ButtonAnchorProps> = ({
