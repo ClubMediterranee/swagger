@@ -5,15 +5,23 @@
     @apply pl-32;
 
     li {
-      @apply text-b3 font-serif transition-colors duration-300 mb-8 last:mb-0 line-clamp-2 relative pl-12;
+      @apply text-b3 font-serif transition-colors duration-300 mb-8 last:mb-0 line-clamp-2 relative pl-12 cursor-pointer;
 
       &:before {
         content: "";
-        @apply bg-saffron w-8 h-8 rounded-full left-0 absolute top-8;
+        @apply bg-saffron w-8 h-8 rounded-full left-0 absolute top-8 transition-colors duration-300;
+
+        &:hover {
+          @apply bg-saffron-active;
+        }
       }
 
       &.-level-3 {
         @apply ml-12;
+      }
+
+      &:hover a {
+        @apply text-ultramarine-active;
       }
     }
   }

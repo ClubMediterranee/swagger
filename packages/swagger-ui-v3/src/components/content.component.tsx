@@ -1,6 +1,6 @@
 import "../styles/markdown.css";
 
-import { parser } from "@clubmed/swagger-ui-plugins/plugins/form/remarkable";
+import { useMarkdown } from "@clubmed/swagger-ui-plugins/plugins/form/use-markdown.hook";
 import classnames from "classnames";
 import React, { useMemo } from "react";
 
@@ -11,9 +11,11 @@ export interface ContentProps {
 }
 
 export function Content({ html, markdown, className }: ContentProps) {
+  const md = useMarkdown({ source: markdown });
+
   const content = useMemo<string>(() => {
-    return html || parser.render(markdown || "");
-  }, [html, markdown]);
+    return html || md.content || "";
+  }, [html, md]);
 
   return <div className={classnames("markdown-body", className)} dangerouslySetInnerHTML={{ __html: content }} />;
 }
