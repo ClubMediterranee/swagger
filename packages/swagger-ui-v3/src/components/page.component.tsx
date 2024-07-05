@@ -1,4 +1,4 @@
-import { parser } from "@clubmed/swagger-ui-plugins/plugins/form/remarkable";
+import { useMarkdown } from "@clubmed/swagger-ui-plugins/plugins/form/use-markdown.hook";
 import { PropsWithChildren } from "react";
 
 import { Container } from "./container.component";
@@ -22,7 +22,7 @@ export function Page({
   attributes: Record<string, unknown>;
   markdown: string;
 }>) {
-  const bannerHtml = parser.render(attributes.banner as string);
+  const md = useMarkdown({ source: attributes.banner as string });
 
   return (
     <div className={className}>
@@ -35,7 +35,7 @@ export function Page({
           alt=""
         >
           <h1 className="title">{attributes.title as string}</h1>
-          <div dangerouslySetInnerHTML={{ __html: bannerHtml.replace(/\\n/gi, "<br />") }} />
+          {md.content && <div dangerouslySetInnerHTML={{ __html: md.content?.replace(/\\n/gi, "<br />") }} />}
         </HeroBanner>
       </Container>
       <div className={classContainer}>
