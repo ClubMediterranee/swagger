@@ -14,9 +14,9 @@ permissions:
   pages: write
   id-token: write
 
-#concurrency:
-#  group: "pages"
-#  cancel-in-progress: false
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   lint:
@@ -27,9 +27,9 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
@@ -45,9 +45,9 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
@@ -55,9 +55,35 @@ jobs:
         run: yarn install --immutable
       - name: Run Test 🔍
         run: yarn test
+  test-storybook:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+      - name: Install Playwright 🚀
+        run: npx playwright install --with-deps
+      - name: Install dependencies 🚀
+        run: yarn install --immutable
+      - name: Build Storybook
+        run: yarn build:storybook --quiet
+      - name: Serve Storybook and run tests 🔍
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "npx http-server dist/storybook --port 6006 --silent" \
+            "npx wait-on tcp:6006 && yarn test:storybook"
 
   deploy:
-    needs: [test, lint]
+    needs: [test, test-storybook, lint]
     if: github.event_name != 'pull_request' && contains('
       refs/heads/main
       refs/heads/alpha
@@ -72,9 +98,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
@@ -93,7 +119,19 @@ jobs:
           git config -l  
           yarn dlx -p @cmflow/cli@v1.0.10 cmrelease
           # force rebuild
-          yarn build
+
+      - name: Build swagger v3 (API)
+        run: yarn build:swagger:v3
+
+      - name: Build swagger v3 (StandAlone)
+        run: yarn build:swagger:standalone:v3
+
+      - name: Build feature and fix app
+        run: yarn build:feature-and-fix
+
+      - name: Build storybook
+        run: yarn build:storybook
+
       - name: Upload artifact 📝
         uses: actions/upload-pages-artifact@v3
         with:

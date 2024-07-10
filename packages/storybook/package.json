@@ -1,5 +1,5 @@
 {
-  "name": "storybook",
+  "name": "@clubmed/storybook",
   "packageManager": "yarn@3.6.0",
   "type": "module",
   "devDependencies": {
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
+    "storybook:build": "storybook build -o ../../dist/storybook",
     "storybook:test": "yarn test-storybook",
     "storybook:test:ci": "yarn test-storybook --maxWorkers=2"
   },
