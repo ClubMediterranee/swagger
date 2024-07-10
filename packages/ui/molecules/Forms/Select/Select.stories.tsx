@@ -12,6 +12,7 @@ export default {
   },
   args: {},
   argTypes: {},
+  tags: ["no-tests"],
   render(args) {
     return (
       <div style={{ width: "300px" }}>

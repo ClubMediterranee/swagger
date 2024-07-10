@@ -55,6 +55,11 @@ export function updateFields(state: State, action: UpdateFieldsAction) {
 
   const valueKey = isXml ? "value_xml" : "value";
 
+  // disable default value assigment from invalid example value
+  if (param.get("in") === "query" && param.getIn(["schema", "type"]) === "array" && typeof value === "string") {
+    return state;
+  }
+
   state = state.setIn(["meta", "paths", ...pathMethod, "parameters", paramKey, valueKey], fromJS(value));
 
   paramName = paramName || param.get("name");
