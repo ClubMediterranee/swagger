@@ -11,11 +11,12 @@
     "url": "https://github.com/ClubMediterranee/swagger.git"
   },
   "scripts": {
-    "build": "yarn build:swagger:v3 && yarn build:swagger:standalone:v3 && nx build @clubmed/feature-and-fix-v2",
     "build:swagger:v3": "nx build @clubmed/swagger-ui-v3",
     "build:swagger:standalone:v3": "nx build @clubmed/swagger-ui-standalone-v3",
     "build:feature-and-fix": "nx build @clubmed/feature-and-fix-v2",
+    "build:storybook": "nx storybook:build @clubmed/storybook",
     "test": "vitest run",
+    "test:storybook": "nx storybook:test:ci @clubmed/storybook",
     "test:ci": "nx run-many --target=test:ci --all",
     "lint": "eslint 'packages/**/*.{ts,js,tsx,jsx}'",
     "lint:fix": "eslint 'packages/**/*.{ts,js,tsx,jsx}' --fix",
