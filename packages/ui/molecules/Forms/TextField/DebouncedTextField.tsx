@@ -1,13 +1,5 @@
-import { TextField, TextFieldProps } from "@clubmed/trident-ui/molecules/Forms/TextField";
+import { TextField } from "@clubmed/trident-ui/molecules/Forms/TextField";
 
-import { useDebounce } from "../../../hooks/useDebounce";
+import { withDebounce } from "../../../hooks/useDebounce";
 
-export function DebouncedTextField<Value = any>({
-  debounceTimeout,
-  onChange,
-  ...props
-}: TextFieldProps<Value> & { debounceTimeout: number }) {
-  const debouncedRequest = useDebounce(onChange, debounceTimeout);
-
-  return <TextField {...props} onChange={debouncedRequest} />;
-}
+export const DebouncedTextField = withDebounce(TextField);

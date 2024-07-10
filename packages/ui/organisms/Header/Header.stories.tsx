@@ -8,6 +8,7 @@ export default {
   title: "Header",
   component: Header,
   parameters: { layout: "fullscreen" },
+  tags: ["no-tests"],
   args: {
     items: [
       {

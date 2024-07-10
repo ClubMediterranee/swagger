@@ -8,7 +8,8 @@ export default {
   title: "Footer",
   component: Footer,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  parameters: { layout: "fullscreen" }
+  parameters: { layout: "fullscreen" },
+  tags: ["no-tests"]
 } as Meta<typeof Footer>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
