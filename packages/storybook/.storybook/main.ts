@@ -1,6 +1,7 @@
+import { dirname, join } from "path";
 export default {
   stories: [
-    "../stories/**/*.stories.mdx",
+    "../stories/**/*.mdx",
     "../stories/**/*.stories.@(js|jsx|ts|tsx)",
     {
       directory: "../../ui/atoms",
@@ -15,15 +16,29 @@ export default {
       titlePrefix: "Organisms"
     }
   ],
-  addons: ["@storybook/addon-a11y", "@storybook/addon-links", "@storybook/addon-essentials"],
-  framework: "@storybook/react-vite",
+  addons: [
+    getAbsolutePath("@storybook/addon-a11y"),
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-interactions")
+  ],
+  framework: getAbsolutePath("@storybook/react-vite"),
   typescript: {
     reactDocgen: "react-docgen"
   },
-  docs: {
-    autodocs: true
-  },
+  docs: {},
   core: {
     disableTelemetry: true
+  },
+  refs: {
+    "trident-ui": {
+      title: "Trident UI",
+      url: "https://develop.trident-ui.pro.clubmed",
+      expanded: false
+    }
   }
 };
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
+}
