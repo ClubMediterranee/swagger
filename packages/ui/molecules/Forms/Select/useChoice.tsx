@@ -1,5 +1,7 @@
 import type { IconicNames } from "@clubmed/trident-ui/atoms/Icons";
 import Choices from "choices.js";
+import { uniq } from "lodash";
+import isEqual from "lodash/isEqual";
 import { ReactNode, useEffect, useRef } from "react";
 
 export interface SelectOptionProps<Data = any> extends Record<string, any> {
@@ -55,8 +57,6 @@ export interface SelectMultiple extends SelectProps {
   onChange?: (name: string | undefined, value: string[]) => void;
 }
 
-export type SelectOptionsByGroups = { label: string; id: number; choices: SelectOptionProps[] }[];
-
 export type AllSelectProps = SelectSingle | SelectMultiple;
 
 export function useChoice({
@@ -72,17 +72,19 @@ export function useChoice({
 }: AllSelectProps) {
   const ref = useRef<any>();
   const choicesRef = useRef<Choices>();
+  const optionsRef = useRef<null | any[]>(null);
+  const localValue = useRef<null | any>(null);
 
   useEffect(() => {
-    if (choicesRef.current) {
-      const opts = options.length === 1 && options[0].choices?.length ? options[0].choices : options;
-
+    if (choicesRef.current && !isEqual(optionsRef.current, options)) {
       if (multiple) {
         choicesRef.current.clearStore();
-        choicesRef.current.setChoices(opts, "value", "label", true);
+        choicesRef.current.setChoices(options, "value", "label", true);
       } else {
-        choicesRef.current.setChoices(opts, "value", "label", true);
+        choicesRef.current.clearStore();
+        choicesRef.current.setChoices(options, "value", "label", true);
       }
+      optionsRef.current = options;
     }
   }, [multiple, options]);
 
@@ -91,7 +93,7 @@ export function useChoice({
       choicesRef.current = new Choices(ref.current, {
         silent: true,
         disabled,
-        searchEnabled,
+        searchEnabled: true,
         searchPlaceholderValue: "Filter options",
         removeItemButton: true,
         items: options,
@@ -106,17 +108,29 @@ export function useChoice({
       } as any);
     }
 
-    if (value || defaultValue) {
-      choicesRef.current.setValue([value || defaultValue] as any);
+    if (!isEqual(optionsRef.current, options)) {
+      choicesRef.current.clearStore();
+      choicesRef.current.setChoices(options, "value", "label", true);
+      optionsRef.current = options;
+    }
+
+    if (!(multiple && (value as any) === "")) {
+      if (!isEqual(localValue.current, value)) {
+        choicesRef.current.setValue(uniq([].concat(value as any)) as []);
+        localValue.current = value;
+      }
     }
 
     const addItem = ({ detail: { value: newValue } }: any) => {
       if (onChange) {
         if (multiple) {
-          onChange(name, [...(value as string[]), newValue]);
+          localValue.current = uniq([...((value as string[]) || []), newValue]);
+          localValue.current = value;
         } else {
-          onChange(name, newValue);
+          localValue.current = newValue;
         }
+
+        onChange(name, newValue);
       }
     };
 
@@ -124,7 +138,7 @@ export function useChoice({
       if (multiple) {
         onChange?.(
           name,
-          (value as string[]).filter((v) => v !== newValue)
+          ((value as string[]) || []).filter((v) => v !== newValue)
         );
       }
     };
@@ -136,7 +150,7 @@ export function useChoice({
       choicesRef.current?.passedElement.element.removeEventListener("addItem", addItem);
       choicesRef.current?.passedElement.element.removeEventListener("removeItem", removeItem);
     };
-  }, [multiple, onChange, options, placeholder, searchEnabled, value, defaultValue]);
+  }, [multiple, onChange, options, placeholder, searchEnabled, defaultValue]);
 
   useEffect(() => {
     if (choicesRef.current) {

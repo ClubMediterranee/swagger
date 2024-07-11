@@ -16,12 +16,29 @@ export function wrapJsonschemaStringArrayComponent(Base: FunctionComponent<any>,
   ) => {
     let { schema, getComponent } = props;
 
-    const schemaItemsEnum = schema.getIn(["items", "enum"]);
+    const schemaItemsEnum = schema.getIn(["items", "enum"]) || schema.get("enum");
     const schemaItemsType = schema.getIn(["items", "type"]);
     const schemaItemsFormat = schema.getIn(["items", "format"]);
+    const Select = getComponent("Select");
     let isArrayItemFile = schemaItemsType === "file" || (schemaItemsType === "string" && schemaItemsFormat === "binary");
+    const value = props.value && props.value?.toJS ? props.value.toJS() : props.value;
 
-    if (schemaItemsEnum || isArrayItemFile) {
+    if (schemaItemsEnum?.size) {
+      return (
+        <Select
+          multiple={true}
+          {...omit(props, ["value"])}
+          value={value}
+          allowedValues={schemaItemsEnum.toJS()}
+          allowEmptyValue={false}
+          onChange={(value: string[]) => {
+            props.onChange(value);
+          }}
+        />
+      );
+    }
+
+    if (isArrayItemFile) {
       return <Base {...props} />;
     }
 
@@ -29,7 +46,7 @@ export function wrapJsonschemaStringArrayComponent(Base: FunctionComponent<any>,
       <DebouncedArrayTextField<string[]>
         className={"max-w-[340px]"}
         name={props.description}
-        value={props.value && props.value?.toJS ? props.value.toJS() : props.value}
+        value={value}
         debounceTimeout={300}
         onChange={(_, value) => {
           props.onChange(value);
