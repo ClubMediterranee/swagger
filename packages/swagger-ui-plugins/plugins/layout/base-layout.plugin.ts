@@ -1,3 +1,4 @@
+import { AuthSelectComponent } from "../auth/auth-select.component";
 import { Markdown } from "../form/markdown";
 import { SelectComponent } from "../form/select.component";
 import { TextareaComponent } from "../form/textarea.component";
