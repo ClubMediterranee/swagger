@@ -4,14 +4,7 @@ import { List, Map as M } from "immutable";
 import React from "react";
 
 import { System } from "../../interfaces/System.js";
-
-export function getOauthName(name: string) {
-  if (name.indexOf("Bearer_") > -1) {
-    return `OAuth ${name.split(" (")[0].replace("Bearer_", "").toUpperCase()}`;
-  }
-
-  return name;
-}
+import { getOauthName } from "./get-auth-name.util";
 
 function getAuthsByGroups(authSelectors: System["authSelectors"], specSelectors: System["specSelectors"]) {
   let definitions = authSelectors.shownDefinitions();

@@ -21,7 +21,7 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
     }
 
     if (description === "authorization") {
-      if (!value) {
+      if (system.authSelectors.authorized().size === 0) {
         const { authActions, authSelectors, specSelectors } = system;
 
         const securityDefinitions = specSelectors.securityDefinitions();
@@ -40,7 +40,9 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
         ) : null;
       }
 
-      return <>Connected</>;
+      const AuthSelect = system.getComponent("AuthSelect", true);
+
+      return <AuthSelect />;
     }
 
     if (description === "api_key") {

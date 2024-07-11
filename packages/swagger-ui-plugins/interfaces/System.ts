@@ -2,7 +2,7 @@ import { Iterable, List, Map, OrderedMap } from "immutable";
 import { FunctionComponent } from "react";
 import { SwaggerUIProps } from "swagger-ui-react";
 
-import type { logoutPopup } from "../plugins/auth/auth-popup.action";
+import type { logoutPopup } from "../plugins/auth/actions/auth-popup.action";
 import type { opsAdvancedFilter, opsFilter } from "../plugins/filter/ops-filter";
 
 export interface InitOAuthOptions {
@@ -23,11 +23,13 @@ export interface InitOAuthOptions {
 }
 
 export interface AuthSelectors extends Record<string, unknown> {
-  authorized(): Map<string, boolean>;
+  authorized(): Map<string, Map<string, unknown>>;
   shownDefinitions: () => List<Map<string, Map<string, any>>>;
   definitionsToAuthorize(): Record<string, any>;
   definitionsForRequirements(security: string): Record<string, any>;
   getConfigs(): InitOAuthOptions;
+  setCurrentAuth(auth: string): void;
+  getCurrentAuth(): string;
 }
 
 export interface ErrSelectors extends Record<string, any> {
@@ -58,6 +60,7 @@ export interface SpecSelectors extends Record<string, unknown> {
   operationsWithTags(): Map<string, OrderedMap<string, Map<string, unknown>>>;
   validOperationMethods(): List<string>;
   taggedOperations(): Map<string, Map<string, unknown>>;
+  security(): List<Map<string, any>>;
 }
 
 /**

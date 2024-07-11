@@ -50,7 +50,6 @@ export function BreakingChanges({ data }: { data: MigrationNote[] }) {
           placeholder="Search"
           value={search}
           onChange={(_, value) => {
-            console.log(value);
             setSearch(value);
           }}
         />

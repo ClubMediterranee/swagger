@@ -1,4 +1,4 @@
-import { open } from "../../utils/open";
+import { open } from "../../../utils/open";
 
 export function authPopup(url: string, swaggerUIRedirectOauth2: any) {
   (window as any)["swaggerUIRedirectOauth2"] = swaggerUIRedirectOauth2;
