@@ -1,3 +1,4 @@
+import { useMarkdown } from "@clubmed/swagger-ui-plugins/hooks/use-markdown.hook";
 import { useFetch } from "@clubmed/ui/hooks/useFetch";
 import { useEffect } from "react";
 
@@ -15,18 +16,25 @@ export function useMigrationNotes() {
     hooks.fetchData();
   }, []);
 
+  const { content, toc } = useMarkdown({
+    source: migrationNotes.markdown
+  });
+
   return {
-    ...migrationNotes,
+    attributes: migrationNotes.attributes,
+    html: content,
     ...hooks,
     toc: [
-      ...migrationNotes.toc,
+      ...(toc || []),
       {
-        level: "3",
-        content: "Deprecated routes"
+        depth: 3,
+        id: "deprecated-routes",
+        value: "Deprecated routes"
       },
       {
-        level: "3",
-        content: "Outdated routes"
+        depth: 3,
+        id: "outdated-routes",
+        value: "Outdated routes"
       }
     ]
   };

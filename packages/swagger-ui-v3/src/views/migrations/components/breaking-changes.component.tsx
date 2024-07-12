@@ -55,7 +55,7 @@ export function BreakingChanges({ data }: { data: MigrationNote[] }) {
         />
       </div>
 
-      <h3 id="Deprecated routes" className="page-h3">
+      <h3 id="deprecated-routes" className="page-h3">
         Deprecated routes
       </h3>
 
@@ -69,7 +69,7 @@ export function BreakingChanges({ data }: { data: MigrationNote[] }) {
         </ul>
       )}
 
-      <h3 id="Outdated routes" className="page-h3">
+      <h3 id="outdated-routes" className="page-h3">
         Outdated routes
       </h3>
 

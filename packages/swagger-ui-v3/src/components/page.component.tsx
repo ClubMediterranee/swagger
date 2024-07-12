@@ -1,5 +1,8 @@
-import { useMarkdown } from "@clubmed/swagger-ui-plugins/plugins/form/use-markdown.hook";
+import { useMarkdown } from "@clubmed/swagger-ui-plugins/hooks/use-markdown.hook";
 import { Breadcrumb } from "@clubmed/trident-ui/molecules/Breadcrumb";
+import type { TocEntry } from "@stefanprobst/rehype-extract-toc";
+import cx from "classnames";
+import pick from "lodash/pick";
 import moment from "moment/moment";
 import { PropsWithChildren } from "react";
 
@@ -30,7 +33,7 @@ export function Page({
   className?: string;
   classContainer?: string;
   html?: string;
-  toc?: { level: string; content: string }[];
+  toc?: TocEntry[];
   attributes: Record<string, unknown>;
   markdown?: string;
   breadcrumb?: {
@@ -46,7 +49,7 @@ export function Page({
         <HeroBanner
           {...{
             ...defaultAttributes,
-            ...props
+            ...pick(props, ["srcSet", "sizes", "src", "alt"])
           }}
           className={classContainer}
         >
@@ -58,7 +61,12 @@ export function Page({
       </Container>
       <div className={classContainer}>
         <div className={"flex page"}>
-          <div className={"flex-1"}>
+          <div
+            className={cx("flex-1", {
+              "max-w-full": !toc,
+              "max-w-full xl:max-w-[910px]": toc
+            })}
+          >
             {breadcrumb ? (
               <div className={"mb-32"}>
                 <Breadcrumb items={breadcrumb} />
@@ -71,7 +79,7 @@ export function Page({
 
             {children}
           </div>
-          <div>{toc && <Toc items={toc} />}</div>
+          <div>{toc && <Toc items={toc} className={"hidden xl:block"} />}</div>
         </div>
       </div>
     </div>

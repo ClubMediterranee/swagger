@@ -1,6 +1,6 @@
 import cx from "classnames";
 
-import { useMarkdown } from "./use-markdown.hook";
+import { useMarkdown } from "../../hooks/use-markdown.hook";
 
 export const Markdown = ({ source, className = "" }: { source: any; className: any }) => {
   const { content } = useMarkdown({ source });

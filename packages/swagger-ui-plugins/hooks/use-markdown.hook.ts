@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { CachedContent, createProcessorFactory, getCached, isCached } from "../../utils/markdown/processor";
+import { CachedContent, createProcessorFactory, getCached, isCached } from "../utils/markdown/processor";
 
-export function useMarkdown({ source }: { source: string | null | undefined }) {
+export function useMarkdown({ source }: { source?: string | null | undefined }) {
   const [content, setContent] = useState<CachedContent | null>(() => (source && getCached(source)) || null);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ export function useMarkdown({ source }: { source: string | null | undefined }) {
 
   return {
     content: content?.content,
-    data: content?.data
+    data: content?.data,
+    toc: content?.toc
   };
 }

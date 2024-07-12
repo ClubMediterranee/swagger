@@ -1,4 +1,6 @@
+import { useMarkdown } from "@clubmed/swagger-ui-plugins/hooks/use-markdown.hook";
 import { useFetch } from "@clubmed/ui/hooks/useFetch";
+import { TocEntry } from "@stefanprobst/rehype-extract-toc";
 import { useEffect, useMemo } from "react";
 
 import * as webhooks from "../../../../docs/webhooks.md";
@@ -11,15 +13,16 @@ export interface WebhookEvent {
 
 export function useWebhooks() {
   const hooks = useFetch<WebhookEvent[]>({ url: "https://www.dataviz.clubmed/rest/api-webhooks/events?env=production" });
+  const { content, toc: initialToc } = useMarkdown({ source: webhooks.markdown });
 
   const toc = useMemo(() => {
     return [
-      ...webhooks.toc,
-      { level: "2", content: "Events" },
+      ...(initialToc || []),
+      { depth: 2, id: "events", value: "Events" },
       ...((hooks.data || []).map((event: WebhookEvent) => {
         return { level: "3", content: event.event };
       }) || []),
-      { level: "2", content: "Routes" }
+      { depth: 2, id: "routes", value: "Routes" }
     ];
   }, [hooks.data]);
 
@@ -28,8 +31,9 @@ export function useWebhooks() {
   }, []);
 
   return {
-    ...webhooks,
+    attributes: webhooks.attributes,
+    html: content,
     ...hooks,
-    toc
+    toc: toc as TocEntry[]
   };
 }

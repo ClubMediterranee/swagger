@@ -1,7 +1,5 @@
 import type { TocEntry } from "@stefanprobst/rehype-extract-toc";
 
-import { preprocessor } from "./preprocessor";
-
 export type CachedContent = {
   content: string;
   data: any;
@@ -26,30 +24,16 @@ export function getCached(source: string) {
 
 export async function createProcessorFactory() {
   const { unified } = await import("unified");
-  const { default: remarkParse } = await import("remark-parse");
-  const { default: directive } = await import("remark-directive");
+  const { default: rehypeParse } = await import("rehype-parse");
   const { default: stringify } = await import("rehype-stringify");
-  const { default: gfm } = await import("remark-gfm");
-  const { default: remarkRehype } = await import("remark-rehype");
   const { default: rehypeSlug } = await import("rehype-slug");
-  const { default: highlight } = await import("rehype-highlight");
-  const { default: admonitions } = await import("./admonitions/index");
   const { default: rehypeToc } = await import("@stefanprobst/rehype-extract-toc");
 
-  const processor = unified()
-    .use(remarkParse)
-    .use(gfm)
-    .use(directive)
-    .use(admonitions)
-    .use(remarkRehype)
-    .use(rehypeSlug)
-    .use(rehypeToc)
-    .use(highlight)
-    .use(stringify);
+  const processor = unified().use(rehypeParse).use(rehypeSlug).use(rehypeToc).use(stringify);
 
   return {
     process: async ({ content }: ProcessOpts) => {
-      return processor.process(preprocessor(content)).then((result) => {
+      return processor.process(content).then((result) => {
         return {
           content: result.toString(),
           data: result.data,
