@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     svgr(),
     mdPlugin({
-      mode: [Mode.MARKDOWN, Mode.TOC]
+      mode: [Mode.MARKDOWN]
     })
   ],
   build: {

@@ -29,7 +29,7 @@ export function WebhookRoutes(props: System) {
       <VersionPragmaFilter isSwagger2={isSwagger2} isOAS3={isOAS3} alsoShow={<Errors />}>
         <Errors />
 
-        <h2 id="Routes" className="page-h2">
+        <h2 id="routes" className="page-h2">
           Routes
         </h2>
 

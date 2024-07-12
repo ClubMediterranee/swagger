@@ -1,5 +1,6 @@
 import { Button, CommonButtonProps } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import classnames from "classnames";
+import omit from "lodash/omit";
 import { Fragment, HTMLAttributes } from "react";
 
 import { ButtonAnchor } from "../../molecules/Button/ButtonAnchor";
@@ -26,11 +27,12 @@ export function HeaderPanel({
   ...props
 }: HeaderPanelProps) {
   const Btn = url ? ButtonAnchor : Button;
+
   return (
     <Fragment>
-      <div {...props}>
+      <div {...omit(props, ["external"])}>
         <Btn
-          component={Link}
+          {...(url ? { component: Link } : {})}
           label={label}
           variant={variant}
           icon={icon}

@@ -14,7 +14,7 @@ export default function WebhooksView(props: System) {
       <Page {...webhooks} classContainer={"xl:max-w-1220 px-20 m-auto"}>
         {events && events?.length > 0 && (
           <>
-            <h2 id="Routes" className="page-h2">
+            <h2 id="events" className="page-h2">
               Events
             </h2>
             <div>

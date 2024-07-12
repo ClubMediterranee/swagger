@@ -1,6 +1,6 @@
 import "../styles/markdown.css";
 
-import { useMarkdown } from "@clubmed/swagger-ui-plugins/plugins/form/use-markdown.hook";
+import { useMarkdown } from "@clubmed/swagger-ui-plugins/hooks/use-markdown.hook";
 import classnames from "classnames";
 import React, { useMemo } from "react";
 
