@@ -45,8 +45,8 @@ export function Header({ children, Link = BaseLink, homepageUrl, items, openMenu
   }, [items]);
 
   return (
-    <header role="banner">
-      <div className="z-2 relative flex items-center justify-between p-8 lg:px-20">
+    <header role="banner" className="sticky top-0 bg-white z-2">
+      <div className=" relative flex items-center justify-between p-8 lg:px-20">
         <Link href={homepageUrl} title="Club Med Homepage">
           <div className="w-[120px] md:w-[160px]">
             <Icon name="ClubMed" width="100%" aspectRatio className="text-ultramarine" />
