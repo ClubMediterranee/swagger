@@ -13,9 +13,9 @@
     "@clubmed/trident-ui": "1.0.0-beta.18",
     "@juggle/resize-observer": "^3.4.0",
     "@react-spring/web": "^9.7.3",
-    "choices.js": "^10.2.0",
     "classnames": "^2.5.1",
     "moment": "2.30.1",
+    "react-select": "5.8.0",
     "react-spring": "^9.7.3",
     "use-boop": "^1.1.1"
   },
