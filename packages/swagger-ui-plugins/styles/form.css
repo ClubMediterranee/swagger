@@ -8,10 +8,10 @@ body {
     @apply border-red;
   }
 
-  .swagger-ui :not(.choices) input[type="email"],
-  .swagger-ui :not(.choices) input[type="password"],
-  .swagger-ui input[type="search"]:not(.choices__input),
-  .swagger-ui :not(.choices) input[type="text"] {
+  .swagger-ui input[type="email"],
+  .swagger-ui input[type="password"],
+  .swagger-ui input[type="search"],
+  .swagger-ui input[type="text"] {
     @apply text-b4 rounded-pill w-full border px-12 py-12 font-normal outline-none border-lightGrey bg-white text-black;
 
     &:not([disabled]) {
@@ -23,7 +23,7 @@ body {
     }
   }
 
-  .swagger-ui :not(.choices) select {
+  .swagger-ui select {
     @apply text-b5 rounded-pill border w-full px-12 py-12 font-normal outline-none border-lightGrey focus:border-black active:border-black bg-white text-black shadow-none;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;

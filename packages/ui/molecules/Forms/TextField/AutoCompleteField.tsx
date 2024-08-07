@@ -1,10 +1,12 @@
+import "./AutoCompleteField.css";
+
 import { TextField, TextFieldProps } from "@clubmed/trident-ui/molecules/Forms/TextField";
 import classnames from "classnames";
 import omit from "lodash/omit";
 import React, { useRef, useState } from "react";
 
 import { useDebounce } from "../../../hooks/useDebounce";
-import { SelectOptionProps } from "../Select/index";
+import { SelectOptionProps } from "../Select/Select.interfaces";
 
 export interface AutoCompleteFieldProps<Value = any> extends TextFieldProps<Value> {
   debounceTimeout: number;

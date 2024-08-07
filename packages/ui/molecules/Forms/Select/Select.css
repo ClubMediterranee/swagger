@@ -1,153 +1,27 @@
-@import "choices.js/public/assets/styles/choices.css";
-
-.dropdown-container:not(.w-full) {
-  max-width: 340px;
-}
-
-.choices {
-  &:not([data-type="select-multiple"]) {
-    @apply rounded-pill;
-
-    .choices__inner.choices__inner {
-      @apply rounded-pill;
-    }
-  }
-
-  @apply text-b5;
+.react-select-container {
   max-width: 340px;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 
-  .choices__inner.choices__inner {
-    @apply border-lightGrey bg-white;
-    border-radius: 25px;
-  }
+  .react-select__control {
+    @apply text-b4 rounded-pill w-full border px-8 py-4 font-normal outline-none border-lightGrey bg-white text-black;
 
-  &:not(.is-disabled) .choices__inner.choices__inner {
-    @apply focus:border-black active:border-black text-black;
-  }
-
-  &.is-disabled .choices__inner.choices__inner {
-    @apply text-grey;
-  }
-
-  &.is-open .choices__inner {
-    @apply border-black;
-  }
-}
-
-.choices[data-type*="select-one"] .choices__inner {
-  @apply flex items-center;
-}
-
-.is-open .choices__list--dropdown,
-.is-open .choices__list[aria-expanded],
-.dropdown {
-  @apply z-5;
-}
-
-.choices[data-type*="select-one"] .choices__input {
-  border-top: transparent;
-  border-left: transparent;
-  border-right: transparent;
-  border-radius: 0;
-}
-
-.choices__list--dropdown,
-.choices__list[aria-expanded],
-.dropdown {
-  @apply border-lightGrey shadow-xl rounded-4 mt-8;
-}
-
-.swagger-ui .choices__list--multiple .choices__item {
-  @apply text-b6;
-}
-
-.dropdown-container {
-  @apply relative;
-
-  button {
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjEiIGhlaWdodD0iMjEiIHZpZXdCb3g9IjAgMCAyMSAyMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSIjMDAwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yLjU5Mi4wNDRsMTguMzY0IDE4LjM2NC0yLjU0OCAyLjU0OEwuMDQ0IDIuNTkyeiIvPjxwYXRoIGQ9Ik0wIDE4LjM2NEwxOC4zNjQgMGwyLjU0OCAyLjU0OEwyLjU0OCAyMC45MTJ6Ii8+PC9nPjwvc3ZnPg==");
-    padding: 0;
-    background-size: 8px;
-    position: absolute;
-    bottom: 19px;
-    right: 0;
-    margin-right: 25px;
-    height: 20px;
-    width: 20px;
-    border-radius: 10em;
-    opacity: 0.25;
-    text-indent: -9999px;
-    border: 0;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-
-    transform: scale(0);
-    transform-origin: center;
-    transition: all var(--transition-duration-boop) var(--transition-fn-boop);
-
-    &[aria-hidden="false"] {
-      transform: scale(1);
-    }
-
-    &:hover {
-      opacity: 1;
+    &.react-select__control--is-focused {
+      @apply border-black outline-none shadow-none;
     }
   }
 
-  &.-has-options:after {
-    content: "";
-    height: 0;
-    width: 0;
-    border-style: solid;
-    border-color: #333 transparent transparent transparent;
-    border-width: 5px;
-    position: absolute;
-    right: 11.5px;
-    bottom: 21px;
-    pointer-events: none;
-  }
-
-  .dropdown {
-    @apply border rounded-4 absolute bg-white left-0 right-0 overflow-y-auto overflow-x-hidden opacity-0;
-    top: calc(100% - 4px);
-    transform: scaleY(0);
-    transform-origin: top center;
-    transition: all var(--transition-duration-boop) var(--transition-fn-boop);
-    max-height: 300px;
-
-    [role="listbox"] > [role="option"] {
-      @apply py-8 px-8 relative;
-
-      &[aria-selected="true"] {
-        @apply bg-pearl;
-
-        button {
-          transform: scale(1);
-        }
-      }
-
-      button {
-        transform: scale(0);
-        margin-right: 5px;
-      }
+  .react-select__option {
+    &.react-select__option--is-focused {
+      @apply bg-sand text-black;
     }
 
-    &[aria-expanded="true"] {
-      transform: scaleY(1);
-      opacity: 1;
+    &.react-select__option--is-selected {
+      @apply bg-saffron text-black;
+    }
+
+    &.react-select__option--is-selected.react-select__option--is-focused {
+      @apply bg-saffron-active text-black;
     }
   }
-}
-
-.swagger-ui [data-type="select-multiple"] input[type="search"].choices__input {
-  font-size: 14px;
-  margin-bottom: 5px;
-  border: 0;
-  border-radius: 0;
-  max-width: 100%;
-  padding: 4px 0 4px 2px;
 }

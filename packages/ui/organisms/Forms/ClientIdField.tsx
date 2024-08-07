@@ -1,7 +1,7 @@
 import moment from "moment";
 
 import { useListStorage } from "../../hooks/storage/useLocaleStorage";
-import { SelectOptionProps } from "../../molecules/Forms/Select/index";
+import { SelectOptionProps } from "../../molecules/Forms/Select/Select.interfaces";
 import { AutoCompleteField, AutoCompleteFieldProps } from "../../molecules/Forms/TextField/AutoCompleteField";
 
 function isClientID(value: string) {
