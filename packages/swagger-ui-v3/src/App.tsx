@@ -40,7 +40,7 @@ function App() {
     contact: "mailto:lvisdigiapi@clubmed.com",
     oauth: {
       usePkceWithAuthorizationCodeGrant: true,
-      allowedFlows: ["authorization_code", "implicit"],
+      allowedFlows: ["implicit", "authorization_code"],
       allowedScopes: ["openid", "email", "profile", "api_admin"],
       defaultSelectedScopes: ["openid", "email", "profile"]
     },

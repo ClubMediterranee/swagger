@@ -1,6 +1,5 @@
 import { useLocalStorage } from "@clubmed/ui/hooks/storage/useLocaleStorage";
 import { List, Map } from "immutable";
-import { useState } from "react";
 
 import { System } from "../../interfaces/System";
 
@@ -19,11 +18,14 @@ const FlowsLabels: Record<string, any> = {
 
 export function useFlows({ flows: flowsSchemes, specSelectors, authSelectors }: UseFlowsOptions) {
   const authConfigs = authSelectors.getConfigs() || {};
-  const { value: flow, setItem: setFlow } = useLocalStorage("preferred_flow", flowsSchemes.first().get("flow"));
+  const { value: flow, setItem: setFlow } = useLocalStorage(
+    "preferred_flow",
+    authConfigs.allowedFlows ? authConfigs.allowedFlows[0] : flowsSchemes.first().get("flow")
+  );
 
   const isPkceCodeGrant = !!authConfigs.usePkceWithAuthorizationCodeGrant;
 
-  const flows: { label: string; value: string }[] = flowsSchemes
+  let flows: { label: string; value: string }[] = flowsSchemes
     .filter((schema) => (authConfigs.allowedFlows ? authConfigs.allowedFlows.includes(schema!.get("flow")) : true))
     .map((schema) => {
       const name = schema!.get("flow");
@@ -42,6 +44,12 @@ export function useFlows({ flows: flowsSchemes, specSelectors, authSelectors }: 
       return { label: FlowsLabels[name], value: name };
     })
     .toArray();
+
+  if (authConfigs.allowedFlows) {
+    flows = flows.sort((a, b) => {
+      return authConfigs.allowedFlows!.indexOf(a.value) - authConfigs.allowedFlows!.indexOf(b.value);
+    });
+  }
 
   const schema = flowsSchemes.find((schema) => schema!.get("flow") === flow);
 
