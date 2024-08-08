@@ -48,7 +48,7 @@ export function oauth2Authorize({ auth, authActions, errActions, configs, authCo
       break;
 
     case "implicit":
-      params.set("response_type", "token");
+      params.set("response_type", "id_token token");
       break;
 
     case "clientCredentials":
