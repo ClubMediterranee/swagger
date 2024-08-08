@@ -49,6 +49,7 @@ export function oauth2Authorize({ auth, authActions, errActions, configs, authCo
 
     case "implicit":
       params.set("response_type", "id_token token");
+      params.set("nonce", btoa(String(new Date().getTime())));
       break;
 
     case "clientCredentials":
