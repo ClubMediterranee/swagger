@@ -1,6 +1,6 @@
-import { useConfig } from "@clubmed/swagger-ui-plugins/contexts/config.context";
 import { System } from "@clubmed/swagger-ui-plugins/interfaces/System";
 import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { useConfig } from "@clubmed/ui/contexts/config.context";
 
 import { Container } from "../components/container.component";
 import { HeroBanner } from "../components/hero-banner.component";
@@ -8,7 +8,7 @@ import { HeroBanner } from "../components/hero-banner.component";
 export function DocHeroBanner(props: System) {
   const { layoutSelectors } = props;
   const filter = layoutSelectors.currentFilter();
-  const config = useConfig();
+  const { config } = useConfig();
 
   const showBanner = !(typeof filter === "string" && filter.length > 0);
 

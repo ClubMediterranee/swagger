@@ -11,7 +11,7 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
   {
     label: "Documentation",
     //hidden: true,
-    element: React.lazy(() => import("@clubmed/swagger-ui-plugins/views/swagger.view")),
+    element: React.lazy(() => import("./views/swagger/swagger.view")),
     path: "/",
     index: true
   },
@@ -37,8 +37,10 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
   {
     label: "Webhooks",
     path: `/webhooks`,
-    element: React.lazy(() => import("./views/webhooks/webhooks.view")),
-    index: false
+    element: React.lazy(() => import("./views/swagger/swagger.view")),
+    subView: React.lazy(() => import("./views/swagger/webhooks/webhooks.view")),
+    index: false,
+    enableAuthorize: true
   },
   {
     label: "Status",

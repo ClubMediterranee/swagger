@@ -1,39 +1,83 @@
-import { useConfig } from "@clubmed/swagger-ui-plugins/contexts/config.context";
-import { System } from "@clubmed/swagger-ui-plugins/interfaces/System";
-import { Footer } from "@clubmed/ui/organisms/Footer/Footer";
-import React, { Suspense } from "react";
-import { Route, Routes } from "react-router";
+import type { System } from "@clubmed/swagger-ui-plugins/interfaces/System";
+import { useConfig } from "@clubmed/ui/contexts/config.context";
+import React, { useEffect } from "react";
 
-import { routes } from "../routes";
+function useAuthorize(props: System) {
+  const { config, setConfig } = useConfig();
+  const { authSelectors, authActions } = props;
+
+  const showPopup = !!authSelectors.shownDefinitions();
+
+  useEffect(() => {
+    if (config.showAuthorize) {
+      const authorizableDefinitions = authSelectors.definitionsToAuthorize();
+      authActions.showDefinitions(authorizableDefinitions);
+    }
+  }, [config.showAuthorize]);
+
+  useEffect(() => {
+    if (!showPopup) {
+      setConfig({
+        ...config,
+        showAuthorize: false
+      });
+    }
+  }, [showPopup]);
+
+  return showPopup;
+}
+
+function useSearch(props: System) {
+  const { config } = useConfig();
+
+  useEffect(() => {
+    props.layoutActions.updateFilter(config.search);
+  }, [config.search]);
+}
 
 export default function CustomStandaloneLayout(props: System) {
-  const { getComponent } = props;
-  const Container = getComponent("Container");
-  const Topbar = getComponent("Topbar", true);
-  const config = useConfig();
+  const { config, setConfig } = useConfig();
+  const { getComponent, specSelectors, authSelectors, authActions } = props;
+  const BaseLayout = getComponent("BaseLayout", true);
+  const info = specSelectors.info();
+  const version = info?.get("version") as string;
+  const AuthorizationPopup = getComponent("authorizationPopup", true);
+  const AdvancedFilterPanel = getComponent("AdvancedFilterPanel", true);
+
+  useEffect(() => {
+    setConfig({
+      ...config,
+      version
+    });
+  }, [version]);
+
+  const showPopup = useAuthorize(props);
+  useSearch(props);
+
+  const onClickAdvancedFilter = () => {
+    setConfig({
+      ...config,
+      showAdvancedFilters: false
+    });
+  };
 
   return (
-    <Container className="swagger-ui">
-      {Topbar ? <Topbar /> : null}
-      <Routes>
-        {routes
-          .filter((route) => route.element && !route.external)
-          .map((route) => {
-            return (
-              <Route
-                key={route.path}
-                {...route}
-                element={
-                  <Suspense fallback={<></>}>
-                    <route.element basePath={route.path} {...props} />
-                  </Suspense>
-                }
-              />
-            );
-          })}
-      </Routes>
-
-      {config.footer ? <Footer {...config.footer} /> : null}
-    </Container>
+    <>
+      {config.enableAdvancedFilter && config.showAdvancedFilters ? (
+        <div role="presentation" className={"fixed top-[64px] bottom-0 inset-x-0 z-2"} onClick={onClickAdvancedFilter}>
+          <div
+            role="presentation"
+            className="w-full bg-white py-20"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <AdvancedFilterPanel />
+          </div>
+        </div>
+      ) : null}
+      {config.subView ? <config.subView {...props} /> : <BaseLayout />}
+      {showPopup && <AuthorizationPopup />}
+    </>
   );
 }

@@ -1,7 +1,7 @@
-import { System } from "@clubmed/swagger-ui-plugins/interfaces/System";
+import type { System } from "@clubmed/swagger-ui-plugins/interfaces/System";
 
-import { Content } from "../../components/content.component";
-import { Page } from "../../components/page.component";
+import { Content } from "../../../components/content.component";
+import { Page } from "../../../components/page.component";
 import { WebhookRoutes } from "./components/webhooks-routes.component";
 import { useWebhooks } from "./hooks/webhooks.hook";
 

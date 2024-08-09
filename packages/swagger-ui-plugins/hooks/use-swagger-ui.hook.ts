@@ -4,7 +4,6 @@ import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
 import type { InitOAuthOptions, System } from "../interfaces/System";
 import { Oauth2Plugin } from "../plugins/auth/oauth2.plugin";
 import { BaseLayoutPlugin } from "../plugins/layout/base-layout.plugin";
-import { TopbarPlugin } from "../plugins/topbar/topbar.plugin";
 
 export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "plugins" | "presets"> {
   brandName: string;
@@ -15,8 +14,9 @@ export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "p
   presets?: string[];
   oauth2RedirectUrl?: string;
   fieldsPersistence?: string[];
-  showAdvancedFilter?: boolean;
-  showSearch?: boolean;
+  enableAdvancedFilter?: boolean;
+  enableSearch?: boolean;
+  enableAuthorize?: boolean;
   tagsSwitches?: { label: string; value: string }[];
   syntaxHighlight?: any;
   useUnsafeMarkdown?: boolean;
@@ -41,8 +41,9 @@ export function useSwaggerUI(baseOpts: UseSwaggerUIOptions): SwaggerUIProps {
   let config: Partial<SwaggerUIConfiguration> = window.SwaggerUIConfiguration || {};
 
   config = {
-    showAdvancedFilter: true,
-    showSearch: true,
+    enableAdvancedFilter: true,
+    enableSearch: true,
+    enableAuthorize: true,
     layout: "StandaloneLayout",
     defaultModelsExpandDepth: 0,
     docExpansion: "list",
@@ -67,7 +68,7 @@ export function useSwaggerUI(baseOpts: UseSwaggerUIOptions): SwaggerUIProps {
     };
   }
 
-  const PLUGINS = [BaseLayoutPlugin, TopbarPlugin, Oauth2Plugin, ...(baseOpts.overridePlugins || [])];
+  const PLUGINS = [BaseLayoutPlugin, Oauth2Plugin, ...(baseOpts.overridePlugins || [])];
   const PRESETS = { ...(SwaggerUI as any).presets };
 
   // map presets
