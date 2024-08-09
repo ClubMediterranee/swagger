@@ -1,8 +1,7 @@
+import { useConfig } from "@clubmed/ui/contexts/config.context";
 import { Header, HeaderNavItemProps } from "@clubmed/ui/organisms/Header";
 import { HeaderSectionProps } from "@clubmed/ui/organisms/Header/HeaderSection";
-import PropTypes from "prop-types";
 
-import { useConfig } from "../../contexts/config.context";
 import { System } from "../../interfaces/System";
 
 export default function Topbar(props: System) {
@@ -13,21 +12,12 @@ export default function Topbar(props: System) {
   const AdvancedFilterPanel = getComponent("AdvancedFilterPanel", true);
   const RouterLink: HeaderSectionProps["Link"] | undefined = getComponent("RouterLink") || undefined;
 
-  const config = useConfig();
+  const { config } = useConfig();
   const version = info.get("version") as string;
-  const hasSecurityDefinitions = !!specSelectors.securityDefinitions();
+
   const items: HeaderNavItemProps[] = [
     ...(config.nav || []),
-    version && {
-      position: "right",
-      label: (
-        <span className={"flex items-center gap-4"}>
-          <span className="text-b6">v{version}</span>
-        </span>
-      ),
-      className: "inline-block flex items-center text-b4 font-sans shrink-0 bg-transparent text-grayDarker h-auto py-12 px-8"
-    },
-    config.showAdvancedFilter && {
+    config.enableAdvancedFilter && {
       label: "Options",
       url: "",
       position: "right",
@@ -37,17 +27,12 @@ export default function Topbar(props: System) {
     }
   ];
 
+  const hasSecurityDefinitions = !!specSelectors.securityDefinitions();
+
   return (
-    <Header Link={RouterLink} homepageUrl="/" openMenu="Open menu" items={items.filter(Boolean)}>
-      {config.showSearch && <FilterContainer />}
+    <Header version={version} Link={RouterLink} homepageUrl="/" openMenu="Open menu" items={items.filter(Boolean)}>
+      {config.enableSearch && <FilterContainer />}
       {hasSecurityDefinitions ? <AuthorizeBtnContainer /> : null}
     </Header>
   );
 }
-
-Topbar.propTypes = {
-  specSelectors: PropTypes.object.isRequired,
-  specActions: PropTypes.object.isRequired,
-  getComponent: PropTypes.func.isRequired,
-  getConfigs: PropTypes.func.isRequired
-};

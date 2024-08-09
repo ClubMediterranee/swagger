@@ -31,9 +31,18 @@ export interface HeaderProps {
   openMenu: string;
   topBurgerMenuContent?: ReactNode;
   Link?: HeaderSectionProps["Link"];
+  version?: string;
 }
 
-export function Header({ children, Link = BaseLink, homepageUrl, items, openMenu, topBurgerMenuContent }: PropsWithChildren<HeaderProps>) {
+export function Header({
+  children,
+  version,
+  Link = BaseLink,
+  homepageUrl,
+  items,
+  openMenu,
+  topBurgerMenuContent
+}: PropsWithChildren<HeaderProps>) {
   const { isMobileMenuOpen, activeIndex, setIsMobileMenuOpen, setMenu, resetMenu, transition } = useMenu();
   items = useMemo(() => {
     return items?.map((item, index) => {
@@ -47,9 +56,12 @@ export function Header({ children, Link = BaseLink, homepageUrl, items, openMenu
   return (
     <header role="banner" className="sticky top-0 bg-white z-2">
       <div className=" relative flex items-center justify-between p-8 lg:px-20">
-        <Link href={homepageUrl} title="Club Med Homepage">
-          <div className="w-[120px] md:w-[160px]">
-            <Icon name="ClubMed" width="100%" aspectRatio className="text-ultramarine" />
+        <Link href={homepageUrl} title="Club Med Homepage relative">
+          <div className="w-[120px] md:w-[160px] ">
+            <div className={"flex flex-col"}>
+              <Icon name="ClubMed" width="100%" aspectRatio className="text-ultramarine" />
+              <span className="text-b6">{version}</span>
+            </div>
           </div>
         </Link>
         <nav className="flex items-center gap-x-12 px-8">

@@ -3,7 +3,7 @@ import { useFetch } from "@clubmed/ui/hooks/useFetch";
 import { TocEntry } from "@stefanprobst/rehype-extract-toc";
 import { useEffect, useMemo } from "react";
 
-import * as webhooks from "../../../../docs/webhooks.md";
+import * as webhooks from "../../../../../docs/webhooks.md";
 
 export interface WebhookEvent {
   event: "string";

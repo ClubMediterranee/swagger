@@ -14,5 +14,13 @@
     "**/*.spec.jsx",
     "**/*.test.jsx"
   ],
-  "include": ["hooks/**/*.ts", "hooks/**/*.tsx", "molecules/**/*.ts", "molecules/**/*.tsx", "organisms/**/*.ts", "organisms/**/*.tsx"]
+  "include": [
+    "contexts/**/*.ts",
+    "hooks/**/*.ts",
+    "hooks/**/*.tsx",
+    "molecules/**/*.ts",
+    "molecules/**/*.tsx",
+    "organisms/**/*.ts",
+    "organisms/**/*.tsx"
+  ]
 }

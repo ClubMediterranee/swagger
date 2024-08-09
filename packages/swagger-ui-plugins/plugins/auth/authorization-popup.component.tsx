@@ -65,61 +65,63 @@ export function AuthorizationPopup(props: System) {
   let authorized = authSelectors.authorized();
 
   return (
-    <Tabs max={3} compacted={true}>
-      <Popin
-        title={
-          <TabsHeader constrained={true} className={"pt-0"}>
-            <div className="px-8 font-sans">
-              {allDefinitions
-                .keySeq()
-                .map((name, index) => {
-                  const label = getOauthName(name!);
-                  return <TabsHeading key={`${index}-${name}`} label={label} value={index!} />;
-                })
-                .toArray()}
-            </div>
-          </TabsHeader>
-        }
-        isVisible={true}
-        Footer={false}
-        onClose={() => close()}
-        closeLabel="Close"
-        className={"sm:max-w-[800px]"}
-      >
-        <TabsBody>
-          {allDefinitions
-            .valueSeq()
-            .map((obj, index) => {
-              return (
-                <TabsPanel key={"panel-" + index} value={index!}>
-                  {obj?.oauth.size ? (
-                    <div className="">
-                      <Oauth2 authorized={authorized} schemaName={obj.schemaName} flows={obj.oauth} />
-                    </div>
-                  ) : null}
+    <div className="relative z-3">
+      <Tabs max={3} compacted={true}>
+        <Popin
+          title={
+            <TabsHeader constrained={true} className={"pt-0"}>
+              <div className="px-8 font-sans">
+                {allDefinitions
+                  .keySeq()
+                  .map((name, index) => {
+                    const label = getOauthName(name!);
+                    return <TabsHeading key={`${index}-${name}`} label={label} value={index!} />;
+                  })
+                  .toArray()}
+              </div>
+            </TabsHeader>
+          }
+          isVisible={true}
+          Footer={false}
+          onClose={() => close()}
+          closeLabel="Close"
+          className={"sm:max-w-[800px]"}
+        >
+          <TabsBody>
+            {allDefinitions
+              .valueSeq()
+              .map((obj, index) => {
+                return (
+                  <TabsPanel key={"panel-" + index} value={index!}>
+                    {obj?.oauth.size ? (
+                      <div className="">
+                        <Oauth2 authorized={authorized} schemaName={obj.schemaName} flows={obj.oauth} />
+                      </div>
+                    ) : null}
 
-                  {obj?.others.size
-                    ? obj.others
-                        .map((definition, key) => (
-                          <Auths
-                            key={`auth-${key}`}
-                            AST={AST}
-                            definitions={definition}
-                            getComponent={getComponent}
-                            errSelectors={errSelectors}
-                            authSelectors={authSelectors}
-                            authActions={authActions}
-                            specSelectors={specSelectors}
-                          />
-                        ))
-                        .toArray()
-                    : null}
-                </TabsPanel>
-              );
-            })
-            .toArray()}
-        </TabsBody>
-      </Popin>
-    </Tabs>
+                    {obj?.others.size
+                      ? obj.others
+                          .map((definition, key) => (
+                            <Auths
+                              key={`auth-${key}`}
+                              AST={AST}
+                              definitions={definition}
+                              getComponent={getComponent}
+                              errSelectors={errSelectors}
+                              authSelectors={authSelectors}
+                              authActions={authActions}
+                              specSelectors={specSelectors}
+                            />
+                          ))
+                          .toArray()
+                      : null}
+                  </TabsPanel>
+                );
+              })
+              .toArray()}
+          </TabsBody>
+        </Popin>
+      </Tabs>
+    </div>
   );
 }

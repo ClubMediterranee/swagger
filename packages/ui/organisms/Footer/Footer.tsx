@@ -173,3 +173,5 @@ const FooterColumn: FunctionComponent<PropsWithChildren<{ header: ReactNode; lab
     </Fragment>
   );
 };
+
+export default Footer;
