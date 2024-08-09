@@ -2936,7 +2936,7 @@ __metadata:
     react-dom: "npm:18.3.1"
     tailwindcss: "npm:^3.4.4"
     typescript: "npm:^5.5.3"
-    vite: "npm:5.3.2"
+    vite: "npm:5.3.3"
     vite-plugin-svgr: "npm:4.2.0"
     vitest: "npm:1.6.0"
   languageName: unknown
@@ -2978,7 +2978,7 @@ __metadata:
     semantic-release: "npm:23.1.1"
     ts-node: "npm:^10.9.2"
     typescript: "npm:5.5.3"
-    vite: "npm:5.3.2"
+    vite: "npm:5.3.3"
     vitest: "npm:1.6.0"
   languageName: unknown
   linkType: soft
@@ -3042,7 +3042,7 @@ __metadata:
     tailwindcss: "npm:^3.4.4"
     typescript: "npm:^5.5.3"
     unified: "npm:11.0.5"
-    vite: "npm:5.3.2"
+    vite: "npm:5.3.3"
     vite-plugin-svgr: "npm:4.2.0"
     vitest: "npm:1.6.0"
   languageName: unknown
@@ -3073,7 +3073,7 @@ __metadata:
     swagger-ui-react: "npm:5.17.14"
     tailwindcss: "npm:^3.4.4"
     typescript: "npm:^5.5.3"
-    vite: "npm:5.3.2"
+    vite: "npm:5.3.3"
     vite-plugin-svgr: "npm:4.2.0"
     vitest: "npm:1.6.0"
   languageName: unknown
@@ -3104,7 +3104,7 @@ __metadata:
     swagger-ui-react: "npm:5.17.14"
     tailwindcss: "npm:^3.4.4"
     typescript: "npm:^5.5.3"
-    vite: "npm:5.3.2"
+    vite: "npm:5.3.3"
     vite-plugin-markdown: "npm:2.2.0"
     vite-plugin-svgr: "npm:4.2.0"
     vitest: "npm:1.6.0"
@@ -3159,7 +3159,7 @@ __metadata:
     tailwindcss: "npm:3.4.4"
     typescript: "npm:^5.5.3"
     use-boop: "npm:^1.1.1"
-    vite: "npm:5.3.2"
+    vite: "npm:5.3.3"
     vitest: "npm:1.6.0"
   languageName: unknown
   linkType: soft
@@ -20555,7 +20555,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.38, postcss@npm:^8.4.39":
+"postcss@npm:^8.4.39":
   version: 8.4.39
   resolution: "postcss@npm:8.4.39"
   dependencies:
@@ -24802,13 +24802,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:5.3.2":
-  version: 5.3.2
-  resolution: "vite@npm:5.3.2"
+"vite@npm:5.3.3":
+  version: 5.3.3
+  resolution: "vite@npm:5.3.3"
   dependencies:
     esbuild: "npm:^0.21.3"
     fsevents: "npm:~2.3.3"
-    postcss: "npm:^8.4.38"
+    postcss: "npm:^8.4.39"
     rollup: "npm:^4.13.0"
   peerDependencies:
     "@types/node": ^18.0.0 || >=20.0.0
@@ -24838,7 +24838,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10/77b284938921da6c2c4055a5edd916ab221a973aa1403dba2aef303db1bd54ac7325db13f3fad13d77a7ac55cac7ffef49dffaa69bcadcc3caf2cae32ca03127
+  checksum: 10/e7a094cefedad9e204b715588502118e07d1b9c00c617f55b810169181907f55144f0a82f650995d6a74f12e3695fca65afc348b475b91a81dcbd0274d30a088
   languageName: node
   linkType: hard
 
