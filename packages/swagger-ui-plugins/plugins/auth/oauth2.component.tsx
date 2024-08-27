@@ -49,7 +49,7 @@ export function Oauth2Component(props: OAuth2Props) {
 
   return (
     <div className={"flex flex-col"}>
-      <div className={"mb-24"}>
+      <div className={"mb-24 max-w-[718px]"}>
         {isAuthorized && (
           <div className={"flex items-center justify-center gap-8 mb-16 bg-green text-white p-8 rounded-16"}>
             <Icon name="CheckOutlined" width="24px" />
@@ -154,13 +154,15 @@ export function Oauth2Component(props: OAuth2Props) {
                 </Checkboxes>
               </FormControl>
             </div>
-          ) : (
-            <DisabledFieldComponent value={scopes.join(", ")}>Requested scopes:</DisabledFieldComponent>
-          )
+          ) : null
         ) : null}
 
         {isAuthorized && accessToken ? (
-          <DisabledFieldComponent value={JSON.stringify(decodeToken(accessToken), null, 2)} style={{ maxWidth: "718px" }}>
+          <DisabledFieldComponent
+            copy={accessToken}
+            value={JSON.stringify(decodeToken(accessToken), null, 2)}
+            style={{ maxWidth: "718px" }}
+          >
             Access Token:
           </DisabledFieldComponent>
         ) : null}

@@ -4,5 +4,11 @@ export function open(url: string, opts: { target?: string; width?: number; heigh
   const left = (window.screen.width - popupWinWidth) / 2;
   const top = (window.screen.height - popupWinHeight) / 4;
 
-  return window.open(url, opts.target, `width=${popupWinWidth},height=${popupWinHeight},top=${top},left=${left}`);
+  const win = window.open(url, opts.target, `width=${popupWinWidth},height=${popupWinHeight},top=${top},left=${left}`);
+
+  try {
+    win?.focus();
+  } catch (er) {}
+
+  return win;
 }
