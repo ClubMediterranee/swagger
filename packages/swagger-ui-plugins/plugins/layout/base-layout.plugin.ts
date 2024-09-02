@@ -7,6 +7,7 @@ import { wrapJsonschemaStringArrayComponent } from "../form/wrap-jsonschema-stri
 import OperationSummary from "../operations/operation-summary.component";
 import OperationTag from "../operations/operation-tag.component";
 import { updateFields } from "../operations/reducers/update-fields.reducer.js";
+import { wrapRequestBody } from "../operations/request-body.component";
 import { wrapResponseBody } from "../operations/response-body.component";
 import { wrapClear } from "../operations/wrap-clear";
 import { wrapExecute } from "../operations/wrap-execute";
@@ -42,6 +43,7 @@ export const BaseLayoutPlugin = (system: System) => {
       execute: wrapExecute,
       clear: wrapClear,
       responseBody: wrapResponseBody,
+      RequestBody: wrapRequestBody,
       JsonSchema_string: wrapJsonschemaStringComponent,
       JsonSchema_array: wrapJsonschemaStringArrayComponent
     }
