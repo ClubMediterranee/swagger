@@ -5,6 +5,13 @@ import { SwaggerUIProps } from "swagger-ui-react";
 import type { logoutPopup } from "../plugins/auth/actions/auth-popup.action";
 import type { opsAdvancedFilter, opsFilter } from "../plugins/filter/ops-filter";
 
+export interface AllowedFlowOpts {
+  id: number;
+  flow: string;
+  names: string[];
+  scopes: string[];
+}
+
 export interface InitOAuthOptions {
   clientId?: string;
   clientSecret?: string;
@@ -15,7 +22,7 @@ export interface InitOAuthOptions {
   additionalQueryStringParams?: Record<string, string>;
   useBasicAuthenticationWithAccessCodeGrant?: boolean;
   usePkceWithAuthorizationCodeGrant?: boolean;
-  allowedFlows?: string[];
+  allowedFlows?: (string | Partial<AllowedFlowOpts>)[];
   allowedScopes?: string[];
   defaultSelectedScopes?: string[];
   redirectUrl?: string;
@@ -23,22 +30,30 @@ export interface InitOAuthOptions {
 }
 
 export interface AuthSelectors extends Record<string, unknown> {
-  authorized(): Map<string, Map<string, unknown>>;
   shownDefinitions: () => List<Map<string, Map<string, any>>>;
+
+  authorized(): Map<string, Map<string, unknown>>;
+
   definitionsToAuthorize(): Record<string, any>;
+
   definitionsForRequirements(security: string): Record<string, any>;
+
   getConfigs(): InitOAuthOptions;
+
   setCurrentAuth(auth: string): void;
+
   getCurrentAuth(): string;
 }
 
 export interface ErrSelectors extends Record<string, any> {
   lastError(): any;
+
   allErrors(): Iterable<string, Map<string, any>>;
 }
 
 export interface LayoutSelectors extends Record<string, any> {
   currentFilter(): string | null | boolean | "false";
+
   currentAdvancedFilters(): Map<string, any>;
 }
 
@@ -48,18 +63,31 @@ export interface Oas3Selectors extends Record<string, any> {
 
 export interface SpecSelectors extends Record<string, unknown> {
   url(): string;
+
   info(): Map<string, unknown>;
+
   loadingStatus(): string;
+
   servers(): Map<string, any> | undefined;
+
   schemes(): Map<string, any> | undefined;
+
   securityDefinitions(): Map<string, any> | undefined;
+
   isSwagger2(): boolean;
+
   isOAS3(): boolean;
+
   isOAS31(): boolean;
+
   specStr(): string;
+
   operationsWithTags(): Map<string, OrderedMap<string, Map<string, unknown>>>;
+
   validOperationMethods(): List<string>;
+
   taggedOperations(): Map<string, Map<string, unknown>>;
+
   security(): List<Map<string, any>>;
 }
 
@@ -67,9 +95,14 @@ export interface SpecSelectors extends Record<string, unknown> {
  * Actions
  */
 export interface AuthActions extends Record<string, any> {
+  logoutPopup: typeof logoutPopup;
+
   showDefinitions(security: Record<string, any>): void;
+
   showDefinitions(show: false): void;
+
   logoutWithPersistOption(auth: Record<string, any>): void;
+
   authPopup(
     authUrl: string,
     options: {
@@ -80,7 +113,6 @@ export interface AuthActions extends Record<string, any> {
       errCb: (err: Error) => void;
     }
   ): void;
-  logoutPopup: typeof logoutPopup;
 }
 
 export interface SpecActions extends Record<string, any> {
@@ -89,6 +121,7 @@ export interface SpecActions extends Record<string, any> {
 
 export interface LayoutActions extends Record<string, any> {
   updateFilter(value: string): void;
+
   updateAdvancedFilters(value: Map<string, any>): void;
 }
 

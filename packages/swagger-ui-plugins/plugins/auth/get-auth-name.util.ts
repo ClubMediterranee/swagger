@@ -5,3 +5,11 @@ export function getOauthName(name: string) {
 
   return name;
 }
+
+export function getOauthId(name: string) {
+  if (name.indexOf("Bearer_") > -1) {
+    return name.split(" (")[0].replace("Bearer_", "").toLowerCase();
+  }
+
+  return name.toLowerCase();
+}

@@ -1,5 +1,5 @@
-export function decodeToken(value: string) {
+export function decodeToken(value: string | undefined) {
   try {
-    return JSON.parse(atob(value.split(".")[1]));
+    return value && JSON.parse(atob(value.split(".")[1]));
   } catch (er) {}
 }

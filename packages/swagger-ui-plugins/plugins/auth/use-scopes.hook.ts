@@ -1,18 +1,31 @@
 import { Map } from "immutable";
 import { useState } from "react";
 
-import type { InitOAuthOptions } from "../../interfaces/System";
+import { AllowedFlowOpts, AuthSelectors, InitOAuthOptions } from "../../interfaces/System";
+import { useAllowedFlows } from "./user-allowed-flows.hook";
 
 export function useScopes({
   schema,
   auth,
-  authConfigs
+  allowedFlows,
+  authConfigs,
+  flow
 }: {
+  flow: string;
   auth?: Map<string, any>;
   schema: Map<string, any>;
+  authSelectors: AuthSelectors;
+  schemaName: string;
+  allowedFlows?: AllowedFlowOpts[];
   authConfigs: InitOAuthOptions;
 }) {
-  const { allowedScopes, defaultSelectedScopes = [] } = authConfigs;
+  const { defaultSelectedScopes = [] } = authConfigs;
+
+  const allowedScopes =
+    allowedFlows && allowedFlows.length
+      ? allowedFlows.find((allowedFlow) => allowedFlow.flow === flow)?.scopes || authConfigs.allowedScopes
+      : undefined;
+  console.log(allowedScopes);
   let scopesOptions = [...(schema.get("allowedScopes")! || schema.get("scopes")!)].map(([scope, description]) => {
     return { scope, description };
   });
