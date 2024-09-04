@@ -1,10 +1,10 @@
 import { Map } from "immutable";
 import { SyntheticEvent, useState } from "react";
 
-import { open } from "../../utils/open";
 import { oauth2Authorize } from "./oauth2-authorize.util";
 import { useFlows, UseFlowsOptions } from "./use-flows.hook";
 import { useScopes } from "./use-scopes.hook";
+import { useAllowedFlows } from "./user-allowed-flows.hook";
 
 export interface OAuth2Props extends UseFlowsOptions {
   authorized: Map<string, Map<string, any>>;
@@ -12,9 +12,10 @@ export interface OAuth2Props extends UseFlowsOptions {
 }
 
 export function useOAuth2(props: OAuth2Props) {
-  let { authorized, authSelectors, specSelectors, errSelectors, schemaName, flows: flowsSchemes } = props;
+  let { authorized, authSelectors, errSelectors, schemaName, flows: flowsSchemes } = props;
 
-  const flowsProps = useFlows(props);
+  const allowedFlows = useAllowedFlows({ schemaName, authSelectors });
+  const flowsProps = useFlows({ ...props, allowedFlows });
 
   const { authConfigs, setFlow, schema } = flowsProps;
   const auth = authorized && authorized.get(schemaName);
@@ -25,7 +26,15 @@ export function useOAuth2(props: OAuth2Props) {
   const errors = errSelectors.allErrors().filter((err) => err!.get("authId") === schemaName);
   const isValid = !errors.filter((err) => err!.get("source") === "validation").size;
 
-  const { scopesOptions, scopes, setScopes, selectScopes } = useScopes({ auth, schema, authConfigs });
+  const { scopesOptions, scopes, setScopes, selectScopes } = useScopes({
+    auth,
+    schema,
+    authConfigs,
+    authSelectors,
+    schemaName,
+    allowedFlows,
+    flow: flowsProps.flow
+  });
 
   const [appName, setAppName] = useState(authConfigs.appName);
 
@@ -46,6 +55,7 @@ export function useOAuth2(props: OAuth2Props) {
   });
 
   function setState<Type = unknown>(name: string | undefined, value: Type) {
+    console.log(name, value);
     switch (name) {
       case "flow":
         setFlow(value);
@@ -130,12 +140,14 @@ export function useOAuth2(props: OAuth2Props) {
   };
 
   function checkIsValid() {
+    console.log(flowsProps.flow, clientId, clientSecret);
     switch (flowsProps.flow) {
       case "implicit":
       case "authorization_code":
         return clientId && scopes.length > 0;
       case "password":
         return clientId && scopes.length > 0 && username && password;
+      case "client_credentials":
       case "application":
         return clientId && clientSecret && scopes.length > 0;
     }

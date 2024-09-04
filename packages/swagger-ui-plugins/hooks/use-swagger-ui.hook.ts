@@ -99,6 +99,25 @@ export function useSwaggerUI(baseOpts: UseSwaggerUIOptions): SwaggerUIProps {
       .filter(Boolean) as any[];
   }
 
+  if (config.oauth?.allowedFlows) {
+    config.oauth!.allowedFlows = config.oauth.allowedFlows.map((item, index) => {
+      if (typeof item === "string") {
+        return {
+          id: index,
+          flow: item,
+          names: [],
+          scopes: config.oauth!.allowedScopes || []
+        };
+      }
+
+      item.id = index;
+      item.names = item.names || [];
+      item.scopes = item.scopes || config.oauth!.allowedScopes || [];
+
+      return item;
+    });
+  }
+
   function onComplete(system: System) {
     if (config.oauth) {
       system.initOAuth(config.oauth);

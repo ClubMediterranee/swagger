@@ -4,7 +4,7 @@ export const presetConfig = {
   contact: "mailto:lvisdigiapi@clubmed.com",
   oauth: {
     usePkceWithAuthorizationCodeGrant: true,
-    allowedFlows: ["implicit", "authorization_code"],
+    allowedFlows: ["implicit", "authorization_code", { flow: "client_credentials", names: ["go"], scopes: ["pms"] }],
     allowedScopes: ["openid", "email", "profile", "api_admin"],
     defaultSelectedScopes: ["openid", "email", "profile"]
   },
