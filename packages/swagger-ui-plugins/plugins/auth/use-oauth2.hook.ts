@@ -122,25 +122,28 @@ export function useOAuth2(props: OAuth2Props) {
     e.preventDefault();
     let { authActions, getConfigs, errActions } = props;
 
-    errActions.clear({ authId: schemaName, type: "auth", source: "auth" });
-    // authActions.logoutWithPersistOption([schemaName]);
+    if (flowsProps.flow === "client_credentials" || flowsProps.flow === "application") {
+      authActions.logoutWithPersistOption([schemaName]);
+    } else {
+      errActions.clear({ authId: schemaName, type: "auth", source: "auth" });
+      // authActions.logoutWithPersistOption([schemaName]);
 
-    if (schema.get("endSessionUrl")) {
-      const authConfigs = authSelectors.getConfigs();
-      const redirectUrl = authConfigs.postLogoutRedirectUrl || authConfigs.redirectUrl || getConfigs().oauth2RedirectUrl;
+      if (schema.get("endSessionUrl")) {
+        const authConfigs = authSelectors.getConfigs();
+        const redirectUrl = authConfigs.postLogoutRedirectUrl || authConfigs.redirectUrl || getConfigs().oauth2RedirectUrl;
 
-      authActions.logoutPopup(schema.get("endSessionUrl"), {
-        idToken,
-        postLogoutRedirectUrl: redirectUrl,
-        callback() {
-          authActions.logoutWithPersistOption([schemaName]);
-        }
-      });
+        authActions.logoutPopup(schema.get("endSessionUrl"), {
+          idToken,
+          postLogoutRedirectUrl: redirectUrl,
+          callback() {
+            authActions.logoutWithPersistOption([schemaName]);
+          }
+        });
+      }
     }
   };
 
   function checkIsValid() {
-    console.log(flowsProps.flow, clientId, clientSecret);
     switch (flowsProps.flow) {
       case "implicit":
       case "authorization_code":
