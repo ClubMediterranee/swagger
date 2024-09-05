@@ -25,7 +25,7 @@ export function useScopes({
     allowedFlows && allowedFlows.length
       ? allowedFlows.find((allowedFlow) => allowedFlow.flow === flow)?.scopes || authConfigs.allowedScopes
       : undefined;
-  console.log(allowedScopes);
+
   let scopesOptions = [...(schema.get("allowedScopes")! || schema.get("scopes")!)].map(([scope, description]) => {
     return { scope, description };
   });
