@@ -21,7 +21,7 @@ body {
     @apply px-12;
   }
 
-  .swagger-ui .opblock .btn-group {
+  .swagger-ui .opblock .btn-group:not(.try-out) {
     @apply flex-col;
   }
 

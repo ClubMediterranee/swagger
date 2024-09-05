@@ -9,8 +9,13 @@ body .swagger-ui .btn {
   }
 }
 
+.swagger-ui .btn-group .btn.cancel:first-child,
 body .swagger-ui .btn.cancel {
   @apply text-b5 rounded-pill font-sans shrink-0 font-semibold transition-colors duration-200 bg-transparent hover:bg-black active:bg-black border border-solid border-black text-black hover:text-white active:text-white disabled:text-grey disabled:border-grey group-hover:bg-black group-hover:text-white h-auto py-12 px-20;
+}
+
+.swagger-ui .btn-group .btn.reset:last-child {
+  @apply rounded-pill;
 }
 
 body .swagger-ui .btn.authorize {
