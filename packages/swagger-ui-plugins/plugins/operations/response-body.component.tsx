@@ -8,7 +8,7 @@ export function wrapResponseBody(Base: FunctionComponent<Record<string, unknown>
 
     if (/json/i.test(contentType)) {
       const textEncoder = new TextEncoder();
-      if (textEncoder.encode(content as string).length > 1024 * 512) {
+      if (textEncoder.encode(content as string).length > 1024 * 15) {
         let body: string;
 
         try {
