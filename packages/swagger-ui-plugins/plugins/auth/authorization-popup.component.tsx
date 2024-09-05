@@ -63,10 +63,13 @@ export function AuthorizationPopup(props: System) {
   const allDefinitions = getAuthsByGroups(authSelectors, specSelectors);
   const Oauth2 = getComponent("oauth2", true);
   let authorized = authSelectors.authorized();
+  const authorizedIndex = allDefinitions.keySeq().findIndex((name) => {
+    return Boolean(authorized && authorized.get(name!));
+  });
 
   return (
     <div className="relative z-3">
-      <Tabs max={3} compacted={true}>
+      <Tabs max={3} selected={authorizedIndex || 0} compacted={true}>
         <Popin
           title={
             <TabsHeader constrained={true} className={"pt-0"}>
@@ -75,7 +78,9 @@ export function AuthorizationPopup(props: System) {
                   .keySeq()
                   .map((name, index) => {
                     const label = getOauthName(name!);
-                    return <TabsHeading key={`${index}-${name}`} label={label} value={index!} />;
+                    const isAuthorized = authorized && authorized.get(name!);
+
+                    return <TabsHeading key={`${index}-${name}`} label={label + (isAuthorized ? " *" : "")} value={index!} />;
                   })
                   .toArray()}
               </div>

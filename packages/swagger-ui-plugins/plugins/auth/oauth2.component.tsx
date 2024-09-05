@@ -6,12 +6,46 @@ import { Password } from "@clubmed/trident-ui/molecules/Forms/Password";
 import { Radio, RadioGroup } from "@clubmed/trident-ui/molecules/Forms/Radios";
 import { Switch } from "@clubmed/trident-ui/molecules/Forms/Switch";
 import { ClientIdField } from "@clubmed/ui/organisms/Forms/ClientIdField";
-import React from "react";
+import classnames from "classnames";
+import React, { SyntheticEvent } from "react";
 
 import { decodeToken } from "../../utils/decode-token";
 import { DisabledFieldComponent } from "./disabled-field.component";
 import { Oauth2PasswordFlow } from "./oauth2-password-flow.component";
 import { OAuth2Props, useOAuth2 } from "./use-oauth2.hook";
+
+function Actions({
+  isAuthorized,
+  authorize,
+  logout,
+  close,
+  className,
+  isValid
+}: {
+  className?: string;
+  isAuthorized: boolean;
+  authorize: () => void;
+  logout: (e: SyntheticEvent) => void;
+  close: (e: SyntheticEvent) => void;
+  isValid: boolean;
+}) {
+  return (
+    <div className={classnames("flex items-center justify-center gap-12 ", className)}>
+      {isAuthorized ? (
+        <Button theme="blackStroke" onClick={logout} aria-label="Remove authorization">
+          Logout
+        </Button>
+      ) : (
+        <Button onClick={authorize} disabled={!isValid} aria-label="Apply given OAuth2 credentials">
+          Authorize
+        </Button>
+      )}
+      <Button theme="black" onClick={close}>
+        Close
+      </Button>
+    </div>
+  );
+}
 
 export function Oauth2Component(props: OAuth2Props) {
   const hookProps = useOAuth2(props);
@@ -52,6 +86,10 @@ export function Oauth2Component(props: OAuth2Props) {
 
   return (
     <div className={"flex flex-col"}>
+      {isAuthorized && (
+        <Actions className={"mb-24"} authorize={authorize} isAuthorized={isAuthorized} close={close} isValid={isValid} logout={logout} />
+      )}
+
       <div className={"mb-24 max-w-[718px]"}>
         {isAuthorized && (
           <div className={"flex items-center justify-center gap-8 mb-16 bg-green text-white p-8 rounded-16"}>
@@ -168,20 +206,7 @@ export function Oauth2Component(props: OAuth2Props) {
         })}
       </div>
 
-      <div className={"flex items-center justify-center gap-12"}>
-        {isAuthorized ? (
-          <Button theme="blackStroke" onClick={logout} aria-label="Remove authorization">
-            Logout
-          </Button>
-        ) : (
-          <Button onClick={authorize} disabled={!isValid} aria-label="Apply given OAuth2 credentials">
-            Authorize
-          </Button>
-        )}
-        <Button theme="black" onClick={close}>
-          Close
-        </Button>
-      </div>
+      <Actions authorize={authorize} isAuthorized={isAuthorized} close={close} isValid={isValid} logout={logout} />
     </div>
   );
 }
