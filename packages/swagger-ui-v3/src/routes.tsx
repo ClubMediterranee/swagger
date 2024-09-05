@@ -44,8 +44,8 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
   },
   {
     label: "Status",
-    path: "https://status.api.clubmed/",
-    external: true,
+    path: `/status`,
+    element: React.lazy(() => import("./views/status/status-page.view")),
     index: false
   }
 ];
