@@ -3003,8 +3003,7 @@ __metadata:
     "@storybook/react": "npm:^8.2.1"
     "@storybook/react-vite": "npm:^8.2.1"
     "@storybook/test": "npm:^8.2.1"
-    "@storybook/test-runner": "npm:0.19.0"
-    playwright: "npm:1.46.0"
+    "@storybook/test-runner": "npm:^0.19.1"
     storybook: "npm:^8.2.1"
   languageName: unknown
   linkType: soft
@@ -7342,7 +7341,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/test-runner@npm:0.19.0, @storybook/test-runner@npm:^0.19.0":
+"@storybook/test-runner@npm:^0.19.0":
   version: 0.19.0
   resolution: "@storybook/test-runner@npm:0.19.0"
   dependencies:
@@ -7371,6 +7370,38 @@ __metadata:
   bin:
     test-storybook: dist/test-storybook.js
   checksum: 10/7a2c84f82301d1af20c0469bb82736ebda7fe728f89f8f12b394b4006b2846079bcaff5879395b962bfe729f472149e965a3d51e5faf12ae577b29b069f8c408
+  languageName: node
+  linkType: hard
+
+"@storybook/test-runner@npm:^0.19.1":
+  version: 0.19.1
+  resolution: "@storybook/test-runner@npm:0.19.1"
+  dependencies:
+    "@babel/core": "npm:^7.22.5"
+    "@babel/generator": "npm:^7.22.5"
+    "@babel/template": "npm:^7.22.5"
+    "@babel/types": "npm:^7.22.5"
+    "@jest/types": "npm:^29.6.3"
+    "@storybook/core-common": "npm:^8.0.0"
+    "@storybook/csf": "npm:^0.1.11"
+    "@storybook/csf-tools": "npm:^8.0.0"
+    "@storybook/preview-api": "npm:^8.0.0"
+    "@swc/core": "npm:^1.5.22"
+    "@swc/jest": "npm:^0.2.23"
+    expect-playwright: "npm:^0.8.0"
+    jest: "npm:^29.6.4"
+    jest-circus: "npm:^29.6.4"
+    jest-environment-node: "npm:^29.6.4"
+    jest-junit: "npm:^16.0.0"
+    jest-playwright-preset: "npm:^4.0.0"
+    jest-runner: "npm:^29.6.4"
+    jest-serializer-html: "npm:^7.1.0"
+    jest-watch-typeahead: "npm:^2.0.0"
+    nyc: "npm:^15.1.0"
+    playwright: "npm:^1.14.0"
+  bin:
+    test-storybook: dist/test-storybook.js
+  checksum: 10/cb0a68e6fc9472b4cf82c969fb58a74404f7865ab2ecbffe42f78f3ec3da0c21797c62a19e1a77a02d3c0559a6a03bae2e28104f10dd239b5ded7bcbaa232b98
   languageName: node
   linkType: hard
 
@@ -20345,30 +20376,6 @@ __metadata:
   bin:
     playwright-core: cli.js
   checksum: 10/6a71d2e2aa5b054d6e83836f09e139a0ff4de3aa9b6aebe0e03de3ab828c735d23a20a60fafcee91c1658da490cc390f05af463325ac842beaff58a173f7ad9e
-  languageName: node
-  linkType: hard
-
-"playwright-core@npm:1.46.0":
-  version: 1.46.0
-  resolution: "playwright-core@npm:1.46.0"
-  bin:
-    playwright-core: cli.js
-  checksum: 10/1fd237d01380be0d650ae7df73fb796eae9c208e0746bb110db270139f1d2a96bf3b8856c394a48720b30e145614a10f275ab08627d0c95ba2160dc0402a90cb
-  languageName: node
-  linkType: hard
-
-"playwright@npm:1.46.0":
-  version: 1.46.0
-  resolution: "playwright@npm:1.46.0"
-  dependencies:
-    fsevents: "npm:2.3.2"
-    playwright-core: "npm:1.46.0"
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  bin:
-    playwright: cli.js
-  checksum: 10/e06f3b53faaf4edf4fcf636b43004dd0db1e45dbdcb2b59037a9810dfce3a59f0386d4826ba7de42f98fe525539fa20dd8f8c46acd1f8e5c57dcb5c1d8d536ce
   languageName: node
   linkType: hard
 

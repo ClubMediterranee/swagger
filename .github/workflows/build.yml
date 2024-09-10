@@ -73,7 +73,7 @@ jobs:
       - name: Install dependencies 🚀
         run: yarn install --immutable
       - name: Install Playwright 🚀
-        run: yarn dlx playwright install
+        run: yarn dlx playwright@1.42.1 install
       - name: Build Storybook
         run: yarn build:storybook --quiet
       - name: Serve Storybook and run tests 🔍
