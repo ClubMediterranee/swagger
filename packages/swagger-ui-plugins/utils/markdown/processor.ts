@@ -27,6 +27,7 @@ export function getCached(source: string) {
 export async function createProcessorFactory() {
   const { unified } = await import("unified");
   const { default: remarkParse } = await import("remark-parse");
+  const { default: remarkStringify } = await import("remark-stringify");
   const { default: directive } = await import("remark-directive");
   const { default: stringify } = await import("rehype-stringify");
   const { default: gfm } = await import("remark-gfm");
@@ -41,7 +42,7 @@ export async function createProcessorFactory() {
     .use(gfm)
     .use(directive)
     .use(admonitions)
-    .use(remarkRehype)
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
     .use(rehypeToc)
     .use(highlight)
@@ -51,7 +52,7 @@ export async function createProcessorFactory() {
     process: async ({ content }: ProcessOpts) => {
       return processor.process(preprocessor(content)).then((result) => {
         return {
-          content: result.toString(),
+          content: result.toString().replace(/(&#x3C;)/gi, "<"),
           data: result.data,
           toc: result.data.toc
         };
