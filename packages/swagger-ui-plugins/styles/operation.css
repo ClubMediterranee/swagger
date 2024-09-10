@@ -218,9 +218,7 @@ body {
     @apply pb-12;
   }
 
-  .swagger-ui .opblock-description {
-    .text-xxs {
-      @apply flex items-center justify-center text-b6 py-4 px-8 mx-4 rounded-16 bg-wave;
-    }
+  .swagger-ui .opblock-description .doc-tags div {
+    @apply flex items-center justify-center text-b6 py-4 px-8 mx-4 rounded-16 bg-wave;
   }
 }
