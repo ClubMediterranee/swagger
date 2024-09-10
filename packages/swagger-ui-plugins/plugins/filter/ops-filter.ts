@@ -55,7 +55,11 @@ function filterOperations(operations: List<Map<string, any>>, phrase: string) {
           return true;
         }
 
-        // const responseModels = getResponseModel(operation);
+        const description = operation.get("description");
+
+        if (description && description.toLowerCase().includes(phrase)) {
+          return true;
+        }
       }
     }
 
