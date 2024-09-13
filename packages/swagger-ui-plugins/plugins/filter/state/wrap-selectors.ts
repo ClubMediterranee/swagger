@@ -1,3 +1,5 @@
+import { List, Map, OrderedMap } from "immutable";
+
 import { System } from "../../../interfaces/System";
 
 export const taggedOperations =
@@ -23,6 +25,29 @@ export const taggedOperations =
     // Limit to [max] items, if specified
     if (maxDisplayedTags && !isNaN(maxDisplayedTags) && maxDisplayedTags >= 0) {
       taggedOps = taggedOps.slice(0, maxDisplayedTags);
+    }
+
+    let bookmarks = layoutSelectors.getBookmarks();
+
+    if (bookmarks.size > 0) {
+      let operations = List();
+
+      taggedOps = taggedOps.map((tagObj: any) => {
+        const filteredOps = tagObj.get("operations").filter((operation: any) => {
+          if (bookmarks.has(`${operation.get("method")}-${operation.get("path")}`)) {
+            operations = operations.push(operation);
+            return false;
+          }
+
+          return true;
+        });
+
+        return tagObj.set("operations", filteredOps);
+      });
+
+      taggedOps = OrderedMap({
+        bookmarks: Map().set("operations", operations)
+      }).merge(taggedOps);
     }
 
     return taggedOps;

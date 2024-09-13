@@ -1,4 +1,4 @@
-import type { Iterable, List, Map, OrderedMap } from "immutable";
+import { Iterable, List, Map, OrderedMap } from "immutable";
 
 // interface Term {
 //   models: string[];
