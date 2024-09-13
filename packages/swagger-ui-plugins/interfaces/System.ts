@@ -4,6 +4,7 @@ import { SwaggerUIProps } from "swagger-ui-react";
 
 import type { logoutPopup } from "../plugins/auth/actions/auth-popup.action";
 import type { opsAdvancedFilter, opsFilter } from "../plugins/filter/ops-filter";
+import type { addToBookmarks, removeFromBookmarks } from "../plugins/filter/state/actions";
 
 export interface AllowedFlowOpts {
   id: number;
@@ -55,6 +56,7 @@ export interface LayoutSelectors extends Record<string, any> {
   currentFilter(): string | null | boolean | "false";
 
   currentAdvancedFilters(): Map<string, any>;
+  getBookmarks(): Set<string>;
 }
 
 export interface Oas3Selectors extends Record<string, any> {
@@ -121,8 +123,9 @@ export interface SpecActions extends Record<string, any> {
 
 export interface LayoutActions extends Record<string, any> {
   updateFilter(value: string): void;
-
   updateAdvancedFilters(value: Map<string, any>): void;
+  addToBookmarks: typeof addToBookmarks;
+  removeFromBookmarks: typeof removeFromBookmarks;
 }
 
 export interface ErrActions extends Record<string, any> {

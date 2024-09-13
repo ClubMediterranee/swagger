@@ -4,7 +4,7 @@ import { SelectComponent } from "../form/select.component";
 import { TextareaComponent } from "../form/textarea.component";
 import { wrapJsonschemaStringComponent } from "../form/wrap-jsonschema-string.component";
 import { wrapJsonschemaStringArrayComponent } from "../form/wrap-jsonschema-string-array.component";
-import OperationSummary from "../operations/operation-summary.component";
+import { wrapOperationSummary } from "../operations/operation-summary.component";
 import OperationTag from "../operations/operation-tag.component";
 import { updateFields } from "../operations/reducers/update-fields.reducer.js";
 import { wrapRequestBody } from "../operations/request-body.component";
@@ -31,7 +31,6 @@ export const BaseLayoutPlugin = (system: System) => {
     components: {
       HeroBanner,
       BaseLayout,
-      OperationSummary,
       OperationTag,
       Select: SelectComponent,
       TextArea: TextareaComponent,
@@ -45,7 +44,8 @@ export const BaseLayoutPlugin = (system: System) => {
       responseBody: wrapResponseBody,
       RequestBody: wrapRequestBody,
       JsonSchema_string: wrapJsonschemaStringComponent,
-      JsonSchema_array: wrapJsonschemaStringArrayComponent
+      JsonSchema_array: wrapJsonschemaStringArrayComponent,
+      OperationSummary: wrapOperationSummary
     }
   };
 };
