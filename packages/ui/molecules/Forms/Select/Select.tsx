@@ -74,10 +74,18 @@ export function Select(props: AllSelectProps) {
         options={props.options as any}
         isDisabled={disabled}
         isSearchable={true}
+        isMulti={props.multiple as never}
         value={props.options.find((t) => t.value === props.value) as any}
         onChange={(value) => {
           // @ts-ignore
-          const v = (props.multiple ? value.map((v) => v.value) : (value as any).value) as any;
+          const v = (
+            props.multiple
+              ? []
+                  .concat(value as never)
+                  .filter(Boolean)
+                  .map((v: { value: unknown }) => v.value)
+              : (value as any).value
+          ) as any;
 
           props.onChange && props.onChange(name, v);
         }}
