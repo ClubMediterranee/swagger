@@ -62,9 +62,6 @@ export function Column({ envs }: { envs: (ApiEnvInfo | EnvInfo)[] }) {
 
                   <div className="flex gap-12">
                     <Link className={"text-b4"} label={"Doc"} href={env.doc_url} icon={"ArrowDefaultRight"} target={"_blank"} />
-                    {"doc_url_v3" in env && (env as ApiEnvInfo).doc_url_v3 && (
-                      <Link className={"text-b4"} label={"Doc v3"} icon={"ArrowDefaultRight"} href={env.doc_url_v3} target={"_blank"} />
-                    )}
                   </div>
                 </Card>
               </div>
