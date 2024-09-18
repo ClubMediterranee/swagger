@@ -1,4 +1,4 @@
-import { setStorageValue } from "@clubmed/ui/hooks/storage/useLocaleStorage";
+import { getStorageValue, setStorageValue } from "@clubmed/ui/hooks/storage/useLocaleStorage";
 import { type Map, Set } from "immutable";
 
 import { ADD_TO_BOOKMARKS, REMOVE_FROM_BOOKMARKS, UPDATE_ADVANCED_FILTER } from "./actions";
@@ -8,14 +8,14 @@ export default {
     return state.set("advancedFilters", action.payload);
   },
   [ADD_TO_BOOKMARKS]: (state: Map<string, any>, { payload: operationId }: { payload: string }) => {
-    const bookmarks = (state.get("bookmarks") || Set()).add(operationId);
+    const bookmarks = (state.get("bookmarks") || Set<string>(getStorageValue("bookmarks") as any) || Set()).add(operationId);
 
     setStorageValue("bookmarks", bookmarks.toJS());
 
     return state.set("bookmarks", bookmarks);
   },
   [REMOVE_FROM_BOOKMARKS]: (state: Map<string, any>, { payload: operationId }: { payload: string }) => {
-    const bookmarks = (state.get("bookmarks") || Set()).remove(operationId);
+    const bookmarks = (state.get("bookmarks") || Set<string>(getStorageValue("bookmarks") as any) || Set()).remove(operationId);
 
     setStorageValue("bookmarks", bookmarks.toJS());
 
