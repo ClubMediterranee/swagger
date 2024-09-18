@@ -1,7 +1,7 @@
 {
   "name": "@clubmed/feature-and-fix-v2",
   "private": true,
-  "version": "1.26.2",
+  "version": "1.26.3",
   "scripts": {
     "dev": "vite --port 5176",
     "build": "tsc && vite build --base 'https://clubmediterranee.github.io/swagger/latest/feature-and-fix'",
