@@ -14,9 +14,8 @@ describe("requestSnippetGenerator_node_fetch", () => {
     const snippet = requestSnippetGenerator_node_fetch(request);
     expect(snippet).toMatchInlineSnapshot(`
       "try {
-        const response = await fetch({
+        const response = await fetch('https://example.com/api/data?query=1', {
           method: 'GET',
-          url: 'https://example.com/api/data?query=1',
           headers: {
             "Content-Type": "application/json"
           },
@@ -44,9 +43,8 @@ describe("requestSnippetGenerator_node_fetch", () => {
     const snippet = requestSnippetGenerator_node_fetch(request);
     expect(snippet).toMatchInlineSnapshot(`
       "try {
-        const response = await fetch({
+        const response = await fetch('https://example.com/api/data', {
           method: 'GET',
-          url: 'https://example.com/api/data',
           headers: {
             "Content-Type": "text/html"
           },
@@ -72,9 +70,8 @@ describe("requestSnippetGenerator_node_fetch", () => {
     const snippet = requestSnippetGenerator_node_fetch(request);
     expect(snippet).toMatchInlineSnapshot(`
       "try {
-        const response = await fetch({
+        const response = await fetch('https://example.com/api/data', {
           method: 'GET',
-          url: 'https://example.com/api/data',
           headers: {
             "Content-Type": "application/json"
           },

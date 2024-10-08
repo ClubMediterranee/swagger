@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
-import { JsonEditorField } from "../JsonEditorField";
 import { Select } from "./Select";
 
 export default {
@@ -25,7 +24,7 @@ export default {
   }
 } satisfies Meta<typeof Select>;
 
-type Story = StoryObj<typeof JsonEditorField>;
+type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
   args: {
