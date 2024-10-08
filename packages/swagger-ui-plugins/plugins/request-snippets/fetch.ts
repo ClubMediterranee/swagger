@@ -10,13 +10,11 @@ export function requestSnippetGenerator_node_fetch(request: Map<string, unknown>
   const headersString = headers ? JSON.stringify(headers, null, 2) : "";
 
   const opts = indent(
-    [`method: '${method}'`, `url: '${url.href}'`, headersString && `headers: ${headersString}`, bodyString && `body: ${bodyString}`]
-      .filter(Boolean)
-      .join(",\n")
+    [`method: '${method}'`, headersString && `headers: ${headersString}`, bodyString && `body: ${bodyString}`].filter(Boolean).join(",\n")
   );
 
   return `try {
-  const response = await fetch({
+  const response = await fetch('${url}', {
     ${opts}
   })
   const data = await response.json();
