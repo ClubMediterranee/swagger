@@ -8,7 +8,7 @@ export const presetConfig = {
     allowedScopes: ["openid", "email", "profile", "api_admin"],
     defaultSelectedScopes: ["openid", "email", "profile"]
   },
-  persistAuthorization: true,
+  persistAuthorization: false,
   requestSnippetsEnabled: true,
   requestSnippets: {
     generators: {
