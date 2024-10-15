@@ -1,7 +1,7 @@
-import { Loader } from "@clubmed/trident-ui/molecules/Loader";
 import React, { useEffect } from "react";
 
 import { System } from "../../interfaces/System";
+import { OperationsLoading } from "./operations-loading.component";
 
 export default function BaseLayout(props: System) {
   const { errSelectors, specSelectors, getComponent } = props;
@@ -19,10 +19,18 @@ export default function BaseLayout(props: System) {
   }, [loadingStatus]);
 
   if (loading) {
+    const Row = getComponent("Row");
+    const Col = getComponent("Col");
     return (
       <div className="swagger-ui">
         <HeroBanner {...props} />
-        <Loader isVisible={loading} label={"We're loading our documentation. It shouldn't take too long!"} />
+        <div>
+          <Row>
+            <Col mobile={12} desktop={12}>
+              <OperationsLoading />
+            </Col>
+          </Row>
+        </div>
       </div>
     );
   }
@@ -75,7 +83,13 @@ export default function BaseLayout(props: System) {
     return (
       <div className="swagger-ui">
         <HeroBanner {...props} />
-        <div className="loading-container">{loadingMessage}</div>
+        <div>
+          <Row>
+            <Col mobile={12} desktop={12}>
+              <OperationsLoading />
+            </Col>
+          </Row>
+        </div>
       </div>
     );
   }
