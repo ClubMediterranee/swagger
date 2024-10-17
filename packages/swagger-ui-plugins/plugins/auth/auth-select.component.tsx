@@ -20,7 +20,7 @@ export function AuthSelectComponent(props: System) {
         })
         .map((value, connection) => {
           const profile = decodeToken(value?.getIn(["token", "id_token"]) as string | undefined);
-          const token = decodeToken(value?.getIn(["token", "access_token"]) as string);
+          const token = decodeToken(value?.getIn(["token", "access_token"]) as string) || decodeToken(value?.getIn(["value"]) as string);
           const authName = getOauthName(connection!).replace("OAuth ", "");
           const scopes = token.scope;
           const cmAuthName = authName === "GO" ? (scopes.includes("partner") ? "Partner" : "GO") : authName;
