@@ -11,3 +11,9 @@
     margin-right: 10px;
   }
 }
+
+.swagger-ui .auth-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  @apply gap-12;
+}
