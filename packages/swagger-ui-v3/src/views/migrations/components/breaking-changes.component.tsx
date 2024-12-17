@@ -22,7 +22,7 @@ function Row({ migrationNote, outdated }: { migrationNote: MigrationNote; outdat
         </small>
       </div>
       <div className={"text-b6 text-right w-[120px]"}>
-        <Link href={`/migration-notes/${migrationNote.id}`} label={"See more"} icon={"ArrowDefaultRight"} component={RouterLink} />
+        <Link href={`/migration-notes/${migrationNote.number}`} label={"See more"} icon={"ArrowDefaultRight"} component={RouterLink} />
       </div>
     </li>
   );
@@ -64,7 +64,7 @@ export function BreakingChanges({ data }: { data: MigrationNote[] }) {
       ) : (
         <ul>
           {deprecatedRoutes.map((migrationNote) => {
-            return <Row migrationNote={migrationNote} key={migrationNote.id} />;
+            return <Row migrationNote={migrationNote} key={migrationNote.number} />;
           })}
         </ul>
       )}
@@ -78,7 +78,7 @@ export function BreakingChanges({ data }: { data: MigrationNote[] }) {
       ) : (
         <ul>
           {outdatedRoutes.map((migrationNote) => {
-            return <Row migrationNote={migrationNote} key={migrationNote.id} outdated={true} />;
+            return <Row migrationNote={migrationNote} key={migrationNote.number} outdated={true} />;
           })}
         </ul>
       )}
