@@ -10,7 +10,7 @@
     "test:ci": "vitest run --reporter=default --reporter=junit"
   },
   "dependencies": {
-    "@clubmed/trident-ui": "1.0.0-beta.18",
+    "@clubmed/trident-ui": "1.2.0",
     "@juggle/resize-observer": "^3.4.0",
     "@react-spring/web": "^9.7.3",
     "classnames": "^2.5.1",

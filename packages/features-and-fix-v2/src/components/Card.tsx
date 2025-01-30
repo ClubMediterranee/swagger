@@ -1,4 +1,4 @@
-import { Icon, IconicNames, IconicTypes } from "@clubmed/trident-ui/atoms/Icons";
+import { Icon, IconicNames, IconicTypes } from "@clubmed/trident-icons";
 import classnames from "classnames";
 import { FunctionComponent, PropsWithChildren } from "react";
 

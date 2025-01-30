@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@clubmed/trident-ui/atoms/Icons/Icon";
+import { Icon } from "@clubmed/trident-icons";
 import { Button, CommonButtonProps } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import { HamburgerIcon } from "@clubmed/trident-ui/molecules/HamburgerIcon";
 import classnames from "classnames";
