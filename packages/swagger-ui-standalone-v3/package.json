@@ -33,7 +33,7 @@
     "react-intersection-observer": "^9.10.3",
     "react-router": "6.24.0",
     "react-router-dom": "6.24.0",
-    "swagger-ui-react": "5.17.14"
+    "swagger-ui-react": "5.18.3"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.6",
