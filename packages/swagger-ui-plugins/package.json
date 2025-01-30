@@ -30,7 +30,7 @@
     "remark-directive": "3.0.0",
     "remark-gfm": "4.0.0",
     "remark-rehype": "11.1.0",
-    "swagger-ui-react": "5.17.14",
+    "swagger-ui-react": "5.18.3",
     "unified": "11.0.5"
   },
   "devDependencies": {
