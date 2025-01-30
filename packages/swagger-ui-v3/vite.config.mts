@@ -1,7 +1,7 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { Mode, plugin as mdPlugin } from "vite-plugin-markdown";
 import svgr from "vite-plugin-svgr";
-import  { plugin as mdPlugin, Mode } from "vite-plugin-markdown";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -25,7 +25,8 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/doc/v3/swagger.json": "https://api.integ.clubmed.com"
+      "/doc/v3/swagger.json": "https://api.integ.clubmed.com",
+      "/doc/swagger.json": "https://www.dataviz.clubmed"
     }
   }
 });

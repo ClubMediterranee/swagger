@@ -11,6 +11,7 @@ body {
   .swagger-ui input[type="email"],
   .swagger-ui input[type="password"],
   .swagger-ui input[type="search"],
+  .swagger-ui input[type="file"],
   .swagger-ui input[type="text"] {
     @apply text-b4 rounded-pill w-full border px-12 py-12 font-normal outline-none border-lightGrey bg-white text-black;
 
