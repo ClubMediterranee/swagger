@@ -10,7 +10,7 @@
     "test:ci": "vitest run --reporter=default --reporter=junit"
   },
   "dependencies": {
-    "@clubmed/trident-ui": "1.0.0-beta.18",
+    "@clubmed/trident-ui": "1.2.0",
     "@clubmed/ui": "workspace:*",
     "@stefanprobst/rehype-extract-toc": "2.2.0",
     "@types/swagger-ui-react": "4.18.3",

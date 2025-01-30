@@ -1,7 +1,7 @@
 "use client";
 
-import { Icon } from "@clubmed/trident-ui/atoms/Icons/Icon";
-import { IconicNames } from "@clubmed/trident-ui/atoms/Icons/Iconics";
+import { Icon } from "@clubmed/trident-icons";
+import { IconicNames } from "@clubmed/trident-icons";
 import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import { ButtonAnchor } from "@clubmed/trident-ui/molecules/Buttons/ButtonAnchor";
 import { ElasticHeight } from "@clubmed/trident-ui/molecules/ElasticHeight";
@@ -165,7 +165,7 @@ const FooterColumn: FunctionComponent<PropsWithChildren<{ header: ReactNode; lab
         }}
       >
         {header}
-        <AnimatedIcon name={"ArrowDefaultDown" as IconicNames} className="md:hidden" width="30px" style={{ rotate }} />
+        <AnimatedIcon name={"ArrowDefaultDown" as any} className="md:hidden" width="30px" style={{ rotate }} />
       </button>
       <ElasticHeight role="presentation" id={`footer-column-${label}-links`} className={classnames("md:h-auto", { "h-0": !isOpen })}>
         {children}

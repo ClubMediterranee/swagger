@@ -1,5 +1,7 @@
 import { Popin } from "@clubmed/trident-ui/molecules/Popin";
-import { Tabs, TabsBody, TabsHeader, TabsHeading, TabsPanel } from "@clubmed/trident-ui/molecules/Tabs";
+import { TabPanel, Tabs, TabsBody } from "@clubmed/trident-ui/molecules/Tabs";
+import { Tab } from "@clubmed/trident-ui/molecules/Tabs/Tab";
+import { TabList } from "@clubmed/trident-ui/molecules/Tabs/TabList";
 import { List, Map as M } from "immutable";
 import React from "react";
 
@@ -72,7 +74,7 @@ export function AuthorizationPopup(props: System) {
       <Tabs max={3} selected={authorizedIndex || 0} compacted={true}>
         <Popin
           title={
-            <TabsHeader constrained={true} className={"pt-0"}>
+            <TabList constrained={true} className={"pt-0"}>
               <div className="px-8 font-sans">
                 {allDefinitions
                   .keySeq()
@@ -80,11 +82,11 @@ export function AuthorizationPopup(props: System) {
                     const label = getOauthName(name!);
                     const isAuthorized = authorized && authorized.get(name!);
 
-                    return <TabsHeading key={`${index}-${name}`} label={label + (isAuthorized ? " *" : "")} value={index!} />;
+                    return <Tab key={`${index}-${name}`} label={label + (isAuthorized ? " *" : "")} value={index!} />;
                   })
                   .toArray()}
               </div>
-            </TabsHeader>
+            </TabList>
           }
           isVisible={true}
           Footer={false}
@@ -97,7 +99,7 @@ export function AuthorizationPopup(props: System) {
               .valueSeq()
               .map((obj, index) => {
                 return (
-                  <TabsPanel key={"panel-" + index} value={index!}>
+                  <TabPanel key={"panel-" + index} value={index!}>
                     {obj?.oauth.size ? (
                       <div className="">
                         <Oauth2 authorized={authorized} schemaName={obj.schemaName} flows={obj.oauth} />
@@ -120,7 +122,7 @@ export function AuthorizationPopup(props: System) {
                           ))
                           .toArray()
                       : null}
-                  </TabsPanel>
+                  </TabPanel>
                 );
               })
               .toArray()}

@@ -1,4 +1,4 @@
-import { Icon } from "@clubmed/trident-ui/atoms/Icons";
+import { Icon } from "@clubmed/trident-icons";
 import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import { Checkbox, Checkboxes } from "@clubmed/trident-ui/molecules/Forms/Checkboxes";
 import { FormControl } from "@clubmed/trident-ui/molecules/Forms/FormControl";

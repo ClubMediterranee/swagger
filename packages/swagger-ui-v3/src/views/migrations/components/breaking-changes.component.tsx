@@ -1,4 +1,4 @@
-import { Icon } from "@clubmed/trident-ui/atoms/Icons";
+import { Icon } from "@clubmed/trident-icons";
 import { TextField } from "@clubmed/trident-ui/molecules/Forms/TextField";
 import { Link } from "@clubmed/trident-ui/molecules/Link";
 import classnames from "classnames";

@@ -1,4 +1,4 @@
-import { Icon } from "@clubmed/trident-ui/atoms/Icons/Icon";
+import { Icon } from "@clubmed/trident-icons";
 import { ElasticHeight } from "@clubmed/trident-ui/molecules/ElasticHeight";
 import { animated, useSpring } from "@react-spring/web";
 import classnames from "classnames";
