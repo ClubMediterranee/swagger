@@ -1,5 +1,6 @@
 import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import { variants } from "@clubmed/trident-ui/molecules/Buttons/Button.helpers";
+import { TextField } from "@clubmed/trident-ui/molecules/Forms/TextField";
 import { DebouncedTextField } from "@clubmed/ui/molecules/Forms/TextField/DebouncedTextField";
 import { ApikeyField } from "@clubmed/ui/organisms/Forms/ApiKeyField";
 import { FunctionComponent } from "react";
@@ -16,8 +17,25 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
     const type = schema && schema.get ? schema.get("type") : null;
     const name = description.split("-")[0];
 
-    if ((type && type === "file") || enumValue) {
+    if (enumValue) {
       return <Base {...props} />;
+    }
+
+    if (type === "file" || format === "binary") {
+      return (
+        <TextField
+          disabled={disabled}
+          required={required}
+          type="file"
+          className={errors.size ? "invalid" : ""}
+          placeholder={description}
+          validationStatus={errors.size > 0 ? "error" : "default"}
+          errorMessage={errors.get(0) || ""}
+          onChange={(_: string, value: any) => {
+            props?.onChange(value);
+          }}
+        />
+      );
     }
 
     if (description === "authorization") {
