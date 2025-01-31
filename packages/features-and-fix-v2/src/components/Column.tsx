@@ -43,7 +43,7 @@ export function Column({ envs }: { envs: (ApiEnvInfo | EnvInfo)[] }) {
                   "relative"
                 )}
               >
-                <Card title={getBranch(env)} icon={"GridDefault"} theme={isProductionOutdated || isStagingOutdated ? "light" : "dark"}>
+                <Card title={getBranch(env)} icon={"Grid"} theme={isProductionOutdated || isStagingOutdated ? "light" : "dark"}>
                   <div className="absolute top-8 right-8 flex flex-col gap-8 pl-2 bg-white">
                     <div
                       className={classnames(
