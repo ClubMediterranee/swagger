@@ -57,14 +57,16 @@ export function Search({
       </Button>
 
       <div
-        className={"hidden transition-opacity ease-in-out duration-150 absolute inset-x-0 top-[64px] py-40 justify-center"}
+        className={
+          "transition-opacity ease-in-out duration-150 absolute inset-x-0 top-[64px] py-40 justify-center items-center bg-lightSand"
+        }
         ref={inputSearch}
       >
         <TextField
           icon="Search"
           name="search"
           id="search"
-          className="shadow-2-l w-full"
+          className="shadow-2-l rounded-pill"
           value={config.search}
           onBlur={onBlur}
           onChange={onChange}
