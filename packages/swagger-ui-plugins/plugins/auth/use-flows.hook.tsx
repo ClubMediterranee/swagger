@@ -17,7 +17,7 @@ const FlowsLabels: Record<string, any> = {
   ),
   authorization_code: (
     <div>
-      Authorization code <small className={"block text-gray"}>using PCKE</small>
+      Authorization code <small className={"block text-gray"}>using PKCE</small>
     </div>
   ),
   client_credentials: (
