@@ -63,7 +63,7 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
       return <AuthSelect />;
     }
 
-    if (description === "api_key") {
+    if (description === "api_key" || description === "x-api-key") {
       return (
         <ApikeyField
           name={name}

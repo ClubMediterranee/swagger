@@ -47,7 +47,7 @@ export function useSwaggerUI(baseOpts: UseSwaggerUIOptions): SwaggerUIProps {
     layout: "StandaloneLayout",
     defaultModelsExpandDepth: 0,
     docExpansion: "list",
-    fieldsPersistence: ["api_key"],
+    fieldsPersistence: ["api_key", "x-api-key"],
     syntaxHighlight: {
       activate: true,
       theme: "agate"
