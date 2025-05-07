@@ -1,7 +1,7 @@
 {
   "name": "@clubmed/swagger-ui-plugins",
   "private": true,
-  "version": "1.27.6",
+  "version": "1.28.0",
   "main": "package.json",
   "type": "module",
   "scripts": {
