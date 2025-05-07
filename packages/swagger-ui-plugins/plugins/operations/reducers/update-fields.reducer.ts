@@ -1,6 +1,6 @@
 import { fromJS, Map } from "immutable";
 
-export const ALLOW_SYNCED_FIELDS = ["accept-language", "api_key", "booking_id", "customer_id", "proposal_id", "product_id"];
+export const ALLOW_SYNCED_FIELDS = ["accept-language", "api_key", "x-api-key", "booking_id", "customer_id", "proposal_id", "product_id"];
 
 export interface UpdateFieldsAction {
   type: string;
