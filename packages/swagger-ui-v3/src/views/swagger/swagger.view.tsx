@@ -3,7 +3,7 @@ import { FiltersPlugin } from "@clubmed/swagger-ui-plugins/plugins/filter/filter
 import { RequestSnippetGeneratorPlugin } from "@clubmed/swagger-ui-plugins/plugins/request-snippets/request-snippets.plugin";
 import { useConfig } from "@clubmed/ui/contexts/config.context";
 import { useEffect } from "react";
-import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
+import SwaggerUI from "swagger-ui-react";
 
 import { StandaloneLayoutPlugin } from "../../layout/standalone-layout.plugin";
 
@@ -24,7 +24,7 @@ export function SwaggerView({ subView }: { subView?: React.LazyExoticComponent<a
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subView]);
 
-  return <SwaggerUI {...(config as SwaggerUIProps)} tryItOutEnabled={true} />;
+  return <SwaggerUI {...(config as any)} tryItOutEnabled={true} />;
 }
 
 export default SwaggerView;

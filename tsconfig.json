@@ -2,7 +2,9 @@
   "compilerOptions": {
     "noEmit": true,
     "outDir": "dist",
-    "types": ["vitest/globals", "vitest/importMeta", "vite/client", "@testing-library/jest-dom", "node", "vitest"]
+    "module": "ESNext",
+    "target": "ESNext",
+    "types": []
   },
   "include": ["vitest.workspace.mts"]
 }
