@@ -1,5 +1,5 @@
 import type { FooterProps } from "@clubmed/ui/organisms/Footer/Footer";
-import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
+import SwaggerUI, { type SwaggerUIProps } from "swagger-ui-react";
 
 import type { InitOAuthOptions, System } from "../interfaces/System";
 import { Oauth2Plugin } from "../plugins/auth/oauth2.plugin";

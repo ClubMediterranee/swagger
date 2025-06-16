@@ -1,10 +1,20 @@
+import { patchSwagger } from "./utils/patch-swagger";
+
 export const presetConfig = {
   disableBrowserCache: true,
   plugins: ["StandaloneLayoutPlugin", "TopBarPlugin", "RequestSnippetGeneratorPlugin"],
   contact: "mailto:lvisdigiapi@clubmed.com",
   oauth: {
     usePkceWithAuthorizationCodeGrant: true,
-    allowedFlows: ["implicit", "authorization_code", { flow: "client_credentials", names: ["go"], scopes: ["pms", "dm"] }],
+    allowedFlows: [
+      "implicit",
+      "authorization_code",
+      {
+        flow: "client_credentials",
+        names: ["go"],
+        scopes: ["pms", "dm"]
+      }
+    ],
     allowedScopes: ["openid", "email", "profile", "api_admin"],
     defaultSelectedScopes: ["openid", "email", "profile"]
   },
@@ -25,6 +35,15 @@ export const presetConfig = {
         syntax: "javascript"
       }
     }
+  },
+  responseInterceptor: (response: any) => {
+    if (response.url.includes("/swagger.json")) {
+      // Modify the response to include a custom property
+
+      response.body = patchSwagger(response.body);
+      response.text = JSON.stringify(response.body, null, 2);
+    }
+    return response;
   },
   footer: {
     columns: [

@@ -221,4 +221,16 @@ body {
   .swagger-ui .opblock-description .doc-tags div {
     @apply flex items-center justify-center text-b6 py-4 px-8 mx-4 rounded-16 bg-wave;
   }
+
+  .swagger-ui
+    .json-schema-2020-12-property--required
+    > .json-schema-2020-12:first-of-type
+    > .json-schema-2020-12-head
+    .json-schema-2020-12__title::after {
+    padding-left: 0.2rem;
+  }
+
+  .swagger-ui .json-schema-2020-12-keyword--description {
+    margin-left: 20px;
+  }
 }

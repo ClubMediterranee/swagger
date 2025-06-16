@@ -76,7 +76,18 @@ export default function BaseLayout(props: System) {
   }
 
   if (!loadingMessage && isSpecEmpty) {
-    loadingMessage = <h4>No API definition provided.</h4>;
+    return (
+      <div className="swagger-ui">
+        <HeroBanner {...props} />
+        <div>
+          <Row>
+            <Col mobile={12} desktop={12}>
+              {isSpecEmpty ? <OperationsLoading /> : loadingMessage}
+            </Col>
+          </Row>
+        </div>
+      </div>
+    );
   }
 
   if (loadingMessage) {
@@ -86,7 +97,7 @@ export default function BaseLayout(props: System) {
         <div>
           <Row>
             <Col mobile={12} desktop={12}>
-              <OperationsLoading />
+              {loadingMessage}
             </Col>
           </Row>
         </div>
