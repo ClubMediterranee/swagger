@@ -3008,7 +3008,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@clubmed/swagger-ui-plugins@npm:1.28.0, @clubmed/swagger-ui-plugins@workspace:packages/swagger-ui-plugins":
+"@clubmed/swagger-ui-plugins@npm:1.29.0, @clubmed/swagger-ui-plugins@workspace:packages/swagger-ui-plugins":
   version: 0.0.0-use.local
   resolution: "@clubmed/swagger-ui-plugins@workspace:packages/swagger-ui-plugins"
   dependencies:
@@ -3052,7 +3052,7 @@ __metadata:
   resolution: "@clubmed/swagger-ui-standalone-v3@workspace:packages/swagger-ui-standalone-v3"
   dependencies:
     "@braintree/sanitize-url": "npm:7.1.1"
-    "@clubmed/swagger-ui-plugins": "npm:1.28.0"
+    "@clubmed/swagger-ui-plugins": "npm:1.29.0"
     "@clubmed/trident-ui": "npm:1.2.0"
     "@clubmed/ui": "workspace:*"
     "@types/lodash": "npm:^4.17.6"
@@ -3083,7 +3083,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@clubmed/swagger-ui-v3@workspace:packages/swagger-ui-v3"
   dependencies:
-    "@clubmed/swagger-ui-plugins": "npm:1.28.0"
+    "@clubmed/swagger-ui-plugins": "npm:1.29.0"
     "@clubmed/trident-ui": "npm:1.2.0"
     "@clubmed/ui": "workspace:*"
     "@types/lodash": "npm:^4.17.6"
