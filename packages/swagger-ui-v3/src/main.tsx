@@ -1,4 +1,5 @@
 import "./patch-window.ts";
+import "./migrate.tsx";
 import "@clubmed/swagger-ui-plugins/styles/index.css";
 import "swagger-ui-react/swagger-ui.css";
 import "@clubmed/trident-ui/style.css";
