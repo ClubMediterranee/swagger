@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const LABELS: Record<string, { label: string }> = {
   "oidc-gm-quick-login": { label: "Gm quick login" },
   "oidc-gm-full-login": { label: "Gm full login" },
@@ -26,10 +28,12 @@ export function patchSwagger(spec: any): any {
         before += trim(deprecated(operation["x-deprecated"]));
       }
 
-      operation.description = before + operation.description;
+      if (before) {
+        operation.description = (before + "\n\n" + operation.description).trim();
+      }
 
       if (operation.externalDocs) {
-        operation.description += trim(externalDocs(operation.externalDocs));
+        operation.description += "\n\n" + trim(externalDocs(operation.externalDocs));
         operation.externalDocs = undefined;
       }
     });
@@ -50,23 +54,32 @@ function xTags(xTags: string[]) {
 }
 
 function externalDocs(externalDocs: { url: string; description: string }): string {
-  return `<div class="bg-white shadow px-5 py-4 -mx-5">
-    <h3 class="mt-0">For more details</h3>
+  return `<div class="bg-white p-8 mt-8 rounded-8">
+    <h4 class="font-serif">For more details</h4>
     <ul class="pl-4 mb-1">
         <li class="">
-            <a href="${externalDocs.url}" target="_blank" rel="noopener">{externalDocs.description}</a>
+            <a href="${externalDocs.url}" target="_blank" rel="noopener" class="underline">${externalDocs.description}</a>
         </li>
     </ul>
   </div>`;
 }
 
 function deprecated(depreciation: any): string {
-  return `<div class="border-2 text-red border-red p-5 rounded-small pb-5">
-    <div class="font-bold uppercase font-happiness text-md mb-2">Deprecated route</div>
+  if (!depreciation.route) {
+    return `<div class="bg-white p-8 mt-8 rounded-8 border-2 text-red border-red">
+    <h4 class="font-bold uppercase text-md mb-2">Deprecated route</h4>
     <div>
-        Use <a href="${depreciation.href}">${depreciation.method} ${depreciation.route}}</a> instead.
-        This route will be removed on <strong>^{depreciation.removingDate}</strong>.
-        <br />See more details on our migration note <a href="https://api.clubmed.com/doc/migration-notes/${depreciation.discussionId}}" target="_blank">here</a>.
+        This route will be removed on <strong>${depreciation.removingDate}</strong>.
+    </div>
+</div>`;
+  }
+
+  return `<div class="bg-white p-8 mt-8 rounded-8 border-2 text-red border-red">
+    <h4 class="font-bold uppercase text-md mb-2">Deprecated route</h4>
+    <div>
+        Use <a href="${depreciation.href}">${depreciation.method} ${depreciation.route}</a> instead.
+        This route will be removed on <strong>${moment(depreciation.date).format("DD/MM/YYYY")}</strong>.
+        <br />See more details on our migration note <a href="https://api.clubmed.com/doc/migration-notes/${depreciation.discussionId}" target="_blank">here</a>.
     </div>
 </div>`;
 }
