@@ -15,8 +15,6 @@ const trim = (str: string) =>
 
 // @ts-ignore
 export function patchSwagger(spec: any): any {
-  spec.servers[0].url = "http://localhost:5173";
-
   Object.values(spec.paths).forEach((methods: any) => {
     Object.values(methods).forEach((operation: any) => {
       operation.description = operation.description || "";
