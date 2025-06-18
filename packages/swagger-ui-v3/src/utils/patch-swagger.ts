@@ -4,7 +4,7 @@ const LABELS: Record<string, { label: string }> = {
   "oidc-gm-quick-login": { label: "Gm quick login" },
   "oidc-gm-full-login": { label: "Gm full login" },
   "oidc-go": { label: "Go login" },
-  "oidc-partners": { label: "Gm login" }
+  "oidc-partners": { label: "Partners login" }
 };
 
 const trim = (str: string) =>
@@ -15,6 +15,8 @@ const trim = (str: string) =>
 
 // @ts-ignore
 export function patchSwagger(spec: any): any {
+  spec.servers[0].url = "http://localhost:5173";
+
   Object.values(spec.paths).forEach((methods: any) => {
     Object.values(methods).forEach((operation: any) => {
       operation.description = operation.description || "";
