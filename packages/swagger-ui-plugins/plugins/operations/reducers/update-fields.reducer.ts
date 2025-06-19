@@ -79,9 +79,23 @@ export function updateFields(state: State, action: UpdateFieldsAction) {
             .get("parameters")
             .filter((parameter) => parameter?.get("in") === paramIn && parameter?.get("name") === paramName)
             .forEach((parameter) => {
-              const paramKey = paramToIdentifier(parameter);
+              const metaParams = state
+                .get("meta" as any)
+                ?.get("paths")
+                ?.get(path!)
+                ?.get(method!)
+                ?.get("parameters");
+              const paramKey = paramToIdentifier(parameter, { allowHashes: false });
 
-              state = state.setIn(["meta", "paths", path, method, "parameters", paramKey, "value"], value);
+              const key = metaParams?.findKey((_, key) => {
+                return !!key?.startsWith(paramKey + ".");
+              });
+
+              if (key) {
+                state = state.setIn(["meta", "paths", path, method, "parameters", key, "value"], fromJS(value));
+              } else {
+                state = state.setIn(["meta", "paths", path, method, "parameters", paramKey, "value"], fromJS(value));
+              }
             });
         }
       });
