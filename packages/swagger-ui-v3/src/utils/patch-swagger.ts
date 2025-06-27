@@ -15,6 +15,15 @@ const trim = (str: string) =>
 
 // @ts-ignore
 export function patchSwagger(spec: any): any {
+  // Fixing the type of arrival_date parameter in suggestions endpoint
+  // TODO remove this when the backend is fixed
+  spec.paths["/v0/products/{product_id}/suggestions"]?.["get"]?.parameters?.forEach((param: any) => {
+    if (param.name === "arrival_date") {
+      delete param.type;
+      param.schema.type = "string";
+    }
+  });
+
   Object.values(spec.paths).forEach((methods: any) => {
     Object.values(methods).forEach((operation: any) => {
       operation.description = operation.description || "";
