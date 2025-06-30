@@ -1,7 +1,7 @@
 {
   "name": "@clubmed/ui",
   "private": true,
-  "version": "1.31.4",
+  "version": "1.31.5",
   "main": "package.json",
   "type": "module",
   "scripts": {
