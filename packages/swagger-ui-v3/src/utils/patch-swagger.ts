@@ -88,7 +88,7 @@ function deprecated(depreciation: any): string {
     <div>
         Use <a href="${depreciation.href}">${depreciation.method} ${depreciation.route}</a> instead.
         This route will be removed on <strong>${moment(depreciation.date).format("DD/MM/YYYY")}</strong>.
-        <br />See more details on our migration note <a href="https://api.clubmed.com/doc/migration-notes/${depreciation.discussionId}" target="_blank">here</a>.
+        <br />See more details on our migration note <a href="https://api.clubmed.com/doc/migration-notes/${depreciation.discussion_id}" target="_blank">here</a>.
     </div>
 </div>`;
 }
