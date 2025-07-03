@@ -28,5 +28,5 @@
     "storybook:test": "yarn test-storybook",
     "storybook:test:ci": "yarn test-storybook --maxWorkers=2"
   },
-  "version": "1.31.6"
+  "version": "1.31.7"
 }
