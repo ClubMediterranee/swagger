@@ -60,7 +60,7 @@ export function useSwaggerUI(baseOpts: UseSwaggerUIOptions): SwaggerUIProps {
 
   if (baseOpts.disableBrowserCache || config.disableBrowserCache) {
     config.requestInterceptor = (request: any) => {
-      if (!request.url.endsWith("swagger.json")) {
+      if (!request.url.includes("swagger.json")) {
         request.url += `${request.url.includes("?") ? "&" : "?"}timestamp=${Date.now()}`;
       }
 
