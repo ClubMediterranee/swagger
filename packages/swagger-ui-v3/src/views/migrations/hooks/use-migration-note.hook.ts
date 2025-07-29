@@ -7,7 +7,7 @@ import type { MigrationNote } from "../interfaces/migration-note";
 
 export function useMigrationNote() {
   const params = useParams<{ id: string }>();
-  const hooks = useFetch<MigrationNote>({ url: `https://www.dataviz.clubmed/rest/migration-notes/${params.id}` });
+  const hooks = useFetch<MigrationNote>({ url: `https://dataviz.api.clubmed/rest/migration-notes/${params.id}` });
   const { content, toc } = useHtml({ source: hooks.data?.content });
 
   useEffect(() => {
