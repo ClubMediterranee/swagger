@@ -6,7 +6,7 @@ import * as migrationNotes from "../../../../docs/migration-notes.md";
 import type { MigrationNote } from "../interfaces/migration-note";
 
 export function useMigrationNotes() {
-  const hooks = useFetch<MigrationNote[]>({ url: "https://www.dataviz.clubmed/rest/migration-notes" });
+  const hooks = useFetch<MigrationNote[]>({ url: "https://dataviz.api.clubmed/rest/migration-notes" });
 
   hooks.data = (hooks.data || []).sort((a, b) => {
     return b.route.deletion_date < a.route.deletion_date ? -1 : 1;
