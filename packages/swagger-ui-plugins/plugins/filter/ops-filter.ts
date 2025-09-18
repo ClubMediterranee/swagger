@@ -34,6 +34,10 @@ function filterOperations(operations: List<Map<string, any>>, phrase: string) {
       const method = operationPath.get("method");
       const operation: OrderedMap<string, any> | undefined = operationPath.get("operation");
 
+      if (path && method && method + " " + path === phrase.trim()) {
+        return true;
+      }
+
       if (path && path.toLowerCase().includes(phrase)) {
         return true;
       }

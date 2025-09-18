@@ -42,14 +42,6 @@ export function Search({
     }
   }, [showSearch]);
 
-  useEffect(() => {
-    if (config.search) {
-      inputSearch.current?.classList.add("bg-lightSand");
-    } else {
-      inputSearch.current?.classList.remove("bg-lightSand");
-    }
-  }, [value]);
-
   return (
     <>
       <Button theme={showSearch ? "black" : "blackStroke"} disabled={disabled} variant="textSmall" icon="Search" onClick={onClick}>
@@ -57,9 +49,7 @@ export function Search({
       </Button>
 
       <div
-        className={
-          "transition-opacity ease-in-out duration-150 absolute inset-x-0 top-[64px] py-40 justify-center items-center bg-lightSand"
-        }
+        className={"transition-opacity ease-in-out duration-150 absolute inset-x-0 top-[64px] py-40 justify-center items-center"}
         ref={inputSearch}
       >
         <TextField
