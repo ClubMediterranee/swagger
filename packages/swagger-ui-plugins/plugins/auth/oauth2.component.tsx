@@ -90,7 +90,7 @@ export function Oauth2Component(props: OAuth2Props) {
         <Actions className={"mb-24"} authorize={authorize} isAuthorized={isAuthorized} close={close} isValid={isValid} logout={logout} />
       )}
 
-      <div className={"mb-24 max-w-[718px]"}>
+      <div className={"mb-24 max-w-popin md:max-w-[718px]"}>
         {isAuthorized && (
           <div className={"flex items-center justify-center gap-8 mb-16 bg-green text-white p-8 rounded-16"}>
             <Icon name="CheckOutlined" width="24px" />
@@ -100,15 +100,19 @@ export function Oauth2Component(props: OAuth2Props) {
         {appName ? <DisabledFieldComponent value={appName}>Application:</DisabledFieldComponent> : null}
         {description && (
           <div className="text-serif mb-12 py-4 text-b4">
-            <Markdown source={"test\nhello world"} />
+            <Markdown source={description} />
           </div>
         )}
         {oidcUrl && <DisabledFieldComponent value={oidcUrl}>OpenID Connect URL:</DisabledFieldComponent>}
         {(flow === AUTH_FLOW_IMPLICIT || flow === AUTH_FLOW_ACCESS_CODE) && (
-          <DisabledFieldComponent value={schema.get("authorizationUrl")}>Authorization URL:</DisabledFieldComponent>
+          <DisabledFieldComponent className="hidden md:block" value={schema.get("authorizationUrl")}>
+            Authorization URL:
+          </DisabledFieldComponent>
         )}
         {(flow === AUTH_FLOW_PASSWORD || flow === AUTH_FLOW_ACCESS_CODE || flow === AUTH_FLOW_APPLICATION) && (
-          <DisabledFieldComponent value={schema.get("tokenUrl")}>Token URL:</DisabledFieldComponent>
+          <DisabledFieldComponent className="hidden md:block" value={schema.get("tokenUrl")}>
+            Token URL:
+          </DisabledFieldComponent>
         )}
         {!isAuthorized ? (
           <div className="bg-lightSand py-16 rounded-16 mb-16">
@@ -116,7 +120,7 @@ export function Oauth2Component(props: OAuth2Props) {
               <RadioGroup aria-labelledby={"flow"} name={"flow"} onChange={setState} className={"ml-16"} value={flow}>
                 {flows.map(({ label, value }) => {
                   return (
-                    <Radio key={value} value={value}>
+                    <Radio key={value} value={value} className="flex-1 md:flex-none">
                       {label}
                     </Radio>
                   );

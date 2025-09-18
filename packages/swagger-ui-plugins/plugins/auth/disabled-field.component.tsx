@@ -11,9 +11,9 @@ export function DisabledFieldComponent({
 }: PropsWithChildren<{ style?: CSSProperties; copy?: string; className?: string; value?: string }>) {
   const [isCopied, set] = useState(false);
   return (
-    <div style={style} className={classnames("text-sans flex items-center mb-12 bg-lightSand gap-8 rounded-16 text-b5", className)}>
-      <div className="w-1/3 p-12 flex items-center ">{children}</div>
-      <div className="w-2/3 p-12 flex items-center bg-lightSand-active rounded-r-16 overflow-auto">
+    <div style={style} className={classnames("text-sans md:flex items-center mb-12 bg-lightSand gap-8 rounded-16 text-b5", className)}>
+      <div className="font-bold md:font-normal md:w-1/3 p-12 flex items-center ">{children}</div>
+      <div className="md:w-2/3 p-12 flex items-center bg-lightSand-active rounded-b-16 md:rounded-bl-0 md:rounded-r-16 overflow-auto text-b6 md:text-b5">
         <div className="flex flex-col w-full group relative">
           <code className={"whitespace-pre"}>{value || "********"}</code>
           {copy && (

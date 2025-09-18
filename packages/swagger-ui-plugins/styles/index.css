@@ -8,3 +8,7 @@
 @import "./button.css";
 @import "./markdown.css";
 @import "./custom-block.css";
+
+.max-w-popin {
+  max-width: calc(100vw - 42px);
+}
