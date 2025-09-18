@@ -1,7 +1,7 @@
-import { Popin } from "@clubmed/trident-ui/molecules/Popin";
 import { TabPanel, Tabs, TabsBody } from "@clubmed/trident-ui/molecules/Tabs";
 import { Tab } from "@clubmed/trident-ui/molecules/Tabs/Tab";
 import { TabList } from "@clubmed/trident-ui/molecules/Tabs/TabList";
+import { Popin } from "@clubmed/ui/molecules/Popin/Popin";
 import { List, Map as M } from "immutable";
 import React from "react";
 

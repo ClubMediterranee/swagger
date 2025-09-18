@@ -57,10 +57,11 @@ export function Header({
     <header role="banner" className="sticky top-0 bg-white z-2">
       <div className=" relative flex items-center justify-between p-8 lg:px-20">
         <Link href={homepageUrl} title="Club Med Homepage relative">
-          <div className="w-[120px] md:w-[160px] ">
+          <div className="w-[30px] md:w-[160px] ">
             <div className={"flex flex-col"}>
-              <Icon name="ClubMed" width="100%" aspectRatio className="text-ultramarine" />
-              <span className="text-b6">{version}</span>
+              <Icon name="ClubMed" width="100%" aspectRatio className="hidden md:block text-ultramarine" />
+              <Icon name="Trident" width="100%" aspectRatio className="ml-8 md:hidden text-ultramarine" />
+              <span className="hidden md:block text-b6">{version}</span>
             </div>
           </div>
         </Link>

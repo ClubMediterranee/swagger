@@ -53,7 +53,7 @@ export function Search({
   return (
     <>
       <Button theme={showSearch ? "black" : "blackStroke"} disabled={disabled} variant="textSmall" icon="Search" onClick={onClick}>
-        Search...
+        <span className="hidden md:block">Search...</span>
       </Button>
 
       <div
