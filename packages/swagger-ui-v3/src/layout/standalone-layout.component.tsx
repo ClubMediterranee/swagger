@@ -31,13 +31,29 @@ function useSearch(props: System) {
   const { config } = useConfig();
 
   useEffect(() => {
+    // push current search to history
+    const search = config.search ? "?search=" + config.search : "";
+
+    window.history.replaceState(null, "", window.location.pathname + search);
+
     props.layoutActions.updateFilter(config.search);
+
+    if (config.search) {
+      const el = document.getElementById("swagger-ui-main-body-layout");
+
+      if (el) {
+        window.scrollTo({
+          behavior: "smooth",
+          top: el.offsetTop - 100
+        });
+      }
+    }
   }, [config.search]);
 }
 
 export default function CustomStandaloneLayout(props: System) {
   const { config, setConfig } = useConfig();
-  const { getComponent, specSelectors, authSelectors, authActions } = props;
+  const { getComponent, specSelectors } = props;
   const BaseLayout = getComponent("BaseLayout", true);
   const info = specSelectors.info();
   const version = info?.get("version") as string;

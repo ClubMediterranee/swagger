@@ -22,9 +22,14 @@ function App() {
       };
     });
 
-  const [config, setConfig] = useState({
-    nav,
-    ...presetConfig
+  const [config, setConfig] = useState(() => {
+    const search = new URLSearchParams(window.location.search);
+
+    return {
+      nav,
+      search: search.get("search") || "",
+      ...presetConfig
+    };
   });
 
   return (

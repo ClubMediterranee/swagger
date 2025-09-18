@@ -57,7 +57,7 @@ export default function OperationSummary(
           <span className="opblock-summary-operation-id">{originalOperationId || operationId}</span>
         ) : null}
       </button>
-      <CopyToClipboardBtn textToCopy={`${specPath.get(1)}`} />
+      <CopyToClipboardBtn textToCopy={`${window.location.href.split("?")[0]}?search=${method.toUpperCase()} ${specPath.get(1)}`} />
       {allowAnonymous ? null : (
         <AuthorizeOperationBtn
           isAuthorized={isAuthorized}

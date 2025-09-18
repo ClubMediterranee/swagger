@@ -21,8 +21,7 @@ export default function OperationTag(props: PropsWithChildren<System & { tag: st
   } = props;
 
   let { docExpansion, deepLinking } = getConfigs();
-
-  const isDeepLinkingEnabled = deepLinking && (deepLinking as any) !== "false";
+  const isDeepLinkingEnabled = deepLinking && (deepLinking as any) !== false;
 
   const Collapse = getComponent("Collapse");
   const Markdown = getComponent("Markdown", true);

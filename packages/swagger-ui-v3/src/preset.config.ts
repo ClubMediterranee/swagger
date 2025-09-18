@@ -4,6 +4,7 @@ export const presetConfig = {
   disableBrowserCache: true,
   plugins: ["StandaloneLayoutPlugin", "TopBarPlugin", "RequestSnippetGeneratorPlugin"],
   contact: "mailto:lvisdigiapi@clubmed.com",
+  deepLinking: false,
   oauth: {
     usePkceWithAuthorizationCodeGrant: true,
     allowedFlows: [

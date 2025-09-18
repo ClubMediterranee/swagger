@@ -113,7 +113,7 @@ export default function BaseLayout(props: System) {
 
         <HeroBanner {...props} />
 
-        <Row>
+        <Row id="swagger-ui-main-body-layout">
           <Col mobile={12} desktop={12}>
             <Operations />
           </Col>
