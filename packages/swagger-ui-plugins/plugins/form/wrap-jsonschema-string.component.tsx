@@ -1,13 +1,10 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
-import { variants } from "@clubmed/trident-ui/molecules/Buttons/Button.helpers";
+import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
 import { TextField } from "@clubmed/trident-ui/molecules/Forms/TextField";
 import { DebouncedTextField } from "@clubmed/ui/molecules/Forms/TextField/DebouncedTextField";
 import { ApikeyField } from "@clubmed/ui/organisms/Forms/ApiKeyField";
 import { FunctionComponent } from "react";
 
 import { System } from "../../interfaces/System";
-
-(variants as any)["textXSmall"] = "h-auto py-8 px-12";
 
 export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: System) {
   return (props: Record<string, any>) => {
@@ -47,10 +44,10 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
 
         return securityDefinitions ? (
           <Button
-            theme="blackStroke"
+            theme="outline"
+            color="black"
             className="mt-4"
             style={{ minWidth: "340px" }}
-            variant={"textXSmall" as any}
             onClick={() => authActions.showDefinitions(authorizableDefinitions)}
           >
             Connect

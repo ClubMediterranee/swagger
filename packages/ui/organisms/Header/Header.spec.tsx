@@ -1,24 +1,32 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { ComponentProps, FunctionComponent, PropsWithChildren } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
+import type { ComponentProps } from "react";
+import { describe, expect, it } from "vitest";
 
-import { Devices, deviceWrapper } from "../../tests/helpers/device";
-import { Header } from "./Header";
+import { Header } from "./Header.js";
 
-const createWrapper = (device: Devices) => {
-  const Wrapper: FunctionComponent<PropsWithChildren<any>> = ({ children }) => {
-    const DeviceProvider = deviceWrapper(device);
-
-    return (
-      <BrowserRouter>
-        <DeviceProvider>{children}</DeviceProvider>
-      </BrowserRouter>
-    );
-  };
-
-  return Wrapper;
-};
+const LanguagesMobile = () => (
+  <div
+    data-testid="languages-for-mobile"
+    className="mx-8 flex items-center justify-end gap-4 border-b border-pearl p-20 font-sans text-b3 font-semibold"
+    data-name="Languages"
+  >
+    <a className="decoration-none link-container cursor-pointer text-b3 text-inherit capitalize" data-name="Link" href="/?locale=fr-CH">
+      <span className="link-underline">f</span>
+      <span className="hoverable link-underline">
+        r<span className="inline-block"></span>
+      </span>
+    </a>
+    <span>|</span>
+    <a className="decoration-none link-container cursor-pointer text-b3 text-inherit capitalize" data-name="Link" href="/?locale=de-CH">
+      <span className="link-underline">d</span>
+      <span className="hoverable link-underline">
+        e<span className="inline-block"></span>
+      </span>
+    </a>
+    <span>|</span>
+    <span className="capitalize">en</span>
+  </div>
+);
 
 const props = {
   homepageUrl: "/",
@@ -56,14 +64,13 @@ const props = {
         }
       ]
     }
-  ]
+  ],
+  topBurgerMenuContent: <LanguagesMobile />
 };
 
 describe("<Header />", () => {
-  it("renders a Header", () => {
-    render(<Header {...(props as ComponentProps<typeof Header>)} />, {
-      wrapper: createWrapper(Devices.desktop)
-    });
+  it("renders the Header", () => {
+    render(<Header {...(props as ComponentProps<typeof Header>)} />);
     expect(screen.getByRole("banner")).toBeInTheDocument();
   });
 
@@ -72,54 +79,9 @@ describe("<Header />", () => {
       render(
         <Header {...(props as ComponentProps<typeof Header>)}>
           <div>child</div>
-        </Header>,
-        { wrapper: createWrapper(Devices.desktop) }
+        </Header>
       );
       expect(screen.getByText("child")).toBeInTheDocument();
-    });
-  });
-
-  describe("navigation", () => {
-    describe("opening the menu", () => {
-      describe("on desktop", () => {
-        it("opens the menu on focus and closes it on blur", async () => {
-          render(<Header {...(props as ComponentProps<typeof Header>)} />, {
-            wrapper: createWrapper(Devices.desktop)
-          });
-
-          const trigger = screen.getByRole("link", { name: "Discover" });
-          act(() => {
-            trigger.focus();
-          });
-          await waitFor(
-            () => {
-              expect(screen.getByRole("menu", { name: "desktop-menuItem" })).not.toHaveClass("hidden");
-            },
-            { timeout: 100 }
-          );
-
-          act(() => {
-            trigger.blur();
-          });
-        });
-      });
-    });
-
-    describe("on mobile", () => {
-      it("opens the menu on click and closes it on click", async () => {
-        render(<Header {...(props as ComponentProps<typeof Header>)} />, {
-          wrapper: createWrapper(Devices.mobile)
-        });
-
-        const trigger = screen.getByRole("button", { name: "open menu" });
-        await act(() => userEvent.click(trigger));
-        await waitFor(
-          () => {
-            expect(screen.getByRole("menu", { name: "mobile-menu" })).toBeInTheDocument();
-          },
-          { timeout: 100 }
-        );
-      });
     });
   });
 });

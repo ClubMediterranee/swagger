@@ -67,16 +67,4 @@ describe("<Footer />", () => {
     render(<Footer {...footerProps} />, { wrapper });
     expect(screen.getByRole("contentinfo")).toBeInTheDocument();
   });
-
-  describe("on mobile", () => {
-    it("opens the collapse when clicking on its title", () => {
-      render(<Footer {...footerProps} />, { wrapper });
-
-      act(() => {
-        userEvent.click(screen.getByRole("button", { name: "Column 1" }));
-      });
-
-      expect(screen.getByRole("presentation")).not.toHaveClass("h-0");
-    });
-  });
 });

@@ -18,10 +18,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/doc/swagger.json": {
-        target: "https://dataviz:3003",
-        secure: false
-      }
+      "/doc/swagger.json": "https://api.integ.clubmed.com"
     }
   }
 });

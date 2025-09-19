@@ -51,7 +51,7 @@ function useSearch(props: System) {
   }, [config.search]);
 }
 
-export default function CustomStandaloneLayout(props: System) {
+export default function CustomStandaloneLayout(props: System & { show: boolean }) {
   const { config, setConfig } = useConfig();
   const { getComponent, specSelectors } = props;
   const BaseLayout = getComponent("BaseLayout", true);
@@ -79,19 +79,7 @@ export default function CustomStandaloneLayout(props: System) {
 
   return (
     <>
-      {config.enableAdvancedFilter && config.showAdvancedFilters ? (
-        <div role="presentation" className={"fixed top-[64px] bottom-0 inset-x-0 z-2"} onClick={onClickAdvancedFilter}>
-          <div
-            role="presentation"
-            className="w-full bg-white py-20"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-          >
-            <AdvancedFilterPanel />
-          </div>
-        </div>
-      ) : null}
+      {config.enableAdvancedFilter ? <AdvancedFilterPanel isVisible={config.showAdvancedFilters} onClose={onClickAdvancedFilter} /> : null}
       {config.subView ? <config.subView {...props} /> : <BaseLayout />}
       {showPopup && <AuthorizationPopup />}
     </>

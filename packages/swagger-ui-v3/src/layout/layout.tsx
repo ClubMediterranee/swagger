@@ -1,6 +1,6 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
 import { useConfig } from "@clubmed/ui/contexts/config.context";
-import { Header } from "@clubmed/ui/organisms/Header";
+import { HeaderContainer } from "@clubmed/ui/organisms/HeaderContainer/HeaderContainer";
 import React, { PropsWithChildren } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -43,23 +43,25 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
 
   return (
     <div className={"swagger-ui"}>
-      <Header version={config.version} Link={RouterLink} homepageUrl="/" openMenu="Open menu" items={config.nav.filter(Boolean)}>
+      <HeaderContainer version={config.version} Link={RouterLink} homepageUrl="/" items={config.nav.filter(Boolean)}>
         <Button
-          theme={config.showAdvancedFilters ? "black" : "blackStroke"}
-          variant="icon"
+          theme="outline"
+          variant="circle"
+          color="black"
           icon="Filters"
           disabled={shouldDisabledActions}
           onClick={() => onClick("filters")}
         />
         <Search disabled={shouldDisabledActions} value={config.search} onChange={onChange} />
         <Button
-          theme="blackStroke"
-          variant="icon"
+          theme="outline"
+          variant="circle"
+          color="black"
           icon="PeopleSingle"
           disabled={!(!shouldDisabledActions || enableAuthorize)}
           onClick={() => onClick("authorize")}
         />
-      </Header>
+      </HeaderContainer>
       <div className="min-h-screen">{children}</div>
       {config.footer ? <Footer {...config.footer} /> : null}
     </div>

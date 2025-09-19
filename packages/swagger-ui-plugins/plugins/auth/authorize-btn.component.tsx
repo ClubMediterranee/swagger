@@ -1,4 +1,4 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
 import { useConfig } from "@clubmed/ui/contexts/config.context";
 import { useEffect } from "react";
 
@@ -27,11 +27,12 @@ export default function AuthorizeBtn(
     <div className="auth-wrapper">
       <Button
         id="authorize-button"
-        theme="blackStroke"
-        variant="icon"
+        variant="circle"
+        theme="outline"
+        color="black"
         icon="PeopleSingle"
         onClick={onClick}
-        label={isAuthorized ? "Hello" : "Authorize"}
+        aria-label={isAuthorized ? "Connected" : "Authorize"}
       />
 
       {showPopup && <AuthorizationPopup />}

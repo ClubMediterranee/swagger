@@ -1,6 +1,5 @@
 import { useValue, UseValueProps } from "@clubmed/trident-ui/hooks/useValue";
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
-import { TagProps } from "@clubmed/trident-ui/molecules/Tag";
+import { Tag, TagProps } from "@clubmed/trident-ui/molecules/Tag";
 import classNames from "classnames";
 
 export interface GroupButtonsProps extends Omit<UseValueProps<string[]>, "initialValue"> {
@@ -31,12 +30,15 @@ export function GroupButtons(props: GroupButtonsProps) {
       {props.choices?.map(({ value: itemValue, ...item }) => {
         return (
           <li key={itemValue}>
-            <Button
+            <Tag
               {...item}
-              className={"text-b6 py-4 px-12"}
-              theme={value.includes(itemValue) ? "yellow" : "blackStroke"}
+              role="button"
+              className={"cursor-pointer text-b6 py-4 px-12"}
+              backgroundColor={value.includes(itemValue) ? "saffron" : "blackStroke"}
               onClick={handleClick(itemValue)}
-            />
+            >
+              {item.label}
+            </Tag>
           </li>
         );
       })}
