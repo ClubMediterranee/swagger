@@ -9,10 +9,6 @@ import SwaggerUI, { SwaggerUIProps } from "swagger-ui-react";
 
 import { StandaloneLayoutPlugin } from "./layout/standalone-layout.plugin";
 
-export const isMobile = () => {
-  return /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(window.navigator.userAgent);
-};
-
 function App() {
   const initial = useSwaggerUI({
     overridePlugins: [StandaloneLayoutPlugin],
@@ -22,7 +18,7 @@ function App() {
   const [config, setConfig] = useState<SwaggerUIProps>(initial);
 
   return (
-    <DeviceProvider device={isMobile() ? "mobile" : "desktop"}>
+    <DeviceProvider device="all">
       <ConfigContext.Provider value={{ config, setConfig }}>
         {/* @ts-ignore */}
         <SwaggerUI {...(config as SwaggerUIProps)} tryItOutEnabled={true} />

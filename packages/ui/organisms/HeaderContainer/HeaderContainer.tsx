@@ -1,0 +1,33 @@
+import { Icon } from "@clubmed/trident-icons";
+import { PropsWithChildren } from "react";
+
+import { Header } from "../Header/Header";
+import type { NavItem } from "../Header/types/NavItem.js";
+import { DesktopMenuContainer } from "./DesktopMenuContainer";
+import { MobileMenuContainer } from "./MobileMenuContainer.js";
+
+export function HeaderContainer({
+  homepageUrl,
+  items,
+  version,
+  children
+}: PropsWithChildren<{ Link: any; version?: string; homepageUrl: string; items?: NavItem[] }>) {
+  return (
+    <Header className="relative isolate z-5">
+      <a href={homepageUrl} title="Club Med Homepage relative">
+        <div className="w-[30px] md:w-[160px] ">
+          <div className={"flex flex-col"}>
+            <Icon name="ClubMed" width="100%" aspectRatio className="hidden md:block text-ultramarine" />
+            <Icon name="Trident" width="100%" aspectRatio className="ml-8 md:hidden text-ultramarine" />
+            <span className="hidden md:block text-b6">{version}</span>
+          </div>
+        </div>
+      </a>
+      {items && <DesktopMenuContainer items={items} />}
+      <div className="flex gap-x-8 items-center">
+        {children}
+        {items && <MobileMenuContainer items={items} />}
+      </div>
+    </Header>
+  );
+}

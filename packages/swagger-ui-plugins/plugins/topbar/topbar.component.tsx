@@ -1,6 +1,7 @@
+import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
 import { useConfig } from "@clubmed/ui/contexts/config.context";
-import { Header, HeaderNavItemProps } from "@clubmed/ui/organisms/Header";
-import { HeaderSectionProps } from "@clubmed/ui/organisms/Header/HeaderSection";
+import { HeaderContainer } from "@clubmed/ui/organisms/HeaderContainer/HeaderContainer";
+import React, { useState } from "react";
 
 import { System } from "../../interfaces/System";
 
@@ -10,29 +11,24 @@ export default function Topbar(props: System) {
   const AuthorizeBtnContainer = getComponent("AuthorizeBtnContainer", true);
   const FilterContainer = getComponent("FilterContainer", true);
   const AdvancedFilterPanel = getComponent("AdvancedFilterPanel", true);
-  const RouterLink: HeaderSectionProps["Link"] | undefined = getComponent("RouterLink") || undefined;
+  const RouterLink: any | undefined = getComponent("RouterLink") || undefined;
 
   const { config } = useConfig();
   const version = info.get("version") as string;
 
-  const items: HeaderNavItemProps[] = [
-    ...(config.nav || []),
-    config.enableAdvancedFilter && {
-      label: "Options",
-      url: "",
-      position: "right",
-      variant: "icon",
-      icon: "Filters",
-      component: <AdvancedFilterPanel />
-    }
-  ];
-
   const hasSecurityDefinitions = !!specSelectors.securityDefinitions();
+  const [isVisible, setVisible] = useState(false);
 
   return (
-    <Header version={version} Link={RouterLink} homepageUrl="/" openMenu="Open menu" items={items.filter(Boolean)}>
+    <HeaderContainer version={version} Link={RouterLink} homepageUrl="/" items={(config.nav || []).filter(Boolean)}>
+      {config.enableAdvancedFilter && (
+        <>
+          <Button theme="outline" color="black" variant="circle" icon="Filters" onClick={() => setVisible(true)} />
+          <AdvancedFilterPanel isVisible={isVisible} onClose={() => setVisible(false)} />
+        </>
+      )}
       {config.enableSearch && <FilterContainer />}
       {hasSecurityDefinitions ? <AuthorizeBtnContainer /> : null}
-    </Header>
+    </HeaderContainer>
   );
 }

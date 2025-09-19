@@ -49,7 +49,7 @@ export function Search({
       </Button>
 
       <div
-        className={"transition-opacity ease-in-out duration-150 absolute inset-x-0 top-[64px] py-40 justify-center items-center"}
+        className={"transition-opacity ease-in-out duration-150 fixed inset-x-0 top-[64px] py-40 justify-center items-center"}
         ref={inputSearch}
       >
         <TextField

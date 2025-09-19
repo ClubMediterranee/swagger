@@ -1,9 +1,10 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
 import { Switch } from "@clubmed/trident-ui/molecules/Forms/Switch";
 import { useLocalStorage } from "@clubmed/ui/hooks/storage/useLocaleStorage";
-import { GroupButtons } from "@clubmed/ui/molecules/GroupButtons/GroupButtons";
-import { HeaderColumn, HeaderColumns } from "@clubmed/ui/organisms/Header/HeaderColumns";
+import { GroupButtons } from "@clubmed/ui/molecules/GroupButtons";
+import { Popin } from "@clubmed/ui/molecules/Popin/Popin";
 import { Map } from "immutable";
+import React from "react";
 
 import { System } from "../../interfaces/System";
 
@@ -40,39 +41,46 @@ function useAdvancedFilterPanel(props: System) {
   return { layoutActions, filters, tags, hasAdmin, tagsValue, onReset, onChangeSelection };
 }
 
-export function AdvancedFilterPanel(props: System) {
+export function AdvancedFilterPanel(props: System & { isVisible: boolean; onClose: () => void }) {
   const { filters, tags, hasAdmin, tagsValue, onChangeSelection, onReset } = useAdvancedFilterPanel(props);
 
   return (
-    <HeaderColumns>
-      <HeaderColumn>
-        <strong className={"block font-bold pb-20"}>Display routes</strong>
-
-        <div className={"space-y-8"}>
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label className="flex items-center">
-            <Switch name="deprecated" className="mr-20" onChange={onChangeSelection} checked={!!filters.get("deprecated")} /> Deprecated
-          </label>
-
-          {hasAdmin && (
-            // eslint-disable-next-line jsx-a11y/label-has-associated-control
-            <label className="flex items-center mb-20">
-              <Switch name="admin" className="mr-20" onChange={onChangeSelection} checked={!!filters.get("admin")} /> Admin
+    <Popin
+      title="Advanced filters"
+      closeLabel="Close advanced filters"
+      onClose={props.onClose}
+      isVisible={props.isVisible}
+      className={"sm:max-w-[800px]"}
+    >
+      <div className="flex flex-col gap-16">
+        <div>
+          <strong className={"block font-bold pb-20"}>Display routes</strong>
+          <div className={"gap-16 flex"}>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label className="flex items-center">
+              <Switch name="deprecated" onChange={onChangeSelection} checked={!!filters.get("deprecated")} /> Deprecated
             </label>
-          )}
+
+            {hasAdmin && (
+              // eslint-disable-next-line jsx-a11y/label-has-associated-control
+              <label className="flex items-center">
+                <Switch name="admin" onChange={onChangeSelection} checked={!!filters.get("admin")} /> Admin
+              </label>
+            )}
+          </div>
         </div>
-      </HeaderColumn>
-      <HeaderColumn className={"max-w-1/3"}>
-        <strong className={"block font-bold pb-20"}>Tags</strong>
 
-        <GroupButtons name={"tags"} value={tagsValue} choices={tags} onChange={onChangeSelection} />
-      </HeaderColumn>
+        <div>
+          <div className="flex justify-between items-center">
+            <strong className="block font-bold pb-20">Tags</strong>
+            <Button size="small" variant="pill" theme="outline" color="black" className="text-b5 py8 px-20" onClick={onReset}>
+              Reset
+            </Button>
+          </div>
 
-      <HeaderColumn>
-        <Button theme={"black"} className={"text-b5 py8 px-20"} onClick={onReset}>
-          Reset
-        </Button>
-      </HeaderColumn>
-    </HeaderColumns>
+          <GroupButtons name={"tags"} value={tagsValue} choices={tags} onChange={onChangeSelection} />
+        </div>
+      </div>
+    </Popin>
   );
 }

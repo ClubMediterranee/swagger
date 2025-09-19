@@ -13,7 +13,8 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
     //hidden: true,
     element: React.lazy(() => import("./views/swagger/swagger.view")),
     path: "/",
-    index: true
+    index: true,
+    columns: []
   },
   // {
   //   label: "Discover",
@@ -25,14 +26,16 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
     label: "Migration notes",
     path: "/migration-notes",
     element: React.lazy(() => import("./views/migrations/migration-notes.view")),
-    index: false
+    index: false,
+    columns: []
   },
   {
     label: "Migration notes",
     path: "/migration-notes/:id",
     element: React.lazy(() => import("./views/migrations/migration-note.view")),
     index: false,
-    hidden: true
+    hidden: true,
+    columns: []
   },
   {
     label: "Webhooks",
@@ -40,12 +43,14 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
     element: React.lazy(() => import("./views/swagger/swagger.view")),
     subView: React.lazy(() => import("./views/swagger/webhooks/webhooks.view")),
     index: false,
-    enableAuthorize: true
+    enableAuthorize: true,
+    columns: []
   },
   {
     label: "Status",
     path: `/status`,
     element: React.lazy(() => import("./views/status/status-page.view")),
-    index: false
+    index: false,
+    columns: []
   }
 ];

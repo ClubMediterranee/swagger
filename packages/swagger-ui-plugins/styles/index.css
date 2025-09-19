@@ -12,3 +12,13 @@
 .max-w-popin {
   max-width: calc(100vw - 42px);
 }
+
+.popin {
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="file"],
+  input[type="text"] {
+    max-width: none;
+  }
+}

@@ -1,10 +1,12 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
-import { variants } from "@clubmed/trident-ui/molecules/Buttons/Button.helpers";
+import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
+import { BUTTON_SIZES } from "@clubmed/trident-ui/molecules/Buttons/v2/Button.type";
 import { FunctionComponent } from "react";
 
 import { System } from "../../interfaces/System";
 
-(variants as any)["iconSmall"] = "h-32 w-32 flex items-center justify-center";
+(BUTTON_SIZES as any).xSmall = "button-xsmall";
+
+// (variants as any)["iconSmall"] = "h-32 w-32 flex items-center justify-center";
 
 export function wrapOperationSummary(Base: FunctionComponent, system: System) {
   return (props: any) => {
@@ -70,7 +72,6 @@ export default function OperationSummary(
       <JumpToPath path={specPath} />
       {/* TODO: use wrapComponents here, swagger-ui doesn't care about jumpToPath */}
       <Button
-        variant={"iconSmall" as any}
         aria-expanded={isShown}
         title={isShown ? "Collapse operation" : "Expand operation"}
         onClick={() => {
@@ -78,17 +79,22 @@ export default function OperationSummary(
             ? props.layoutActions.removeFromBookmarks(method + "-" + path)
             : props.layoutActions.addToBookmarks(method + "-" + path);
         }}
-        theme={"white"}
+        size={"xSmall" as any}
+        variant="circle"
+        theme="solid"
+        color="white"
         icon={isBookmarked ? "StarFilled" : "StarOutlined"}
         className={"pointer-events-auto me-auto transition-opacity mx-12"}
       />
 
       <Button
-        variant={"iconSmall" as any}
         aria-expanded={isShown}
         title={isShown ? "Collapse operation" : "Expand operation"}
         onClick={toggleShown}
-        theme={"white"}
+        size={"xSmall" as any}
+        variant="circle"
+        theme="solid"
+        color="white"
         icon={isShown ? "ArrowDefaultUp" : "ArrowDefaultDown"}
         className={"pointer-events-auto me-auto transition-opacity mx-12"}
       />

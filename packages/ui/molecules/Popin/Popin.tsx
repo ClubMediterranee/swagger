@@ -52,26 +52,28 @@ export const Popin: FunctionComponent<PropsWithChildren<PopinProps>> = ({
   });
 
   return (
-    <Backdrop isVisible={isVisible} onClose={onClose}>
-      {transitions(
-        (style, item) =>
-          item && (
-            <animated.div
-              className={classnames("border-lightGrey rounded-16 pointer-events-auto md:mx-20 w-full border bg-white", className)}
-              style={style}
-            >
-              <div className="p-20 md:p-40 text-center max-h-[90vh] flex flex-col">
-                {title && <div className="mt-12 text-h5 text-start font-serif">{title}</div>}
-                <div className="mt-12 mb-40 last:mb-0 text-start overflow-auto">{children}</div>
-                {Footer && (
-                  <div>
-                    <Footer closeLabel={closeLabel} onClose={onClose} />
-                  </div>
-                )}
-              </div>
-            </animated.div>
-          )
-      )}
-    </Backdrop>
+    <div className="z-5 absolute top-0 inset-x-0">
+      <Backdrop isVisible={isVisible} onClose={onClose}>
+        {transitions(
+          (style, item) =>
+            item && (
+              <animated.div
+                className={classnames("border-lightGrey rounded-16 pointer-events-auto md:mx-20 w-full border bg-white", className)}
+                style={style}
+              >
+                <div className="p-20 md:p-40 text-center max-h-[90vh] flex flex-col">
+                  {title && <div className="mt-12 text-h5 text-start font-serif">{title}</div>}
+                  <div className="mt-12 mb-40 last:mb-0 text-start overflow-auto">{children}</div>
+                  {Footer && (
+                    <div>
+                      <Footer closeLabel={closeLabel} onClose={onClose} />
+                    </div>
+                  )}
+                </div>
+              </animated.div>
+            )
+        )}
+      </Backdrop>
+    </div>
   );
 };

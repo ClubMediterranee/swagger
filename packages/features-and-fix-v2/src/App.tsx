@@ -1,24 +1,20 @@
 import { DeviceProvider } from "@clubmed/trident-ui/contexts/Device";
 import { Loader } from "@clubmed/trident-ui/molecules/Loader";
-import { Header } from "@clubmed/ui/organisms/Header";
+import { HeaderContainer } from "@clubmed/ui/organisms/HeaderContainer/HeaderContainer";
 
 import { Cell } from "./components/Cell";
 import { Column } from "./components/Column";
 import { useEnvsInfoHook } from "./hooks/use-envs-info.hook";
 import { nav } from "./nav";
 
-export const isMobile = () => {
-  return /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(window.navigator.userAgent);
-};
-
 function App() {
   const { isLoadedOnce, data, isActive, dateUpdate } = useEnvsInfoHook();
 
   return (
-    <DeviceProvider device={isMobile() ? "mobile" : "desktop"}>
-      <Header homepageUrl="/" openMenu="Open menu" items={nav.filter(Boolean)}>
+    <DeviceProvider device="all">
+      <HeaderContainer homepageUrl="/" items={nav.filter(Boolean)}>
         <small className="text-b6 font-sans block text-saffron-active">Last update: {dateUpdate?.toLocaleString()}</small>
-      </Header>
+      </HeaderContainer>
 
       <main className="flex justify-centerfont-sans absolute top-[64px] inset-0">
         <div className={"flex flex-col w-full"}>

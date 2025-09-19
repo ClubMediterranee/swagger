@@ -1,11 +1,12 @@
 export const nav = [
   {
     label: "Links",
+    url: "",
     columns: [
       {
         sections: [
           {
-            title: "Club Med",
+            label: "Club Med",
             url: "",
             links: [
               {
@@ -25,7 +26,7 @@ export const nav = [
       {
         sections: [
           {
-            title: "CMS B2C",
+            label: "CMS B2C",
             url: "",
             links: [
               {
@@ -50,7 +51,7 @@ export const nav = [
       {
         sections: [
           {
-            title: "CMS App (Directus)",
+            label: "CMS App (Directus)",
             url: "",
             links: [
               {
@@ -70,7 +71,7 @@ export const nav = [
       {
         sections: [
           {
-            title: "CMS App (Drupal)",
+            label: "CMS App (Drupal)",
             url: "",
             target: "_blank",
             links: [
@@ -96,7 +97,7 @@ export const nav = [
       // {
       //   sections: [
       //     {
-      //       title: "Club Med Pro",
+      //       label: "Club Med Pro",
       //       url: "https://www.clubmedpro.com",
       //       target: "_blank",
       //       links: []
@@ -108,6 +109,7 @@ export const nav = [
   {
     label: "Status page",
     url: "https://status.api.clubmed",
-    target: "_blank"
+    target: "_blank",
+    columns: []
   }
 ];

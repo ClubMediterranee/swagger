@@ -1,0 +1,214 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<DesktopMenu /> > <DesktopMenuItemLink /> > renders without href when url is empty string > DesktopMenuItemLink with empty url 1`] = `
+<div>
+  <nav
+    class="hidden items-center gap-x-12 px-8 lg:flex"
+    role="navigation"
+  >
+    <div>
+      <a
+        aria-controls=":rh:"
+        aria-haspopup="true"
+        class="flex button button-outline button-black button-pill button-medium !border-0 cursor-pointer"
+        data-name="ButtonAnchor"
+        href="/l/discover-club-med"
+        id=":rg:"
+      >
+        <span
+          class="flex items-center justify-center gap-x-8 w-full"
+        >
+          Discover
+        </span>
+      </a>
+      <div
+        class="absolute inset-x-0 top-full bg-white px-20 py-40 hidden"
+      >
+        <div
+          aria-labelledby=":rg:"
+          class="mb-24 flex columns-5 justify-center gap-x-40"
+          id=":rh:"
+          role="menu"
+        >
+          <div
+            class="break-inside-avoid-column space-y-32 text-b3"
+          >
+            <div
+              role="group"
+            >
+              <a
+                class="block font-bold"
+                href="/s"
+                role="menuitem"
+              >
+                Our products
+              </a>
+              <ul
+                class="mt-20 space-y-8"
+                role="group"
+              >
+                <li
+                  role="presentation"
+                >
+                  <a
+                    role="menuitem"
+                  >
+                    All inclusive sun holidays
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+`;
+
+exports[`<DesktopMenu /> > <DesktopMenuItemSection /> > renders DesktopMenuItemSection & DesktopMenuItemLink > DesktopMenuItemColumn 1`] = `
+<div>
+  <nav
+    class="hidden items-center gap-x-12 px-8 lg:flex"
+    role="navigation"
+  >
+    <div>
+      <a
+        aria-controls=":rb:"
+        aria-haspopup="true"
+        class="flex button button-outline button-black button-pill button-medium !border-0 cursor-pointer"
+        data-name="ButtonAnchor"
+        href="/l/discover-club-med"
+        id=":ra:"
+      >
+        <span
+          class="flex items-center justify-center gap-x-8 w-full"
+        >
+          Discover
+        </span>
+      </a>
+      <div
+        class="absolute inset-x-0 top-full bg-white px-20 py-40 hidden"
+      >
+        <div
+          aria-labelledby=":ra:"
+          class="mb-24 flex columns-5 justify-center gap-x-40"
+          id=":rb:"
+          role="menu"
+        >
+          <div
+            class="break-inside-avoid-column space-y-32 text-b3"
+          >
+            <div
+              role="group"
+            >
+              <a
+                class="block font-bold"
+                href="/s"
+                role="menuitem"
+              >
+                Our products
+              </a>
+              <ul
+                class="mt-20 space-y-8"
+                role="group"
+              >
+                <li
+                  role="presentation"
+                >
+                  <a
+                    href="/o/all-inclusive-sun-holidays"
+                    role="menuitem"
+                  >
+                    All inclusive sun holidays
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+`;
+
+exports[`<DesktopMenu /> > renders DesktopMenu > DesktopMenu 1`] = `
+<div>
+  <nav
+    class="hidden items-center gap-x-12 px-8 lg:flex"
+    role="navigation"
+  >
+    <div>
+      <a
+        aria-controls=":r1:"
+        aria-haspopup="true"
+        class="flex button button-outline button-black button-pill button-medium !border-0 cursor-pointer"
+        data-name="ButtonAnchor"
+        href="/l/discover-club-med"
+        id=":r0:"
+      >
+        <span
+          class="flex items-center justify-center gap-x-8 w-full"
+        >
+          Discover
+        </span>
+      </a>
+      <div
+        class="absolute inset-x-0 top-full bg-white px-20 py-40 hidden"
+      >
+        <div
+          aria-labelledby=":r0:"
+          class="mb-24 flex columns-5 justify-center gap-x-40"
+          id=":r1:"
+          role="menu"
+        >
+          item
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+`;
+
+exports[`<DesktopMenu /> > renders DesktopMenuItemColumn > DesktopMenuItemColumn 1`] = `
+<div>
+  <nav
+    class="hidden items-center gap-x-12 px-8 lg:flex"
+    role="navigation"
+  >
+    <div>
+      <a
+        aria-controls=":r9:"
+        aria-haspopup="true"
+        class="flex button button-outline button-black button-pill button-medium !border-0 cursor-pointer"
+        data-name="ButtonAnchor"
+        href="/l/discover-club-med"
+        id=":r8:"
+      >
+        <span
+          class="flex items-center justify-center gap-x-8 w-full"
+        >
+          Discover
+        </span>
+      </a>
+      <div
+        class="absolute inset-x-0 top-full bg-white px-20 py-40 hidden"
+      >
+        <div
+          aria-labelledby=":r8:"
+          class="mb-24 flex columns-5 justify-center gap-x-40"
+          id=":r9:"
+          role="menu"
+        >
+          <div
+            class="break-inside-avoid-column space-y-32 text-b3"
+          >
+            Column
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+`;
