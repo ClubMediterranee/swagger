@@ -11,23 +11,30 @@ export function HeaderContainer({
   items,
   version,
   children
-}: PropsWithChildren<{ Link: any; version?: string; homepageUrl: string; items?: NavItem[] }>) {
+}: PropsWithChildren<{
+  Link: any;
+  version?: string;
+  homepageUrl: string;
+  items?: NavItem[];
+}>) {
   return (
-    <Header className="relative isolate z-5">
-      <a href={homepageUrl} title="Club Med Homepage relative">
-        <div className="w-[30px] md:w-[160px] ">
-          <div className={"flex flex-col"}>
-            <Icon name="ClubMed" width="100%" aspectRatio className="hidden md:block text-ultramarine" />
-            <Icon name="Trident" width="100%" aspectRatio className="ml-8 md:hidden text-ultramarine" />
-            <span className="hidden md:block text-b6">{version}</span>
+    <div className="relative h-[72px]">
+      <Header className="isolate z-5 fixed top-0 inset-x-0">
+        <a href={homepageUrl} title="Club Med Homepage relative">
+          <div className="w-[30px] md:w-[160px] ">
+            <div className={"flex flex-col"}>
+              <Icon name="ClubMed" width="100%" aspectRatio className="hidden md:block text-ultramarine" />
+              <Icon name="Trident" width="100%" aspectRatio className="ml-8 md:hidden text-ultramarine" />
+              <span className="hidden md:block text-b6">{version}</span>
+            </div>
           </div>
+        </a>
+        {items && <DesktopMenuContainer items={items} />}
+        <div className="flex gap-x-8 items-center">
+          {children}
+          {items && <MobileMenuContainer items={items} />}
         </div>
-      </a>
-      {items && <DesktopMenuContainer items={items} />}
-      <div className="flex gap-x-8 items-center">
-        {children}
-        {items && <MobileMenuContainer items={items} />}
-      </div>
-    </Header>
+      </Header>
+    </div>
   );
 }
