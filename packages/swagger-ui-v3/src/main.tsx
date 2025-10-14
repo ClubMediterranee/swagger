@@ -15,7 +15,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import App from "./App";
 
-const baseName = (window as any).basename || "/";
+const baseName = window.origin.includes("/doc") ? "/doc" : (window as any).basename || "/";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
