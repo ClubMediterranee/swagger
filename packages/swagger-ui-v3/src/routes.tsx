@@ -6,13 +6,14 @@ declare global {
     basename: string;
   }
 }
+const baseName = window.location.href.includes("/doc") ? "/doc" : (window as any).basename || "/";
 
 export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[] = [
   {
     label: "Documentation",
     //hidden: true,
     element: React.lazy(() => import("./views/swagger/swagger.view")),
-    path: "/",
+    path: baseName,
     index: true,
     columns: []
   },
@@ -24,7 +25,7 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
   // },
   {
     label: "Migration notes",
-    path: "/migration-notes",
+    path: "migration-notes",
     element: React.lazy(() => import("./views/migrations/migration-notes.view")),
     index: false,
     columns: []

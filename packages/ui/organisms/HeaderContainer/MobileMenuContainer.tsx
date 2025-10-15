@@ -1,7 +1,7 @@
 import { MobileMenu, MobileMenuItem, MobileMenuItems, MobileMenuLink, MobileMenuSection } from "../Header/Mobile/MobileMenu.js";
 import type { NavItem } from "../Header/types/NavItem.js";
 
-export function MobileMenuContainer({ items }: { items?: NavItem[] }) {
+export function MobileMenuContainer({ items, Link }: { items?: NavItem[]; Link?: any }) {
   return (
     <MobileMenu openMenu="open menu">
       {(isOpen) => (
@@ -15,7 +15,7 @@ export function MobileMenuContainer({ items }: { items?: NavItem[] }) {
                 return column.sections.map((section) => (
                   <MobileMenuSection key={section.label} section={section}>
                     {section.links.map((link) => (
-                      <MobileMenuLink key={link.label} link={link} />
+                      <MobileMenuLink Link={Link} key={link.label} link={link} />
                     ))}
                   </MobileMenuSection>
                 ));

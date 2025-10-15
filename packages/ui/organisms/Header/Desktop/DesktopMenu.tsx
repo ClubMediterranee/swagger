@@ -1,6 +1,8 @@
 "use client";
 
-import { ButtonAnchor } from "@clubmed/trident-ui/molecules/Buttons/ButtonAnchor";
+import { ButtonContent } from "@clubmed/trident-ui/molecules/Buttons/ButtonContent";
+import { useButton } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
+import { getButtonClasses } from "@clubmed/trident-ui/molecules/Buttons/v2/Button.type";
 import classnames from "classnames";
 import {
   Children,
@@ -60,9 +62,33 @@ export const DesktopMenu: FunctionComponent<Props> = ({ children, className, ...
   );
 };
 
+const ButtonAnchor: FunctionComponent<any> = ({
+  className,
+  children,
+  color = "saffron",
+  icon,
+  iconWidth,
+  size = "medium",
+  theme = "solid",
+  variant = "pill",
+  component: Link,
+  ...props
+}) => {
+  const { attrs } = useButton(props);
+
+  return (
+    <Link {...attrs} className={classnames(getButtonClasses({ color, size, theme, variant }), className)}>
+      <ButtonContent icon={icon} iconWidth={iconWidth}>
+        {children}
+      </ButtonContent>
+    </Link>
+  );
+};
+
 interface DesktopMenuItemProps {
   activeItem: number;
   index: number;
+  Link?: any;
   item: NavItem;
   onClick?: () => void;
   resetMenu: ResetMenu;
@@ -76,6 +102,7 @@ export const DesktopMenuItem: FunctionComponent<PropsWithChildren<DesktopMenuIte
   item,
   onClick,
   resetMenu,
+  Link = "a",
   setMenu
 }) => {
   const btnId = useId();
@@ -93,6 +120,7 @@ export const DesktopMenuItem: FunctionComponent<PropsWithChildren<DesktopMenuIte
       }}
     >
       <ButtonAnchor
+        component={Link}
         aria-controls={hasChildren ? menuId : undefined}
         aria-haspopup={hasChildren}
         className={classnames("!border-0", {
@@ -129,6 +157,7 @@ export const DesktopMenuItemColumn: FunctionComponent<PropsWithChildren> = ({ ch
 };
 
 type DesktopMenuSectionProps = NavItem["columns"][number]["sections"][number] & {
+  Link?: any;
   onClick?: () => void;
 };
 
@@ -137,14 +166,15 @@ export const DesktopMenuSection: FunctionComponent<PropsWithChildren<DesktopMenu
   onClick,
   label,
   url,
-  external
+  external,
+  Link = "a"
 }) => {
   const hasLinks = Children.count(children) > 0;
 
   return (
     <div role="group">
       {label && (
-        <a
+        <Link
           className="block font-bold"
           href={url || undefined}
           onClick={onClick}
@@ -153,7 +183,7 @@ export const DesktopMenuSection: FunctionComponent<PropsWithChildren<DesktopMenu
           target={external ? "_blank" : undefined}
         >
           {label}
-        </a>
+        </Link>
       )}
       {hasLinks && (
         <ul className="mt-20 space-y-8" role="group">
@@ -167,12 +197,13 @@ export const DesktopMenuSection: FunctionComponent<PropsWithChildren<DesktopMenu
 interface DesktopMenuLinkProps {
   link: DesktopMenuSectionProps["links"][number];
   onClick?: () => void;
+  Link?: any;
 }
 
-export const DesktopMenuLink: FunctionComponent<DesktopMenuLinkProps> = ({ link, onClick }) => {
+export const DesktopMenuLink: FunctionComponent<DesktopMenuLinkProps> = ({ link, onClick, Link = "a" }) => {
   return (
     <li role="presentation">
-      <a
+      <Link
         href={link.url || undefined}
         onClick={onClick}
         rel={link.external ? "external" : undefined}
@@ -180,7 +211,7 @@ export const DesktopMenuLink: FunctionComponent<DesktopMenuLinkProps> = ({ link,
         role="menuitem"
       >
         {link.label}
-      </a>
+      </Link>
     </li>
   );
 };

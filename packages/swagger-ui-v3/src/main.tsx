@@ -16,7 +16,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 
 const baseName = window.location.href.includes("/doc") ? "/doc" : (window as any).basename || "/";
-console.log("====>BASENAME", baseName);
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <IconsProvider icons={[Brand, Actions, Utilities, Socials]}>

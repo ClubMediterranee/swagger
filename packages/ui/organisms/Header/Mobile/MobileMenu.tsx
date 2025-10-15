@@ -121,16 +121,17 @@ export const MobileMenuSection: FunctionComponent<PropsWithChildren<MobileMenuSe
 };
 
 interface MobileMenuLinkProps {
+  Link?: any;
   link: MobileMenuSectionProps["section"]["links"][number];
   onClick?: () => void;
 }
 
-export const MobileMenuLink: FunctionComponent<MobileMenuLinkProps> = ({ link, onClick }) => {
+export const MobileMenuLink: FunctionComponent<MobileMenuLinkProps> = ({ link, onClick, Link = "a" }) => {
   return (
     <li key={link.label} role="presentation">
-      <a href={link.url || undefined} onClick={onClick} role="menuitem">
+      <Link href={link.url || undefined} onClick={onClick} role="menuitem">
         {link.label}
-      </a>
+      </Link>
     </li>
   );
 };
