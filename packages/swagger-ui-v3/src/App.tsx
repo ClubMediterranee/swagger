@@ -33,7 +33,7 @@ function App() {
   });
 
   return (
-    <DeviceProvider device={isMobile() ? "mobile" : "desktop"}>
+    <DeviceProvider device={isMobile() ? "small" : "xlarge"}>
       <ConfigContext.Provider value={{ config, setConfig }}>
         <Layout>
           {/* @ts-ignore */}
