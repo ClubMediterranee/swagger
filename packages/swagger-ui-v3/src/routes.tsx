@@ -16,40 +16,21 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
     index: true,
     columns: []
   },
-  // {
-  //   label: "Discover",
-  //   path: "/discover",
-  //   element: React.lazy(() => import("./views/discover/discover.view")),
-  //   columns: []
-  // },
   {
     label: "Migration notes",
-    path: "migration-notes",
-    element: React.lazy(() => import("./views/migrations/migration-notes.view")),
+    path: "https://portal.api.clubmed/migration-notes",
     index: false,
-    columns: []
-  },
-  {
-    label: "Migration notes",
-    path: "/migration-notes/:id",
-    element: React.lazy(() => import("./views/migrations/migration-note.view")),
-    index: false,
-    hidden: true,
     columns: []
   },
   {
     label: "Webhooks",
-    path: `/webhooks`,
-    element: React.lazy(() => import("./views/swagger/swagger.view")),
-    subView: React.lazy(() => import("./views/swagger/webhooks/webhooks.view")),
+    path: `https://portal.api.clubmed/pages/webhooks`,
     index: false,
-    enableAuthorize: true,
     columns: []
   },
   {
     label: "Status",
-    path: `/status`,
-    element: React.lazy(() => import("./views/status/status-page.view")),
+    path: `https://status.api.clubmed`,
     index: false,
     columns: []
   }

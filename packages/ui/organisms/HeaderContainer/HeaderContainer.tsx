@@ -26,12 +26,15 @@ export function HeaderContainer({
             <div className={"flex flex-col"}>
               <Icon name="ClubMed" width="100%" aspectRatio className="hidden md:block text-ultramarine" />
               <Icon name="Trident" width="100%" aspectRatio className="ml-8 md:hidden text-ultramarine" />
-              <span className="hidden md:block text-b6">{version}</span>
+              <span id="portal-version" className="hidden md:block text-b6">
+                {version}
+              </span>
             </div>
           </div>
         </Link>
         {items && <DesktopMenuContainer Link={Link} items={items} />}
         <div className="flex gap-x-8 items-center">
+          <div id="portal-actions" />
           {children}
           {items && <MobileMenuContainer Link={Link} items={items} />}
         </div>
