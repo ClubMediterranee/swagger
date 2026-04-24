@@ -17,6 +17,14 @@ export const routes: (RouteProps & { element?: any } & Record<string, unknown>)[
     columns: []
   },
   {
+    label: "Migration notes redirect",
+    element: React.lazy(() => import("./views/migration-notes/migration-notes-redirect.view")),
+    path: "/migration-notes/:id",
+    hidden: true,
+    index: false,
+    columns: []
+  },
+  {
     label: "Migration notes",
     path: "https://portal.api.clubmed/migration-notes",
     index: false,
