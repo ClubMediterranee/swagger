@@ -1,5 +1,5 @@
 import { Icon } from "@clubmed/trident-icons";
-import { DeviceProvider } from "@clubmed/trident-ui/contexts/Device";
+import { DeviceProvider } from "@clubmed/trident-ui/contexts/Devices/Device";
 import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
 import { Meta, StoryObj } from "@storybook/react";
 
