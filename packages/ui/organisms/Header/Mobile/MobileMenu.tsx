@@ -1,7 +1,7 @@
 "use client";
 
 import { Icon } from "@clubmed/trident-icons";
-import { useDevice } from "@clubmed/trident-ui/contexts/Devices/Device";
+import { useDevice } from "@clubmed/trident-ui/contexts/Device";
 import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import { ElasticHeight } from "@clubmed/trident-ui/molecules/ElasticHeight";
 import { HamburgerIcon } from "@clubmed/trident-ui/molecules/HamburgerIcon";
