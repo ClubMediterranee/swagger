@@ -19,20 +19,7 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
     }
 
     if (type === "file" || format === "binary") {
-      return (
-        <TextField
-          disabled={disabled}
-          required={required}
-          type="file"
-          className={errors.size ? "invalid" : ""}
-          placeholder={description}
-          validationStatus={errors.size > 0 ? "error" : "default"}
-          errorMessage={errors.get(0) || ""}
-          onChange={(_: string, value: any) => {
-            props?.onChange(value);
-          }}
-        />
-      );
+      return <Base {...props} />;
     }
 
     if (description === "authorization") {
