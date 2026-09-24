@@ -118,6 +118,10 @@ export const presetConfig = {
       {
         label: "Legal Information",
         href: "https://www.clubmed.fr/l/informations-legales"
+      },
+      {
+        label: "Digital Accessibility",
+        href: "https://portal.api.clubmed/fr-FR/pages/accessibilite-numerique-portail-api"
       }
     ]
   }
