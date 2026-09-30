@@ -6,11 +6,11 @@ export default function MigrationNotesRedirectView() {
 
   useEffect(() => {
     if (!id) {
-      window.location.replace("https://api.portal.clubmed/migration-notes");
+      window.location.replace("https://portal.api.clubmed/migration-notes");
       return;
     }
 
-    window.location.replace(`https://api.portal.clubmed/migration-notes/${id}`);
+    window.location.replace(`https://portal.api.clubmed/migration-notes/${id}`);
   }, [id]);
 
   return null;

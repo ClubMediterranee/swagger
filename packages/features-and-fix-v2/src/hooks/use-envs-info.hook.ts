@@ -19,7 +19,7 @@ export interface ApiEnvInfo extends EnvInfo {
 }
 
 export function useEnvsInfoHook() {
-  const hook = useFetch<(EnvInfo | ApiEnvInfo)[]>({ url: "https://www.dataviz.clubmed/rest/envs/info" });
+  const hook = useFetch<(EnvInfo | ApiEnvInfo)[]>({ url: "https://dataviz.api.clubmed/rest/envs/info" });
 
   useInterval(hook.fetchData, 10000, []);
 
