@@ -1,4 +1,4 @@
-import type { IconicNames } from "@clubmed/trident-ui/atoms/Icons";
+import type { IconicNames } from "@clubmed/trident-icons";
 import { ReactNode } from "react";
 
 export interface SelectOptionProps<Data = any> extends Record<string, any> {

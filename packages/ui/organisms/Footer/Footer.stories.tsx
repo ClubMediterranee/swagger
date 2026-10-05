@@ -16,7 +16,7 @@ export default {
 const Template: StoryFn<typeof Footer> = (args) => {
   return (
     <div style={{ width: "100vw", maxWidth: "100%" }} dir="ltr">
-      <DeviceProvider device="mobile">
+      <DeviceProvider device="all">
         <Footer {...args} />
       </DeviceProvider>
     </div>

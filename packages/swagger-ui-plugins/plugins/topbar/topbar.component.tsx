@@ -23,7 +23,14 @@ export default function Topbar(props: System) {
     <HeaderContainer version={version} Link={RouterLink} homepageUrl="/" items={(config.nav || []).filter(Boolean)}>
       {config.enableAdvancedFilter && (
         <>
-          <Button theme="outline" color="black" variant="circle" icon="Filters" onClick={() => setVisible(true)} />
+          <Button
+            aria-label="Advanced filters"
+            theme="outline"
+            color="black"
+            variant="circle"
+            icon="Filters"
+            onClick={() => setVisible(true)}
+          />
           <AdvancedFilterPanel isVisible={isVisible} onClose={() => setVisible(false)} />
         </>
       )}

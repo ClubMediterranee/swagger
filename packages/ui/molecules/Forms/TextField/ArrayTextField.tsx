@@ -48,6 +48,7 @@ export function ArrayTextField<Value = string>(props: ArrayTextFieldProps<Value>
             </div>
             <Button
               dataTestId={`remove-value-${name}-${index}`}
+              aria-label={`Remove value ${index + 1}`}
               variant="icon"
               icon="MinusDefault"
               theme="blackStroke"

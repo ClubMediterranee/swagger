@@ -98,7 +98,7 @@ export function AuthorizationPopup(props: System) {
             .valueSeq()
             .map((obj, index) => {
               return (
-                <TabPanel key={"panel-" + index} value={index!}>
+                <TabPanel key={"panel-" + index} value={index!} className="aria-hidden:hidden">
                   {obj?.oauth.size ? (
                     <div className="">
                       <Oauth2 authorized={authorized} schemaName={obj.schemaName} flows={obj.oauth} />

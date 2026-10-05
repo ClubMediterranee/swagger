@@ -21,7 +21,7 @@ export function HeaderContainer({
   return (
     <div className="relative h-[72px]">
       <Header className="isolate z-5 fixed top-0 inset-x-0">
-        <Link href={homepageUrl} title="Club Med Homepage relative">
+        <Link href={homepageUrl} title="Club Med Homepage relative" aria-label="Club Med Homepage">
           <div className="w-[30px] md:w-[160px] ">
             <div className={"flex flex-col"}>
               <Icon name="ClubMed" width="100%" aspectRatio className="hidden md:block text-ultramarine" />

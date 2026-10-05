@@ -60,7 +60,16 @@ export function Footer({ contact, columns, corporateLinks, newsletter, socialNet
   const socialNetworksBlock = (
     <Fragment>
       {socialNetworks.map(({ label, href, icon }) => (
-        <ButtonAnchor key={label} icon={icon} label={label} href={href} theme="blackStroke" variant="icon" target="_blank" />
+        <ButtonAnchor
+          key={label}
+          icon={icon}
+          label={label}
+          aria-label={label}
+          href={href}
+          theme="blackStroke"
+          variant="icon"
+          target="_blank"
+        />
       ))}
     </Fragment>
   );
@@ -75,7 +84,7 @@ export function Footer({ contact, columns, corporateLinks, newsletter, socialNet
               <span className="text-h5 font-serif">{contact.phoneNumber}</span>
               <span className="text-b5">{contact.phoneCost}</span>
             </span>
-            <Button icon="Phone" theme="black" variant="icon" label={contact.phoneNumber} />
+            <Button icon="Phone" theme="black" variant="icon" label={contact.phoneNumber} aria-label={contact.phoneNumber} />
           </a>
         ) : null}
 
@@ -149,7 +158,6 @@ export function Footer({ contact, columns, corporateLinks, newsletter, socialNet
 
 const FooterColumn: FunctionComponent<PropsWithChildren<{ header: ReactNode; label?: string }>> = ({ header, children, label = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const AnimatedIcon = animated(Icon);
 
   const { rotate } = useSpring({
     rotate: isOpen ? -180 : 0
@@ -165,7 +173,9 @@ const FooterColumn: FunctionComponent<PropsWithChildren<{ header: ReactNode; lab
         }}
       >
         {header}
-        <AnimatedIcon name={"ArrowDefaultDown" as any} className="md:hidden" width="30px" style={{ rotate }} />
+        <animated.span className="inline-flex shrink-0 md:hidden" style={{ rotate }}>
+          <Icon name="ArrowDefaultDown" width="30px" />
+        </animated.span>
       </button>
       <ElasticHeight role="presentation" id={`footer-column-${label}-links`} className={classnames("md:h-auto", { "h-0": !isOpen })}>
         {children}

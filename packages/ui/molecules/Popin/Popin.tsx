@@ -2,7 +2,7 @@ import { Backdrop } from "@clubmed/trident-ui/molecules/Backdrop";
 import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
 import { animated, config, useTransition } from "@react-spring/web";
 import classnames from "classnames";
-import type { FunctionComponent, PropsWithChildren, ReactNode } from "react";
+import { type FunctionComponent, type PropsWithChildren, type ReactNode, useId } from "react";
 
 export type ClosePopinCallback = () => void;
 
@@ -44,6 +44,7 @@ export const Popin: FunctionComponent<PropsWithChildren<PopinProps>> = ({
   className = "sm:w-360",
   Footer = PopinFooter
 }) => {
+  const portalId = useId();
   const transitions = useTransition(isVisible, {
     from: { scale: 0.3, opacity: 0.3 },
     enter: { scale: 1, opacity: 1 },
@@ -52,8 +53,9 @@ export const Popin: FunctionComponent<PropsWithChildren<PopinProps>> = ({
   });
 
   return (
-    <div className="z-5 absolute top-0 inset-x-0">
-      <Backdrop isVisible={isVisible} onClose={onClose}>
+    // Keep the portal inside the consumer's CSS scope and stacking context.
+    <div id={portalId} className="z-5 absolute top-0 inset-x-0">
+      <Backdrop target={portalId} isVisible={isVisible} onClose={onClose}>
         {transitions(
           (style, item) =>
             item && (

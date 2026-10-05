@@ -49,6 +49,7 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
           variant="circle"
           color="black"
           icon="Filters"
+          aria-label="Advanced filters"
           disabled={shouldDisabledActions}
           onClick={() => onClick("filters")}
         />
@@ -58,6 +59,7 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
           variant="circle"
           color="black"
           icon="PeopleSingle"
+          aria-label="Authorize"
           disabled={!(!shouldDisabledActions || enableAuthorize)}
           onClick={() => onClick("authorize")}
         />
