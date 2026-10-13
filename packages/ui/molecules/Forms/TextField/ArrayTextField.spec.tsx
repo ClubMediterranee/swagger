@@ -35,7 +35,7 @@ describe("<ArrayTextField />", () => {
 
     expect(inputs[1]).toHaveValue("type==VILLAGE");
 
-    const removeButton = canvas.getByTestId("remove-value-array-field-0");
+    const removeButton = canvas.getByRole("button", { name: "Remove value 1" });
 
     await userEvent.click(removeButton);
 

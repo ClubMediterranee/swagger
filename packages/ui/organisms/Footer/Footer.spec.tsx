@@ -1,4 +1,4 @@
-import { act, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ComponentProps } from "react";
 
@@ -66,5 +66,18 @@ describe("<Footer />", () => {
   it("renders a Footer", () => {
     render(<Footer {...footerProps} />, { wrapper });
     expect(screen.getByRole("contentinfo")).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: "Facebook" })).not.toHaveLength(0);
+  });
+
+  it("expands and collapses a footer column", async () => {
+    const user = userEvent.setup();
+    render(<Footer {...footerProps} />, { wrapper });
+    const column = screen.getByRole("button", { name: "Column 1" });
+
+    expect(column).toHaveAttribute("aria-expanded", "false");
+    await user.click(column);
+    expect(column).toHaveAttribute("aria-expanded", "true");
+    await user.click(column);
+    expect(column).toHaveAttribute("aria-expanded", "false");
   });
 });

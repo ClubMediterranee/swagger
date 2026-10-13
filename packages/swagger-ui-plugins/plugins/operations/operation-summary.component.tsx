@@ -72,8 +72,9 @@ export default function OperationSummary(
       <JumpToPath path={specPath} />
       {/* TODO: use wrapComponents here, swagger-ui doesn't care about jumpToPath */}
       <Button
-        aria-expanded={isShown}
-        title={isShown ? "Collapse operation" : "Expand operation"}
+        aria-pressed={isBookmarked}
+        aria-label={isBookmarked ? "Remove bookmark" : "Add bookmark"}
+        title={isBookmarked ? "Remove bookmark" : "Add bookmark"}
         onClick={() => {
           isBookmarked
             ? props.layoutActions.removeFromBookmarks(method + "-" + path)

@@ -3,7 +3,10 @@
   "packageManager": "yarn@3.6.0",
   "type": "module",
   "devDependencies": {
+    "@clubmed/trident-icons": "1.4.0",
+    "@clubmed/trident-ui": "1.6.0",
     "@mdx-js/react": "^1.6.22",
+    "@react-spring/web": "9.7.3",
     "@storybook/addon-a11y": "^8.2.1",
     "@storybook/addon-actions": "^8.2.1",
     "@storybook/addon-docs": "^8.2.1",
@@ -20,7 +23,12 @@
     "@storybook/react-vite": "^8.2.1",
     "@storybook/test": "^8.2.1",
     "@storybook/test-runner": "^0.19.1",
-    "storybook": "^8.2.1"
+    "@tailwindcss/container-queries": "0.1.1",
+    "@tailwindcss/typography": "0.5.19",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "storybook": "^8.2.1",
+    "tailwindcss": "3.4.17"
   },
   "scripts": {
     "storybook": "storybook dev -p 6006",
