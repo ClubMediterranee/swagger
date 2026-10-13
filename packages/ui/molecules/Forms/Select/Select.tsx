@@ -1,7 +1,7 @@
 import "./Select.css";
 
 import type { IconicNames } from "@clubmed/trident-icons";
-import { FormControl } from "@clubmed/trident-ui/molecules/Forms/FormControl";
+import { FormControl } from "@clubmed/trident-ui/ui/forms/FormControl";
 import ReactSelect from "react-select";
 import makeAnimated from "react-select/animated";
 

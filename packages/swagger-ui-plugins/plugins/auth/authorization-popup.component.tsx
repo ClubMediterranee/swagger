@@ -1,6 +1,6 @@
-import { TabPanel, Tabs, TabsBody } from "@clubmed/trident-ui/molecules/Tabs";
-import { Tab } from "@clubmed/trident-ui/molecules/Tabs/Tab";
-import { TabList } from "@clubmed/trident-ui/molecules/Tabs/TabList";
+import { TabPanel, Tabs, TabsBody } from "@clubmed/trident-ui/ui/tabs/Tabs";
+import { Tab } from "@clubmed/trident-ui/ui/tabs/Tabs";
+import { TabList } from "@clubmed/trident-ui/ui/tabs/Tabs";
 import { Popin } from "@clubmed/ui/molecules/Popin/Popin";
 import { List, Map as M } from "immutable";
 import React from "react";
@@ -73,7 +73,7 @@ export function AuthorizationPopup(props: System) {
     <Tabs selected={authorizedIndex === -1 ? 0 : authorizedIndex} compacted={true}>
       <Popin
         title={
-          <TabList constrained={true} className={"pt-0"}>
+          <TabList constrained={true} className="auth-tabs pt-0">
             <div className="px-8 font-sans">
               {allDefinitions
                 .keySeq()

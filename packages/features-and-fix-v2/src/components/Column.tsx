@@ -1,4 +1,4 @@
-import { Link } from "@clubmed/trident-ui/molecules/Link";
+import { Link } from "@clubmed/trident-ui/ui/Link";
 import classnames from "classnames";
 import { gte } from "semver";
 

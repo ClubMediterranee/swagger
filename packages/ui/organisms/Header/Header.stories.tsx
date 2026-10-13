@@ -1,6 +1,6 @@
 import { Icon } from "@clubmed/trident-icons";
 import { DeviceProvider } from "@clubmed/trident-ui/contexts/Devices/Device";
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
 import { Meta, StoryObj } from "@storybook/react";
 
 import { DesktopMenu, DesktopMenuItem, DesktopMenuItemColumn, DesktopMenuLink, DesktopMenuSection } from "./Desktop/DesktopMenu.js";

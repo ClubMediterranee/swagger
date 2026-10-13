@@ -1,4 +1,4 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
 import Im from "immutable";
 import isFunc from "lodash/isFunction";
 import { PropsWithChildren } from "react";
@@ -72,14 +72,15 @@ export default function OperationTag(props: PropsWithChildren<System & { tag: st
         )}
 
         <Button
-          variant={"icon"}
+          variant="circle"
           aria-expanded={showTag}
           title={showTag ? "Collapse operation" : "Expand operation"}
           onClick={() => layoutActions.show(isShownKey, !showTag)}
-          theme={"white"}
+          color="white"
+          theme="solid"
           icon={showTag ? "ArrowDefaultUp" : "ArrowDefaultDown"}
           className={"pointer-events-auto me-auto transition-opacity"}
-          label={showTag ? "Collapse operation" : "Expand operation"}
+          aria-label={showTag ? "Collapse operation" : "Expand operation"}
         />
       </h3>
 

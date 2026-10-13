@@ -1,6 +1,6 @@
 import "./AutoCompleteField.css";
 
-import { TextField, TextFieldProps } from "@clubmed/trident-ui/molecules/Forms/TextField";
+import { TextField, TextFieldProps } from "@clubmed/trident-ui/ui/forms/TextField";
 import classnames from "classnames";
 import omit from "lodash/omit";
 import React, { useRef, useState } from "react";
@@ -34,15 +34,15 @@ function useAutoCompleteField<Value>(props: AutoCompleteFieldProps<Value>) {
       setCurrentSelection((prev) => (prev < items.length - 1 ? prev + 1 : prev));
     } else if (e.key === "ArrowUp") {
       setCurrentSelection((prev) => (prev > 0 ? prev - 1 : prev));
-    } else if (e.key === "Enter") {
+    } else if (e.key === "Enter" && currentSelection >= 0) {
       setValue(items[currentSelection].value as Value);
-      debouncedRequest(props.name, items[currentSelection].value as Value);
+      debouncedRequest(new Event("change"), items[currentSelection].value as Value);
     }
   }
 
-  function onChange(name: string, value: Value) {
+  function onChange(event: Event, value: Value) {
     setValue(value);
-    return debouncedRequest(name, value);
+    return debouncedRequest(event, value);
   }
 
   function onFocus(e: React.FocusEvent) {
@@ -134,7 +134,7 @@ export function AutoCompleteField<Value = string>({ debounceTimeout, ...props }:
       <button
         onClick={() => {
           setValue("" as Value);
-          return debouncedRequest(props.name, "");
+          return debouncedRequest(new Event("change"), "");
         }}
         type="button"
         className="dropdown-clear"
@@ -149,7 +149,7 @@ export function AutoCompleteField<Value = string>({ debounceTimeout, ...props }:
           {items.map((option, index) => {
             const onClick = () => {
               setValue(option.value as Value);
-              debouncedRequest(props.name, option.value as Value);
+              debouncedRequest(new Event("change"), option.value as Value);
             };
 
             return (

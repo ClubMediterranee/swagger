@@ -1,4 +1,4 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
 import classnames from "classnames";
 import React, { CSSProperties, PropsWithChildren, useState } from "react";
 

@@ -1,5 +1,5 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
-import { TextField } from "@clubmed/trident-ui/molecules/Forms/TextField";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
+import { TextField } from "@clubmed/trident-ui/ui/forms/TextField";
 import { useConfig } from "@clubmed/ui/contexts/config.context";
 import React, { useEffect } from "react";
 
@@ -46,9 +46,10 @@ export function Search({
     <>
       <Button
         aria-label="Search"
-        theme={showSearch ? "black" : "blackStroke"}
+        color="black"
+        theme={showSearch ? "solid" : "outline"}
         disabled={disabled}
-        variant="textSmall"
+        size="small"
         icon="Search"
         onClick={onClick}
       >
@@ -66,7 +67,7 @@ export function Search({
           className="shadow-2-l rounded-pill"
           value={config.search}
           onBlur={onBlur}
-          onChange={onChange}
+          onChange={(_, nextValue) => onChange("search", nextValue)}
           style={{ width: "80vw", maxWidth: "800px" }}
           placeholder={"Search... (e.g. path: /products AND method: POST)"}
         />

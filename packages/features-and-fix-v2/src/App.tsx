@@ -1,5 +1,5 @@
 import { DeviceProvider } from "@clubmed/trident-ui/contexts/Device";
-import { Loader } from "@clubmed/trident-ui/molecules/Loader";
+import { Loader } from "@clubmed/trident-ui/ui/Loader";
 import { HeaderContainer } from "@clubmed/ui/organisms/HeaderContainer/HeaderContainer";
 
 import { Cell } from "./components/Cell";

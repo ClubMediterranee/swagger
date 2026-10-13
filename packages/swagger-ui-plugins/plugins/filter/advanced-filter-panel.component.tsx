@@ -1,5 +1,5 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
-import { Switch } from "@clubmed/trident-ui/molecules/Forms/Switch";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
+import { Switch } from "@clubmed/trident-ui/ui/forms/Switch";
 import { useLocalStorage } from "@clubmed/ui/hooks/storage/useLocaleStorage";
 import { GroupButtons } from "@clubmed/ui/molecules/GroupButtons";
 import { Popin } from "@clubmed/ui/molecules/Popin/Popin";
@@ -58,13 +58,18 @@ export function AdvancedFilterPanel(props: System & { isVisible: boolean; onClos
           <div className={"gap-16 flex"}>
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="flex items-center">
-              <Switch name="deprecated" onChange={onChangeSelection} checked={!!filters.get("deprecated")} /> Deprecated
+              <Switch
+                name="deprecated"
+                onChange={(_, value) => onChangeSelection("deprecated", value)}
+                checked={!!filters.get("deprecated")}
+              />{" "}
+              Deprecated
             </label>
 
             {hasAdmin && (
               // eslint-disable-next-line jsx-a11y/label-has-associated-control
               <label className="flex items-center">
-                <Switch name="admin" onChange={onChangeSelection} checked={!!filters.get("admin")} /> Admin
+                <Switch name="admin" onChange={(_, value) => onChangeSelection("admin", value)} checked={!!filters.get("admin")} /> Admin
               </label>
             )}
           </div>
@@ -78,7 +83,7 @@ export function AdvancedFilterPanel(props: System & { isVisible: boolean; onClos
             </Button>
           </div>
 
-          <GroupButtons name={"tags"} value={tagsValue} choices={tags} onChange={onChangeSelection} />
+          <GroupButtons name={"tags"} value={tagsValue} choices={tags} onChange={(_, value) => onChangeSelection("tags", value)} />
         </div>
       </div>
     </Popin>

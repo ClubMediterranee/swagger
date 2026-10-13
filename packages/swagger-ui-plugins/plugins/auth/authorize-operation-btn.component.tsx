@@ -1,4 +1,4 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
 import React from "react";
 
 import { System } from "../../interfaces/System";
@@ -10,11 +10,11 @@ export function AuthorizeOperationBtn(props: System & { isAuthorized: boolean; o
     <Button
       aria-expanded={isAuthorized}
       title={isAuthorized ? "authorization button locked" : "authorization button unlocked"}
-      onClick={(e) => {
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         props.onClick();
       }}
-      size={"xSmall" as any}
+      size="small"
       variant="circle"
       theme="solid"
       color={isAuthorized ? "black" : "white"}

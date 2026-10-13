@@ -2,9 +2,9 @@
 
 import { Icon } from "@clubmed/trident-icons";
 import { useDevice } from "@clubmed/trident-ui/contexts/Devices/Device";
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
-import { ElasticHeight } from "@clubmed/trident-ui/molecules/ElasticHeight";
-import { HamburgerIcon } from "@clubmed/trident-ui/molecules/HamburgerIcon";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
+import { ElasticHeight } from "@clubmed/trident-ui/ui/ElasticHeight";
+import { HamburgerIcon } from "@clubmed/trident-ui/ui/HamburgerIcon";
 import classnames from "classnames";
 import { type FunctionComponent, type PropsWithChildren, type ReactNode, useEffect, useId, useRef, useState } from "react";
 
@@ -163,7 +163,7 @@ const MobileMenuCollapse: FunctionComponent<PropsWithChildren<MobileMenuCollapse
         {header}
         <Icon className="lg:hidden" name="ArrowDefaultDown" rotation={isOpen ? -180 : 0} svgClassName="transition-all" width="30px" />
       </button>
-      <ElasticHeight id={id} isExpanded={isOpen} role="presentation">
+      <ElasticHeight id={id} isExpanded={isOpen} role="presentation" className="[&[data-expanded=false]>div]:invisible">
         {children}
       </ElasticHeight>
     </>

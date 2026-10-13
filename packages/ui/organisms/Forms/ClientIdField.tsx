@@ -15,12 +15,12 @@ export function ClientIdField(props: Omit<AutoCompleteFieldProps, "options">) {
     removeValue(options.value);
   };
 
-  const onChange = (name: string, value: string) => {
+  const onChange = (event: Event, value: string) => {
     if (isClientID(value)) {
       pushValue(value);
     }
 
-    props.onChange?.(name, value);
+    props.onChange?.(event, value);
   };
 
   const items = options.map((item) => {

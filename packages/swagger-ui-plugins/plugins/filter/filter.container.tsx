@@ -1,4 +1,4 @@
-import { TextField } from "@clubmed/trident-ui/molecules/Forms/TextField";
+import { TextField } from "@clubmed/trident-ui/ui/forms/TextField";
 
 import { System } from "../../interfaces/System";
 
@@ -15,7 +15,7 @@ export default function FilterContainer(props: System) {
           name="search"
           id="search"
           value={filter === true || filter === "true" ? "" : (filter as string)}
-          onChange={(_: string, value: string) => {
+          onChange={(_: Event, value: string) => {
             props.layoutActions.updateFilter(value);
           }}
           style={{ width: "350px" }}

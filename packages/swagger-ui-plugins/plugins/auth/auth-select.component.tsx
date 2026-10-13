@@ -1,4 +1,4 @@
-import { Radio, RadioGroup } from "@clubmed/trident-ui/molecules/Forms/Radios";
+import { Radio, RadioGroup } from "@clubmed/trident-ui/ui/forms/radios/index";
 
 import { System } from "../../interfaces/System";
 import { decodeToken } from "../../utils/decode-token";
@@ -8,7 +8,7 @@ export function AuthSelectComponent(props: System) {
   const { authSelectors } = props;
   const auths = authSelectors.authorized();
 
-  function onChange(_: string, value: string) {
+  function onChange(_: Event, value: string) {
     props.authActions.setCurrentAuth(value);
   }
 

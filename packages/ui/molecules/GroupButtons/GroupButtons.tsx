@@ -1,8 +1,9 @@
 import { useValue, UseValueProps } from "@clubmed/trident-ui/hooks/useValue";
-import { Tag, TagProps } from "@clubmed/trident-ui/molecules/Tag";
+import { Tag, TagProps } from "@clubmed/trident-ui/ui/Tag";
 import classNames from "classnames";
 
 export interface GroupButtonsProps extends Omit<UseValueProps<string[]>, "initialValue"> {
+  name?: string;
   className?: string;
   choices?: (TagProps & { value: string })[];
   value?: string[];

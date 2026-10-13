@@ -10,16 +10,12 @@ exports[`<DesktopMenu /> > <DesktopMenuItemLink /> > renders without href when u
       <a
         aria-controls=":rh:"
         aria-haspopup="true"
-        class="flex button button-outline button-black button-pill button-medium !border-0 cursor-pointer"
+        class="flex button outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-2 button-outline button-black button-pill button-medium !border-0 cursor-pointer"
         data-name="ButtonAnchor"
         href="/l/discover-club-med"
         id=":rg:"
       >
-        <span
-          class="flex items-center justify-center gap-x-8 w-full"
-        >
-          Discover
-        </span>
+        Discover
       </a>
       <div
         class="absolute inset-x-0 top-full bg-white px-20 py-40 hidden"
@@ -76,16 +72,12 @@ exports[`<DesktopMenu /> > <DesktopMenuItemSection /> > renders DesktopMenuItemS
       <a
         aria-controls=":rb:"
         aria-haspopup="true"
-        class="flex button button-outline button-black button-pill button-medium !border-0 cursor-pointer"
+        class="flex button outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-2 button-outline button-black button-pill button-medium !border-0 cursor-pointer"
         data-name="ButtonAnchor"
         href="/l/discover-club-med"
         id=":ra:"
       >
-        <span
-          class="flex items-center justify-center gap-x-8 w-full"
-        >
-          Discover
-        </span>
+        Discover
       </a>
       <div
         class="absolute inset-x-0 top-full bg-white px-20 py-40 hidden"
@@ -143,16 +135,12 @@ exports[`<DesktopMenu /> > renders DesktopMenu > DesktopMenu 1`] = `
       <a
         aria-controls=":r1:"
         aria-haspopup="true"
-        class="flex button button-outline button-black button-pill button-medium !border-0 cursor-pointer"
+        class="flex button outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-2 button-outline button-black button-pill button-medium !border-0 cursor-pointer"
         data-name="ButtonAnchor"
         href="/l/discover-club-med"
         id=":r0:"
       >
-        <span
-          class="flex items-center justify-center gap-x-8 w-full"
-        >
-          Discover
-        </span>
+        Discover
       </a>
       <div
         class="absolute inset-x-0 top-full bg-white px-20 py-40 hidden"
@@ -181,16 +169,12 @@ exports[`<DesktopMenu /> > renders DesktopMenuItemColumn > DesktopMenuItemColumn
       <a
         aria-controls=":r9:"
         aria-haspopup="true"
-        class="flex button button-outline button-black button-pill button-medium !border-0 cursor-pointer"
+        class="flex button outline-none focus-visible:ring-4 focus-visible:ring-black focus-visible:ring-offset-2 button-outline button-black button-pill button-medium !border-0 cursor-pointer"
         data-name="ButtonAnchor"
         href="/l/discover-club-med"
         id=":r8:"
       >
-        <span
-          class="flex items-center justify-center gap-x-8 w-full"
-        >
-          Discover
-        </span>
+        Discover
       </a>
       <div
         class="absolute inset-x-0 top-full bg-white px-20 py-40 hidden"

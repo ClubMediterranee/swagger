@@ -1,4 +1,4 @@
-import { TextField } from "@clubmed/trident-ui/molecules/Forms/TextField";
+import { TextField } from "@clubmed/trident-ui/ui/forms/TextField";
 
 import { withDebounce } from "../../../hooks/useDebounce";
 

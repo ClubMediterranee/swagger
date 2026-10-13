@@ -1,7 +1,7 @@
 import { useValue } from "@clubmed/trident-ui/hooks/useValue";
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
-import { FormControl, FormControlProps } from "@clubmed/trident-ui/molecules/Forms/FormControl";
-import { TextField } from "@clubmed/trident-ui/molecules/Forms/TextField";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
+import { FormControl, FormControlProps } from "@clubmed/trident-ui/ui/forms/FormControl";
+import { TextField } from "@clubmed/trident-ui/ui/forms/TextField";
 import classnames from "classnames";
 import omit from "lodash/omit";
 import { useId } from "react";
@@ -20,7 +20,6 @@ export function ArrayTextField<Value = string>(props: ArrayTextFieldProps<Value>
   const { id = internalId, name = id } = props;
 
   const { value, setValue } = useValue<Value[]>({
-    name: name,
     initialValue: props.value,
     defaultValue: [],
     onChange: props.onChange
@@ -47,11 +46,12 @@ export function ArrayTextField<Value = string>(props: ArrayTextFieldProps<Value>
               />
             </div>
             <Button
-              dataTestId={`remove-value-${name}-${index}`}
+              data-testid={`remove-value-${name}-${index}`}
               aria-label={`Remove value ${index + 1}`}
-              variant="icon"
+              variant="circle"
               icon="MinusDefault"
-              theme="blackStroke"
+              color="black"
+              theme="outline"
               onClick={() => {
                 setValue(value.filter((_, i) => i !== index));
               }}
@@ -61,10 +61,10 @@ export function ArrayTextField<Value = string>(props: ArrayTextFieldProps<Value>
       })}
       {!props.disabled ? (
         <Button
-          dataTestId={`add-new-value-${name}`}
+          data-testid={`add-new-value-${name}`}
           className={"mt-12"}
           icon="PlusDefault"
-          variant="textSmall"
+          size="small"
           onClick={() => {
             setValue([...(value || []), "" as unknown as Value]);
           }}

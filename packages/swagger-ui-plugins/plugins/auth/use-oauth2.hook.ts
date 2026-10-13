@@ -55,7 +55,6 @@ export function useOAuth2(props: OAuth2Props) {
   });
 
   function setState<Type = unknown>(name: string | undefined, value: Type) {
-    console.log(name, value);
     switch (name) {
       case "flow":
         setFlow(value);

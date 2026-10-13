@@ -1,8 +1,8 @@
 "use client";
 
-import { ButtonContent } from "@clubmed/trident-ui/molecules/Buttons/ButtonContent";
-import { useButton } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
-import { getButtonClasses } from "@clubmed/trident-ui/molecules/Buttons/v2/Button.type";
+import { useButton } from "@clubmed/trident-ui/ui/buttons/Button";
+import { getButtonClasses } from "@clubmed/trident-ui/ui/buttons/Button.type";
+import { ButtonContent } from "@clubmed/trident-ui/ui/buttons/ButtonContent";
 import classnames from "classnames";
 import {
   Children,

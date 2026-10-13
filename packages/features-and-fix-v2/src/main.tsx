@@ -1,5 +1,5 @@
 import "./patch-window.ts";
-import "@clubmed/trident-ui/style.css";
+import "./styles/trident.css";
 
 import { IconsProvider } from "@clubmed/trident-icons";
 import Actions from "@clubmed/trident-icons/svg/Actions";

@@ -1,7 +1,7 @@
 import moment from "moment";
 
 import { useListStorage } from "../../hooks/storage/useLocaleStorage";
-import { SelectOptionProps } from "../../molecules/Forms/Select/index";
+import { SelectOptionProps } from "../../molecules/Forms/Select/Select.interfaces";
 import { AutoCompleteField, AutoCompleteFieldProps } from "../../molecules/Forms/TextField/AutoCompleteField";
 
 function isApiKey(value: string) {
@@ -15,12 +15,12 @@ export function ApikeyField(props: Omit<AutoCompleteFieldProps, "options">) {
     removeValue(options.value);
   };
 
-  const onChange = (name: string, value: string) => {
+  const onChange = (event: Event, value: string) => {
     if (isApiKey(value)) {
       pushValue(value);
     }
 
-    props.onChange?.(name, value);
+    props.onChange?.(event, value);
   };
 
   const items = options.map((item) => {

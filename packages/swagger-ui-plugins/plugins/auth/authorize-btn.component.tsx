@@ -1,4 +1,4 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
 import { useConfig } from "@clubmed/ui/contexts/config.context";
 import { useEffect } from "react";
 
@@ -17,11 +17,13 @@ export default function AuthorizeBtn(
   const AuthorizationPopup = getComponent("authorizationPopup", true);
 
   useEffect(() => {
-    setConfig({
-      ...config,
-      isAuthorized
-    });
-  }, [isAuthorized]);
+    if (config.isAuthorized !== isAuthorized) {
+      setConfig({
+        ...config,
+        isAuthorized
+      });
+    }
+  }, [config, isAuthorized, setConfig]);
 
   return (
     <div className="auth-wrapper">
