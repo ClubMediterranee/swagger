@@ -1,5 +1,5 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
-import { TextField } from "@clubmed/trident-ui/molecules/Forms/TextField";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
+import { TextField } from "@clubmed/trident-ui/ui/forms/TextField";
 import { DebouncedTextField } from "@clubmed/ui/molecules/Forms/TextField/DebouncedTextField";
 import { ApikeyField } from "@clubmed/ui/organisms/Forms/ApiKeyField";
 import { FunctionComponent } from "react";
@@ -61,7 +61,7 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
           placeholder={description}
           validationStatus={errors.size > 0 ? "error" : "default"}
           errorMessage={errors.get(0) || ""}
-          onChange={(_: string, value: any) => {
+          onChange={(_: Event, value: any) => {
             props?.onChange(value);
           }}
         />
@@ -80,7 +80,7 @@ export function wrapJsonschemaStringComponent(Base: FunctionComponent, system: S
         placeholder={description}
         validationStatus={errors.size > 0 ? "error" : "default"}
         errorMessage={errors.get(0) || ""}
-        onChange={(_: string, value: any) => {
+        onChange={(_: Event, value: any) => {
           props?.onChange(value);
         }}
       />

@@ -26,7 +26,7 @@ export function SelectComponent({ allowedValues, allowEmptyValue, ...props }: an
       options={opts}
       multiple={props.multiple}
       required={!allowEmptyValue}
-      onChange={(_: string, value: string | string[]) => {
+      onChange={(_: Event, value: string | string[]) => {
         let { onChange } = props;
         onChange && onChange(value);
       }}

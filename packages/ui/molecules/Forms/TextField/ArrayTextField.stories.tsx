@@ -49,7 +49,7 @@ export const Default: Story = {
       delay: 100
     });
 
-    await waitFor(() => expect(args.onChange).toHaveBeenCalledWith("array-field", ["id==AGAC"]));
+    await waitFor(() => expect(args.onChange).toHaveBeenCalledWith(expect.any(Event), ["id==AGAC"]));
     await expect(inputs[0]).toHaveValue("id==AGAC");
 
     await userEvent.click(addButton);
@@ -70,6 +70,6 @@ export const Default: Story = {
 
     await expect(inputs.length).toBe(1);
 
-    await waitFor(() => expect(args.onChange).toHaveBeenCalledWith("array-field", ["type==VILLAGE"]));
+    await waitFor(() => expect(args.onChange).toHaveBeenCalledWith(expect.any(Event), ["type==VILLAGE"]));
   }
 };

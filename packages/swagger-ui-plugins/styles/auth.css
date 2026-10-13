@@ -1,3 +1,12 @@
+.auth-tabs [role="tab"][aria-selected="true"] {
+  /* Keep the selected label readable without relying on CSS anchor positioning. */
+  background-color: var(--color-black) !important;
+}
+
+.auth-tabs [role="tablist"] > span[aria-hidden="true"] {
+  display: none;
+}
+
 .swagger-ui .errors {
   @apply rounded-16 p-12;
   background-color: #fee;

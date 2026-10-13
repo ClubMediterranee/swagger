@@ -1,13 +1,18 @@
-import { FormControl } from "@clubmed/trident-ui/molecules/Forms/FormControl";
-import { Password } from "@clubmed/trident-ui/molecules/Forms/Password";
-import { Radio, RadioGroup } from "@clubmed/trident-ui/molecules/Forms/Radios";
-import { TextField } from "@clubmed/trident-ui/molecules/Forms/TextField";
+import { FormControl } from "@clubmed/trident-ui/ui/forms/FormControl";
+import { Password } from "@clubmed/trident-ui/ui/forms/password/Password";
+import { Radio, RadioGroup } from "@clubmed/trident-ui/ui/forms/radios/index";
+import { TextField } from "@clubmed/trident-ui/ui/forms/TextField";
 import React from "react";
 
 import { DisabledFieldComponent } from "./disabled-field.component";
 import { useOAuth2 } from "./use-oauth2.hook";
 
-export function Oauth2PasswordFlow({ username, passwordType, isAuthorized, setState }: ReturnType<typeof useOAuth2>) {
+export function Oauth2PasswordFlow({
+  username,
+  passwordType,
+  isAuthorized,
+  setState
+}: Pick<ReturnType<typeof useOAuth2>, "username" | "passwordType" | "isAuthorized" | "setState">) {
   return (
     <div>
       <div className={"mb-16"}>
@@ -20,7 +25,7 @@ export function Oauth2PasswordFlow({ username, passwordType, isAuthorized, setSt
             type="text"
             name="username"
             value={username}
-            onChange={setState}
+            onChange={(_, value) => setState("username", value)}
             disabled={isAuthorized}
           />
         )}
@@ -29,7 +34,13 @@ export function Oauth2PasswordFlow({ username, passwordType, isAuthorized, setSt
         {isAuthorized ? (
           <DisabledFieldComponent>Password:</DisabledFieldComponent>
         ) : (
-          <Password label="Password:" id="oauth_password" type="password" name="password" onChange={setState} />
+          <Password
+            label="Password:"
+            id="oauth_password"
+            type="password"
+            name="password"
+            onChange={(_, value) => setState("password", value)}
+          />
         )}
       </div>
 
@@ -42,7 +53,7 @@ export function Oauth2PasswordFlow({ username, passwordType, isAuthorized, setSt
               <RadioGroup
                 aria-labelledby={"password_type"}
                 name="password_type"
-                onChange={setState}
+                onChange={(_, value) => setState("password_type", value)}
                 value={passwordType}
                 className={"ml-16"}
               >

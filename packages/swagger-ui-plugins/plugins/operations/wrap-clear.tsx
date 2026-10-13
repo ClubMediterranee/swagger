@@ -1,4 +1,4 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
 
 export function wrapClear(
   Base: React.ComponentClass<{
@@ -9,7 +9,7 @@ export function wrapClear(
     render() {
       const { disabled } = this.props;
       return (
-        <Button disabled={disabled} className="block w-full mt-12" onClick={(this as any).onClick} theme="blackStroke">
+        <Button disabled={disabled} className="block w-full mt-12" onClick={(this as any).onClick} color="black" theme="outline">
           Clear
         </Button>
       );

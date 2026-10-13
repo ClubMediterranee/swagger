@@ -1,4 +1,4 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
 import { useConfig } from "@clubmed/ui/contexts/config.context";
 
 import { Container } from "../components/container.component";

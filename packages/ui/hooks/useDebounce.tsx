@@ -19,14 +19,14 @@ export const useDebounce = (callback: any, timeout: number) => {
 
 export function withDebounce<
   Cmp extends FunctionComponent<{
-    onChange(name: string, value: any): void;
+    onChange(event: Event, value: any): void;
     value: any;
   }>
 >(
   render: Cmp
 ): <Value = string>(
   props: Omit<Parameters<Cmp>[0], "onChange" | "value"> & {
-    onChange(name: string, value: Value): void;
+    onChange(event: Event, value: Value): void;
     value: Value;
     debounceTimeout: number;
   }

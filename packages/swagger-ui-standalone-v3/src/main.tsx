@@ -1,7 +1,5 @@
 import "./patch-window.ts";
-import "@clubmed/swagger-ui-plugins/styles/index.css";
-import "swagger-ui-react/swagger-ui.css";
-import "@clubmed/trident-ui/style.css";
+import "./styles/trident.css";
 
 import { IconsProvider } from "@clubmed/trident-icons";
 import Actions from "@clubmed/trident-icons/svg/Actions";

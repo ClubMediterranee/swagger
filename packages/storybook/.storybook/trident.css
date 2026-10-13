@@ -1,0 +1,4 @@
+@import "@clubmed/trident-ui/style.css";
+@source "../../../node_modules/@clubmed/trident-ui/ui";
+@source "../../../node_modules/@clubmed/trident-ui/chunks";
+@source "../../ui";

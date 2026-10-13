@@ -1,5 +1,3 @@
-@tailwind components;
-
 @layer components {
   .button-circle.button-xsmall {
     @apply size-32;

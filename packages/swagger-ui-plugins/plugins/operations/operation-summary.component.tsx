@@ -1,5 +1,5 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
-import { BUTTON_SIZES } from "@clubmed/trident-ui/molecules/Buttons/v2/Button.type";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
+import { BUTTON_SIZES } from "@clubmed/trident-ui/ui/buttons/Button.type";
 import { FunctionComponent } from "react";
 
 import { System } from "../../interfaces/System";

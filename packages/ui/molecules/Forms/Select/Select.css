@@ -1,3 +1,5 @@
+@reference "@clubmed/trident-ui/style.css";
+
 .react-select-container {
   max-width: 340px;
   margin-top: 0.5rem;

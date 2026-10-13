@@ -1,0 +1,10 @@
+@layer theme, base, swagger, components, overrides, utilities;
+@import "swagger-ui-react/swagger-ui.css" layer(swagger);
+@import "@clubmed/trident-ui/style.css";
+@import "@clubmed/swagger-ui-plugins/styles/index.css" layer(overrides);
+@config "../../tailwind.config.ts";
+@source "../../../../node_modules/@clubmed/trident-ui/ui";
+@source "../../../../node_modules/@clubmed/trident-ui/chunks";
+@source "../../../ui";
+@source "../../../swagger-ui-plugins";
+@source "../";

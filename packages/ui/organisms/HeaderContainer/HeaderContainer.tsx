@@ -13,7 +13,7 @@ export function HeaderContainer({
   children,
   Link = "a"
 }: PropsWithChildren<{
-  Link: any;
+  Link?: any;
   version?: string;
   homepageUrl: string;
   items?: NavItem[];

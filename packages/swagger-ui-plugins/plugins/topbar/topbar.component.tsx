@@ -1,4 +1,4 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/v2/Button";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
 import { useConfig } from "@clubmed/ui/contexts/config.context";
 import { HeaderContainer } from "@clubmed/ui/organisms/HeaderContainer/HeaderContainer";
 import React, { useState } from "react";

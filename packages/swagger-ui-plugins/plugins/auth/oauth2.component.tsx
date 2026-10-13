@@ -1,10 +1,10 @@
 import { Icon } from "@clubmed/trident-icons";
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
-import { Checkbox, Checkboxes } from "@clubmed/trident-ui/molecules/Forms/Checkboxes";
-import { FormControl } from "@clubmed/trident-ui/molecules/Forms/FormControl";
-import { Password } from "@clubmed/trident-ui/molecules/Forms/Password";
-import { Radio, RadioGroup } from "@clubmed/trident-ui/molecules/Forms/Radios";
-import { Switch } from "@clubmed/trident-ui/molecules/Forms/Switch";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
+import { Checkbox, Checkboxes } from "@clubmed/trident-ui/ui/forms/checkboxes/index";
+import { FormControl } from "@clubmed/trident-ui/ui/forms/FormControl";
+import { Password } from "@clubmed/trident-ui/ui/forms/password/Password";
+import { Radio, RadioGroup } from "@clubmed/trident-ui/ui/forms/radios/index";
+import { Switch } from "@clubmed/trident-ui/ui/forms/Switch";
 import { ClientIdField } from "@clubmed/ui/organisms/Forms/ClientIdField";
 import classnames from "classnames";
 import React, { SyntheticEvent } from "react";
@@ -32,7 +32,7 @@ function Actions({
   return (
     <div className={classnames("flex items-center justify-center gap-12 ", className)}>
       {isAuthorized ? (
-        <Button theme="blackStroke" onClick={logout} aria-label="Remove authorization">
+        <Button color="black" theme="outline" onClick={logout} aria-label="Remove authorization">
           Logout
         </Button>
       ) : (
@@ -40,7 +40,7 @@ function Actions({
           Authorize
         </Button>
       )}
-      <Button theme="black" onClick={close}>
+      <Button color="black" theme="solid" onClick={close}>
         Close
       </Button>
     </div>
@@ -117,7 +117,13 @@ export function Oauth2Component(props: OAuth2Props) {
         {!isAuthorized ? (
           <div className="bg-lightSand py-16 rounded-16 mb-16">
             <FormControl label={"Select a flow:"} id={"flow"}>
-              <RadioGroup aria-labelledby={"flow"} name={"flow"} onChange={setState} className={"ml-16"} value={flow}>
+              <RadioGroup
+                aria-labelledby={"flow"}
+                name={`flow_${name}`}
+                onChange={(_, value) => setState("flow", value)}
+                className={"ml-16"}
+                value={flow}
+              >
                 {flows.map(({ label, value }) => {
                   return (
                     <Radio key={value} value={value} className="flex-1 md:flex-none">
@@ -143,7 +149,7 @@ export function Oauth2Component(props: OAuth2Props) {
                 name="client_id"
                 minLength={0}
                 debounceTimeout={350}
-                onChange={setState}
+                onChange={(_, value) => setState("client_id", value)}
               />
             )}
           </div>
@@ -162,7 +168,7 @@ export function Oauth2Component(props: OAuth2Props) {
                   data-name="clientSecret"
                   name={"client_secret"}
                   required={true}
-                  onChange={setState}
+                  onChange={(_, value) => setState("client_secret", value)}
                 />
               </>
             )}
@@ -172,7 +178,7 @@ export function Oauth2Component(props: OAuth2Props) {
           !isAuthorized ? (
             <div className="bg-lightSand py-16 rounded-16 mb-16 relative">
               <div className={"absolute right-16 top-12"}>
-                <Switch onChange={(_, all) => selectScopes(all)}>
+                <Switch checked={scopesOptions.every(({ scope }) => scopes.includes(scope))} onChange={(_, all) => selectScopes(all)}>
                   <small>Select all</small>
                 </Switch>
               </div>
@@ -182,7 +188,7 @@ export function Oauth2Component(props: OAuth2Props) {
                   name="scopes"
                   className={"flex flex-wrap gap-12 ml-16"}
                   value={scopes}
-                  onChange={setState}
+                  onChange={(_, value) => setState("scopes", value)}
                 >
                   {scopesOptions.map(({ scope, description }) => {
                     return (

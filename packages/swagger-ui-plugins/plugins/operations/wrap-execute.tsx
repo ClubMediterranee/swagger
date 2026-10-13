@@ -1,4 +1,4 @@
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
 
 export function wrapExecute(
   Base: React.ComponentClass<{

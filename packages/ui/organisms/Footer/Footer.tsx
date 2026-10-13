@@ -2,11 +2,10 @@
 
 import { Icon } from "@clubmed/trident-icons";
 import { IconicNames } from "@clubmed/trident-icons";
-import { Button } from "@clubmed/trident-ui/molecules/Buttons/Button";
-import { ButtonAnchor } from "@clubmed/trident-ui/molecules/Buttons/ButtonAnchor";
-import { ElasticHeight } from "@clubmed/trident-ui/molecules/ElasticHeight";
-import { Link } from "@clubmed/trident-ui/molecules/Link";
-import { animated, useSpring } from "@react-spring/web";
+import { useDevice } from "@clubmed/trident-ui/contexts/Devices/Device";
+import { Button } from "@clubmed/trident-ui/ui/buttons/Button";
+import { ElasticHeight } from "@clubmed/trident-ui/ui/ElasticHeight";
+import { Link } from "@clubmed/trident-ui/ui/Link";
 import classnames from "classnames";
 import { Fragment, FunctionComponent, PropsWithChildren, ReactNode, useState } from "react";
 
@@ -60,14 +59,15 @@ export function Footer({ contact, columns, corporateLinks, newsletter, socialNet
   const socialNetworksBlock = (
     <Fragment>
       {socialNetworks.map(({ label, href, icon }) => (
-        <ButtonAnchor
+        <Button
+          component="a"
           key={label}
           icon={icon}
-          label={label}
           aria-label={label}
           href={href}
-          theme="blackStroke"
-          variant="icon"
+          color="black"
+          theme="outline"
+          variant="circle"
           target="_blank"
         />
       ))}
@@ -84,7 +84,7 @@ export function Footer({ contact, columns, corporateLinks, newsletter, socialNet
               <span className="text-h5 font-serif">{contact.phoneNumber}</span>
               <span className="text-b5">{contact.phoneCost}</span>
             </span>
-            <Button icon="Phone" theme="black" variant="icon" label={contact.phoneNumber} aria-label={contact.phoneNumber} />
+            <Button component="span" icon="Phone" color="black" theme="solid" variant="circle" aria-label={contact.phoneNumber} />
           </a>
         ) : null}
 
@@ -92,7 +92,9 @@ export function Footer({ contact, columns, corporateLinks, newsletter, socialNet
           <div className="flex flex-col items-center gap-x-20 gap-y-12 lg:-order-1 lg:flex-row">
             <>
               <p className="text-b2 font-semibold">{newsletter.label}</p>
-              <ButtonAnchor theme="black" label={newsletter.cta.label} href={newsletter.cta.href} target="_blank" />
+              <Button component="a" color="black" theme="solid" href={newsletter.cta.href} target="_blank">
+                {newsletter.cta.label}
+              </Button>
             </>
           </div>
         )}
@@ -158,26 +160,33 @@ export function Footer({ contact, columns, corporateLinks, newsletter, socialNet
 
 const FooterColumn: FunctionComponent<PropsWithChildren<{ header: ReactNode; label?: string }>> = ({ header, children, label = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const isDesktop = useDevice("medium");
 
-  const { rotate } = useSpring({
-    rotate: isOpen ? -180 : 0
-  });
   return (
     <Fragment>
       <button
         className="flex w-full items-center justify-between text-start"
         aria-controls={`footer-column-${label}-links`}
-        aria-expanded={isOpen}
+        aria-expanded={isDesktop || isOpen}
         onClick={() => {
           setIsOpen(!isOpen);
         }}
       >
         {header}
-        <animated.span className="inline-flex shrink-0 md:hidden" style={{ rotate }}>
+        <span
+          className={classnames("inline-flex shrink-0 md:hidden transition-transform duration-300 motion-reduce:transition-none", {
+            "rotate-180": isOpen
+          })}
+        >
           <Icon name="ArrowDefaultDown" width="30px" />
-        </animated.span>
+        </span>
       </button>
-      <ElasticHeight role="presentation" id={`footer-column-${label}-links`} className={classnames("md:h-auto", { "h-0": !isOpen })}>
+      <ElasticHeight
+        isExpanded={isDesktop || isOpen}
+        role="presentation"
+        id={`footer-column-${label}-links`}
+        className="[&[data-expanded=false]>div]:invisible"
+      >
         {children}
       </ElasticHeight>
     </Fragment>

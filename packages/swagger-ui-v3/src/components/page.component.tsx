@@ -1,5 +1,5 @@
 import { useMarkdown } from "@clubmed/swagger-ui-plugins/hooks/use-markdown.hook";
-import { Breadcrumb } from "@clubmed/trident-ui/molecules/Breadcrumb";
+import { Breadcrumb } from "@clubmed/trident-ui/ui/Breadcrumb";
 import type { TocEntry } from "@stefanprobst/rehype-extract-toc";
 import cx from "classnames";
 import pick from "lodash/pick";

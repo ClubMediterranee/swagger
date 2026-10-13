@@ -10,10 +10,9 @@
     "test:ci": "vitest run --reporter=default --reporter=junit"
   },
   "dependencies": {
-    "@clubmed/trident-icons": "1.4.0",
-    "@clubmed/trident-ui": "1.6.0",
+    "@clubmed/trident-icons": "1.24.1",
+    "@clubmed/trident-ui": "2.0.0",
     "@clubmed/ui": "workspace:*",
-    "@react-spring/web": "9.7.3",
     "@stefanprobst/rehype-extract-toc": "2.2.0",
     "@tailwindcss/container-queries": "0.1.1",
     "@tailwindcss/typography": "0.5.19",
@@ -38,12 +37,13 @@
     "unified": "11.0.5"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
     "@types/lodash": "^4.17.6",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/remarkable": "^2.0.8",
     "@vitejs/plugin-react": "4.3.1",
-    "tailwindcss": "3.4.17",
+    "tailwindcss": "4.3.3",
     "typescript": "^5.5.3",
     "vite": "5.3.3",
     "vite-plugin-svgr": "4.2.0",
