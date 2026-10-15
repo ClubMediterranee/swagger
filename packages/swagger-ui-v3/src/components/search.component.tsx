@@ -32,11 +32,11 @@ export function Search({
       inputSearch.current?.classList.remove("hidden");
       inputSearch.current?.classList.remove("opacity-0");
       inputSearch.current?.classList.add("flex");
-      inputSearch.current?.classList.add("opacity-1");
+      inputSearch.current?.classList.add("opacity-100");
       inputSearch.current?.querySelector("input")?.focus();
     } else {
       inputSearch.current?.classList.remove("flex");
-      inputSearch.current?.classList.remove("opacity-1");
+      inputSearch.current?.classList.remove("opacity-100");
       inputSearch.current?.classList.add("hidden");
       inputSearch.current?.classList.add("opacity-0");
     }
@@ -57,18 +57,17 @@ export function Search({
       </Button>
 
       <div
-        className={"transition-opacity ease-in-out duration-150 fixed inset-x-0 top-[64px] py-40 justify-center items-center"}
+        className={"transition-opacity ease-in-out duration-150 absolute inset-x-0 top-full z-20 py-16 justify-center items-center"}
         ref={inputSearch}
       >
         <TextField
           icon="Search"
           name="search"
           id="search"
-          className="shadow-2-l rounded-pill"
+          className="shadow-2-l rounded-pill w-full max-w-[800px] bg-white"
           value={config.search}
           onBlur={onBlur}
           onChange={(_, nextValue) => onChange("search", nextValue)}
-          style={{ width: "80vw", maxWidth: "800px" }}
           placeholder={"Search... (e.g. path: /products AND method: POST)"}
         />
       </div>

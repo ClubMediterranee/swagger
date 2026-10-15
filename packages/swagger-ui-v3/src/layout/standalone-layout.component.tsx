@@ -42,9 +42,10 @@ function useSearch(props: System) {
       const el = document.getElementById("swagger-ui-main-body-layout");
 
       if (el) {
-        window.scrollTo({
+        const main = el.closest("main");
+        main?.scrollTo({
           behavior: "smooth",
-          top: el.offsetTop - 100
+          top: main.scrollTop + el.getBoundingClientRect().top - main.getBoundingClientRect().top - 100
         });
       }
     }

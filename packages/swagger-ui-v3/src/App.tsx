@@ -1,4 +1,5 @@
 import { DeviceProvider } from "@clubmed/trident-ui/contexts/Device";
+import { TridentUIConfigProvider } from "@clubmed/trident-ui/contexts/TridentUIConfig";
 import { ConfigContext } from "@clubmed/ui/contexts/config.context";
 import { Suspense, useState } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -33,30 +34,32 @@ function App() {
   });
 
   return (
-    <DeviceProvider device={isMobile() ? "small" : "xlarge"}>
-      <ConfigContext.Provider value={{ config, setConfig }}>
-        <Layout>
-          {/* @ts-ignore */}
-          <Routes>
-            {routes
-              .filter((route) => route.element && !route.external)
-              .map((route) => {
-                return (
-                  <Route
-                    key={route.path}
-                    {...route}
-                    element={
-                      <Suspense fallback={<></>}>
-                        <route.element basePath={route.path} {...route} />
-                      </Suspense>
-                    }
-                  />
-                );
-              })}
-          </Routes>
-        </Layout>
-      </ConfigContext.Provider>
-    </DeviceProvider>
+    <TridentUIConfigProvider value={{ locale: "en-US" }}>
+      <DeviceProvider device="all">
+        <ConfigContext.Provider value={{ config, setConfig }}>
+          <Layout>
+            {/* @ts-ignore */}
+            <Routes>
+              {routes
+                .filter((route) => route.element && !route.external)
+                .map((route) => {
+                  return (
+                    <Route
+                      key={route.path}
+                      {...route}
+                      element={
+                        <Suspense fallback={<></>}>
+                          <route.element basePath={route.path} {...route} />
+                        </Suspense>
+                      }
+                    />
+                  );
+                })}
+            </Routes>
+          </Layout>
+        </ConfigContext.Provider>
+      </DeviceProvider>
+    </TridentUIConfigProvider>
   );
 }
 

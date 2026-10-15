@@ -8,3 +8,47 @@
 @source "../../../ui";
 @source "../../../swagger-ui-plugins";
 @source "../";
+
+/* Keep the portal shell outside Swagger's element-level styles. */
+.portal-shell {
+  font-family: sans-serif;
+}
+
+/* v2 gives the scrollable navigation flex space; keep production's 48px rows. */
+.portal-shell > div > aside > nav {
+  align-content: start;
+}
+
+/* Let the existing catalogue fit beside either sidebar width. */
+.portal-shell > div > main {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+/* OpenAPI sits low in the menu: keep its collapse control reachable. */
+.portal-shell > div > aside > button {
+  top: clamp(24px, var(--indicatorYPos, 24px), calc(100% - 64px));
+  position-visibility: always;
+}
+
+/* Match the portal's focus treatment across the Trident beta/stable boundary. */
+.portal-shell > header > button:focus-visible,
+.portal-shell > div > aside > button:focus-visible {
+  box-shadow: 0 0 0 8px color-mix(in oklab, var(--color-lavender) 20%, transparent);
+}
+
+/* React 18 does not forward Trident's boolean inert prop. Visibility also keeps
+   collapsed submenu links out of keyboard navigation and the accessibility tree. */
+.portal-shell aside nav > div > div.opacity-0 {
+  visibility: hidden;
+}
+
+.portal-shell .popin-portal {
+  z-index: 30;
+}
+
+@media (width < 48rem) {
+  .portal-shell aside:has(> button[aria-label="Expand sidebar"]) {
+    visibility: hidden;
+  }
+}

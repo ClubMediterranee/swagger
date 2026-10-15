@@ -49,7 +49,7 @@ export const Popin: FunctionComponent<PropsWithChildren<PopinProps>> = ({
 
   return (
     // Keep the portal inside the consumer's CSS scope and stacking context.
-    <div id={portalId} className="z-5 absolute top-0 inset-x-0">
+    <div id={portalId} className="popin-portal z-5 absolute top-0 inset-x-0">
       <Backdrop target={portalId} isVisible={isVisible} onClose={onClose}>
         <div
           className={classnames("popin-panel border-lightGrey rounded-16 pointer-events-auto md:mx-20 w-full border bg-white", className)}

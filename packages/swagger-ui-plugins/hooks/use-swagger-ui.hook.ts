@@ -1,3 +1,4 @@
+import type { SidebarLayoutProps } from "@clubmed/trident-ui/ui/SidebarLayout";
 import type { FooterProps } from "@clubmed/ui/organisms/Footer/Footer";
 import SwaggerUI, { type SwaggerUIProps } from "swagger-ui-react";
 
@@ -23,6 +24,7 @@ export interface SwaggerUIConfiguration extends Omit<Partial<SwaggerUIProps>, "p
   disableBrowserCache?: boolean;
   oauth?: InitOAuthOptions;
   nav?: { label: string; url: string }[];
+  portalNavigation?: (SidebarLayoutProps["items"][number] & { id: string })[];
   footer?: FooterProps;
   contact?: string;
 }
