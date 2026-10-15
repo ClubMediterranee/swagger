@@ -53,27 +53,29 @@ export function Layout({ children }: PropsWithChildren<LayoutProps>) {
           <Languages />
         </div>
         <div className="swagger-ui">
-          <div role="toolbar" aria-label="API tools" className="sticky top-0 z-1 flex items-center justify-end gap-12 pb-16 bg-white">
-            <Button
-              theme="outline"
-              variant="circle"
-              color="black"
-              icon="Filters"
-              aria-label="Advanced filters"
-              disabled={shouldDisabledActions}
-              onClick={() => onClick("filters")}
-            />
-            <Search disabled={shouldDisabledActions} value={config.search} onChange={onChange} />
-            <Button
-              theme="outline"
-              variant="circle"
-              color="black"
-              icon="PeopleSingle"
-              aria-label="Authorize"
-              disabled={!(!shouldDisabledActions || enableAuthorize)}
-              onClick={() => onClick("authorize")}
-            />
-          </div>
+          {location.pathname !== "/" && (
+            <div role="toolbar" aria-label="API tools" className="sticky top-0 z-1 flex items-center justify-end gap-12 pb-16 bg-white">
+              <Button
+                theme="outline"
+                variant="circle"
+                color="black"
+                icon="Filters"
+                aria-label="Advanced filters"
+                disabled={shouldDisabledActions}
+                onClick={() => onClick("filters")}
+              />
+              <Search disabled={shouldDisabledActions} value={config.search} onChange={onChange} />
+              <Button
+                theme="outline"
+                variant="circle"
+                color="black"
+                icon="PeopleSingle"
+                aria-label="Authorize"
+                disabled={!(!shouldDisabledActions || enableAuthorize)}
+                onClick={() => onClick("authorize")}
+              />
+            </div>
+          )}
           <div>{children}</div>
           {config.footer ? <Footer {...config.footer} /> : null}
         </div>

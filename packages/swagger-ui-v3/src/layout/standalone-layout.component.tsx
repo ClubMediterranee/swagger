@@ -32,9 +32,10 @@ function useSearch(props: System) {
 
   useEffect(() => {
     // push current search to history
-    const search = config.search ? "?search=" + config.search : "";
-
-    window.history.replaceState(null, "", window.location.pathname + search);
+    const url = new URL(window.location.href);
+    if (config.search) url.searchParams.set("search", config.search);
+    else url.searchParams.delete("search");
+    window.history.replaceState(null, "", url.pathname + url.search + url.hash);
 
     props.layoutActions.updateFilter(config.search);
 
