@@ -45,17 +45,20 @@ export const Popin: FunctionComponent<PropsWithChildren<PopinProps>> = ({
   Footer = PopinFooter
 }) => {
   const portalId = useId();
-  const transitions = useTransition(isVisible, {
+  // Backdrop toggles its state when isVisible isn't a boolean (e.g. undefined on first render),
+  // which opens an empty white overlay in production builds.
+  const visible = !!isVisible;
+  const transitions = useTransition(visible, {
     from: { scale: 0.3, opacity: 0.3 },
     enter: { scale: 1, opacity: 1 },
     leave: { scale: 0, opacity: 0 },
-    config: isVisible ? { tension: 120, friction: 20 } : config.gentle
+    config: visible ? { tension: 120, friction: 20 } : config.gentle
   });
 
   return (
     // Keep the portal inside the consumer's CSS scope and stacking context.
     <div id={portalId} className="z-5 absolute top-0 inset-x-0">
-      <Backdrop target={portalId} isVisible={isVisible} onClose={onClose}>
+      <Backdrop target={portalId} isVisible={visible} onClose={onClose}>
         {transitions(
           (style, item) =>
             item && (

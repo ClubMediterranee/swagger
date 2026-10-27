@@ -79,7 +79,9 @@ export default function CustomStandaloneLayout(props: System & { show: boolean }
 
   return (
     <>
-      {config.enableAdvancedFilter ? <AdvancedFilterPanel isVisible={config.showAdvancedFilters} onClose={onClickAdvancedFilter} /> : null}
+      {config.enableAdvancedFilter ? (
+        <AdvancedFilterPanel isVisible={!!config.showAdvancedFilters} onClose={onClickAdvancedFilter} />
+      ) : null}
       {config.subView ? <config.subView {...props} /> : <BaseLayout />}
       {showPopup && <AuthorizationPopup />}
     </>
